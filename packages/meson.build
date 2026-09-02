@@ -10,7 +10,10 @@ if host_machine.system() == 'windows'
     portable_setup = [powershell_exe,
                       '-ExecutionPolicy', 'Bypass',
                       '-File', meson.project_source_root() / 'packages/win_installer/portable/create-portable.ps1']
-    run_target('win-portable', command: [portable_setup, meson.project_build_root(), meson.project_source_root()])
+    portable_arch = host_machine.cpu_family() == 'aarch64' ? 'arm64' : 'x64'
+    run_target('win-portable',
+               command: [portable_setup, meson.project_build_root(), meson.project_source_root(),
+                         portable_arch, meson.project_version()])
 elif host_machine.system() == 'darwin'
     fontconfig_conf = run_command('pkg-config', '--variable=confdir', 'fontconfig').stdout().strip()
     bundle_app_sh = find_program(meson.project_source_root() / 'tools/osx-bundle.sh')

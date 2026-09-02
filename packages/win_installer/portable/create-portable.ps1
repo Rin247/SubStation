@@ -6,7 +6,13 @@ param (
     [string]$BuildRoot,
     [Parameter(Position = 1, Mandatory = $true)]
     [ValidateNotNullOrEmpty()]
-    [string]$SourceRoot
+    [string]$SourceRoot,
+    [Parameter(Position = 2, Mandatory = $true)]
+    [ValidateSet('x64', 'arm64')]
+    [string]$Architecture,
+    [Parameter(Position = 3, Mandatory = $true)]
+    [ValidateNotNullOrEmpty()]
+    [string]$Version
 )
 
 $ErrorActionPreference = 'Stop'
@@ -23,7 +29,7 @@ function Copy-ToDirectory {
 
 # Keep in sync with the number of Write-Step calls below.
 $script:stepNum = 0
-$script:stepTotal = 11
+$script:stepTotal = if ($Architecture -eq 'x64') { 11 } else { 10 }
 
 # Report progress both via an interactive bar and a textual trail for CI logs.
 function Write-Step {
@@ -37,8 +43,9 @@ Write-Host "BUILD_ROOT=$BuildRoot"
 Write-Host "SOURCE_ROOT=$SourceRoot"
 $InstallerDir = Join-Path $BuildRoot "install"
 $InstallerDepsDir = Join-Path $BuildRoot "installer-deps"
-$PortableOutputDir = Join-Path $BuildRoot "aegisub-portable"
-$PortableZipPath = Join-Path $BuildRoot "aegisub-portable-64.zip"
+$PortableBaseName = "aegisub-v$Version-portable-$($Architecture.ToLowerInvariant())"
+$PortableOutputDir = Join-Path $BuildRoot $PortableBaseName
+$PortableZipPath = Join-Path $BuildRoot "$PortableBaseName.zip"
 
 Write-Step 'Removing previous output'
 Remove-Item -LiteralPath $PortableOutputDir -Force -Recurse -ErrorAction SilentlyContinue
@@ -68,8 +75,12 @@ Copy-ToDirectory $InstallerDepsDir\dictionaries\en_US.dic  $PortableOutputDir\di
 # Copy-ToDirectory $InstallerDepsDir\AvisynthPlus64\x64\Output\AviSynth.dll  $PortableOutputDir
 # Copy-ToDirectory $InstallerDepsDir\AvisynthPlus64\x64\Output\plugins\DirectShowSource.dll  $PortableOutputDir
 
-Write-Step 'Copying VSFilter'
-Copy-ToDirectory $InstallerDepsDir\VSFilter\x64\VSFilter.dll  $PortableOutputDir\csri
+if ($Architecture -eq 'x64') {
+    Write-Step 'Copying VSFilter'
+    Copy-ToDirectory $InstallerDepsDir\VSFilter\x64\VSFilter.dll  $PortableOutputDir\csri
+} else {
+    Write-Step 'Skipping x64-only VSFilter'
+}
 
 Write-Step 'Copying VC++ runtime'
 $crtFiles = @('concrt140.dll', 'msvcp140.dll', 'msvcp140_1.dll', 'msvcp140_2.dll', 'vcruntime140.dll', 'vcruntime140_1.dll')
@@ -82,7 +93,7 @@ $crtSource = $null
 foreach ($root in $crtRoots) {
     if (Test-Path -LiteralPath $root) {
         $crtSource = Get-ChildItem -LiteralPath $root -Recurse -File -Filter 'vcruntime140.dll' -ErrorAction SilentlyContinue |
-            Where-Object { $_.DirectoryName -match '\\x64\\Microsoft\.VC' } |
+            Where-Object { $_.DirectoryName -match "\\$Architecture\\Microsoft\.VC" } |
             Select-Object -First 1
         if ($crtSource) { break }
     }

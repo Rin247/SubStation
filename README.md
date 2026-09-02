@@ -143,6 +143,8 @@ The installer is written to `build-x64\Aegisub-*.exe`. The lower-level equivalen
 is `meson compile -C build-x64 win-installer`.
 
 You can generate the portable zip with `ninja win-portable` after a successful build.
+Windows archives are named `aegisub-v3.5.0-portable-x64.zip` or
+`aegisub-v3.5.0-portable-arm64.zip`, with one matching top-level directory inside.
 
 The current installer dependency payload is x64-specific (including VSFilter and
 the bundled VC++ redistributable), so ARM64 binaries are not packaged by this
