@@ -1,4 +1,4 @@
-# Aegisub
+# Aegisub - Cross-platform advanced subtitle editor
 
 For binaries and general information [see the homepage](http://aegisub.org).
 
