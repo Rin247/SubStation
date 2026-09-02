@@ -17,6 +17,7 @@ jobs:
 
     strategy:
       fail-fast: false
+      max-parallel: 5
       matrix:
         config:
           - name: Windows MSVC Release
@@ -205,7 +206,7 @@ jobs:
 
       # Windows artifacts
       - name: Generate Windows installer
-        if: startsWith(matrix.config.os, 'windows-')
+        if: startsWith(matrix.config.os, 'windows-') && matrix.config.arch == 'x64'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -213,14 +214,14 @@ jobs:
           meson compile win-installer -C build
 
       - name: Generate Windows portable installer
-        if: startsWith(matrix.config.os, 'windows-')
+        if: startsWith(matrix.config.os, 'windows-') && matrix.config.arch == 'x64'
         run: |
           ${{ matrix.config.devenv }}
           cd build && ninja win-portable
 
       - name: Upload artifacts - win_installer
         uses: actions/upload-artifact@v6
-        if: startsWith(matrix.config.os, 'windows-')
+        if: startsWith(matrix.config.os, 'windows-') && matrix.config.arch == 'x64'
         with:
           name: ${{ matrix.config.name }} - installer
           path: build/Aegisub-*.exe
@@ -228,7 +229,7 @@ jobs:
 
       - name: Upload artifacts - portable.zip
         uses: actions/upload-artifact@v6
-        if: startsWith(matrix.config.os, 'windows-')
+        if: startsWith(matrix.config.os, 'windows-') && matrix.config.arch == 'x64'
         with:
           name: ${{ matrix.config.name }} - portable
           path: build/aegisub-portable-64.zip
@@ -280,6 +281,29 @@ jobs:
           name: Source Tarball
           path: build/meson-dist/*.tar.xz
           if-no-files-found: error
+
+  release:
+    name: Publish GitHub release
+    if: github.ref_type == 'tag'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Download release artifacts
+        uses: actions/download-artifact@v6
+        with:
+          pattern: '*'
+          path: release-assets
+
+      - name: Publish release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if ! gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1; then
+            gh release create "$GITHUB_REF_NAME" --generate-notes
+          fi
+          find release-assets -type f -print0 | xargs -0 -r gh release upload "$GITHUB_REF_NAME" --clobber
 
   # -----------------------------------
   # AUTOMATIC CLEANUP JOB
