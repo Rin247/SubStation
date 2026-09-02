@@ -24,26 +24,6 @@ jobs:
             os: windows-latest
             arch: x64
             msvc: true
-            buildtype: release
-            args: >-
-              -Ddefault_library=static
-              --force-fallback-for=zlib,harfbuzz,freetype2,fribidi,libpng
-              -Dffms2=disabled
-              -Dfallback_nasm=true
-              -Dfreetype2:harfbuzz=disabled
-              -Dharfbuzz:freetype=disabled
-              -Dharfbuzz:cairo=disabled
-              -Dharfbuzz:glib=disabled
-              -Dharfbuzz:gobject=disabled
-              -Dharfbuzz:tests=disabled
-              -Dharfbuzz:docs=disabled
-              -Dfribidi:tests=false
-              -Dfribidi:docs=false
-              -Dlibass:fontconfig=disabled
-          - name: Windows MSVC VS2026
-            os: windows-latest
-            arch: x64
-            msvc: true
             vs_toolset: v2026
             devenv: |
               Import-Module "$env:VS\Common7\Tools\Microsoft.VisualStudio.DevShell.dll"
@@ -71,13 +51,19 @@ jobs:
             devenv: |
               Import-Module "$env:VS\Common7\Tools\Microsoft.VisualStudio.DevShell.dll"
               Enter-VsDevShell -VsInstallPath $env:VS -SkipAutomaticLocation -DevCmdArguments "-arch=arm64 -host_arch=x64"
+              $nativeCl = (Get-ChildItem "$env:VS\VC\Tools\MSVC\*\bin\Hostx64\x64\cl.exe" | Select-Object -First 1).FullName
+              $nativeLib = (Get-ChildItem "$env:VS\VC\Tools\MSVC\*\bin\Hostx64\x64\lib.exe" | Select-Object -First 1).FullName
+              $nativeRc = (Get-ChildItem "$env:WindowsSdkDir\bin\*\x64\rc.exe" | Select-Object -First 1).FullName
+              if (-not $nativeCl -or -not $nativeLib -or -not $nativeRc) { throw "Could not locate the x64 native MSVC tools" }
+              @("[binaries]", "c = '$nativeCl'", "cpp = '$nativeCl'", "ar = '$nativeLib'", "strip = 'llvm-strip.exe'", "windres = '$nativeRc'") |
+                Set-Content cross/windows-native-msvc.generated.ini
             buildtype: release
             args: >-
               -Ddefault_library=static
-              --force-fallback-for=zlib,harfbuzz,freetype2,fribidi,libpng
+              --force-fallback-for=zlib,harfbuzz,freetype2,libpng
               -Dffms2=disabled
               --cross-file=cross/windows-arm64-msvc.ini
-              --native-file=cross/windows-native-msvc.ini
+              --native-file=cross/windows-native-msvc.generated.ini
               -Dfallback_nasm=true
               -Dfreetype2:harfbuzz=disabled
               -Dharfbuzz:freetype=disabled
@@ -98,10 +84,6 @@ jobs:
             os: ubuntu-22.04
             buildtype: release
             args: -Db_pch=false --force-fallback-for=ffms2
-          - name: macOS x86_64 Release
-            os: macos-15-intel
-            buildtype: release
-            args: -Ddefault_library=static -Dbuild_osx_bundle=true -Dlocal_boost=true
           - name: macOS arm64 Release
             os: macos-15
             buildtype: release
