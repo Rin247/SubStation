@@ -53,7 +53,7 @@ jobs:
               Enter-VsDevShell -VsInstallPath $env:VS -SkipAutomaticLocation -DevCmdArguments "-arch=arm64 -host_arch=x64"
               $nativeCl = (Get-ChildItem "$env:VS\VC\Tools\MSVC\*\bin\Hostx64\x64\cl.exe" | Select-Object -First 1).FullName
               $nativeLib = (Get-ChildItem "$env:VS\VC\Tools\MSVC\*\bin\Hostx64\x64\lib.exe" | Select-Object -First 1).FullName
-              $nativeRc = (Get-ChildItem "$env:WindowsSdkDir\bin\*\x64\rc.exe" | Select-Object -First 1).FullName
+              $nativeRc = (Get-ChildItem "$env:WindowsSdkDir\bin\*\x86\rc.exe" | Select-Object -First 1).FullName
               if (-not $nativeCl -or -not $nativeLib -or -not $nativeRc) { throw "Could not locate the x64 native MSVC tools" }
               $nativeCl = $nativeCl.Replace('\', '/')
               $nativeLib = $nativeLib.Replace('\', '/')
@@ -63,7 +63,7 @@ jobs:
             buildtype: release
             args: >-
               -Ddefault_library=static
-              --force-fallback-for=zlib,harfbuzz,freetype2,libpng
+              --force-fallback-for=zlib,harfbuzz,freetype2,fribidi,libpng
               -Dffms2=disabled
               --cross-file=cross/windows-arm64-msvc.ini
               --native-file=cross/windows-native-msvc.generated.ini
