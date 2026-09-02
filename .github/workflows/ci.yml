@@ -55,6 +55,9 @@ jobs:
               $nativeLib = (Get-ChildItem "$env:VS\VC\Tools\MSVC\*\bin\Hostx64\x64\lib.exe" | Select-Object -First 1).FullName
               $nativeRc = (Get-ChildItem "$env:WindowsSdkDir\bin\*\x64\rc.exe" | Select-Object -First 1).FullName
               if (-not $nativeCl -or -not $nativeLib -or -not $nativeRc) { throw "Could not locate the x64 native MSVC tools" }
+              $nativeCl = $nativeCl.Replace('\', '/')
+              $nativeLib = $nativeLib.Replace('\', '/')
+              $nativeRc = $nativeRc.Replace('\', '/')
               @("[binaries]", "c = '$nativeCl'", "cpp = '$nativeCl'", "ar = '$nativeLib'", "strip = 'llvm-strip.exe'", "windres = '$nativeRc'") |
                 Set-Content cross/windows-native-msvc.generated.ini
             buildtype: release
@@ -83,7 +86,7 @@ jobs:
           - name: Ubuntu Release
             os: ubuntu-22.04
             buildtype: release
-            args: -Db_pch=false --force-fallback-for=ffms2
+            args: -Db_pch=false -Ddefault_library=static --force-fallback-for=ffms2
           - name: macOS arm64 Release
             os: macos-15
             buildtype: release

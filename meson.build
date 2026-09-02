@@ -187,6 +187,7 @@ else
         'wxBUILD_INSTALL': false,
         'wxBUILD_PRECOMP': 'OFF',       # otherwise breaks project generation w/ meson
         'wxBUILD_SHARED': build_shared,
+        'CMAKE_POSITION_INDEPENDENT_CODE': true,
 
         'wxUSE_WEBVIEW': false,         # breaks build on linux
         'CMAKE_BUILD_TYPE': build_type,
