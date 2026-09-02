@@ -59,7 +59,7 @@ jobs:
               $nativeLib = $nativeLib.Replace('\', '/')
               $nativeRc = $nativeRc.Replace('\', '/')
               @("[binaries]", "c = '$nativeCl'", "cpp = '$nativeCl'", "ar = '$nativeLib'", "strip = 'llvm-strip.exe'", "windres = '$nativeRc'") |
-                Set-Content cross/windows-native-msvc.generated.ini
+                Set-Content cross/windows-native-msvc.generated.ini -Encoding ascii
             buildtype: release
             args: >-
               -Ddefault_library=static
@@ -86,7 +86,7 @@ jobs:
           - name: Ubuntu Release
             os: ubuntu-22.04
             buildtype: release
-            args: -Db_pch=false -Ddefault_library=static --force-fallback-for=ffms2
+            args: -Db_pch=false -Ddefault_library=static
           - name: macOS arm64 Release
             os: macos-15
             buildtype: release
