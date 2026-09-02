@@ -39,4 +39,8 @@ public:
 	void Init(std::string const& language);
 	bool HasLanguage(std::string const& language);
 	std::string PickLanguage();
+	/// Returns true if the given language code is naturally written
+	/// right-to-left (Arabic, Hebrew, Persian, Urdu, etc.).
+	/// Used to flip the UI layout direction.
+	static bool IsRightToLeft(std::string const& language);
 };

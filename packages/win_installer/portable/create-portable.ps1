@@ -118,17 +118,19 @@ Copy-ToDirectory "$InstallerDepsDir\DependencyControl\automation\*"  "$PortableO
 Write-Step 'Copying portable config'
 Copy-ToDirectory $SourceRoot\packages\win_installer\portable\config.json  $PortableOutputDir
 
+Write-Step 'Copying portable icon'
+Copy-ToDirectory $SourceRoot\packages\win_installer\portable\icon.ico  $PortableOutputDir
+
 Write-Step 'Creating portable zip'
 Remove-Item -LiteralPath $PortableZipPath -Force -ErrorAction SilentlyContinue
 
 # Build the zip in a way that avoids some PowerShell versions emitting backslashes in the entry names.
 Add-Type -AssemblyName System.IO.Compression.FileSystem
-$zipRoot = Split-Path $PortableOutputDir -Leaf
 $baseLen = $PortableOutputDir.Length + 1
 $zip = [System.IO.Compression.ZipFile]::Open($PortableZipPath, 'Create')
 try {
     foreach ($file in Get-ChildItem -LiteralPath $PortableOutputDir -Recurse -File) {
-        $entryName = "$zipRoot/" + $file.FullName.Substring($baseLen).Replace('\', '/')
+        $entryName = $file.FullName.Substring($baseLen).Replace('\', '/')
         [void][System.IO.Compression.ZipFileExtensions]::CreateEntryFromFile($zip, $file.FullName, $entryName, [System.IO.Compression.CompressionLevel]::Optimal)
     }
 }

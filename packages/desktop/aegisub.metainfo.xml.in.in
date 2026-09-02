@@ -55,12 +55,9 @@
   <developer id="@AEGISUB_RDNS_DEVELOPER@">
     <name>Aegisub Group</name>
   </developer>
-  <url type="bugtracker">https://github.com/TypesettingTools/Aegisub/issues</url>
-  <url type="vcs-browser">https://github.com/TypesettingTools/Aegisub</url>
-  <url type="faq">https://aegisub.org/docs/latest/faq</url>
-  <url type="help">https://aegisub.org/docs/latest/main_page</url>
-  <url type="homepage">https://aegisub.org</url>
-  <url type="translate">https://github.com/TypesettingTools/Aegisub</url>
+  <url type="bugtracker">https://github.com/Rin247/Aegisub/issues</url>
+  <url type="vcs-browser">https://github.com/Rin247/Aegisub</url>
+  <url type="translate">https://github.com/Rin247/Aegisub</url>
   <content_rating type="oars-1.1" />
   <translation type="gettext">aegisub</translation>
   <provides>

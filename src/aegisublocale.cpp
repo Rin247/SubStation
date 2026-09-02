@@ -41,8 +41,10 @@
 #include <libaegisub/path.h>
 
 #include <algorithm>
+#include <array>
 #include <clocale>
 #include <functional>
+#include <string_view>
 #include <wx/intl.h>
 #include <wx/choicdlg.h> // Keep this last so wxUSE_CHOICEDLG is set.
 
@@ -68,6 +70,14 @@ void AegisubLocale::Init(std::string const& language) {
 	translations->AddCatalog(AEGISUB_CATALOG);
 	translations->AddStdCatalog();
 
+	// Flip the global UI layout direction to mirror for RTL scripts so
+	// that dialogs, menus and the subtitle grid flow right-to-left.
+	if (wxTheApp) {
+		wxTheApp->SetLayoutDirection(IsRightToLeft(language)
+			? wxLayout_RightToLeft
+			: wxLayout_LeftToRight);
+	}
+
 	setlocale(LC_NUMERIC, "C");
 	setlocale(LC_CTYPE, "C");
 	active_language = language;
@@ -76,6 +86,36 @@ void AegisubLocale::Init(std::string const& language) {
 bool AegisubLocale::HasLanguage(std::string const& language) {
 	auto langs = GetTranslations()->GetAvailableTranslations(AEGISUB_CATALOG);
 	return std::find(langs.begin(), langs.end(), to_wx(language)) != langs.end();
+}
+
+bool AegisubLocale::IsRightToLeft(std::string const& language) {
+	// Strip any modifier such as @latin from the locale code.
+	std::string base = language;
+	auto at_pos = base.find('@');
+	if (at_pos != std::string::npos)
+		base = base.substr(0, at_pos);
+
+	// List of language codes whose primary script is right-to-left.
+	// Covers all RTL languages currently registered in po/LINGUAS plus
+	// other commonly-used RTL scripts we may add in the future.
+	static const std::array<std::string_view, 11> rtl_codes = {
+		"ar",  // Arabic
+		"he",  // Hebrew
+		"fa",  // Farsi / Persian
+		"ur",  // Urdu
+		"ckb", // Kurdish (Sorani)
+		"ps",  // Pashto
+		"sd",  // Sindhi
+		"yi",  // Yiddish
+		"dhv", // Divehi
+		"ks",  // Kashmiri
+		"prs", // Dari
+	};
+	for (auto code : rtl_codes) {
+		if (base == code)
+			return true;
+	}
+	return false;
 }
 
 std::string AegisubLocale::PickLanguage() {

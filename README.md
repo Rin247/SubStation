@@ -1,10 +1,8 @@
 # Aegisub - Cross-Platform Subtitle Editor
 
-For binaries and general information [see the homepage](http://aegisub.org).
+For binaries and general information [see the releases page](https://github.com/Rin247/Aegisub/releases).
 
-The bug tracker can be found at https://github.com/TypesettingTools/Aegisub/issues.
-
-Support is available on [Discord](https://discord.com/invite/AZaVyPr) or [IRC](irc://irc.rizon.net/aegisub).
+The issue tracker can be found at https://github.com/Rin247/Aegisub/issues.
 
 ## Building Aegisub
 
