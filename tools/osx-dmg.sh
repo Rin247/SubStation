@@ -19,7 +19,8 @@ SRC_DIR="${1}"
 BUILD_DIR="${2}"
 AEGI_VER="${3}"
 
-PKG_NAME="Aegisub-${AEGI_VER}"
+ARCH="$(uname -m)"
+PKG_NAME="Aegisub-v${AEGI_VER}-${ARCH}"
 PKG_NAME_VOLUME="${PKG_NAME}"
 
 PKG_DIR="${BUILD_DIR}/Aegisub.app"
