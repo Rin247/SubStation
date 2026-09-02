@@ -177,6 +177,9 @@ meson compile osx-bundle -C build_static
 meson compile osx-build-dmg -C build_static
 ```
 
+The generated DMG is named `Aegisub-v3.5.0-arm64.dmg` on Apple Silicon
+or `Aegisub-v3.5.0-x86_64.dmg` on Intel Macs.
+
 ### Linux or other
 
 #### Build dependencies for Debian-based systems
