@@ -43,39 +43,75 @@ if (Test-Path $gitVersionHeaderPath) {
   }
 }
 
-$gitRevision = $lastSvnRevision + ((git -C $repositoryRootPath log --pretty=oneline "$($lastSvnHash)..HEAD" 2>$null | Measure-Object).Count)
+# Semver scheme (mirrors tools/version.sh):
+#   tagged release:    v3.5.0
+#   N commits after:   v3.5.0-N
+# The counter is the number of commits since the most recent vX.Y.Z tag;
+# any new semver tag resets the counter to 0 and the -0 suffix is dropped
+# so the very next commit on top of a fresh tag is "v3.5.0" instead of
+# "v3.5.0-0". If no semver tag exists yet, fall back to the original
+# SVN baseline so the very first release still has a real-looking number.
+$latestSemverTag = $null
+foreach ($rev in (git -C $repositoryRootPath rev-list --tags 2>$null)) {
+  $tag = git -C $repositoryRootPath describe --exact-match --tags $rev 2>$null
+  if ($tag -match 'v(\d+)\.(\d+)\.(\d+)$') {
+    $latestSemverTag = $tag
+    break
+  }
+}
+
+if ($latestSemverTag -and (git -C $repositoryRootPath cat-file -t $latestSemverTag 2>$null) -eq 'commit') {
+  $gitRevision = (git -C $repositoryRootPath rev-list --count "$($latestSemverTag)..HEAD" 2>$null)
+} elseif ((git -C $repositoryRootPath cat-file -t $lastSvnHash 2>$null) -eq 'commit') {
+  $gitRevision = $lastSvnRevision + ((git -C $repositoryRootPath log --pretty=oneline "$($lastSvnHash)..HEAD" 2>$null | Measure-Object).Count)
+} else {
+  $gitRevision = 0
+}
+
 $gitBranch = git -C $repositoryRootPath symbolic-ref --short HEAD 2>$null
 $gitHash = git -C $repositoryRootPath rev-parse --short HEAD 2>$null
-$gitVersionString = $gitRevision, $gitBranch, $gitHash -join '-'
 $exactGitTag = git -C $repositoryRootPath describe --exact-match --tags 2>$null
-
-if ($gitVersionString -eq $version['BUILD_GIT_VERSION_STRING']) {
-  exit 0
-}
 
 if ($exactGitTag -match $semVerMatch) {
   $version['TAGGED_RELEASE'] = $true
   $version['RESOURCE_BASE_VERSION'] = $Matches[1..3]
   $joinedVersion = $Matches[1..3] -join '.'
-
-  $gitVersionString = $joinedVersion + @("-$($Matches[4])",'')[!$Matches[4]]
   $version['INSTALLER_VERSION'] = $joinedVersion
+  $gitVersionString = $joinedVersion
+  $gitVersionShort = $joinedVersion
 } else {
-  $version['RESOURCE_BASE_VERSION'] = @(0, 0, 0)
-  $version['INSTALLER_VERSION'] = '0.0.0'
-  foreach ($rev in (git -C $repositoryRootPath rev-list --tags 2>$null)) {
-    $tag = git -C $repositoryRootPath describe --exact-match --tags $rev 2>$null
-    if ($tag -match $semVerMatch) {#
-      $version['TAGGED_RELEASE'] = $false
-      $version['RESOURCE_BASE_VERSION'] = $Matches[1..3]
-      $version['INSTALLER_VERSION'] = ($Matches[1..3] -join '.')
-      break;
-    }
+  $version['TAGGED_RELEASE'] = $false
+  if ($latestSemverTag -match $semVerMatch) {
+    $version['RESOURCE_BASE_VERSION'] = $Matches[1..3]
+    $version['INSTALLER_VERSION'] = ($Matches[1..3] -join '.')
+    $baseVersion = ($Matches[1..3] -join '.')
+  } else {
+    # No semver tags yet; fall back to the project version (set in
+    # meson.build) so the installer name is always a real semver triple
+    # instead of the meaningless 0.0.0 placeholder.
+    $version['RESOURCE_BASE_VERSION'] = @(3, 5, 0)
+    $version['INSTALLER_VERSION'] = '3.5.0'
+    $baseVersion = '3.5.0'
   }
+  if ($gitRevision -eq 0) {
+    $gitVersionShort = $baseVersion
+  } else {
+    $gitVersionShort = "$baseVersion-$gitRevision"
+  }
+  $gitVersionString = "$gitVersionShort-$gitBranch-$gitHash"
 }
 
 $version['BUILD_GIT_VERSION_NUMBER'] = $gitRevision
 $version['BUILD_GIT_VERSION_STRING'] = $gitVersionString
+$version['BUILD_GIT_VERSION_SHORT'] = $gitVersionShort
+
+if ($gitVersionString -eq $version['BUILD_GIT_VERSION_STRING'] -and (Test-Path $gitVersionHeaderPath)) {
+  # If nothing about the version changed we still need to check whether
+  # BUILD_GIT_VERSION_SHORT was already written.
+  if ((Select-String -Path $gitVersionHeaderPath -Pattern 'BUILD_GIT_VERSION_SHORT' -Quiet)) {
+    exit 0
+  }
+}
 
 $version.GetEnumerator() | %{
   $type = $_.Value.GetType()

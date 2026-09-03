@@ -11,8 +11,8 @@ AppName=Aegisub
 AppVerName=Aegisub {#BUILD_GIT_VERSION_STRING}
 AppVersion={#INSTALLER_VERSION}
 AppPublisher=Aegisub Team
-AppPublisherURL=http://aegisub.org/
-AppSupportURL=https://github.com/TypesettingTools/Aegisub/issues
+AppPublisherURL=https://github.com/Rin247/Aegisub
+AppSupportURL=https://github.com/Rin247/Aegisub/issues
 AppCopyright=2005-{#CURRENT_YEAR} The Aegisub Team
 VersionInfoVersion={#INSTALLER_VERSION}
 DefaultGroupName=Aegisub
@@ -35,7 +35,11 @@ UninstallDisplayIcon={app}\aegisub.exe
 WizardImageFile={#INSTALLER_DIR}\welcome-large.bmp
 WizardSmallImageFile={#INSTALLER_DIR}\aegisub-large.bmp
 
-OutputBaseFilename=Aegisub-{#INSTALLER_VERSION}-{#BUILD_GIT_VERSION_NUMBER}
+; Filename mirrors the macOS AppImage convention:
+;   tagged release:    Aegisub-v3.5.0-x64.exe
+;   N commits after:   Aegisub-v3.5.0-N-x64.exe
+; BUILD_GIT_VERSION_SHORT is "v3.5.0" or "v3.5.0-1" etc. (no branch/hash).
+OutputBaseFilename=Aegisub-{#BUILD_GIT_VERSION_SHORT}-x64
 VersionInfoDescription=Aegisub {#BUILD_GIT_VERSION_STRING}
 
 [Languages]

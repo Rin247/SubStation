@@ -51,34 +51,27 @@ git() {
 # Semver scheme: Aegisub-vX.Y.Z-N-{x64,arm64}.exe
 #   - v3.5.0: a clean tagged release; counter omitted.
 #   - v3.5.0-1, v3.5.0-2, ...: commits on top of 3.5.0 within the 3.5.x line.
-#   - v3.5.1: minor bump; the counter resets (no v3.5.1-0).
+#   - v3.5.1: minor or patch bump; the counter resets (no v3.5.1-0).
 #   - v3.6.0: next feature release; counter resets.
 #
-# The counter is the number of commits since the most recent vX.Y.* tag
-# whose minor (Y) matches the current development line. If no such tag
-# exists yet (i.e. we haven't released any v3.5.x), fall back to the last
-# semver tag of any minor; if no semver tags exist at all, use the
-# original SVN baseline so 3.5.0-0..N still resolve sensibly.
-get_base_semver_tag() {
-  # Sort tags by version (newest first), pick the first matching vX.Y.*
-  # where Y matches the current branch's intended minor. We approximate
-  # "current minor" by reading it from the project version (set in
-  # meson.build); if that is 0.0.0 or unset, use the most recent vX.Y.*
-  # tag of any minor.
-  local project_minor="$1"
-  if [ -n "$project_minor" ] && [ "$project_minor" != "0" ]; then
-    git tag --list "v*.*.$project_minor" 2>/dev/null | sort -V | tail -1
-    return
-  fi
-  git tag --list 'v*.*.*' 2>/dev/null | sort -V | tail -1
+# The counter is the number of commits since the most recent vX.Y.Z tag.
+# Any new semver tag (whether the same minor line or a fresh one) resets
+# the counter to 0; we then drop the -0 suffix so the very next commit
+# on top of a fresh tag is "v3.5.0" instead of "v3.5.0-0".
+#
+# If no semver tag exists yet at all, fall back to the original SVN
+# baseline so the very first release still has a real-looking number.
+get_latest_semver_tag() {
+  git tag --list 'v[0-9]*.[0-9]*.[0-9]*' 2>/dev/null | sort -V | tail -1
 }
 
 if [ "$(git cat-file -t $last_svn_hash 2> /dev/null)" = "commit" ]; then
-  # Count commits since the most recent semver tag in the same minor line
-  base_tag=$(get_base_semver_tag "")
-  if [ -n "$base_tag" ] && [ "$(git cat-file -t "${base_tag#v}" 2>/dev/null)" = "commit" ]; then
+  base_tag=$(get_latest_semver_tag)
+  if [ -n "$base_tag" ] && [ "$(git cat-file -t "${base_tag#v}" 2> /dev/null)" = "commit" ]; then
+    # Count commits since the most recent semver tag
     git_revision=$(git rev-list --count "${base_tag}"..HEAD)
   else
+    # No semver tags yet; use the original SVN baseline
     git_revision=$(expr $last_svn_revision + $(git rev-list --count $last_svn_hash..HEAD))
   fi
 else
@@ -87,23 +80,25 @@ fi
 git_version_str=$(git describe --tags --exact-match 2> /dev/null)
 installer_version='0.0.0'
 resource_version='0, 0, 0'
+git_version_short='0.0.0'
 if test x$git_version_str != x; then
   git_version_str="${git_version_str##v}"
   tagged_release=1
   if [ $(echo $git_version_str | grep '^[0-9]\.[0-9]\.[0-9]$') ]; then
     installer_version=$git_version_str
     resource_version=$(echo $git_version_str | sed 's/\./, /g')
+    git_version_short=$git_version_str
   fi
 else
   git_branch="$(git symbolic-ref HEAD 2> /dev/null)" || git_branch="(unnamed branch)"
   git_branch="${git_branch##refs/heads/}"
   git_hash=$(git rev-parse --short HEAD)
 
-  # Pick the most recent semver tag in the current minor line to use as
-  # the base version. If none exists yet, fall back to the project version
-  # so the user always sees a real semver triple (e.g. 3.5.0) in the
-  # installer name even on the very first commit of a new line.
-  base_tag=$(get_base_semver_tag "")
+  # Pick the most recent semver tag to use as the base version. If no
+  # semver tag exists yet, fall back to the project version so the
+  # installer name is always a real semver triple (e.g. 3.5.0) instead
+  # of the meaningless 0.0.0 placeholder.
+  base_tag=$(get_latest_semver_tag)
   if [ -n "$base_tag" ]; then
     installer_version="${base_tag#v}"
   else
@@ -116,8 +111,10 @@ else
   # fresh minor line.
   if [ "$git_revision" = "0" ]; then
     git_version_str="${installer_version}"
+    git_version_short="${installer_version}"
   else
     git_version_str="${installer_version}-${git_revision}"
+    git_version_short="${installer_version}-${git_revision}"
   fi
   git_version_str="${git_version_str}-${git_branch}-${git_hash}"
   tagged_release=0
@@ -128,6 +125,7 @@ build_date="$(date "+%Y-%m-%d %H:%M %Z")"
 new_version_h="\
 #define BUILD_GIT_VERSION_NUMBER ${git_revision}
 #define BUILD_GIT_VERSION_STRING \"${git_version_str}\"
+#define BUILD_GIT_VERSION_SHORT \"${git_version_short}\"
 #define TAGGED_RELEASE ${tagged_release}
 #define INSTALLER_VERSION \"${installer_version}\"
 #define RESOURCE_BASE_VERSION ${resource_version}"
