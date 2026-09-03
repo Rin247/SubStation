@@ -35,7 +35,7 @@ $script:stepTotal = if ($Architecture -eq 'x64') { 11 } else { 10 }
 function Write-Step {
     param([Parameter(Mandatory)][string]$Status)
     $script:stepNum++
-    Write-Progress -Activity 'Creating portable Aegisub' -Status $Status -PercentComplete (100 * $script:stepNum / $script:stepTotal)
+    Write-Progress -Activity 'Creating portable SubStation' -Status $Status -PercentComplete (100 * $script:stepNum / $script:stepTotal)
     Write-Host "[$script:stepNum/$script:stepTotal] $Status"
 }
 
@@ -43,7 +43,7 @@ Write-Host "BUILD_ROOT=$BuildRoot"
 Write-Host "SOURCE_ROOT=$SourceRoot"
 $InstallerDir = Join-Path $BuildRoot "install"
 $InstallerDepsDir = Join-Path $BuildRoot "installer-deps"
-$PortableBaseName = "aegisub-v$Version-portable-$($Architecture.ToLowerInvariant())"
+$PortableBaseName = "substation-v$Version-portable-$($Architecture.ToLowerInvariant())"
 $PortableOutputDir = Join-Path $BuildRoot $PortableBaseName
 $PortableZipPath = Join-Path $BuildRoot "$PortableBaseName.zip"
 
@@ -56,7 +56,7 @@ meson install -C $BuildRoot --no-rebuild --destdir $InstallerDir
 if ($LASTEXITCODE -ne 0) { throw "meson install failed (exit $LASTEXITCODE)" }
 
 Write-Step 'Copying executable'
-Copy-ToDirectory $InstallerDir\bin\aegisub.exe  $PortableOutputDir
+Copy-ToDirectory $InstallerDir\bin\substation.exe  $PortableOutputDir
 
 Write-Step 'Copying translations'
 $localeSource = Join-Path $InstallerDir 'share\locale'
@@ -110,7 +110,7 @@ foreach ($file in $crtFiles) {
 }
 
 Write-Step 'Copying automation'
-Copy-ToDirectory "$InstallerDir\share\aegisub\automation\*"  "$PortableOutputDir\automation\"  -Recurse
+Copy-ToDirectory "$InstallerDir\share\substation\automation\*"  "$PortableOutputDir\automation\"  -Recurse
 
 Write-Step 'Copying DependencyControl'
 Copy-ToDirectory "$InstallerDepsDir\DependencyControl\automation\*"  "$PortableOutputDir\automation\"  -Recurse
@@ -138,5 +138,5 @@ finally {
     $zip.Dispose()
 }
 
-Write-Progress -Activity 'Creating portable Aegisub' -Completed
+Write-Progress -Activity 'Creating portable SubStation' -Completed
 Write-Host "Done: $PortableZipPath"

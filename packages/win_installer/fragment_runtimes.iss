@@ -1,4 +1,4 @@
-; This file implements checking for and installing runtime libraries for Aegisub
+; This file implements checking for and installing runtime libraries for SubStation
 
 [Files]
 DestDir: {tmp}; Source: "{#DEPS_DIR}\VC_redist\VC_redist.x{#ARCH}.exe"; Flags: nocompression deleteafterinstall

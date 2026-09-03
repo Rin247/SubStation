@@ -7,8 +7,6 @@ param (
   [string]$SourceRoot = $null
 )
 
-$lastSvnRevision = 6962
-$lastSvnHash = '16cd907fe7482cb54a7374cd28b8501f138116be'
 $defineNumberMatch = [regex] '^#define\s+(\w+)\s+(\d+)$'
 $defineStringMatch = [regex] "^#define\s+(\w+)\s+[`"']?(.+?)[`"']?$"
 $semVerMatch = [regex] 'v?(\d+)\.(\d+).(\d+)(?:-(\w+))?'
@@ -43,14 +41,14 @@ if (Test-Path $gitVersionHeaderPath) {
   }
 }
 
-# Semver scheme (mirrors tools/version.sh):
-#   tagged release:    v3.5.0
-#   N commits after:   v3.5.0-N
-# The counter is the number of commits since the most recent vX.Y.Z tag;
-# any new semver tag resets the counter to 0 and the -0 suffix is dropped
-# so the very next commit on top of a fresh tag is "v3.5.0" instead of
-# "v3.5.0-0". If no semver tag exists yet, fall back to the original
-# SVN baseline so the very first release still has a real-looking number.
+# SubStation version scheme (fresh start, no carryover from the old SVN
+# revision count):
+#   tagged release:    v1.0.0, v1.0.1, v1.1.0, ...
+#   N commits after:   v1.0.0-1, v1.0.0-2, ...
+#
+# The counter is the number of commits since the most recent vX.Y.Z tag.
+# The very first tagged release of SubStation (e.g. v1.0.0) is the only one
+# without a counter; subsequent commits become v1.0.0-1, v1.0.0-2, etc.
 $latestSemverTag = $null
 foreach ($rev in (git -C $repositoryRootPath rev-list --tags 2>$null)) {
   $tag = git -C $repositoryRootPath describe --exact-match --tags $rev 2>$null
@@ -62,9 +60,13 @@ foreach ($rev in (git -C $repositoryRootPath rev-list --tags 2>$null)) {
 
 if ($latestSemverTag -and (git -C $repositoryRootPath cat-file -t $latestSemverTag 2>$null) -eq 'commit') {
   $gitRevision = (git -C $repositoryRootPath rev-list --count "$($latestSemverTag)..HEAD" 2>$null)
-} elseif ((git -C $repositoryRootPath cat-file -t $lastSvnHash 2>$null) -eq 'commit') {
-  $gitRevision = $lastSvnRevision + ((git -C $repositoryRootPath log --pretty=oneline "$($lastSvnHash)..HEAD" 2>$null | Measure-Object).Count)
+  $baseVersion = $latestSemverTag.Substring(1)  # strip the 'v'
 } else {
+  # No semver tags yet. SubStation is a fresh product; the first tagged
+  # release will be v1.0.0. Until then, brand untagged builds as 1.0.0 too,
+  # and use 0 as the commit counter so the very first release doesn't get
+  # a -0 suffix.
+  $baseVersion = '1.0.0'
   $gitRevision = 0
 }
 
@@ -81,24 +83,21 @@ if ($exactGitTag -match $semVerMatch) {
   $gitVersionShort = $joinedVersion
 } else {
   $version['TAGGED_RELEASE'] = $false
-  if ($latestSemverTag -match $semVerMatch) {
-    $version['RESOURCE_BASE_VERSION'] = $Matches[1..3]
-    $version['INSTALLER_VERSION'] = ($Matches[1..3] -join '.')
-    $baseVersion = ($Matches[1..3] -join '.')
-  } else {
-    # No semver tags yet; fall back to the project version (set in
-    # meson.build) so the installer name is always a real semver triple
-    # instead of the meaningless 0.0.0 placeholder.
-    $version['RESOURCE_BASE_VERSION'] = @(3, 5, 0)
-    $version['INSTALLER_VERSION'] = '3.5.0'
-    $baseVersion = '3.5.0'
-  }
+  $version['RESOURCE_BASE_VERSION'] = $baseVersion.Split('.')
+  $version['INSTALLER_VERSION'] = $baseVersion
   if ($gitRevision -eq 0) {
     $gitVersionShort = $baseVersion
   } else {
     $gitVersionShort = "$baseVersion-$gitRevision"
   }
-  $gitVersionString = "$gitVersionShort-$gitBranch-$gitHash"
+  if ($gitRevision -eq 0) {
+    $gitVersionString = $baseVersion
+  } else {
+    $gitVersionString = $gitVersionShort
+    if ($gitBranch -and $gitHash) {
+      $gitVersionString = "$gitVersionString-$gitBranch-$gitHash"
+    }
+  }
 }
 
 $version['BUILD_GIT_VERSION_NUMBER'] = $gitRevision

@@ -1,44 +1,44 @@
-﻿; This file declares everything related to installable translations of Aegisub
+﻿; This file declares everything related to installable translations of SubStation
 
 [Files]
-; Aegisub localization
+; SubStation localization
 #ifdef ENABLE_AEG_TRANSLATIONS
-Source: {#BUILD_ROOT}\po\ar\LC_MESSAGES\aegisub.mo;          DestDir: {app}\locale\ar;    DestName: aegisub.mo; Flags: ignoreversion; Components: translations
-Source: {#BUILD_ROOT}\po\be\LC_MESSAGES\aegisub.mo;          DestDir: {app}\locale\be;    DestName: aegisub.mo; Flags: ignoreversion; Components: translations
-Source: {#BUILD_ROOT}\po\bg\LC_MESSAGES\aegisub.mo;          DestDir: {app}\locale\bg;    DestName: aegisub.mo; Flags: ignoreversion; Components: translations
-Source: {#BUILD_ROOT}\po\ca\LC_MESSAGES\aegisub.mo;          DestDir: {app}\locale\ca;    DestName: aegisub.mo; Flags: ignoreversion; Components: translations
-Source: {#BUILD_ROOT}\po\cs\LC_MESSAGES\aegisub.mo;          DestDir: {app}\locale\cs;    DestName: aegisub.mo; Flags: ignoreversion; Components: translations
-Source: {#BUILD_ROOT}\po\da\LC_MESSAGES\aegisub.mo;          DestDir: {app}\locale\da;    DestName: aegisub.mo; Flags: ignoreversion; Components: translations
-Source: {#BUILD_ROOT}\po\de\LC_MESSAGES\aegisub.mo;          DestDir: {app}\locale\de;    DestName: aegisub.mo; Flags: ignoreversion; Components: translations
-Source: {#BUILD_ROOT}\po\el\LC_MESSAGES\aegisub.mo;          DestDir: {app}\locale\el;    DestName: aegisub.mo; Flags: ignoreversion; Components: translations
-Source: {#BUILD_ROOT}\po\es\LC_MESSAGES\aegisub.mo;          DestDir: {app}\locale\es;    DestName: aegisub.mo; Flags: ignoreversion; Components: translations
-Source: {#BUILD_ROOT}\po\eu\LC_MESSAGES\aegisub.mo;          DestDir: {app}\locale\eu;    DestName: aegisub.mo; Flags: ignoreversion; Components: translations
-Source: {#BUILD_ROOT}\po\fa\LC_MESSAGES\aegisub.mo;          DestDir: {app}\locale\fa;    DestName: aegisub.mo; Flags: ignoreversion; Components: translations
-Source: {#BUILD_ROOT}\po\fr_FR\LC_MESSAGES\aegisub.mo;       DestDir: {app}\locale\fr_FR; DestName: aegisub.mo; Flags: ignoreversion; Components: translations
-Source: {#BUILD_ROOT}\po\gl\LC_MESSAGES\aegisub.mo;          DestDir: {app}\locale\gl;    DestName: aegisub.mo; Flags: ignoreversion; Components: translations
-Source: {#BUILD_ROOT}\po\hu\LC_MESSAGES\aegisub.mo;          DestDir: {app}\locale\hu;    DestName: aegisub.mo; Flags: ignoreversion; Components: translations
-Source: {#BUILD_ROOT}\po\id\LC_MESSAGES\aegisub.mo;          DestDir: {app}\locale\id;    DestName: aegisub.mo; Flags: ignoreversion; Components: translations
-Source: {#BUILD_ROOT}\po\it\LC_MESSAGES\aegisub.mo;          DestDir: {app}\locale\it;    DestName: aegisub.mo; Flags: ignoreversion; Components: translations
-Source: {#BUILD_ROOT}\po\ja\LC_MESSAGES\aegisub.mo;          DestDir: {app}\locale\ja;    DestName: aegisub.mo; Flags: ignoreversion; Components: translations
-Source: {#BUILD_ROOT}\po\ko\LC_MESSAGES\aegisub.mo;          DestDir: {app}\locale\ko;    DestName: aegisub.mo; Flags: ignoreversion; Components: translations
-Source: {#BUILD_ROOT}\po\lt\LC_MESSAGES\aegisub.mo;          DestDir: {app}\locale\lt;    DestName: aegisub.mo; Flags: ignoreversion; Components: translations
-Source: {#BUILD_ROOT}\po\nl\LC_MESSAGES\aegisub.mo;          DestDir: {app}\locale\nl;    DestName: aegisub.mo; Flags: ignoreversion; Components: translations
-Source: {#BUILD_ROOT}\po\pl\LC_MESSAGES\aegisub.mo;          DestDir: {app}\locale\pl;    DestName: aegisub.mo; Flags: ignoreversion; Components: translations
-Source: {#BUILD_ROOT}\po\pt_BR\LC_MESSAGES\aegisub.mo;       DestDir: {app}\locale\pt_BR; DestName: aegisub.mo; Flags: ignoreversion; Components: translations
-Source: {#BUILD_ROOT}\po\pt_PT\LC_MESSAGES\aegisub.mo;       DestDir: {app}\locale\pt_PT; DestName: aegisub.mo; Flags: ignoreversion; Components: translations
-Source: {#BUILD_ROOT}\po\ru\LC_MESSAGES\aegisub.mo;          DestDir: {app}\locale\ru;    DestName: aegisub.mo; Flags: ignoreversion; Components: translations
-Source: {#BUILD_ROOT}\po\sr_RS\LC_MESSAGES\aegisub.mo;       DestDir: {app}\locale\sr_RS; DestName: aegisub.mo; Flags: ignoreversion; Components: translations
-Source: {#BUILD_ROOT}\po\sr_RS@latin\LC_MESSAGES\aegisub.mo; DestDir: {app}\locale\sr_RS@latin; DestName: aegisub.mo; Flags: ignoreversion; Components: translations
-Source: {#BUILD_ROOT}\po\tr\LC_MESSAGES\aegisub.mo;          DestDir: {app}\locale\tr;    DestName: aegisub.mo; Flags: ignoreversion; Components: translations
-Source: {#BUILD_ROOT}\po\uk_UA\LC_MESSAGES\aegisub.mo;       DestDir: {app}\locale\uk_UA; DestName: aegisub.mo; Flags: ignoreversion; Components: translations
-Source: {#BUILD_ROOT}\po\vi\LC_MESSAGES\aegisub.mo;          DestDir: {app}\locale\vi;    DestName: aegisub.mo; Flags: ignoreversion; Components: translations
-Source: {#BUILD_ROOT}\po\zh_CN\LC_MESSAGES\aegisub.mo;       DestDir: {app}\locale\zh_CN; DestName: aegisub.mo; Flags: ignoreversion; Components: translations
-Source: {#BUILD_ROOT}\po\zh_TW\LC_MESSAGES\aegisub.mo;       DestDir: {app}\locale\zh_TW; DestName: aegisub.mo; Flags: ignoreversion; Components: translations
+Source: {#BUILD_ROOT}\po\ar\LC_MESSAGES\substation.mo;          DestDir: {app}\locale\ar;    DestName: substation.mo; Flags: ignoreversion; Components: translations
+Source: {#BUILD_ROOT}\po\be\LC_MESSAGES\substation.mo;          DestDir: {app}\locale\be;    DestName: substation.mo; Flags: ignoreversion; Components: translations
+Source: {#BUILD_ROOT}\po\bg\LC_MESSAGES\substation.mo;          DestDir: {app}\locale\bg;    DestName: substation.mo; Flags: ignoreversion; Components: translations
+Source: {#BUILD_ROOT}\po\ca\LC_MESSAGES\substation.mo;          DestDir: {app}\locale\ca;    DestName: substation.mo; Flags: ignoreversion; Components: translations
+Source: {#BUILD_ROOT}\po\cs\LC_MESSAGES\substation.mo;          DestDir: {app}\locale\cs;    DestName: substation.mo; Flags: ignoreversion; Components: translations
+Source: {#BUILD_ROOT}\po\da\LC_MESSAGES\substation.mo;          DestDir: {app}\locale\da;    DestName: substation.mo; Flags: ignoreversion; Components: translations
+Source: {#BUILD_ROOT}\po\de\LC_MESSAGES\substation.mo;          DestDir: {app}\locale\de;    DestName: substation.mo; Flags: ignoreversion; Components: translations
+Source: {#BUILD_ROOT}\po\el\LC_MESSAGES\substation.mo;          DestDir: {app}\locale\el;    DestName: substation.mo; Flags: ignoreversion; Components: translations
+Source: {#BUILD_ROOT}\po\es\LC_MESSAGES\substation.mo;          DestDir: {app}\locale\es;    DestName: substation.mo; Flags: ignoreversion; Components: translations
+Source: {#BUILD_ROOT}\po\eu\LC_MESSAGES\substation.mo;          DestDir: {app}\locale\eu;    DestName: substation.mo; Flags: ignoreversion; Components: translations
+Source: {#BUILD_ROOT}\po\fa\LC_MESSAGES\substation.mo;          DestDir: {app}\locale\fa;    DestName: substation.mo; Flags: ignoreversion; Components: translations
+Source: {#BUILD_ROOT}\po\fr_FR\LC_MESSAGES\substation.mo;       DestDir: {app}\locale\fr_FR; DestName: substation.mo; Flags: ignoreversion; Components: translations
+Source: {#BUILD_ROOT}\po\gl\LC_MESSAGES\substation.mo;          DestDir: {app}\locale\gl;    DestName: substation.mo; Flags: ignoreversion; Components: translations
+Source: {#BUILD_ROOT}\po\hu\LC_MESSAGES\substation.mo;          DestDir: {app}\locale\hu;    DestName: substation.mo; Flags: ignoreversion; Components: translations
+Source: {#BUILD_ROOT}\po\id\LC_MESSAGES\substation.mo;          DestDir: {app}\locale\id;    DestName: substation.mo; Flags: ignoreversion; Components: translations
+Source: {#BUILD_ROOT}\po\it\LC_MESSAGES\substation.mo;          DestDir: {app}\locale\it;    DestName: substation.mo; Flags: ignoreversion; Components: translations
+Source: {#BUILD_ROOT}\po\ja\LC_MESSAGES\substation.mo;          DestDir: {app}\locale\ja;    DestName: substation.mo; Flags: ignoreversion; Components: translations
+Source: {#BUILD_ROOT}\po\ko\LC_MESSAGES\substation.mo;          DestDir: {app}\locale\ko;    DestName: substation.mo; Flags: ignoreversion; Components: translations
+Source: {#BUILD_ROOT}\po\lt\LC_MESSAGES\substation.mo;          DestDir: {app}\locale\lt;    DestName: substation.mo; Flags: ignoreversion; Components: translations
+Source: {#BUILD_ROOT}\po\nl\LC_MESSAGES\substation.mo;          DestDir: {app}\locale\nl;    DestName: substation.mo; Flags: ignoreversion; Components: translations
+Source: {#BUILD_ROOT}\po\pl\LC_MESSAGES\substation.mo;          DestDir: {app}\locale\pl;    DestName: substation.mo; Flags: ignoreversion; Components: translations
+Source: {#BUILD_ROOT}\po\pt_BR\LC_MESSAGES\substation.mo;       DestDir: {app}\locale\pt_BR; DestName: substation.mo; Flags: ignoreversion; Components: translations
+Source: {#BUILD_ROOT}\po\pt_PT\LC_MESSAGES\substation.mo;       DestDir: {app}\locale\pt_PT; DestName: substation.mo; Flags: ignoreversion; Components: translations
+Source: {#BUILD_ROOT}\po\ru\LC_MESSAGES\substation.mo;          DestDir: {app}\locale\ru;    DestName: substation.mo; Flags: ignoreversion; Components: translations
+Source: {#BUILD_ROOT}\po\sr_RS\LC_MESSAGES\substation.mo;       DestDir: {app}\locale\sr_RS; DestName: substation.mo; Flags: ignoreversion; Components: translations
+Source: {#BUILD_ROOT}\po\sr_RS@latin\LC_MESSAGES\substation.mo; DestDir: {app}\locale\sr_RS@latin; DestName: substation.mo; Flags: ignoreversion; Components: translations
+Source: {#BUILD_ROOT}\po\tr\LC_MESSAGES\substation.mo;          DestDir: {app}\locale\tr;    DestName: substation.mo; Flags: ignoreversion; Components: translations
+Source: {#BUILD_ROOT}\po\uk_UA\LC_MESSAGES\substation.mo;       DestDir: {app}\locale\uk_UA; DestName: substation.mo; Flags: ignoreversion; Components: translations
+Source: {#BUILD_ROOT}\po\vi\LC_MESSAGES\substation.mo;          DestDir: {app}\locale\vi;    DestName: substation.mo; Flags: ignoreversion; Components: translations
+Source: {#BUILD_ROOT}\po\zh_CN\LC_MESSAGES\substation.mo;       DestDir: {app}\locale\zh_CN; DestName: substation.mo; Flags: ignoreversion; Components: translations
+Source: {#BUILD_ROOT}\po\zh_TW\LC_MESSAGES\substation.mo;       DestDir: {app}\locale\zh_TW; DestName: substation.mo; Flags: ignoreversion; Components: translations
 #endif
 ; END ENABLE_TRANSLATIONS
 
 ;; TODO: rm those lines
-;;  xref: [Update and review translations · Issue #132 · TypesettingTools/Aegisub](https://github.com/TypesettingTools/Aegisub/issues/132)
+;;  xref: [Update and review translations · Issue #132 · TypesettingTools/SubStation](https://github.com/TypesettingTools/SubStation/issues/132)
 #ifdef ENABLE_WX_TRANSLATIONS
 ; wxWidgets localization (commented out ones are out of date; some don't have wxstd.mo)
 Source: src\mo\wxstd-ar.mo;      DestDir: {app}\locale\ar;    DestName: wxstd.mo;   Flags: ignoreversion; Components: translations

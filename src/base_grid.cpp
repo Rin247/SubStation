@@ -9,7 +9,7 @@
 //   * Redistributions in binary form must reproduce the above copyright notice,
 //     this list of conditions and the following disclaimer in the documentation
 //     and/or other materials provided with the distribution.
-//   * Neither the name of the Aegisub Group nor the names of its contributors
+//   * Neither the name of the SubStation Group nor the names of its contributors
 //     may be used to endorse or promote products derived from this software
 //     without specific prior written permission.
 //
@@ -25,13 +25,13 @@
 // ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
-// Aegisub Project http://www.aegisub.org/
+// SubStation Project http://www.substation.org/
 
 #include "base_grid.h"
 
-#include "include/aegisub/context.h"
-#include "include/aegisub/hotkey.h"
-#include "include/aegisub/menu.h"
+#include "include/substation/context.h"
+#include "include/substation/hotkey.h"
+#include "include/substation/menu.h"
 
 #include "ass_dialogue.h"
 #include "ass_file.h"
@@ -46,7 +46,7 @@
 #include "video_controller.h"
 #include "theme.h"
 
-#include <libaegisub/util.h>
+#include <libsubstation/util.h>
 
 #include <algorithm>
 

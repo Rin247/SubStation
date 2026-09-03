@@ -1,4 +1,4 @@
-// Copyright (c) 2013, Thomas Goyne <plorkyeran@aegisub.org>
+// Copyright (c) 2013, Thomas Goyne <plorkyeran@substation.org>
 //
 // Permission to use, copy, modify, and distribute this software for any
 // purpose with or without fee is hereby granted, provided that the above
@@ -12,7 +12,7 @@
 // ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 // OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 //
-// Aegisub Project http://www.aegisub.org/
+// SubStation Project http://www.substation.org/
 
 #include "subs_controller.h"
 
@@ -25,18 +25,18 @@
 #include "command/command.h"
 #include "format.h"
 #include "frame_main.h"
-#include "include/aegisub/context.h"
+#include "include/substation/context.h"
 #include "options.h"
 #include "project.h"
 #include "selection_controller.h"
 #include "subtitle_format.h"
 #include "text_selection_controller.h"
 
-#include <libaegisub/dispatch.h>
-#include <libaegisub/format_path.h>
-#include <libaegisub/fs.h>
-#include <libaegisub/path.h>
-#include <libaegisub/util.h>
+#include <libsubstation/dispatch.h>
+#include <libsubstation/format_path.h>
+#include <libsubstation/fs.h>
+#include <libsubstation/path.h>
+#include <libsubstation/util.h>
 
 #include <wx/msgdlg.h>
 

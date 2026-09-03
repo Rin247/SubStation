@@ -1,4 +1,4 @@
-// Copyright (c) 2013, Thomas Goyne <plorkyeran@aegisub.org>
+// Copyright (c) 2013, Thomas Goyne <plorkyeran@substation.org>
 //
 // Permission to use, copy, modify, and distribute this software for any
 // purpose with or without fee is hereby granted, provided that the above
@@ -23,9 +23,9 @@
 #include "utils.h"
 #include "theme.h"
 
-#include <libaegisub/dispatch.h>
-#include <libaegisub/exception.h>
-#include <libaegisub/util_osx.h>
+#include <libsubstation/dispatch.h>
+#include <libsubstation/exception.h>
+#include <libsubstation/util_osx.h>
 
 #include <atomic>
 #include <wx/button.h>

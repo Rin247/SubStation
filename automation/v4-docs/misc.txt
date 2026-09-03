@@ -15,7 +15,7 @@ formatting override tags, vector drawings or anything else to that effect.
 If you need such functionality, you need to implement it yourself. (For now,
 at least.)
 
-function aegisub.text_extents(style, text)
+function substation.text_extents(style, text)
 
 @style (table)
   A "style" class Subtitle Line table.
@@ -33,7 +33,7 @@ Returns: 4 values, all numbers.
 
 Getting the audio waveform selection position and duration
 
-function aegisub.get_audio_selection()
+function substation.get_audio_selection()
 
 Returns: 2 values, all numbers.
   1. Position of the selection, in milliseconds.
@@ -43,7 +43,7 @@ Returns: 2 values, all numbers.
 
 Setting the main frame's status bar text
 
-function aegisub.set_status_bar_text(text)
+function substation.set_status_bar_text(text)
 
 Returns: 0 values
 

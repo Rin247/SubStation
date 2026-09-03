@@ -9,7 +9,7 @@
 //   * Redistributions in binary form must reproduce the above copyright notice,
 //     this list of conditions and the following disclaimer in the documentation
 //     and/or other materials provided with the distribution.
-//   * Neither the name of the Aegisub Group nor the names of its contributors
+//   * Neither the name of the SubStation Group nor the names of its contributors
 //     may be used to endorse or promote products derived from this software
 //     without specific prior written permission.
 //
@@ -25,7 +25,7 @@
 // ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
-// Aegisub Project http://www.aegisub.org/
+// SubStation Project http://www.substation.org/
 
 /// @file subtitles_provider_csri.cpp
 /// @brief Wrapper for CSRI-based subtitle renderers
@@ -35,7 +35,7 @@
 #ifdef WITH_CSRI
 #include "subtitles_provider_csri.h"
 
-#include "include/aegisub/subtitles_provider.h"
+#include "include/substation/subtitles_provider.h"
 #include "subtitle_format_ass.h"
 #include "video_frame.h"
 
@@ -112,7 +112,7 @@ std::vector<std::string> List() {
 	std::vector<std::string> final;
 	for (csri_rend *cur = csri_renderer_default(); cur; cur = csri_renderer_next(cur)) {
 		std::string name(csri_renderer_info(cur)->name);
-		if (name.find("aegisub") != name.npos)
+		if (name.find("substation") != name.npos)
 			final.insert(final.begin(), name);
 		else
 			final.push_back(name);

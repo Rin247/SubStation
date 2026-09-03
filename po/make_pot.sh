@@ -10,10 +10,10 @@ append_str() {
 
     if [ -z "$msgctxt" ]; then
         printf "\n#: %s:%s\nmsgid %s\nmsgstr \"\"\n\n" \
-          "$msgfile" "$msgline" "$msgid" >> aegisub.pot
+          "$msgfile" "$msgline" "$msgid" >> substation.pot
     else
         printf "\n#: %s:%s\nmsgctxt %s\nmsgid %s\nmsgstr \"\"\n\n" \
-          "$msgfile" "$msgline" "$msgctxt" "$msgid" >> aegisub.pot
+          "$msgfile" "$msgline" "$msgctxt" "$msgid" >> substation.pot
     fi
   done
 }
@@ -22,14 +22,14 @@ find ../src ../src/command -name '*.cpp' -o -name '*.h' \
   | xgettext --files-from=- -o - --c++ --sort-by-file \
              -k_ -kwxTRANSLATE -kwxGETTEXT_IN_CONTEXT:1c,2 -kSTR_MENU -kSTR_DISP -kSTR_HELP -kCOMMAND_GROUP:5 \
              -kfmt_tl -kfmt_plural:2,3 \
-  | sed 's/SOME DESCRIPTIVE TITLE./Aegisub 3.5/' \
+  | sed 's/SOME DESCRIPTIVE TITLE./SubStation 3.5/' \
   | sed 's/YEAR/2005-2014/' \
   | sed "s/THE PACKAGE'S COPYRIGHT HOLDER/Rodrigo Braz Monteiro, Niels Martin Hansen, Thomas Goyne et. al./" \
-  | sed 's/PACKAGE/Aegisub/' \
+  | sed 's/PACKAGE/SubStation/' \
   | sed 's/VERSION/3.5.0/' \
-  | sed 's/FIRST AUTHOR <EMAIL@ADDRESS>/Niels Martin Hansen <nielsm@aegisub.org>/' \
+  | sed 's/FIRST AUTHOR <EMAIL@ADDRESS>/Niels Martin Hansen <nielsm@substation.org>/' \
   | sed 's/CHARSET/UTF-8/' \
-  > aegisub.pot
+  > substation.pot
 
 for f in default_menu.json default_menu_platform.json osx/default_menu.json; do
     sed '/"text"/!d;s/^.*"tlcontext" : \("[^"]*"\).*"text" : \("[^"]*"\).*$/default_menu.json|0|\1|\2/;s/^.*"text" : \("[^"]*"\).*$/default_menu.json|0||\1/' ../src/libresrc/"$f" \
@@ -55,8 +55,8 @@ done
 
 # Keep the xgettext calls last so that they normalize the format after our manual patching
 
-xgettext ../packages/desktop/aegisub.desktop.in.in \
-  --language=Desktop --join-existing --omit-header -o aegisub.pot
+xgettext ../packages/desktop/substation.desktop.in.in \
+  --language=Desktop --join-existing --omit-header -o substation.pot
 
-xgettext ../packages/desktop/aegisub.metainfo.xml.in.in \
-  --language=AppData --join-existing --omit-header -o aegisub.pot
+xgettext ../packages/desktop/substation.metainfo.xml.in.in \
+  --language=AppData --join-existing --omit-header -o substation.pot

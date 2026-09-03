@@ -1,4 +1,4 @@
-// Copyright (c) 2026, Aegisub contributors
+// Copyright (c) 2026, SubStation contributors
 //
 // Permission to use, copy, modify, and distribute this software for any
 // purpose with or without fee is hereby granted, provided that the above
@@ -12,9 +12,9 @@
 // ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 // OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 //
-// Aegisub Project https://aegisub.org/
+// SubStation Project https://substation.org/
 
-#include <libaegisub/ass/string_codec.h>
+#include <libsubstation/ass/string_codec.h>
 
 #include <main.h>
 

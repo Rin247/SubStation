@@ -233,7 +233,7 @@ subs.insert(i, line[, line2, ...])
 
 Efficiency concerns
 
-Internally in Aegisub the subtitles are stored in a linked list, meaning
+Internally in SubStation the subtitles are stored in a linked list, meaning
 random access runs in O(n) time rather than O(1), as the interface presented
 here could make it seem like.
 
@@ -254,10 +254,10 @@ An append operation does not move the cursor.
 
 Parsing karaoke data
 
-This function uses the Aegisub SSA parser to split a string into karaoke
+This function uses the SubStation SSA parser to split a string into karaoke
 syllables with additional calculated information added.
 
-function aegisub.parse_karaoke_data(text)
+function substation.parse_karaoke_data(text)
 
 @text (string)
   The SSA-format string to parse.
@@ -319,7 +319,7 @@ deleting and replacing subtitle file lines.)
 Furthermore, this function also marks the subtitles as "modified". No other
 function does this.
 
-function aegisub.set_undo_point(description)
+function substation.set_undo_point(description)
 
 @description (string)
   A short description of the operation that will be undone, if this undo-point

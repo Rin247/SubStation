@@ -8,8 +8,8 @@ script_version = "1"
 
 
 function macro_test1(subtitles, selected_lines, active_line)
-	--aegisub.debug.out(3, "Hello World from %s", "Automation 4/Lua")
-	aegisub.debug.out("Hello Automation 4 World!")
+	--substation.debug.out(3, "Hello World from %s", "Automation 4/Lua")
+	substation.debug.out("Hello Automation 4 World!")
 end
 
-aegisub.register_macro("Hello", "Shows a message", macro_test1)
+substation.register_macro("Hello", "Shows a message", macro_test1)

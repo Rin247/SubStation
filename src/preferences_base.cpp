@@ -1,4 +1,4 @@
-// Copyright (c) 2010, Amar Takhar <verm@aegisub.org>
+// Copyright (c) 2010, Amar Takhar <verm@substation.org>
 //
 // Permission to use, copy, modify, and distribute this software for any
 // purpose with or without fee is hereby granted, provided that the above
@@ -23,8 +23,8 @@
 #include "options.h"
 #include "preferences.h"
 
-#include <libaegisub/exception.h>
-#include <libaegisub/path.h>
+#include <libsubstation/exception.h>
+#include <libsubstation/path.h>
 
 #include <algorithm>
 

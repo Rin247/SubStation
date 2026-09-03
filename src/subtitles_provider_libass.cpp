@@ -9,7 +9,7 @@
 //   * Redistributions in binary form must reproduce the above copyright notice,
 //     this list of conditions and the following disclaimer in the documentation
 //     and/or other materials provided with the distribution.
-//   * Neither the name of the Aegisub Group nor the names of its contributors
+//   * Neither the name of the SubStation Group nor the names of its contributors
 //     may be used to endorse or promote products derived from this software
 //     without specific prior written permission.
 //
@@ -25,7 +25,7 @@
 // ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
-// Aegisub Project http://www.aegisub.org/
+// SubStation Project http://www.substation.org/
 
 /// @file subtitles_provider_libass.cpp
 /// @brief libass-based subtitle renderer
@@ -35,14 +35,14 @@
 #include "subtitles_provider_libass.h"
 
 #include "compat.h"
-#include "include/aegisub/subtitles_provider.h"
+#include "include/substation/subtitles_provider.h"
 #include "video_frame.h"
 
-#include <libaegisub/background_runner.h>
-#include <libaegisub/dispatch.h>
-#include <libaegisub/exception.h>
-#include <libaegisub/log.h>
-#include <libaegisub/util.h>
+#include <libsubstation/background_runner.h>
+#include <libsubstation/dispatch.h>
+#include <libsubstation/exception.h>
+#include <libsubstation/log.h>
+#include <libsubstation/util.h>
 
 #include <atomic>
 #include <boost/gil.hpp>
@@ -165,7 +165,7 @@ LibassSubtitlesProvider::~LibassSubtitlesProvider() {
 
 void LibassSubtitlesProvider::DrawSubtitles(VideoFrame &frame,double time) {
 	ass_set_frame_size(renderer(), frame.width, frame.height);
-	// Note: this relies on Aegisub always rendering at video storage res
+	// Note: this relies on SubStation always rendering at video storage res
 	ass_set_storage_size(renderer(), frame.width, frame.height);
 
 	// Add 1e-6 to guard against floating point imprecision errors on int -> float -> *1000 -> int round trips

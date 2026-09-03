@@ -9,7 +9,7 @@
 //   * Redistributions in binary form must reproduce the above copyright notice,
 //     this list of conditions and the following disclaimer in the documentation
 //     and/or other materials provided with the distribution.
-//   * Neither the name of the Aegisub Group nor the names of its contributors
+//   * Neither the name of the SubStation Group nor the names of its contributors
 //     may be used to endorse or promote products derived from this software
 //     without specific prior written permission.
 //
@@ -25,7 +25,7 @@
 // ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
-// Aegisub Project http://www.aegisub.org/
+// SubStation Project http://www.substation.org/
 
 /// @file auto4_lua.cpp
 /// @brief Lua 5.1-based scripting engine
@@ -46,7 +46,7 @@
 #include "compat.h"
 #include "format.h"
 #include "frame_main.h"
-#include "include/aegisub/context.h"
+#include "include/substation/context.h"
 #include "options.h"
 #include "project.h"
 #include "selection_controller.h"
@@ -54,12 +54,12 @@
 #include "video_controller.h"
 #include "utils.h"
 
-#include <libaegisub/dispatch.h>
-#include <libaegisub/lua/ffi.h>
-#include <libaegisub/lua/modules.h>
-#include <libaegisub/lua/script_reader.h>
-#include <libaegisub/lua/utils.h>
-#include <libaegisub/path.h>
+#include <libsubstation/dispatch.h>
+#include <libsubstation/lua/ffi.h>
+#include <libsubstation/lua/modules.h>
+#include <libsubstation/lua/script_reader.h>
+#include <libsubstation/lua/utils.h>
+#include <libsubstation/path.h>
 
 #include <algorithm>
 #include <boost/algorithm/string/case_conv.hpp>
@@ -499,11 +499,11 @@ namespace {
 
 		// reference to the script object
 		push_value(L, this);
-		lua_setfield(L, LUA_REGISTRYINDEX, "aegisub");
+		lua_setfield(L, LUA_REGISTRYINDEX, "substation");
 		stackcheck.check_stack(0);
 
-		// make "aegisub" table
-		lua_pushstring(L, "aegisub");
+		// make "substation" table
+		lua_pushstring(L, "substation");
 		lua_createtable(L, 0, 13);
 
 		set_field<LuaCommand::LuaRegister>(L, "register_macro");
@@ -524,7 +524,7 @@ namespace {
 		set_field<lua_get_audio_selection>(L, "get_audio_selection");
 		set_field<lua_set_status_text>(L, "set_status_text");
 
-		// store aegisub table to globals
+		// store substation table to globals
 		lua_settable(L, LUA_GLOBALSINDEX);
 		stackcheck.check_stack(0);
 
@@ -578,7 +578,7 @@ namespace {
 		} else {
 			lua_pop(L, 1);
 		}
-		lua_getfield(L, LUA_GLOBALSINDEX, "aegisub");
+		lua_getfield(L, LUA_GLOBALSINDEX, "substation");
 		set_field<raise_warning_postload>(L, "__raise_warning");
 		lua_pop(L, 1);
 
@@ -635,7 +635,7 @@ namespace {
 
 	LuaScript* LuaScript::GetScriptObject(lua_State *L)
 	{
-		lua_getfield(L, LUA_REGISTRYINDEX, "aegisub");
+		lua_getfield(L, LUA_REGISTRYINDEX, "substation");
 		void *ptr = lua_touserdata(L, -1);
 		lua_pop(L, 1);
 		return (LuaScript*)ptr;

@@ -9,7 +9,7 @@
 //   * Redistributions in binary form must reproduce the above copyright notice,
 //     this list of conditions and the following disclaimer in the documentation
 //     and/or other materials provided with the distribution.
-//   * Neither the name of the Aegisub Group nor the names of its contributors
+//   * Neither the name of the SubStation Group nor the names of its contributors
 //     may be used to endorse or promote products derived from this software
 //     without specific prior written permission.
 //
@@ -25,7 +25,7 @@
 // ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
-// Aegisub Project http://www.aegisub.org/
+// SubStation Project http://www.substation.org/
 
 /// @file video_provider_ffmpegsource.cpp
 /// @brief FFmpegSource2-based video provider
@@ -34,13 +34,13 @@
 
 #ifdef WITH_FFMS2
 #include "ffmpegsource_common.h"
-#include "include/aegisub/video_provider.h"
+#include "include/substation/video_provider.h"
 
 #include "options.h"
 #include "utils.h"
 #include "video_frame.h"
 
-#include <libaegisub/fs.h>
+#include <libsubstation/fs.h>
 
 #include <string_view>
 

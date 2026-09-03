@@ -65,10 +65,10 @@ endif
 runner = executable(
     'gtest-main',
     tests_src,
-    include_directories: [tests_inc, libaegisub_inc],
+    include_directories: [tests_inc, libsubstation_inc],
     dependencies: [tests_deps, deps],
     cpp_args: tests_args + conf_defines,
-    link_with: libaegisub,
+    link_with: libsubstation,
 )
 
 # setup test env

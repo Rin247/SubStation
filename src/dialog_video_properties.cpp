@@ -1,4 +1,4 @@
-// Copyright (c) 2014, Thomas Goyne <plorkyeran@aegisub.org>
+// Copyright (c) 2014, Thomas Goyne <plorkyeran@substation.org>
 // Copyright (c) 2026, arch1t3cht
 //
 // Permission to use, copy, modify, and distribute this software for any
@@ -13,11 +13,11 @@
 // ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 // OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 //
-// Aegisub Project http://www.aegisub.org/
+// SubStation Project http://www.substation.org/
 
 #include "ass_file.h"
 #include "async_video_provider.h"
-#include "include/aegisub/context.h"
+#include "include/substation/context.h"
 #include "format.h"
 #include "help_button.h"
 #include "options.h"
@@ -133,7 +133,7 @@ bool update_ycbcr_matrix(AssFile *file, const AsyncVideoProvider *new_provider, 
 			/* TRANSLATORS: Keep the space between the two line breaks; it's required for the message
 			                to display correctly on Windows. */
 			"The video you have loaded has no specified color matrix. "
-			"Aegisub will guess the color matrix to be %s, but there is no guarantee that other programs will guess the same matrix. "
+			"SubStation will guess the color matrix to be %s, but there is no guarantee that other programs will guess the same matrix. "
 			"This may make the video appear with different colors in different media players and can prevent subtitle colors from matching video colors."
 			"\n \n"
 			"Consider tagging your video with a color matrix to ensure that your video displays consistently in all players and that subtitle colors can reliably match video colors."
@@ -206,7 +206,7 @@ bool update_ycbcr_matrix(AssFile *file, const AsyncVideoProvider *new_provider, 
 		//	  and the user is now loading the same YCbCr stream, but this time correctly tagged as BT.601.
 		//    In this case, the RGB colors in the subtitle file are *not* accurate to the video, so the correct action is to either leave the YCbCr Matrix unchanged or resample the colors to the new YCbCr Matrix.
 		//
-		//    We imagine that this case is the rarer one. (At least when exclusively working with new files, where Aegisub will also no longer force BT.601 and will warn on untagged videos.
+		//    We imagine that this case is the rarer one. (At least when exclusively working with new files, where SubStation will also no longer force BT.601 and will warn on untagged videos.
 		//    Old, mistagged subtitle files are a different story.)
 		//
 		// (In all of these cases the base assumption is that the script looked correct on whatever video it was originally authored on.

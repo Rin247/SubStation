@@ -1,4 +1,4 @@
-// Copyright (c) 2011, Thomas Goyne <plorkyeran@aegisub.org>
+// Copyright (c) 2011, Thomas Goyne <plorkyeran@substation.org>
 //
 // Permission to use, copy, modify, and distribute this software for any
 // purpose with or without fee is hereby granted, provided that the above
@@ -16,19 +16,19 @@
 /// @brief Dynamic menu toolbar generator.
 /// @ingroup toolbar menu
 
-#include "include/aegisub/toolbar.h"
+#include "include/substation/toolbar.h"
 
 #include "command/command.h"
 #include "compat.h"
-#include "include/aegisub/hotkey.h"
+#include "include/substation/hotkey.h"
 #include "libresrc/libresrc.h"
 #include "options.h"
 
-#include <libaegisub/hotkey.h>
-#include <libaegisub/json.h>
-#include <libaegisub/log.h>
-#include <libaegisub/signal.h>
-#include <libaegisub/string.h>
+#include <libsubstation/hotkey.h>
+#include <libsubstation/json.h>
+#include <libsubstation/log.h>
+#include <libsubstation/signal.h>
+#include <libsubstation/string.h>
 
 #include <boost/interprocess/streams/bufferstream.hpp>
 #include <vector>

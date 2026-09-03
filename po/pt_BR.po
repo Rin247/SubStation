@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Aegisub 3\n"
+"Project-Id-Version: SubStation 3\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-07-26 14:45+0200\n"
 "PO-Revision-Date: 2026-07-28 12:46-0300\n"
@@ -14,11 +14,11 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Generator: Poedit 3.9\n"
 
-#: ../src/aegisublocale.cpp:113 ../src/command/app.cpp:156
+#: ../src/substationlocale.cpp:113 ../src/command/app.cpp:156
 msgid "Language"
 msgstr "Idioma"
 
-#: ../src/aegisublocale.cpp:113
+#: ../src/substationlocale.cpp:113
 msgid "Please choose a language:"
 msgstr "Por favor, escolha um idioma:"
 
@@ -383,10 +383,10 @@ msgstr ""
 
 #: ../src/charset_detect.cpp:50
 msgid ""
-"Aegisub could not narrow down the character set to a single one.\n"
+"SubStation could not narrow down the character set to a single one.\n"
 "Please pick one below:"
 msgstr ""
-"Aegisub não conseguiu escolher apenas um único conjunto de caracteres.\n"
+"SubStation não conseguiu escolher apenas um único conjunto de caracteres.\n"
 "Por favor, escolha um abaixo:"
 
 #: ../src/charset_detect.cpp:51
@@ -402,8 +402,8 @@ msgid "About"
 msgstr "Sobre"
 
 #: ../src/command/app.cpp:58 ../src/dialog_about.cpp:44
-msgid "About Aegisub"
-msgstr "Sobre o Aegisub"
+msgid "About SubStation"
+msgstr "Sobre o SubStation"
 
 #: ../src/command/app.cpp:67
 msgid "&Audio+Subs View"
@@ -470,19 +470,19 @@ msgid "&Language..."
 msgstr "&Idioma..."
 
 #: ../src/command/app.cpp:157
-msgid "Select Aegisub interface language"
-msgstr "Selecione o idioma da interface do Aegisub"
+msgid "Select SubStation interface language"
+msgstr "Selecione o idioma da interface do SubStation"
 
 #: ../src/command/app.cpp:167
 msgid ""
-"Aegisub needs to be restarted so that the new language can be applied. "
+"SubStation needs to be restarted so that the new language can be applied. "
 "Restart now?"
 msgstr ""
-"É necessário reiniciar o Aegisub para aplicar o novo idioma. Reiniciar agora?"
+"É necessário reiniciar o SubStation para aplicar o novo idioma. Reiniciar agora?"
 
 #: ../src/command/app.cpp:167
-msgid "Restart Aegisub?"
-msgstr "Reiniciar o Aegisub?"
+msgid "Restart SubStation?"
+msgstr "Reiniciar o SubStation?"
 
 #: ../src/command/app.cpp:180
 msgid "&Log window"
@@ -519,8 +519,8 @@ msgid "Options"
 msgstr "Opções"
 
 #: ../src/command/app.cpp:206
-msgid "Configure Aegisub"
-msgstr "Configure o Aegisub"
+msgid "Configure SubStation"
+msgstr "Configure o SubStation"
 
 #: ../src/command/app.cpp:220 ../src/command/app.cpp:221
 msgid "Toggle global hotkey overrides"
@@ -552,8 +552,8 @@ msgid "Check for Updates"
 msgstr "Verificar Atualizações"
 
 #: ../src/command/app.cpp:260
-msgid "Check to see if there is a new version of Aegisub available"
-msgstr "Verifique se existe uma nova versão do Aegisub disponível"
+msgid "Check to see if there is a new version of SubStation available"
+msgstr "Verifique se existe uma nova versão do SubStation disponível"
 
 #: ../src/command/app.cpp:270 ../src/command/app.cpp:271
 msgid "Minimize"
@@ -1632,9 +1632,9 @@ msgid "Bug Tracker"
 msgstr "Rastreador de Erros"
 
 #: ../src/command/help.cpp:49
-msgid "Visit Aegisub's bug tracker to report bugs and request new features"
+msgid "Visit SubStation's bug tracker to report bugs and request new features"
 msgstr ""
-"Acessa o rastreador de erros do Aegisub para relatar defeitos e solicitar "
+"Acessa o rastreador de erros do SubStation para relatar defeitos e solicitar "
 "novas funcionalidades"
 
 #: ../src/command/help.cpp:68
@@ -1658,8 +1658,8 @@ msgid "IRC Channel"
 msgstr "Canal de IRC"
 
 #: ../src/command/help.cpp:82
-msgid "Visit Aegisub's official IRC channel"
-msgstr "Acessa o canal de IRC oficial do Aegisub"
+msgid "Visit SubStation's official IRC channel"
+msgstr "Acessa o canal de IRC oficial do SubStation"
 
 #: ../src/command/help.cpp:92
 msgid "&Visual Typesetting"
@@ -1682,8 +1682,8 @@ msgid "Website"
 msgstr "Website"
 
 #: ../src/command/help.cpp:106
-msgid "Visit Aegisub's official website"
-msgstr "Acessa o website oficial do Aegisub"
+msgid "Visit SubStation's official website"
+msgstr "Acessa o website oficial do SubStation"
 
 #: ../src/command/keyframe.cpp:49 ../src/command/keyframe.cpp:50
 msgid "Close Keyframes"
@@ -1885,9 +1885,9 @@ msgid "Open Autosaved Subtitles"
 msgstr "Abrir Legendas Salvas Automaticamente"
 
 #: ../src/command/subtitle.cpp:284
-msgid "Open a previous version of a file which was autosaved by Aegisub"
+msgid "Open a previous version of a file which was autosaved by SubStation"
 msgstr ""
-"Abre uma versão antiga do arquivo que foi salva automaticamente pelo Aegisub"
+"Abre uma versão antiga do arquivo que foi salva automaticamente pelo SubStation"
 
 #: ../src/command/subtitle.cpp:297
 msgid "Open Subtitles with &Charset..."
@@ -4368,16 +4368,16 @@ msgid "Remove fro&m dictionary"
 msgstr "&Remover do dicionário"
 
 #: ../src/dialog_spellchecker.cpp:279
-msgid "Aegisub has finished checking spelling of this script."
-msgstr "Aegisub concluiu a verificação ortográfica destas legendas."
+msgid "SubStation has finished checking spelling of this script."
+msgstr "SubStation concluiu a verificação ortográfica destas legendas."
 
 #: ../src/dialog_spellchecker.cpp:279 ../src/dialog_spellchecker.cpp:283
 msgid "Spell checking complete."
 msgstr "Correção ortográfica concluída."
 
 #: ../src/dialog_spellchecker.cpp:283
-msgid "Aegisub has found no spelling mistakes in this script."
-msgstr "Aegisub não identificou erros ortográficos nestas legendas."
+msgid "SubStation has found no spelling mistakes in this script."
+msgstr "SubStation não identificou erros ortográficos nestas legendas."
 
 #: ../src/dialog_spellchecker.cpp:329 ../src/dialog_spellchecker.cpp:343
 msgid "spell check replace"
@@ -5134,36 +5134,36 @@ msgid "Checking for updates failed: %s."
 msgstr "A verificação de atualizações falhou: %s."
 
 #: ../src/dialog_version_check.cpp:345
-msgid "An update to Aegisub was found."
-msgstr "Foi encontrada uma atualização para o Aegisub."
+msgid "An update to SubStation was found."
+msgstr "Foi encontrada uma atualização para o SubStation."
 
 #: ../src/dialog_version_check.cpp:347
-msgid "Several possible updates to Aegisub were found."
-msgstr "Foram encontradas várias possíveis atualizações para o Aegisub."
+msgid "Several possible updates to SubStation were found."
+msgstr "Foram encontradas várias possíveis atualizações para o SubStation."
 
 #: ../src/dialog_version_check.cpp:349
-msgid "There are no updates to Aegisub."
-msgstr "Não há atualizações para o Aegisub."
+msgid "There are no updates to SubStation."
+msgstr "Não há atualizações para o SubStation."
 
 #: ../src/dialog_version_check.cpp:377
 #, c-format
 msgid ""
-"There was an error checking for updates to Aegisub:\n"
+"There was an error checking for updates to SubStation:\n"
 "%s\n"
 "\n"
 "If other applications can access the Internet fine, this is probably a "
 "temporary server problem on our end."
 msgstr ""
-"Ocorreu um erro ao verificar atualizações para o Aegisub:\n"
+"Ocorreu um erro ao verificar atualizações para o SubStation:\n"
 "%s\n"
 "\n"
 "Se outros aplicativos conseguem acessar a Internet, provavelmente é um erro "
 "temporário em nossos servidores."
 
 #: ../src/dialog_version_check.cpp:381
-msgid "An unknown error occurred while checking for updates to Aegisub."
+msgid "An unknown error occurred while checking for updates to SubStation."
 msgstr ""
-"Ocorreu um erro desconhecido ao tentar verificar atualizações para o Aegisub."
+"Ocorreu um erro desconhecido ao tentar verificar atualizações para o SubStation."
 
 #: ../src/dialog_video_details.cpp:46
 msgid "Video Details"
@@ -5220,7 +5220,7 @@ msgstr "Decodificador:"
 #: ../src/dialog_video_properties.cpp:135
 #, c-format
 msgid ""
-"The video you have loaded has no specified color matrix. Aegisub will guess "
+"The video you have loaded has no specified color matrix. SubStation will guess "
 "the color matrix to be %s, but there is no guarantee that other programs "
 "will guess the same matrix. This may make the video appear with different "
 "colors in different media players and can prevent subtitle colors from "
@@ -5230,7 +5230,7 @@ msgid ""
 "displays consistently in all players and that subtitle colors can reliably "
 "match video colors."
 msgstr ""
-"O vídeo não tem uma matriz de cores especificada. O Aegisub presumirá que a "
+"O vídeo não tem uma matriz de cores especificada. O SubStation presumirá que a "
 "matriz de cores é %s, mas não há garantia de que outros programas "
 "identificarão a mesma matriz. Isso pode fazer com que o vídeo seja exibido "
 "com cores diferentes em diferentes reprodutores de vídeo e impedir que as "
@@ -5729,21 +5729,21 @@ msgstr ""
 #: ../src/main.cpp:266
 #, c-format
 msgid ""
-"Oops, Aegisub has crashed!\n"
+"Oops, SubStation has crashed!\n"
 "\n"
 "An attempt has been made to save a copy of your file to:\n"
 "\n"
 "%s\n"
 "\n"
-"Aegisub will now close."
+"SubStation will now close."
 msgstr ""
-"Opa, o Aegisub travou!\n"
+"Opa, o SubStation travou!\n"
 "\n"
 "Uma tentativa foi feita para salvar uma cópia do seu arquivo em:\n"
 "\n"
 "%s\n"
 "\n"
-"O Aegisub será fechado agora."
+"O SubStation será fechado agora."
 
 #: ../src/main.cpp:295
 msgid "Check for updates?"
@@ -5751,10 +5751,10 @@ msgstr "Verificar atualizações?"
 
 #: ../src/main.cpp:295
 msgid ""
-"Do you want Aegisub to check for updates whenever it starts? You can still "
+"Do you want SubStation to check for updates whenever it starts? You can still "
 "do it manually via the Help menu."
 msgstr ""
-"Deseja que o Aegisub verifique atualizações sempre que for iniciado? "
+"Deseja que o SubStation verifique atualizações sempre que for iniciado? "
 "Atualizações manuais ainda poderão ser realizadas pelo menu Ajuda."
 
 #: ../src/main.cpp:301
@@ -5776,11 +5776,11 @@ msgstr "Erro de programa"
 #: ../src/main.cpp:417
 #, c-format
 msgid ""
-"Aegisub has crashed while starting up!\n"
+"SubStation has crashed while starting up!\n"
 "\n"
 "The last startup step attempted was: %s."
 msgstr ""
-"O Aegisub travou durante a inicialização!\n"
+"O SubStation travou durante a inicialização!\n"
 "\n"
 "A última etapa de inicialização tentada foi: %s."
 
@@ -5788,11 +5788,11 @@ msgstr ""
 #, c-format
 msgid ""
 "An unexpected error has occurred. Please save your work and restart "
-"Aegisub.\n"
+"SubStation.\n"
 "\n"
 "Error Message: %s"
 msgstr ""
-"Ocorreu um erro inesperado. Salve seu trabalho e reinicie o Aegisub.\n"
+"Ocorreu um erro inesperado. Salve seu trabalho e reinicie o SubStation.\n"
 "\n"
 "Mensagem de erro: %s"
 
@@ -7557,8 +7557,8 @@ msgid "Create a start menu icon"
 msgstr "Criar um atalho no menu iniciar"
 
 #: packages/win_installer/fragment_strings.iss:1
-msgid "Automatically check for new versions of Aegisub"
-msgstr "Verificar automaticamente se há novas versões do Aegisub"
+msgid "Automatically check for new versions of SubStation"
+msgstr "Verificar automaticamente se há novas versões do SubStation"
 
 #: packages/win_installer/fragment_strings.iss:1
 msgid "Update Checker:"
@@ -7566,81 +7566,81 @@ msgstr "Verificação de Atualizações:"
 
 #: packages/win_installer/fragment_strings.iss:1
 msgid ""
-"This will install Aegisub {#BUILD_GIT_VERSION_STRING} on your computer."
+"This will install SubStation {#BUILD_GIT_VERSION_STRING} on your computer."
 "%n%nAegisub is covered by the GNU General Public License version 2. This "
 "means you may use the application for any purpose without charge, but that "
-"no warranties of any kind are given either.%n%nSee the Aegisub website for "
+"no warranties of any kind are given either.%n%nSee the SubStation website for "
 "information on obtaining the source code."
 msgstr ""
-"Isso instalará o Aegisub {#BUILD_GIT_VERSION_STRING} no seu computador."
+"Isso instalará o SubStation {#BUILD_GIT_VERSION_STRING} no seu computador."
 "%n%nAegisub está coberto pela Licença Pública Geral GNU, versão 2. O que "
 "significa que você pode usar o aplicativo para qualquer finalidade sem "
-"custos, mas sem garantia de qualquer tipo.%n%nConsulte o site do Aegisub "
+"custos, mas sem garantia de qualquer tipo.%n%nConsulte o site do SubStation "
 "para obter informações sobre como acessar o código-fonte."
 
-#: ../packages/desktop/aegisub.desktop.in.in:4
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:6
-msgid "Aegisub"
-msgstr "Aegisub"
+#: ../packages/desktop/substation.desktop.in.in:4
+#: ../packages/desktop/substation.metainfo.xml.in.in:6
+msgid "SubStation"
+msgstr "SubStation"
 
-#: ../packages/desktop/aegisub.desktop.in.in:5
+#: ../packages/desktop/substation.desktop.in.in:5
 msgid "Subtitle Editor"
 msgstr "Editor de Legendas"
 
-#: ../packages/desktop/aegisub.desktop.in.in:6
+#: ../packages/desktop/substation.desktop.in.in:6
 msgid "Create and edit subtitles for film and videos."
 msgstr "Crie e modifique legendas para filmes e vídeos."
 
-#: ../packages/desktop/aegisub.desktop.in.in:12
+#: ../packages/desktop/substation.desktop.in.in:12
 msgid "subtitles;subtitle;captions;captioning;video;audio;"
 msgstr "legendas;legenda;vídeo;áudio;"
 
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:7
+#: ../packages/desktop/substation.metainfo.xml.in.in:7
 msgid "Create and modify subtitles"
 msgstr "Crie e modifique legendas"
 
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:9
+#: ../packages/desktop/substation.metainfo.xml.in.in:9
 msgid ""
-"Aegisub is a free, cross-platform open source tool for creating and "
-"modifying subtitles. Aegisub makes it quick and easy to time subtitles to "
+"SubStation is a free, cross-platform open source tool for creating and "
+"modifying subtitles. SubStation makes it quick and easy to time subtitles to "
 "audio, and features many powerful tools for styling them, including a built-"
 "in real-time video preview."
 msgstr ""
-"O Aegisub é uma ferramenta gratuita, de código aberto e multiplataforma para "
+"O SubStation é uma ferramenta gratuita, de código aberto e multiplataforma para "
 "criar e modificar legendas. Ele facilita e agiliza o processo de "
 "sincronização de legendas com áudio, oferecendo diversas ferramentas "
 "avançadas de estilização, incluindo uma pré-visualização de vídeo em tempo "
 "real integrada."
 
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:10
+#: ../packages/desktop/substation.metainfo.xml.in.in:10
 msgid ""
-"Aegisub was originally created as a tool to make typesetting, particularly "
+"SubStation was originally created as a tool to make typesetting, particularly "
 "in anime fansubs, a less painful experience. At the time of the start of the "
 "project, many other programs that supported the Advanced Substation Alpha "
 "format lacked (and in many cases, still lack; development on several "
 "competing programs have since been dropped for various reasons completely "
-"unrelated to Aegisub) many vital functions, or were too buggy and/or "
+"unrelated to SubStation) many vital functions, or were too buggy and/or "
 "unreliable to be really useful."
 msgstr ""
-"O Aegisub foi criado originalmente como uma ferramenta para tornar o "
+"O SubStation foi criado originalmente como uma ferramenta para tornar o "
 "typesetting — especialmente em fansubs de anime — uma experiência menos "
 "trabalhosa. Na época em que o projeto começou, muitos outros programas que "
 "suportavam o formato Advanced Substation Alpha careciam de diversas funções "
 "essenciais (e, em muitos casos, ainda carecem; o desenvolvimento de vários "
 "programas concorrentes foi abandonado por motivos totalmente alheios ao "
-"Aegisub), ou eram instáveis e com muitos bugs, o que os tornava pouco úteis "
+"SubStation), ou eram instáveis e com muitos bugs, o que os tornava pouco úteis "
 "na prática."
 
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:11
+#: ../packages/desktop/substation.metainfo.xml.in.in:11
 msgid ""
-"Since then, Aegisub has grown into a fully fledged, highly customizable "
+"Since then, SubStation has grown into a fully fledged, highly customizable "
 "subtitle editor. It features a lot of convenient tools to help you with "
 "timing, typesetting, editing and translating subtitles, as well as a "
 "powerful scripting environment called Automation (originally mostly intended "
 "for creating karaoke effects, Automation can now be used much else, "
 "including creating macros and various other convenient tools)."
 msgstr ""
-"Desde então, o Aegisub evoluiu para um editor de legendas completo e "
+"Desde então, o SubStation evoluiu para um editor de legendas completo e "
 "altamente personalizável. Ele oferece diversas ferramentas práticas para "
 "auxiliar na sincronização, composição visual, edição e tradução de legendas, "
 "além de um poderoso ambiente de scripts chamado Automação (originalmente "
@@ -7648,42 +7648,42 @@ msgstr ""
 "usado para muitas outras finalidades, incluindo a criação de macros e "
 "diversas ferramentas adicionais)."
 
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:12
-msgid "Some highlights of Aegisub:"
-msgstr "Alguns destaques do Aegisub:"
+#: ../packages/desktop/substation.metainfo.xml.in.in:12
+msgid "Some highlights of SubStation:"
+msgstr "Alguns destaques do SubStation:"
 
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:14
+#: ../packages/desktop/substation.metainfo.xml.in.in:14
 msgid "Simple and intuitive yet powerful interface for editing subtitles"
 msgstr "Interface simples e intuitiva, mas poderosa, para edição de legendas"
 
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:15
+#: ../packages/desktop/substation.metainfo.xml.in.in:15
 msgid "Support for many formats and character sets"
 msgstr "Suporte a diversos formatos e conjuntos de caracteres"
 
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:16
+#: ../packages/desktop/substation.metainfo.xml.in.in:16
 msgid "Powerful video mode"
 msgstr "Modo de vídeo avançado"
 
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:17
+#: ../packages/desktop/substation.metainfo.xml.in.in:17
 msgid "Visual typesetting tools"
 msgstr "Ferramentas para composição visual"
 
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:18
+#: ../packages/desktop/substation.metainfo.xml.in.in:18
 msgid "Intuitive and customizable audio timing mode"
 msgstr "Modo de sincronização de áudio intuitivo e personalizável"
 
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:19
+#: ../packages/desktop/substation.metainfo.xml.in.in:19
 msgid "Fully scriptable through the Automation module"
 msgstr "Totalmente programável por meio do módulo de Automação"
 
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:43
+#: ../packages/desktop/substation.metainfo.xml.in.in:43
 msgid "Typesetting"
 msgstr "Composição visual"
 
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:47
+#: ../packages/desktop/substation.metainfo.xml.in.in:47
 msgid "Audio video"
 msgstr "Áudio vídeo"
 
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:51
+#: ../packages/desktop/substation.metainfo.xml.in.in:51
 msgid "Audio timing"
 msgstr "Sincronização de áudio"

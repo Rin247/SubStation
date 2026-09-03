@@ -9,7 +9,7 @@
 //   * Redistributions in binary form must reproduce the above copyright notice,
 //     this list of conditions and the following disclaimer in the documentation
 //     and/or other materials provided with the distribution.
-//   * Neither the name of the Aegisub Group nor the names of its contributors
+//   * Neither the name of the SubStation Group nor the names of its contributors
 //     may be used to endorse or promote products derived from this software
 //     without specific prior written permission.
 //
@@ -25,7 +25,7 @@
 // ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
-// Aegisub Project http://www.aegisub.org/
+// SubStation Project http://www.substation.org/
 
 #ifdef WITH_UPDATE_CHECKER
 
@@ -34,12 +34,12 @@
 #include "options.h"
 #include "version.h"
 
-#include <libaegisub/ass/string_codec.h>
-#include <libaegisub/dispatch.h>
-#include <libaegisub/exception.h>
-#include <libaegisub/line_iterator.h>
-#include <libaegisub/scoped_ptr.h>
-#include <libaegisub/split.h>
+#include <libsubstation/ass/string_codec.h>
+#include <libsubstation/dispatch.h>
+#include <libsubstation/exception.h>
+#include <libsubstation/line_iterator.h>
+#include <libsubstation/scoped_ptr.h>
+#include <libsubstation/split.h>
 
 #include <ctime>
 #include <curl/curl.h>
@@ -67,7 +67,7 @@
 namespace {
 std::mutex VersionCheckLock;
 
-struct AegisubUpdateDescription {
+struct SubStationUpdateDescription {
 	std::string url;
 	std::string friendly_name;
 	std::string description;
@@ -81,12 +81,12 @@ class VersionCheckerResultDialog final : public wxDialog {
 	wxCheckBox *automatic_check_checkbox;
 
 public:
-	VersionCheckerResultDialog(wxString const& main_text, const std::vector<AegisubUpdateDescription> &updates);
+	VersionCheckerResultDialog(wxString const& main_text, const std::vector<SubStationUpdateDescription> &updates);
 
 	bool ShouldPreventAppExit() const override { return false; }
 };
 
-VersionCheckerResultDialog::VersionCheckerResultDialog(wxString const& main_text, const std::vector<AegisubUpdateDescription> &updates)
+VersionCheckerResultDialog::VersionCheckerResultDialog(wxString const& main_text, const std::vector<SubStationUpdateDescription> &updates)
 : wxDialog(nullptr, -1, _("Version Checker"))
 {
 	const int controls_width = 500;
@@ -277,7 +277,7 @@ static wxString GetSystemLanguage() {
 }
 #endif
 
-static wxString GetAegisubLanguage() {
+static wxString GetSubStationLanguage() {
 	return to_wx(OPT_GET("App/Language")->GetString());
 }
 
@@ -302,10 +302,10 @@ void DoCheck(bool interactive) {
 			, (GetIsOfficialRelease() ? 1 : 0)
 			, GetOSShortName()
 			, GetSystemLanguage()
-			, GetAegisubLanguage()
+			, GetSubStationLanguage()
 		).c_str());
 	curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);
-	curl_easy_setopt(curl, CURLOPT_USERAGENT, agi::format("Aegisub %s", GetAegisubLongVersionString()).c_str());
+	curl_easy_setopt(curl, CURLOPT_USERAGENT, agi::format("SubStation %s", GetSubStationLongVersionString()).c_str());
 
 	std::string result;
 	curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, writeToStringCb);
@@ -319,7 +319,7 @@ void DoCheck(bool interactive) {
 	}
 
 	std::stringstream ss(result);
-	std::vector<AegisubUpdateDescription> results;
+	std::vector<SubStationUpdateDescription> results;
 	for (auto const& line : agi::line_iterator<std::string>(ss)) {
 		if (line.empty()) continue;
 
@@ -331,7 +331,7 @@ void DoCheck(bool interactive) {
 			continue;
 
 		// 0 and 2 being things that never got used
-		results.push_back(AegisubUpdateDescription{
+		results.push_back(SubStationUpdateDescription{
 			agi::ass::inline_string_decode(parsed[3]),
 			agi::ass::inline_string_decode(parsed[4]),
 			agi::ass::inline_string_decode(parsed[5])
@@ -342,11 +342,11 @@ void DoCheck(bool interactive) {
 		agi::dispatch::Main().Async([=]{
 			wxString text;
 			if (results.size() == 1)
-				text = _("An update to Aegisub was found.");
+				text = _("An update to SubStation was found.");
 			else if (results.size() > 1)
-				text = _("Several possible updates to Aegisub were found.");
+				text = _("Several possible updates to SubStation were found.");
 			else
-				text = _("There are no updates to Aegisub.");
+				text = _("There are no updates to SubStation.");
 
 			new VersionCheckerResultDialog(text, results);
 		});
@@ -374,11 +374,11 @@ void PerformVersionCheck(bool interactive) {
 		}
 		catch (const agi::Exception &e) {
 			PostErrorEvent(interactive, fmt_tl(
-				"There was an error checking for updates to Aegisub:\n%s\n\nIf other applications can access the Internet fine, this is probably a temporary server problem on our end.",
+				"There was an error checking for updates to SubStation:\n%s\n\nIf other applications can access the Internet fine, this is probably a temporary server problem on our end.",
 				e.GetMessage()));
 		}
 		catch (...) {
-			PostErrorEvent(interactive, _("An unknown error occurred while checking for updates to Aegisub."));
+			PostErrorEvent(interactive, _("An unknown error occurred while checking for updates to SubStation."));
 		}
 
 		VersionCheckLock.unlock();

@@ -1,4 +1,4 @@
-// Copyright (c) 2011, Thomas Goyne <plorkyeran@aegisub.org>
+// Copyright (c) 2011, Thomas Goyne <plorkyeran@substation.org>
 //
 // Permission to use, copy, modify, and distribute this software for any
 // purpose with or without fee is hereby granted, provided that the above
@@ -21,7 +21,7 @@
 #include <wx/dialog.h>
 #include <wx/timer.h>
 
-#include <libaegisub/background_runner.h>
+#include <libsubstation/background_runner.h>
 
 class DialogProgressSink;
 class wxButton;

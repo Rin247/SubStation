@@ -1,4 +1,4 @@
-// Copyright (c) 2014, Thomas Goyne <plorkyeran@aegisub.org>
+// Copyright (c) 2014, Thomas Goyne <plorkyeran@substation.org>
 //
 // Permission to use, copy, modify, and distribute this software for any
 // purpose with or without fee is hereby granted, provided that the above
@@ -12,15 +12,15 @@
 // ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 // OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 //
-// Aegisub Project http://www.aegisub.org/
+// SubStation Project http://www.substation.org/
 
 #include "crash_writer.h"
 
 #include "version.h"
 
-#include <libaegisub/format.h>
-#include <libaegisub/fs.h>
-#include <libaegisub/util.h>
+#include <libsubstation/format.h>
+#include <libsubstation/fs.h>
+#include <libsubstation/util.h>
 
 #include <fstream>
 #include <wx/string.h>
@@ -42,7 +42,7 @@ public:
 		if (!fp.good()) return;
 
 		fp << util::strftime("--- %y-%m-%d %H:%M:%S ------------------\n");
-		fp << agi::format("VER - %s\n", GetAegisubLongVersionString());
+		fp << agi::format("VER - %s\n", GetSubStationLongVersionString());
 		fp << agi::format("FTL - Beginning stack dump for \"%s\": \n", cause);
 	}
 
@@ -84,8 +84,8 @@ void Write(std::string const& error) {
 	std::ofstream file(crashlog_path, std::ios::app);
 	if (file.is_open()) {
 		file << util::strftime("--- %y-%m-%d %H:%M:%S ------------------\n");
-		file << agi::format("VER - %s\n", GetAegisubLongVersionString());
-		file << agi::format("EXC - Aegisub has crashed with unhandled exception \"%s\".\n", error);
+		file << agi::format("VER - %s\n", GetSubStationLongVersionString());
+		file << agi::format("EXC - SubStation has crashed with unhandled exception \"%s\".\n", error);
 		file << "----------------------------------------\n\n";
 		file.close();
 	}

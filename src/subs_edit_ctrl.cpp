@@ -9,7 +9,7 @@
 //   * Redistributions in binary form must reproduce the above copyright notice,
 //     this list of conditions and the following disclaimer in the documentation
 //     and/or other materials provided with the distribution.
-//   * Neither the name of the Aegisub Group nor the names of its contributors
+//   * Neither the name of the SubStation Group nor the names of its contributors
 //     may be used to endorse or promote products derived from this software
 //     without specific prior written permission.
 //
@@ -25,7 +25,7 @@
 // ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
-// Aegisub Project http://www.aegisub.org/
+// SubStation Project http://www.substation.org/
 
 #include "subs_edit_ctrl.h"
 
@@ -34,17 +34,17 @@
 #include "compat.h"
 #include "format.h"
 #include "options.h"
-#include "include/aegisub/context.h"
-#include "include/aegisub/spellchecker.h"
+#include "include/substation/context.h"
+#include "include/substation/spellchecker.h"
 #include "selection_controller.h"
 #include "text_selection_controller.h"
 #include "thesaurus.h"
 #include "utils.h"
 
-#include <libaegisub/ass/dialogue_parser.h>
-#include <libaegisub/calltip_provider.h>
-#include <libaegisub/character_count.h>
-#include <libaegisub/spellchecker.h>
+#include <libsubstation/ass/dialogue_parser.h>
+#include <libsubstation/calltip_provider.h>
+#include <libsubstation/character_count.h>
+#include <libsubstation/spellchecker.h>
 
 #include <boost/algorithm/string/predicate.hpp>
 #include <boost/algorithm/string/replace.hpp>

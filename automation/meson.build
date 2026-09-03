@@ -33,14 +33,14 @@ install_data(
     install_dir: automation_dir / 'include')
 
 install_data(
-    'include/aegisub/clipboard.lua',
-    'include/aegisub/lfs.moon',
-    'include/aegisub/re.moon',
-    'include/aegisub/unicode.moon',
-    'include/aegisub/util.moon',
-    install_dir: automation_dir / 'include' / 'aegisub')
+    'include/substation/clipboard.lua',
+    'include/substation/lfs.moon',
+    'include/substation/re.moon',
+    'include/substation/unicode.moon',
+    'include/substation/util.moon',
+    install_dir: automation_dir / 'include' / 'substation')
 
 install_data(
-    'include/aegisub/internal/argcheck.moon',
-    'include/aegisub/internal/ffi.moon',
-    install_dir: automation_dir / 'include' / 'aegisub' / 'internal')
+    'include/substation/internal/argcheck.moon',
+    'include/substation/internal/ffi.moon',
+    install_dir: automation_dir / 'include' / 'substation' / 'internal')

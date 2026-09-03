@@ -9,7 +9,7 @@
 //   * Redistributions in binary form must reproduce the above copyright notice,
 //     this list of conditions and the following disclaimer in the documentation
 //     and/or other materials provided with the distribution.
-//   * Neither the name of the Aegisub Group nor the names of its contributors
+//   * Neither the name of the SubStation Group nor the names of its contributors
 //     may be used to endorse or promote products derived from this software
 //     without specific prior written permission.
 //
@@ -25,7 +25,7 @@
 // ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
-// Aegisub Project http://www.aegisub.org/
+// SubStation Project http://www.substation.org/
 
 #include "libresrc/libresrc.h"
 #include "format.h"
@@ -41,14 +41,14 @@
 #include <wx/textctrl.h>
 
 void ShowAboutDialog(wxWindow *parent) {
-	wxDialog d(parent, -1, _("About Aegisub"), wxDefaultPosition, wxDefaultSize, wxCAPTION | wxCLOSE_BOX);
+	wxDialog d(parent, -1, _("About SubStation"), wxDefaultPosition, wxDefaultSize, wxCAPTION | wxCLOSE_BOX);
 
 	wxString translatorCredit = _("Translated into LANGUAGE by PERSON\n");
 	if (translatorCredit == "Translated into LANGUAGE by PERSON\n")
 		translatorCredit.clear();
 
 	// Generate about string
-	wxString aboutString = wxString("Aegisub ") + GetAegisubShortVersionString() + ".\n"
+	wxString aboutString = wxString("SubStation ") + GetSubStationShortVersionString() + ".\n"
 		"Copyright (c) 2005-2026 Rodrigo Braz Monteiro, Niels Martin Hansen, Thomas Goyne et al.\n\n"
 		"Programmers:\n"
 		"    Alysson Souza e Silva\n"
@@ -84,7 +84,7 @@ void ShowAboutDialog(wxWindow *parent) {
 		"    Sigurd Tao Lyngse\n"
 		"    Everyone who ever reported a bug\n"
 		+ translatorCredit + "\n"
-		"Aegisub includes portions from the following other projects:\n"
+		"SubStation includes portions from the following other projects:\n"
 		"    wxWidgets - Copyright (c) Julian Smart, Robert Roebling et al;\n"
 		"    wxStyledTextCtrl - Copyright (c) Robin Dunn, Neil Hodgson;\n"
 		"    Scintilla - Copyright (c) Neil Hodgson;\n"
@@ -129,7 +129,7 @@ void ShowAboutDialog(wxWindow *parent) {
 #endif
 		+ _("\nSee the help file for full credits.\n")
 #ifdef BUILD_CREDIT
-		+ fmt_tl("Built by %s on %s.", GetAegisubBuildCredit(), GetAegisubBuildTime())
+		+ fmt_tl("Built by %s on %s.", GetSubStationBuildCredit(), GetSubStationBuildTime())
 #endif
 		;
 

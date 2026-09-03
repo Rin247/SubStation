@@ -9,7 +9,7 @@
 //   * Redistributions in binary form must reproduce the above copyright notice,
 //     this list of conditions and the following disclaimer in the documentation
 //     and/or other materials provided with the distribution.
-//   * Neither the name of the Aegisub Group nor the names of its contributors
+//   * Neither the name of the SubStation Group nor the names of its contributors
 //     may be used to endorse or promote products derived from this software
 //     without specific prior written permission.
 //
@@ -25,7 +25,7 @@
 // ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
-// Aegisub Project http://www.aegisub.org/
+// SubStation Project http://www.substation.org/
 
 /// @file auto4_lua_progresssink.cpp
 /// @brief Lua 5.1-based scripting engine
@@ -36,8 +36,8 @@
 
 #include "compat.h"
 
-#include <libaegisub/dispatch.h>
-#include <libaegisub/lua/utils.h>
+#include <libsubstation/dispatch.h>
+#include <libsubstation/lua/utils.h>
 
 #include <wx/filedlg.h>
 
@@ -72,9 +72,9 @@ namespace Automation4 {
 		*ud = ps;
 
 		// register progress reporting stuff
-		lua_getglobal(L, "aegisub");
+		lua_getglobal(L, "substation");
 
-		// Create aegisub.progress table
+		// Create substation.progress table
 		lua_createtable(L, 0, 5);
 		set_field_to_closure<LuaSetProgress>(L, "set");
 		set_field_to_closure<LuaSetTask>(L, "task");
@@ -82,12 +82,12 @@ namespace Automation4 {
 		set_field_to_closure<LuaGetCancelled>(L, "is_cancelled");
 		lua_setfield(L, -2, "progress");
 
-		// Create aegisub.debug table
+		// Create substation.debug table
 		lua_createtable(L, 0, 4);
 		set_field_to_closure<LuaDebugOut>(L, "out");
 		lua_setfield(L, -2, "debug");
 
-		// Set aegisub.log
+		// Set substation.log
 		set_field_to_closure<LuaDebugOut>(L, "log", -2);
 
 		if (allow_config_dialog) {
@@ -108,7 +108,7 @@ namespace Automation4 {
 	LuaProgressSink::~LuaProgressSink()
 	{
 		// remove progress reporting stuff
-		lua_getglobal(L, "aegisub");
+		lua_getglobal(L, "substation");
 		set_field_to_nil(L, -2, "progress");
 		set_field_to_nil(L, -2, "debug");
 		lua_pop(L, 1);

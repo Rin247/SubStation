@@ -160,7 +160,7 @@ This function displays a configuration dialog to the user and waits for it to
 close. It then returns whether the user accepted or cancelled the dialog, and
 what values were input.
 
-function aegisub.dialog.display(dialog, buttons)
+function substation.dialog.display(dialog, buttons)
 
 @dialog (table)
   A Dialog Definition table containing the controls to be in the dialog.

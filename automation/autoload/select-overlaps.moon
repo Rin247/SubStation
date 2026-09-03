@@ -1,4 +1,4 @@
--- Copyright (c) 2013, Thomas Goyne <plorkyeran@aegisub.org>
+-- Copyright (c) 2013, Thomas Goyne <plorkyeran@substation.org>
 --
 -- Permission to use, copy, modify, and distribute this software for any
 -- purpose with or without fee is hereby granted, provided that the above
@@ -12,7 +12,7 @@
 -- ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 -- OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
-tr = aegisub.gettext
+tr = substation.gettext
 
 export script_name = tr"Select overlaps"
 export script_description = tr"Select lines which begin while another non-comment line is active"
@@ -48,4 +48,4 @@ select_overlaps = (subs, selection) ->
 
     overlaps
 
-aegisub.register_macro script_name, script_description, select_overlaps
+substation.register_macro script_name, script_description, select_overlaps

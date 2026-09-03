@@ -9,7 +9,7 @@
 //   * Redistributions in binary form must reproduce the above copyright notice,
 //     this list of conditions and the following disclaimer in the documentation
 //     and/or other materials provided with the distribution.
-//   * Neither the name of the Aegisub Group nor the names of its contributors
+//   * Neither the name of the SubStation Group nor the names of its contributors
 //     may be used to endorse or promote products derived from this software
 //     without specific prior written permission.
 //
@@ -25,7 +25,7 @@
 // ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
-// Aegisub Project http://www.aegisub.org/
+// SubStation Project http://www.substation.org/
 
 #include "ass_style_storage.h"
 
@@ -33,11 +33,11 @@
 #include "ass_style.h"
 #include "options.h"
 
-#include <libaegisub/fs.h>
-#include <libaegisub/io.h>
-#include <libaegisub/line_iterator.h>
-#include <libaegisub/path.h>
-#include <libaegisub/string.h>
+#include <libsubstation/fs.h>
+#include <libsubstation/io.h>
+#include <libsubstation/line_iterator.h>
+#include <libsubstation/path.h>
+#include <libsubstation/string.h>
 
 #include <boost/algorithm/string/predicate.hpp>
 

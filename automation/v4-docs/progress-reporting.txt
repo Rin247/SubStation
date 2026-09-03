@@ -13,7 +13,7 @@ This function has been removed. A progress dialog is always shown.
 
 Setting the progress bar position
 
-function aegisub.progress.set(percent)
+function substation.progress.set(percent)
 
 @percent (number)
   The percentage completed.
@@ -26,7 +26,7 @@ Showing the current task
 
 Used to set a message describing the current task being done.
 
-function aegisub.progress.task(msg, ...)
+function substation.progress.task(msg, ...)
 
 @msg (string)
   A format string used for the message.
@@ -40,7 +40,7 @@ Returns: nothing.
 
 Setting the progress dialog title
 
-function aegisub.progress.title(title, ...)
+function substation.progress.title(title, ...)
 
 The default title for the progress dialog is the name of the current Feature
 being executed.
@@ -60,7 +60,7 @@ Getting the "cancelled" status
 Call this function to determine whether the Cancel button in the progress
 dialog has been clicked.
 
-function aegisub.progress.is_cancelled()
+function substation.progress.is_cancelled()
 
 Returns: Boolean. True is the user has clicked the Cancel button, false if it
   has not been clicked.
@@ -69,11 +69,11 @@ Returns: Boolean. True is the user has clicked the Cancel button, false if it
 
 Outputting text to the debug log
 
-function aegisub.log([level,] msg, ...)
-function aegisub.debug.out([level,] msg, ...)
+function substation.log([level,] msg, ...)
+function substation.debug.out([level,] msg, ...)
 
 These two functions are synonyms.
-aegisub.log is preferred since its name is shorter and more general.
+substation.log is preferred since its name is shorter and more general.
 
 @level (number)
   Integer describing the verbosity of this message. Here are some suggested
@@ -91,7 +91,7 @@ aegisub.log is preferred since its name is shorter and more general.
   script won't see them unless he explicitly enables it.
   This argument is optional and can be left out, in which case the message
   will always be displayed, regardless of the current trace level set in
-  Aegisub. You SHOULD however always include this argument.
+  SubStation. You SHOULD however always include this argument.
 
 @msg (string)
   A format string used for the message.

@@ -11,7 +11,7 @@ Macro Registration Function
 This is a function called from top-level of an Automation script to register
 a new Macro Feature.
 
-function aegisub.register_macro(
+function substation.register_macro(
     name,
     description,
     processing_function,
@@ -46,7 +46,7 @@ Filter Registration Function
 This is a function called from top level of an Automation script to register
 a new Export Filter Feature.
 
-function aegisub.register_filter(
+function substation.register_filter(
     name,
     description,
     priority,
@@ -88,7 +88,7 @@ Format Reader Registration
 This is a function called from top level in an Automation script to register
 a new File Format Reader Feature.
 
-function aegisub.register_reader(
+function substation.register_reader(
     name,
     extension,
     processing_function)
@@ -115,7 +115,7 @@ Format Writer Registration
 This is a function called from top level in an Automation script to register
 a new File Format Writer Feature.
 
-function aegisub.register_writer(
+function substation.register_writer(
     name,
     extension,
     processing_function)
@@ -139,7 +139,7 @@ Returns: nothing.
 
 Macro Processing Function
 
-This function is called by Aegisub to execute a macro.
+This function is called by SubStation to execute a macro.
 
 function process_macro(
     subtitles,
@@ -167,7 +167,7 @@ Returns: nothing.
 
 Macro Validation Function
 
-This function is called by Aegisub to determine whether a macro can be applied
+This function is called by SubStation to determine whether a macro can be applied
 to the current state of the subtitles and selection.
 
 This function needs to execute very fast, since it may be called for several
@@ -205,7 +205,7 @@ Returns: Boolean.
 
 Filter Processing Function
 
-This function is called by Aegisub to filter the subtitles during an export
+This function is called by SubStation to filter the subtitles during an export
 operation.
 
 function process_filter(
@@ -231,7 +231,7 @@ Returns: nothing.
 
 Filter Options Window Provider function
 
-This function is called by Aegisub to get a Dialog Window definition to prompt
+This function is called by SubStation to get a Dialog Window definition to prompt
 the user for input before an export operation.
 The data input into the dialog returned by this function are automatically
 stored into the original subtitle file when an export operation is started.
@@ -257,7 +257,7 @@ Returns: A Dialog Window table.
 
 Format Reader Function
 
-This function is called by Aegisub to import a file from a foreign file
+This function is called by SubStation to import a file from a foreign file
 format.
 
 function read_format(
@@ -280,7 +280,7 @@ Returns: Boolean.
 
 Format Writer Function
 
-This function is called by Aegisub to export a file to a foreign file format.
+This function is called by SubStation to export a file to a foreign file format.
 
 function write_format(
     input_subs,
@@ -336,7 +336,7 @@ function is provided instead.
 
 This function behaves almost the same as dofile(), except that it doesn't
 support reading from stdin (no such thing exists/is supposed to exist for
-Aegisub) and it follows some special search rules along a path.
+SubStation) and it follows some special search rules along a path.
 
 function include(filename)
 
@@ -348,7 +348,7 @@ Returns: Any return-values of the included script.
 File search rules:
 1. If there are no path-components in the filename (ie. just a filename),
    the directory of the original script is searched first. Afterwards, the
-   search path specified in the Aegisub configuration file is searched.
+   search path specified in the SubStation configuration file is searched.
 2. If the filename contains path components, it is only searched relative
    to the location of the original script file.
 3. Absolute paths are not mangled in any way. Using absolute paths is

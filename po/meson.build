@@ -7,7 +7,7 @@ i18n = import('i18n')
 # Until a solution is found, POT updates should continue to use make_pot.sh.
 # Similarly, since meson insists on regenerating the POT file before updating
 # PO files, PO files should be updated using update_po.sh
-i18n.gettext('aegisub',
+i18n.gettext('substation',
              args: [
                 '-k_', '-kSTR_MENU', '-kSTR_DISP', '-kSTR_HELP', '-kCOMMAND_GROUP:5,',
                 '-kfmt_tl', '-kfmt_plural:2,3',

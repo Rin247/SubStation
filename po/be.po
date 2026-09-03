@@ -1,7 +1,7 @@
-# Aegisub 3.2
+# SubStation 3.2
 # Copyright (C) 2005-2014 Rodrigo Braz Monteiro, Niels Martin Hansen, Thomas Goyne et. al.
-# This file is distributed under the same license as the Aegisub package.
-# Niels Martin Hansen <nielsm@aegisub.org>, 2005-2014.
+# This file is distributed under the same license as the SubStation package.
+# Niels Martin Hansen <nielsm@substation.org>, 2005-2014.
 #
 # Translators:
 # Translators:
@@ -10,7 +10,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Aegisub (unofficial)\n"
+"Project-Id-Version: SubStation (unofficial)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-07-25 16:15+0200\n"
 "PO-Revision-Date: 2018-09-26 07:39+0000\n"
@@ -25,11 +25,11 @@ msgstr ""
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: ../src/aegisublocale.cpp:113 ../src/command/app.cpp:156
+#: ../src/substationlocale.cpp:113 ../src/command/app.cpp:156
 msgid "Language"
 msgstr "Мова"
 
-#: ../src/aegisublocale.cpp:113
+#: ../src/substationlocale.cpp:113
 #, fuzzy
 #| msgid "Please choose the folder:"
 msgid "Please choose a language:"
@@ -371,10 +371,10 @@ msgstr ""
 
 #: ../src/charset_detect.cpp:50
 msgid ""
-"Aegisub could not narrow down the character set to a single one.\n"
+"SubStation could not narrow down the character set to a single one.\n"
 "Please pick one below:"
 msgstr ""
-"Aegisub не можа дакладна вызначыць кадзіроўку файла.\n"
+"SubStation не можа дакладна вызначыць кадзіроўку файла.\n"
 "Выберыце адну са спісу:"
 
 #: ../src/charset_detect.cpp:51
@@ -390,8 +390,8 @@ msgid "About"
 msgstr "Аб праграме"
 
 #: ../src/command/app.cpp:58 ../src/dialog_about.cpp:44
-msgid "About Aegisub"
-msgstr "Аб Aegisub"
+msgid "About SubStation"
+msgstr "Аб SubStation"
 
 #: ../src/command/app.cpp:67
 msgid "&Audio+Subs View"
@@ -458,20 +458,20 @@ msgid "&Language..."
 msgstr "&Мова"
 
 #: ../src/command/app.cpp:157
-msgid "Select Aegisub interface language"
-msgstr "Выбраць мову інтэрфейса Aegisub"
+msgid "Select SubStation interface language"
+msgstr "Выбраць мову інтэрфейса SubStation"
 
 #: ../src/command/app.cpp:167
 msgid ""
-"Aegisub needs to be restarted so that the new language can be applied. "
+"SubStation needs to be restarted so that the new language can be applied. "
 "Restart now?"
 msgstr ""
 
 #: ../src/command/app.cpp:167
 #, fuzzy
-#| msgid "About Aegisub"
-msgid "Restart Aegisub?"
-msgstr "Аб Aegisub"
+#| msgid "About SubStation"
+msgid "Restart SubStation?"
+msgstr "Аб SubStation"
 
 #: ../src/command/app.cpp:180
 msgid "&Log window"
@@ -508,7 +508,7 @@ msgid "Options"
 msgstr "Параметры"
 
 #: ../src/command/app.cpp:206
-msgid "Configure Aegisub"
+msgid "Configure SubStation"
 msgstr "Налады"
 
 #: ../src/command/app.cpp:220 ../src/command/app.cpp:221
@@ -540,8 +540,8 @@ msgid "Check for Updates"
 msgstr "Праверыць абнаўленні"
 
 #: ../src/command/app.cpp:260
-msgid "Check to see if there is a new version of Aegisub available"
-msgstr "Праверыць, ці даступна новая версія Aegisub"
+msgid "Check to see if there is a new version of SubStation available"
+msgstr "Праверыць, ці даступна новая версія SubStation"
 
 #: ../src/command/app.cpp:270 ../src/command/app.cpp:271
 msgid "Minimize"
@@ -1628,8 +1628,8 @@ msgid "Bug Tracker"
 msgstr "Адсочванне памылак"
 
 #: ../src/command/help.cpp:49
-msgid "Visit Aegisub's bug tracker to report bugs and request new features"
-msgstr "Паведаміць пра памылкі і прапанаваць новыя функцыі для Aegisub"
+msgid "Visit SubStation's bug tracker to report bugs and request new features"
+msgstr "Паведаміць пра памылкі і прапанаваць новыя функцыі для SubStation"
 
 #: ../src/command/help.cpp:68
 msgid "&Contents"
@@ -1652,8 +1652,8 @@ msgid "IRC Channel"
 msgstr "IRC-канал"
 
 #: ../src/command/help.cpp:82
-msgid "Visit Aegisub's official IRC channel"
-msgstr "Перайсці на афіцыйны IRC-канал Aegisub"
+msgid "Visit SubStation's official IRC channel"
+msgstr "Перайсці на афіцыйны IRC-канал SubStation"
 
 #: ../src/command/help.cpp:92
 msgid "&Visual Typesetting"
@@ -1676,8 +1676,8 @@ msgid "Website"
 msgstr "Сайт"
 
 #: ../src/command/help.cpp:106
-msgid "Visit Aegisub's official website"
-msgstr "Наведаць афіцыйны сайт Aegisub"
+msgid "Visit SubStation's official website"
+msgstr "Наведаць афіцыйны сайт SubStation"
 
 #: ../src/command/keyframe.cpp:49 ../src/command/keyframe.cpp:50
 msgid "Close Keyframes"
@@ -1887,7 +1887,7 @@ msgid "Open Autosaved Subtitles"
 msgstr "Адкрыць аўтазахаваныя субтытры"
 
 #: ../src/command/subtitle.cpp:284
-msgid "Open a previous version of a file which was autosaved by Aegisub"
+msgid "Open a previous version of a file which was autosaved by SubStation"
 msgstr "Адкрыць аўтазахаваную папярэднюю версію файла"
 
 #: ../src/command/subtitle.cpp:297
@@ -4397,16 +4397,16 @@ msgid "Remove fro&m dictionary"
 msgstr "Выдаліць са слоўніку"
 
 #: ../src/dialog_spellchecker.cpp:279
-msgid "Aegisub has finished checking spelling of this script."
-msgstr "Aegisub скончыла правяраць арфаграфію ў дадзеным скрыпце."
+msgid "SubStation has finished checking spelling of this script."
+msgstr "SubStation скончыла правяраць арфаграфію ў дадзеным скрыпце."
 
 #: ../src/dialog_spellchecker.cpp:279 ../src/dialog_spellchecker.cpp:283
 msgid "Spell checking complete."
 msgstr "Праверка арфаграфіі завершана."
 
 #: ../src/dialog_spellchecker.cpp:283
-msgid "Aegisub has found no spelling mistakes in this script."
-msgstr "Aegisub не знайшла памылак у гэтым скрыпце."
+msgid "SubStation has found no spelling mistakes in this script."
+msgstr "SubStation не знайшла памылак у гэтым скрыпце."
 
 #: ../src/dialog_spellchecker.cpp:329 ../src/dialog_spellchecker.cpp:343
 msgid "spell check replace"
@@ -5164,35 +5164,35 @@ msgid "Checking for updates failed: %s."
 msgstr ""
 
 #: ../src/dialog_version_check.cpp:345
-msgid "An update to Aegisub was found."
-msgstr "Знойдзена абнаўленне Aegisub."
+msgid "An update to SubStation was found."
+msgstr "Знойдзена абнаўленне SubStation."
 
 #: ../src/dialog_version_check.cpp:347
-msgid "Several possible updates to Aegisub were found."
-msgstr "Знойдзена некалькі абнаўленняў Aegisub."
+msgid "Several possible updates to SubStation were found."
+msgstr "Знойдзена некалькі абнаўленняў SubStation."
 
 #: ../src/dialog_version_check.cpp:349
-msgid "There are no updates to Aegisub."
-msgstr "Абнаўленняў Aegisub няма."
+msgid "There are no updates to SubStation."
+msgstr "Абнаўленняў SubStation няма."
 
 #: ../src/dialog_version_check.cpp:377
 #, c-format
 msgid ""
-"There was an error checking for updates to Aegisub:\n"
+"There was an error checking for updates to SubStation:\n"
 "%s\n"
 "\n"
 "If other applications can access the Internet fine, this is probably a "
 "temporary server problem on our end."
 msgstr ""
-"Адбылася памылка праверкі абнаўленняў Aegisub:\n"
+"Адбылася памылка праверкі абнаўленняў SubStation:\n"
 "%s\n"
 "\n"
 "Калі ў іншых праграм няма праблем з доступам да інтэрнэта, верагодна, гэта "
 "часовая памылка сервера на нашым канцы."
 
 #: ../src/dialog_version_check.cpp:381
-msgid "An unknown error occurred while checking for updates to Aegisub."
-msgstr "Адбылася невядомая памылка падчас праверкі абнаўленняў Aegisub."
+msgid "An unknown error occurred while checking for updates to SubStation."
+msgstr "Адбылася невядомая памылка падчас праверкі абнаўленняў SubStation."
 
 #: ../src/dialog_video_details.cpp:46
 msgid "Video Details"
@@ -5509,21 +5509,21 @@ msgstr ""
 #: ../src/main.cpp:266
 #, c-format
 msgid ""
-"Oops, Aegisub has crashed!\n"
+"Oops, SubStation has crashed!\n"
 "\n"
 "An attempt has been made to save a copy of your file to:\n"
 "\n"
 "%s\n"
 "\n"
-"Aegisub will now close."
+"SubStation will now close."
 msgstr ""
-"Упс, Aegisub упала!\n"
+"Упс, SubStation упала!\n"
 "\n"
 "Зрабілі спробу запісаць копію вашага файла ў:\n"
 "\n"
 "%s\n"
 "\n"
-"Зараз Aegisub будзе закрыты."
+"Зараз SubStation будзе закрыты."
 
 #: ../src/main.cpp:295
 msgid "Check for updates?"
@@ -5531,10 +5531,10 @@ msgstr "Праверыць абнаўленні?"
 
 #: ../src/main.cpp:295
 msgid ""
-"Do you want Aegisub to check for updates whenever it starts? You can still "
+"Do you want SubStation to check for updates whenever it starts? You can still "
 "do it manually via the Help menu."
 msgstr ""
-"Правяраць абнаўленні праграмы Aegisub падчас запуску? Вы гэта можаце рабіць "
+"Правяраць абнаўленні праграмы SubStation падчас запуску? Вы гэта можаце рабіць "
 "гэта і ўручную праз меню \"Дапамога\"."
 
 #: ../src/main.cpp:301
@@ -5556,7 +5556,7 @@ msgstr "Памылка праграмы"
 #: ../src/main.cpp:417
 #, c-format
 msgid ""
-"Aegisub has crashed while starting up!\n"
+"SubStation has crashed while starting up!\n"
 "\n"
 "The last startup step attempted was: %s."
 msgstr ""
@@ -5565,12 +5565,12 @@ msgstr ""
 #, c-format
 msgid ""
 "An unexpected error has occurred. Please save your work and restart "
-"Aegisub.\n"
+"SubStation.\n"
 "\n"
 "Error Message: %s"
 msgstr ""
 "Адбылася нечаканая памылка. Захавайце вынікі вашай працы і перазапусціце "
-"Aegisub.\n"
+"SubStation.\n"
 "\n"
 "Паведамленне аб памылцы: %s"
 
@@ -7297,8 +7297,8 @@ msgid "Create a start menu icon"
 msgstr "Стварыць значок у меню \"Пуск\""
 
 #: packages/win_installer/fragment_strings.iss:1
-msgid "Automatically check for new versions of Aegisub"
-msgstr "Аўтаматычна правяраць абнаўленні Aegisub"
+msgid "Automatically check for new versions of SubStation"
+msgstr "Аўтаматычна правяраць абнаўленні SubStation"
 
 #: packages/win_installer/fragment_strings.iss:1
 msgid "Update Checker:"
@@ -7306,61 +7306,61 @@ msgstr "Праверка абнаўленняў:"
 
 #: packages/win_installer/fragment_strings.iss:1
 msgid ""
-"This will install Aegisub {#BUILD_GIT_VERSION_STRING} on your computer."
+"This will install SubStation {#BUILD_GIT_VERSION_STRING} on your computer."
 "%n%nAegisub is covered by the GNU General Public License version 2. This "
 "means you may use the application for any purpose without charge, but that "
-"no warranties of any kind are given either.%n%nSee the Aegisub website for "
+"no warranties of any kind are given either.%n%nSee the SubStation website for "
 "information on obtaining the source code."
 msgstr ""
-"Гэта ўсталюе Aegisub {#BUILD_GIT_VERSION_STRING} на ваш камп'ютар."
+"Гэта ўсталюе SubStation {#BUILD_GIT_VERSION_STRING} на ваш камп'ютар."
 "%n%nAegisub распаўсюджваецца па ліцэнзіі GNU General Public License version "
 "2. Гэта азначае, што вы можаце выкарыстоўваць гэту праграму для любых мэт, "
 "але без якіх-небудзь гарантый.%n%nКаб даведацца пра атрыманне зыходнага "
-"кода, перайдзіце на сайт Aegisub."
+"кода, перайдзіце на сайт SubStation."
 
-#: ../packages/desktop/aegisub.desktop.in.in:4
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:6
-msgid "Aegisub"
-msgstr "Aegisub"
+#: ../packages/desktop/substation.desktop.in.in:4
+#: ../packages/desktop/substation.metainfo.xml.in.in:6
+msgid "SubStation"
+msgstr "SubStation"
 
-#: ../packages/desktop/aegisub.desktop.in.in:5
+#: ../packages/desktop/substation.desktop.in.in:5
 msgid "Subtitle Editor"
 msgstr "Рэдактар субтытраў"
 
-#: ../packages/desktop/aegisub.desktop.in.in:6
+#: ../packages/desktop/substation.desktop.in.in:6
 msgid "Create and edit subtitles for film and videos."
 msgstr "Стварыць і рэдагаваць субтытры для фільмаў і відэа."
 
-#: ../packages/desktop/aegisub.desktop.in.in:12
+#: ../packages/desktop/substation.desktop.in.in:12
 msgid "subtitles;subtitle;captions;captioning;video;audio;"
 msgstr ""
 
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:7
+#: ../packages/desktop/substation.metainfo.xml.in.in:7
 msgid "Create and modify subtitles"
 msgstr ""
 
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:9
+#: ../packages/desktop/substation.metainfo.xml.in.in:9
 msgid ""
-"Aegisub is a free, cross-platform open source tool for creating and "
-"modifying subtitles. Aegisub makes it quick and easy to time subtitles to "
+"SubStation is a free, cross-platform open source tool for creating and "
+"modifying subtitles. SubStation makes it quick and easy to time subtitles to "
 "audio, and features many powerful tools for styling them, including a built-"
 "in real-time video preview."
 msgstr ""
 
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:10
+#: ../packages/desktop/substation.metainfo.xml.in.in:10
 msgid ""
-"Aegisub was originally created as a tool to make typesetting, particularly "
+"SubStation was originally created as a tool to make typesetting, particularly "
 "in anime fansubs, a less painful experience. At the time of the start of the "
 "project, many other programs that supported the Advanced Substation Alpha "
 "format lacked (and in many cases, still lack; development on several "
 "competing programs have since been dropped for various reasons completely "
-"unrelated to Aegisub) many vital functions, or were too buggy and/or "
+"unrelated to SubStation) many vital functions, or were too buggy and/or "
 "unreliable to be really useful."
 msgstr ""
 
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:11
+#: ../packages/desktop/substation.metainfo.xml.in.in:11
 msgid ""
-"Since then, Aegisub has grown into a fully fledged, highly customizable "
+"Since then, SubStation has grown into a fully fledged, highly customizable "
 "subtitle editor. It features a lot of convenient tools to help you with "
 "timing, typesetting, editing and translating subtitles, as well as a "
 "powerful scripting environment called Automation (originally mostly intended "
@@ -7368,43 +7368,43 @@ msgid ""
 "including creating macros and various other convenient tools)."
 msgstr ""
 
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:12
-msgid "Some highlights of Aegisub:"
+#: ../packages/desktop/substation.metainfo.xml.in.in:12
+msgid "Some highlights of SubStation:"
 msgstr ""
 
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:14
+#: ../packages/desktop/substation.metainfo.xml.in.in:14
 msgid "Simple and intuitive yet powerful interface for editing subtitles"
 msgstr ""
 
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:15
+#: ../packages/desktop/substation.metainfo.xml.in.in:15
 msgid "Support for many formats and character sets"
 msgstr ""
 
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:16
+#: ../packages/desktop/substation.metainfo.xml.in.in:16
 msgid "Powerful video mode"
 msgstr ""
 
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:17
+#: ../packages/desktop/substation.metainfo.xml.in.in:17
 msgid "Visual typesetting tools"
 msgstr ""
 
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:18
+#: ../packages/desktop/substation.metainfo.xml.in.in:18
 msgid "Intuitive and customizable audio timing mode"
 msgstr ""
 
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:19
+#: ../packages/desktop/substation.metainfo.xml.in.in:19
 msgid "Fully scriptable through the Automation module"
 msgstr ""
 
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:43
+#: ../packages/desktop/substation.metainfo.xml.in.in:43
 msgid "Typesetting"
 msgstr ""
 
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:47
+#: ../packages/desktop/substation.metainfo.xml.in.in:47
 msgid "Audio video"
 msgstr ""
 
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:51
+#: ../packages/desktop/substation.metainfo.xml.in.in:51
 msgid "Audio timing"
 msgstr ""
 

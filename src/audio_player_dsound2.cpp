@@ -9,7 +9,7 @@
 //   * Redistributions in binary form must reproduce the above copyright notice,
 //     this list of conditions and the following disclaimer in the documentation
 //     and/or other materials provided with the distribution.
-//   * Neither the name of the Aegisub Group nor the names of its contributors
+//   * Neither the name of the SubStation Group nor the names of its contributors
 //     may be used to endorse or promote products derived from this software
 //     without specific prior written permission.
 //
@@ -25,7 +25,7 @@
 // ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
-// Aegisub Project http://www.aegisub.org/
+// SubStation Project http://www.substation.org/
 
 /// @file audio_player_dsound2.cpp
 /// @brief New DirectSound-based audio output
@@ -33,16 +33,16 @@
 ///
 
 #ifdef WITH_DIRECTSOUND
-#include "include/aegisub/audio_player.h"
+#include "include/substation/audio_player.h"
 
 #include "audio_controller.h"
 #include "frame_main.h"
 #include "options.h"
 #include "utils.h"
 
-#include <libaegisub/audio/provider.h>
-#include <libaegisub/scoped_ptr.h>
-#include <libaegisub/log.h>
+#include <libsubstation/audio/provider.h>
+#include <libsubstation/scoped_ptr.h>
+#include <libsubstation/log.h>
 
 #include <mmsystem.h>
 #include <process.h>

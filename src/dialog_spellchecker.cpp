@@ -1,4 +1,4 @@
-// Copyright (c) 2011, Thomas Goyne <plorkyeran@aegisub.org>
+// Copyright (c) 2011, Thomas Goyne <plorkyeran@substation.org>
 //
 // Permission to use, copy, modify, and distribute this software for any
 // purpose with or without fee is hereby granted, provided that the above
@@ -12,23 +12,23 @@
 // ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 // OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 //
-// Aegisub Project http://www.aegisub.org/
+// SubStation Project http://www.substation.org/
 
 #include "ass_dialogue.h"
 #include "ass_file.h"
 #include "compat.h"
 #include "dialog_manager.h"
 #include "help_button.h"
-#include "include/aegisub/context.h"
-#include "include/aegisub/spellchecker.h"
+#include "include/substation/context.h"
+#include "include/substation/spellchecker.h"
 #include "libresrc/libresrc.h"
 #include "options.h"
 #include "selection_controller.h"
 #include "text_selection_controller.h"
 
-#include <libaegisub/ass/dialogue_parser.h>
-#include <libaegisub/exception.h>
-#include <libaegisub/spellchecker.h>
+#include <libsubstation/ass/dialogue_parser.h>
+#include <libsubstation/exception.h>
+#include <libsubstation/spellchecker.h>
 
 #include <boost/locale/conversion.hpp>
 #include <map>
@@ -276,11 +276,11 @@ bool DialogSpellChecker::FindNext() {
 	}
 
 	if (IsShown()) {
-		wxMessageBox(_("Aegisub has finished checking spelling of this script."), _("Spell checking complete."));
+		wxMessageBox(_("SubStation has finished checking spelling of this script."), _("Spell checking complete."));
 		Close();
 	}
 	else {
-		wxMessageBox(_("Aegisub has found no spelling mistakes in this script."), _("Spell checking complete."));
+		wxMessageBox(_("SubStation has found no spelling mistakes in this script."), _("Spell checking complete."));
 		throw agi::UserCancelException("No spelling mistakes");
 	}
 

@@ -10,7 +10,7 @@
    * Redistributions in binary form must reproduce the above copyright notice,
      this list of conditions and the following disclaimer in the documentation
      and/or other materials provided with the distribution.
-   * Neither the name of the Aegisub Group nor the names of its contributors
+   * Neither the name of the SubStation Group nor the names of its contributors
      may be used to endorse or promote products derived from this software
      without specific prior written permission.
 
@@ -27,11 +27,11 @@
  POSSIBILITY OF SUCH DAMAGE.
 ]]
 
--- Aegisub Automation 4 Lua karaoke templater tool
+-- SubStation Automation 4 Lua karaoke templater tool
 -- Parse and apply a karaoke effect written in ASS karaoke template language
 -- See help file and wiki for more information on this
 
-local tr = aegisub.gettext
+local tr = substation.gettext
 
 script_name = tr"Karaoke Templater"
 script_description = tr"Macro and export filter to apply karaoke effects using the template language"
@@ -47,7 +47,7 @@ function parse_templates(meta, styles, subs)
 	local templates = { once = {}, line = {}, syl = {}, char = {}, furi = {}, styles = {} }
 	local i = 1
 	while i <= #subs do
-		aegisub.progress.set((i-1) / #subs * 100)
+		substation.progress.set((i-1) / #subs * 100)
 		local l = subs[i]
 		i = i + 1
 		if l.class == "dialogue" and l.comment then
@@ -65,7 +65,7 @@ function parse_templates(meta, styles, subs)
 			subs.delete(i)
 		end
 	end
-	aegisub.progress.set(100)
+	substation.progress.set(100)
 	return templates
 end
 
@@ -83,19 +83,19 @@ function parse_code(meta, styles, line, templates, mods)
 		rest = t
 		m = m:lower()
 		if m == "once" then
-			aegisub.debug.out(5, "Found run-once code line: %s\n", line.text)
+			substation.debug.out(5, "Found run-once code line: %s\n", line.text)
 			table.insert(templates.once, template)
 			inserted = true
 		elseif m == "line" then
-			aegisub.debug.out(5, "Found per-line code line: %s\n", line.text)
+			substation.debug.out(5, "Found per-line code line: %s\n", line.text)
 			table.insert(templates.line, template)
 			inserted = true
 		elseif m == "syl" then
-			aegisub.debug.out(5, "Found per-syl code line: %s\n", line.text)
+			substation.debug.out(5, "Found per-syl code line: %s\n", line.text)
 			table.insert(templates.syl, template)
 			inserted = true
 		elseif m == "furi" then
-			aegisub.debug.out(5, "Found per-syl code line: %s\n", line.text)
+			substation.debug.out(5, "Found per-syl code line: %s\n", line.text)
 			table.insert(templates.furi, template)
 			inserted = true
 		elseif m == "all" then
@@ -106,18 +106,18 @@ function parse_code(meta, styles, line, templates, mods)
 			local times, t = string.headtail(rest)
 			template.loops = tonumber(times)
 			if not template.loops then
-				aegisub.debug.out(3, "Failed reading this repeat-count to a number: %s\nIn template code line: %s\nEffect field: %s\n\n", times, line.text, line.effect)
+				substation.debug.out(3, "Failed reading this repeat-count to a number: %s\nIn template code line: %s\nEffect field: %s\n\n", times, line.text, line.effect)
 				template.loops = 1
 			else
 				rest = t
 			end
 		else
-			aegisub.debug.out(3, "Unknown modifier in code template: %s\nIn template code line: %s\nEffect field: %s\n\n", m, line.text, line.effect)
+			substation.debug.out(3, "Unknown modifier in code template: %s\nIn template code line: %s\nEffect field: %s\n\n", m, line.text, line.effect)
 		end
 	end
 
 	if not inserted then
-		aegisub.debug.out(5, "Found implicit run-once code line: %s\n", line.text)
+		substation.debug.out(5, "Found implicit run-once code line: %s\n", line.text)
 		table.insert(templates.once, template)
 	end
 end
@@ -152,7 +152,7 @@ function parse_template(meta, styles, line, templates, mods)
 		rest = t
 		m = m:lower()
 		if (m == "pre-line" or m == "line") and not inserted then
-			aegisub.debug.out(5, "Found line template '%s'\n", line.text)
+			substation.debug.out(5, "Found line template '%s'\n", line.text)
 			-- should really fail if already inserted
 			local id, t = string.headtail(rest)
 			id = id:lower()
@@ -193,16 +193,16 @@ function parse_template(meta, styles, line, templates, mods)
 			table.insert(templates.furi, template)
 			inserted = true
 		elseif (m == "pre-line" or m == "line") and inserted then
-			aegisub.debug.out(2, "Unable to combine %s class templates with other template classes\n\n", m)
+			substation.debug.out(2, "Unable to combine %s class templates with other template classes\n\n", m)
 		elseif (m == "syl" or m == "furi") and template.isline then
-			aegisub.debug.out(2, "Unable to combine %s class template lines with line or pre-line classes\n\n", m)
+			substation.debug.out(2, "Unable to combine %s class template lines with line or pre-line classes\n\n", m)
 		elseif m == "all" then
 			template.style = nil
 		elseif m == "repeat" or m == "loop" then
 			local times, t = string.headtail(rest)
 			template.loops = tonumber(times)
 			if not template.loops then
-				aegisub.debug.out(3, "Failed reading this repeat-count to a number: %s\nIn template line: %s\nEffect field: %s\n\n", times, line.text, line.effect)
+				substation.debug.out(3, "Failed reading this repeat-count to a number: %s\nIn template line: %s\nEffect field: %s\n\n", times, line.text, line.effect)
 				template.loops = 1
 			else
 				rest = t
@@ -223,7 +223,7 @@ function parse_template(meta, styles, line, templates, mods)
 				template.fx = fx
 				rest = t
 			else
-				aegisub.debug.out(3, "No fx name following fx modifier\nIn template line: %s\nEffect field: %s\n\n", line.text, line.effect)
+				substation.debug.out(3, "No fx name following fx modifier\nIn template line: %s\nEffect field: %s\n\n", line.text, line.effect)
 				template.fx = nil
 			end
 		elseif m == "fxgroup" then
@@ -232,11 +232,11 @@ function parse_template(meta, styles, line, templates, mods)
 				template.fxgroup = fx
 				rest = t
 			else
-				aegisub.debug.out(3, "No fxgroup name following fxgroup modifier\nIn template linee: %s\nEffect field: %s\n\n", line.text, line.effect)
+				substation.debug.out(3, "No fxgroup name following fxgroup modifier\nIn template linee: %s\nEffect field: %s\n\n", line.text, line.effect)
 				template.fxgroup = nil
 			end
 		else
-			aegisub.debug.out(3, "Unknown modifier in template: %s\nIn template line: %s\nEffect field: %s\n\n", m, line.text, line.effect)
+			substation.debug.out(3, "Unknown modifier in template: %s\nIn template line: %s\nEffect field: %s\n\n", m, line.text, line.effect)
 		end
 	end
 
@@ -273,12 +273,12 @@ function template_loop(tenv, initmaxj)
 	tenv.maxj = initmaxj
 	tenv.j = 0
 	local function itor()
-		if tenv.j >= tenv.maxj or aegisub.progress.is_cancelled() then
+		if tenv.j >= tenv.maxj or substation.progress.is_cancelled() then
 			return nil
 		else
 			tenv.j = tenv.j + 1
 			if oldmaxj ~= tenv.maxj then
-				aegisub.debug.out(5, "Number of loop iterations changed from %d to %d\n", oldmaxj, tenv.maxj)
+				substation.debug.out(5, "Number of loop iterations changed from %d to %d\n", oldmaxj, tenv.maxj)
 				oldmaxj = tenv.maxj
 			end
 			return tenv.j, tenv.maxj
@@ -379,7 +379,7 @@ function apply_templates(meta, styles, subs, templates)
 			if decorator then
 				name = decorator(tostring(name))
 			end
-			aegisub.debug.out(5, "Recalling '%s'\n", name)
+			substation.debug.out(5, "Recalling '%s'\n", name)
 			return tab[name] or default
 		end,
 		decorator_line = function(name)
@@ -397,7 +397,7 @@ function apply_templates(meta, styles, subs, templates)
 		if decorator then
 			name = decorator(tostring(name))
 		end
-		aegisub.debug.out(5, "Remembering '%s' as '%s'\n", name, tostring(value))
+		substation.debug.out(5, "Remembering '%s' as '%s'\n", name, tostring(value))
 		tenv.recall[name] = value
 		return value
 	end
@@ -426,7 +426,7 @@ function apply_templates(meta, styles, subs, templates)
 	-- start processing lines
 	local i, n = 0, #subs
 	while i < n do
-		aegisub.progress.set(i/n*100)
+		substation.progress.set(i/n*100)
 		i = i + 1
 		local l = subs[i]
 		if l.class == "dialogue" and ((l.effect == "" and not l.comment) or l.effect:match("[Kk]araoke")) then
@@ -534,9 +534,9 @@ function apply_line(meta, styles, subs, line, templates, tenv)
 	tenv.basesyl = nil
 
 	-- Apply all line templates
-	aegisub.debug.out(5, "Running line templates\n")
+	substation.debug.out(5, "Running line templates\n")
 	for t in matching_templates(templates.line, line, tenv) do
-		if aegisub.progress.is_cancelled() then break end
+		if substation.progress.is_cancelled() then break end
 
 		-- Set varctx for per-line variables
 		varctx["start"] = varctx.lstart
@@ -558,7 +558,7 @@ function apply_line(meta, styles, subs, line, templates, tenv)
 
 		for j, maxj in template_loop(tenv, t.loops) do
 			if t.code then
-				aegisub.debug.out(5, "Code template, %s\n", t.code)
+				substation.debug.out(5, "Code template, %s\n", t.code)
 				tenv.line = line
 				-- Although run_code_template also performs template looping this works
 				-- by "luck", since by the time the first loop of this outer loop completes
@@ -567,7 +567,7 @@ function apply_line(meta, styles, subs, line, templates, tenv)
 				-- loop to only ever run once.
 				run_code_template(t, tenv)
 			else
-				aegisub.debug.out(5, "Line template, pre = '%s', t = '%s'\n", t.pre, t.t)
+				substation.debug.out(5, "Line template, pre = '%s', t = '%s'\n", t.pre, t.t)
 				applied_templates = true
 				local newline = table.copy(line)
 				tenv.line = newline
@@ -604,14 +604,14 @@ function apply_line(meta, styles, subs, line, templates, tenv)
 			end
 		end
 	end
-	aegisub.debug.out(5, "Done running line templates\n\n")
+	substation.debug.out(5, "Done running line templates\n\n")
 
 	-- Loop over syllables
 	for i = 0, line.kara.n do
-		if aegisub.progress.is_cancelled() then break end
+		if substation.progress.is_cancelled() then break end
 		local syl = line.kara[i]
 
-		aegisub.debug.out(5, "Applying templates to syllable: %s\n", syl.text)
+		substation.debug.out(5, "Applying templates to syllable: %s\n", syl.text)
 		if apply_syllable_templates(syl, line, templates.syl, tenv, varctx, subs) then
 			applied_templates = true
 		end
@@ -619,10 +619,10 @@ function apply_line(meta, styles, subs, line, templates, tenv)
 
 	-- Loop over furigana
 	for i = 1, line.furi.n do
-		if aegisub.progress.is_cancelled() then break end
+		if substation.progress.is_cancelled() then break end
 		local furi = line.furi[i]
 
-		aegisub.debug.out(5, "Applying templates to furigana: %s\n", furi.text)
+		substation.debug.out(5, "Applying templates to furigana: %s\n", furi.text)
 		if apply_syllable_templates(furi, line, templates.furi, tenv, varctx, subs) then
 			applied_templates = true
 		end
@@ -634,16 +634,16 @@ end
 function run_code_template(template, tenv)
 	local f, err = loadstring(template.code, "template code")
 	if not f then
-		aegisub.debug.out(2, "Failed to parse Lua code: %s\nCode that failed to parse: %s\n\n", err, template.code)
-		aegisub.cancel()
+		substation.debug.out(2, "Failed to parse Lua code: %s\nCode that failed to parse: %s\n\n", err, template.code)
+		substation.cancel()
 	else
 		local pcall = pcall
 		setfenv(f, tenv)
 		for j, maxj in template_loop(tenv, template.loops) do
 			local res, err = pcall(f)
 			if not res then
-				aegisub.debug.out(2, "Runtime error in template code: %s\nCode producing error: %s\n\n", err, template.code)
-				aegisub.cancel()
+				substation.debug.out(2, "Runtime error in template code: %s\nCode producing error: %s\n\n", err, template.code)
+				substation.cancel()
 			end
 		end
 	end
@@ -651,48 +651,48 @@ end
 
 function run_text_template(template, tenv, varctx)
 	local res = template
-	aegisub.debug.out(5, "Running text template '%s'\n", res)
+	substation.debug.out(5, "Running text template '%s'\n", res)
 
 	-- Replace the variables in the string (this is probably faster than using a custom function, but doesn't provide error reporting)
 	if varctx then
-		aegisub.debug.out(5, "Has varctx, replacing variables\n")
+		substation.debug.out(5, "Has varctx, replacing variables\n")
 		local function var_replacer(varname)
 			varname = string.lower(varname)
-			aegisub.debug.out(5, "Found variable named '%s', ", varname)
+			substation.debug.out(5, "Found variable named '%s', ", varname)
 			if varctx[varname] ~= nil then
-				aegisub.debug.out(5, "it exists, value is '%s'\n", varctx[varname])
+				substation.debug.out(5, "it exists, value is '%s'\n", varctx[varname])
 				return varctx[varname]
 			else
-				aegisub.debug.out(5, "doesn't exist\n")
-				aegisub.debug.out(2, "Unknown variable name: %s\nIn karaoke template: %s\n\n", varname, template)
+				substation.debug.out(5, "doesn't exist\n")
+				substation.debug.out(2, "Unknown variable name: %s\nIn karaoke template: %s\n\n", varname, template)
 				return "$" .. varname
 			end
 		end
 		res = string.gsub(res, "$([%a_]+)", var_replacer)
-		aegisub.debug.out(5, "Done replacing variables, new template string is '%s'\n", res)
+		substation.debug.out(5, "Done replacing variables, new template string is '%s'\n", res)
 	end
 
 	-- Function for evaluating expressions
 	local function expression_evaluator(expression)
 		f, err = loadstring(string.format("return (%s)", expression))
 		if (err) ~= nil then
-			aegisub.debug.out(2, "Error parsing expression: %s\nExpression producing error: %s\nTemplate with expression: %s\n\n", err, expression, template)
-			aegisub.cancel()
+			substation.debug.out(2, "Error parsing expression: %s\nExpression producing error: %s\nTemplate with expression: %s\n\n", err, expression, template)
+			substation.cancel()
 		else
 			setfenv(f, tenv)
 			local res, val = pcall(f)
 			if res then
 				return val
 			else
-				aegisub.debug.out(2, "Runtime error in template expression: %s\nExpression producing error: %s\nTemplate with expression: %s\n\n", val, expression, template)
-				aegisub.cancel()
+				substation.debug.out(2, "Runtime error in template expression: %s\nExpression producing error: %s\nTemplate with expression: %s\n\n", val, expression, template)
+				substation.cancel()
 			end
 		end
 	end
 	-- Find and evaluate expressions
-	aegisub.debug.out(5, "Now evaluating expressions\n")
+	substation.debug.out(5, "Now evaluating expressions\n")
 	res = string.gsub(res , "!(.-)!", expression_evaluator)
-	aegisub.debug.out(5, "After evaluation: %s\nDone handling template\n\n", res)
+	substation.debug.out(5, "After evaluation: %s\nDone handling template\n\n", res)
 
 	return res
 end
@@ -702,7 +702,7 @@ function apply_syllable_templates(syl, line, templates, tenv, varctx, subs)
 
 	-- Loop over all templates matching the line style
 	for t in matching_templates(templates, line, tenv) do
-		if aegisub.progress.is_cancelled() then break end
+		if substation.progress.is_cancelled() then break end
 
 		tenv.syl = syl
 		tenv.basesyl = syl
@@ -728,26 +728,26 @@ function is_syl_blank(syl)
 end
 
 function apply_one_syllable_template(syl, line, template, tenv, varctx, subs, skip_perchar, skip_multi)
-	if aegisub.progress.is_cancelled() then return 0 end
+	if substation.progress.is_cancelled() then return 0 end
 	local t = template
 	local applied = 0
 
-	aegisub.debug.out(5, "Applying template to one syllable with text: %s\n", syl.text)
+	substation.debug.out(5, "Applying template to one syllable with text: %s\n", syl.text)
 
 	-- Check for right inline_fx
 	if t.fx and t.fx ~= syl.inline_fx then
-		aegisub.debug.out(5, "Syllable has wrong inline-fx (wanted '%s', got '%s'), skipping.\n", t.fx, syl.inline_fx)
+		substation.debug.out(5, "Syllable has wrong inline-fx (wanted '%s', got '%s'), skipping.\n", t.fx, syl.inline_fx)
 		return 0
 	end
 
 	if t.noblank and is_syl_blank(syl) then
-		aegisub.debug.out(5, "Syllable is blank, skipping.\n")
+		substation.debug.out(5, "Syllable is blank, skipping.\n")
 		return 0
 	end
 
 	-- Recurse to per-char if required
 	if not skip_perchar and t.perchar then
-		aegisub.debug.out(5, "Doing per-character effects...\n")
+		substation.debug.out(5, "Doing per-character effects...\n")
 		local charsyl = table.copy(syl)
 		tenv.syl = charsyl
 
@@ -757,7 +757,7 @@ function apply_one_syllable_template(syl, line, template, tenv, varctx, subs, sk
 			charsyl.text_stripped = c
 			charsyl.text_spacestripped = c
 			charsyl.prespace, charsyl.postspace = "", "" -- for whatever anyone might use these for
-			width = aegisub.text_extents(syl.style, c)
+			width = substation.text_extents(syl.style, c)
 			charsyl.left = left
 			charsyl.center = left + width/2
 			charsyl.right = left + width
@@ -773,7 +773,7 @@ function apply_one_syllable_template(syl, line, template, tenv, varctx, subs, sk
 
 	-- Recurse to multi-hl if required
 	if not skip_multi and t.multi then
-		aegisub.debug.out(5, "Doing multi-highlight effects...\n")
+		substation.debug.out(5, "Doing multi-highlight effects...\n")
 		local hlsyl = table.copy(syl)
 		tenv.syl = hlsyl
 
@@ -792,11 +792,11 @@ function apply_one_syllable_template(syl, line, template, tenv, varctx, subs, sk
 
 	-- Regular processing
 	if t.code then
-		aegisub.debug.out(5, "Running code line\n")
+		substation.debug.out(5, "Running code line\n")
 		tenv.line = line
 		run_code_template(t, tenv)
 	else
-		aegisub.debug.out(5, "Running %d effect loops\n", t.loops)
+		substation.debug.out(5, "Running %d effect loops\n", t.loops)
 		for j, maxj in template_loop(tenv, t.loops) do
 			local newline = table.copy(line)
 			newline.styleref = syl.style
@@ -810,7 +810,7 @@ function apply_one_syllable_template(syl, line, template, tenv, varctx, subs, sk
 				newline.text = newline.text .. syl.text_stripped
 			end
 			newline.effect = "fx"
-			aegisub.debug.out(5, "Generated line with text: %s\n", newline.text)
+			substation.debug.out(5, "Generated line with text: %s\n", newline.text)
 			subs.append(newline)
 			applied = applied + 1
 		end
@@ -822,19 +822,19 @@ end
 
 -- Main function to do the templating
 function filter_apply_templates(subs, config)
-	aegisub.progress.task("Collecting header data...")
+	substation.progress.task("Collecting header data...")
 	local meta, styles = karaskel.collect_head(subs, true)
 
-	aegisub.progress.task("Parsing templates...")
+	substation.progress.task("Parsing templates...")
 	local templates = parse_templates(meta, styles, subs)
 
-	aegisub.progress.task("Applying templates...")
+	substation.progress.task("Applying templates...")
 	apply_templates(meta, styles, subs, templates)
 end
 
 function macro_apply_templates(subs, sel)
 	filter_apply_templates(subs, {ismacro=true, sel=sel})
-	aegisub.set_undo_point("apply karaoke template")
+	substation.set_undo_point("apply karaoke template")
 end
 
 function macro_can_template(subs)
@@ -857,5 +857,5 @@ function macro_can_template(subs)
 	return false
 end
 
-aegisub.register_macro(tr"Apply karaoke template", tr"Applies karaoke effects from templates", macro_apply_templates, macro_can_template)
-aegisub.register_filter(tr"Karaoke template", tr"Apply karaoke effect templates to the subtitles.\n\nSee the help file for information on how to use this.", 2000, filter_apply_templates)
+substation.register_macro(tr"Apply karaoke template", tr"Applies karaoke effects from templates", macro_apply_templates, macro_can_template)
+substation.register_filter(tr"Karaoke template", tr"Apply karaoke effect templates to the subtitles.\n\nSee the help file for information on how to use this.", 2000, filter_apply_templates)

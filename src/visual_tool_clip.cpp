@@ -1,4 +1,4 @@
-// Copyright (c) 2011, Thomas Goyne <plorkyeran@aegisub.org>
+// Copyright (c) 2011, Thomas Goyne <plorkyeran@substation.org>
 //
 // Permission to use, copy, modify, and distribute this software for any
 // purpose with or without fee is hereby granted, provided that the above
@@ -12,7 +12,7 @@
 // ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 // OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 //
-// Aegisub Project http://www.aegisub.org/
+// SubStation Project http://www.substation.org/
 
 /// @file visual_tool_clip.cpp
 /// @brief Rectangular clipping visual typesetting tool
@@ -22,11 +22,11 @@
 
 #include "ass_dialogue.h"
 #include "compat.h"
-#include "include/aegisub/context.h"
+#include "include/substation/context.h"
 #include "options.h"
 #include "selection_controller.h"
 
-#include <libaegisub/format.h>
+#include <libsubstation/format.h>
 
 #include <wx/colour.h>
 

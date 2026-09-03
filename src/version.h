@@ -9,7 +9,7 @@
 //   * Redistributions in binary form must reproduce the above copyright notice,
 //     this list of conditions and the following disclaimer in the documentation
 //     and/or other materials provided with the distribution.
-//   * Neither the name of the Aegisub Group nor the names of its contributors
+//   * Neither the name of the SubStation Group nor the names of its contributors
 //     may be used to endorse or promote products derived from this software
 //     without specific prior written permission.
 //
@@ -25,7 +25,7 @@
 // ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
-// Aegisub Project http://www.aegisub.org/
+// SubStation Project http://www.substation.org/
 
 /// @file version.h
 /// @see version.cpp
@@ -33,13 +33,13 @@
 ///
 
 /// Version string appended in title bar of main window (quick identification of all elements of a build)
-const char *GetAegisubLongVersionString();
+const char *GetSubStationLongVersionString();
 /// Version string used in About box, looks nicer
-const char *GetAegisubShortVersionString();
+const char *GetSubStationShortVersionString();
 /// Timestamp of build, only shown in About box
-const char *GetAegisubBuildTime();
+const char *GetSubStationBuildTime();
 /// Name of who built the binary
-const char *GetAegisubBuildCredit();
+const char *GetSubStationBuildCredit();
 /// Is release?
 bool GetIsOfficialRelease();
 /// Version number

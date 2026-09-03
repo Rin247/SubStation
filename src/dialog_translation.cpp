@@ -1,4 +1,4 @@
-// Copyright (c) 2011, Thomas Goyne <plorkyeran@aegisub.org>
+// Copyright (c) 2011, Thomas Goyne <plorkyeran@substation.org>
 //
 // Permission to use, copy, modify, and distribute this software for any
 // purpose with or without fee is hereby granted, provided that the above
@@ -12,7 +12,7 @@
 // ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 // OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 //
-// Aegisub Project http://www.aegisub.org/
+// SubStation Project http://www.substation.org/
 
 /// @file dialog_translation.cpp
 /// @brief Translation Assistant dialogue box and logic
@@ -21,9 +21,9 @@
 
 #include "dialog_translation.h"
 
-#include "include/aegisub/context.h"
-#include "include/aegisub/hotkey.h"
-#include "libaegisub/unicode.h"
+#include "include/substation/context.h"
+#include "include/substation/hotkey.h"
+#include "libsubstation/unicode.h"
 
 #include "ass_dialogue.h"
 #include "ass_file.h"

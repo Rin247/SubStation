@@ -1,4 +1,4 @@
-// Copyright (c) 2014, Thomas Goyne <plorkyeran@aegisub.org>
+// Copyright (c) 2014, Thomas Goyne <plorkyeran@substation.org>
 //
 // Permission to use, copy, modify, and distribute this software for any
 // purpose with or without fee is hereby granted, provided that the above
@@ -12,14 +12,14 @@
 // ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 // OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 //
-// Aegisub Project http://www.aegisub.org/
+// SubStation Project http://www.substation.org/
 
-#include "include/aegisub/spellchecker.h"
+#include "include/substation/spellchecker.h"
 #include "spellchecker_hunspell.h"
 
 #include "options.h"
 
-#include <libaegisub/spellchecker.h>
+#include <libsubstation/spellchecker.h>
 
 #ifdef __APPLE__
 namespace agi {

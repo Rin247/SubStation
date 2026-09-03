@@ -116,8 +116,8 @@ if (!(Test-Path $RedistDir)) {
 $DictionariesDir = Join-Path $DepsDir "dictionaries"
 if (!(Test-Path $DictionariesDir)) {
 	New-Item -ItemType Directory -Path $DictionariesDir | Out-Null
-	Invoke-WebRequest https://raw.githubusercontent.com/TypesettingTools/Aegisub-dictionaries/master/dicts/en_US.aff -OutFile (Join-Path $DictionariesDir "en_US.aff") -UseBasicParsing
-	Invoke-WebRequest https://raw.githubusercontent.com/TypesettingTools/Aegisub-dictionaries/master/dicts/en_US.dic -OutFile (Join-Path $DictionariesDir "en_US.dic") -UseBasicParsing
+	Invoke-WebRequest https://raw.githubusercontent.com/TypesettingTools/SubStation-dictionaries/master/dicts/en_US.aff -OutFile (Join-Path $DictionariesDir "en_US.aff") -UseBasicParsing
+	Invoke-WebRequest https://raw.githubusercontent.com/TypesettingTools/SubStation-dictionaries/master/dicts/en_US.dic -OutFile (Join-Path $DictionariesDir "en_US.dic") -UseBasicParsing
 }
 
 # Installer localization
@@ -134,8 +134,8 @@ if (!(Test-Path $LangsDir)) {
 	}
 }
 
-# Aegisub localization
-meson compile -C $BuildRoot aegisub-gmo
+# SubStation localization
+meson compile -C $BuildRoot substation-gmo
 if(!$?) { Exit $LASTEXITCODE }
 
 # Invoke InnoSetup

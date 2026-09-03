@@ -1,4 +1,4 @@
-// Copyright (c) 2014, Thomas Goyne <plorkyeran@aegisub.org>
+// Copyright (c) 2014, Thomas Goyne <plorkyeran@substation.org>
 //
 // Permission to use, copy, modify, and distribute this software for any
 // purpose with or without fee is hereby granted, provided that the above
@@ -12,7 +12,7 @@
 // ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 // OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 //
-// Aegisub Project http://www.aegisub.org/
+// SubStation Project http://www.substation.org/
 
 #include "ass_file.h"
 
@@ -24,7 +24,7 @@
 #include "async_video_provider.h"
 #include "options.h"
 #include "project.h"
-#include "include/aegisub/context.h"
+#include "include/substation/context.h"
 
 #include <algorithm>
 #include <boost/algorithm/string/case_conv.hpp>
@@ -41,7 +41,7 @@ AssFile::~AssFile() {
 }
 
 void AssFile::LoadDefault(bool include_dialogue_line, std::string const& style_catalog) {
-	Info.emplace_back("Title", "Default Aegisub file");
+	Info.emplace_back("Title", "Default SubStation file");
 	Info.emplace_back("ScriptType", "v4.00+");
 	Info.emplace_back("WrapStyle", "0");
 	Info.emplace_back("ScaledBorderAndShadow", "yes");

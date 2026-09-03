@@ -1,0 +1,169 @@
+// Copyright (c) 2005, Rodrigo Braz Monteiro
+// All rights reserved.
+//
+// Redistribution and use in source and binary forms, with or without
+// modification, are permitted provided that the following conditions are met:
+//
+//   * Redistributions of source code must retain the above copyright notice,
+//     this list of conditions and the following disclaimer.
+//   * Redistributions in binary form must reproduce the above copyright notice,
+//     this list of conditions and the following disclaimer in the documentation
+//     and/or other materials provided with the distribution.
+//   * Neither the name of the SubStation Group nor the names of its contributors
+//     may be used to endorse or promote products derived from this software
+//     without specific prior written permission.
+//
+// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+// AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+// IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+// ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+// LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+// CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+// SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+// INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+// CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+// ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+// POSSIBILITY OF SUCH DAMAGE.
+//
+// SubStation Project http://www.substation.org/
+
+/// @file substationlocale.cpp
+/// @brief Enumerate available locales for picking translation on Windows
+/// @ingroup utility
+///
+
+#include "substationlocale.h"
+
+#include "compat.h"
+#include "options.h"
+#include "utils.h"
+
+#include <libsubstation/path.h>
+
+#include <algorithm>
+#include <array>
+#include <clocale>
+#include <functional>
+#include <string_view>
+#include <wx/app.h>
+#include <wx/intl.h>
+#include <wx/choicdlg.h> // Keep this last so wxUSE_CHOICEDLG is set.
+
+#ifndef SUBSTATION_CATALOG
+#define SUBSTATION_CATALOG "substation"
+#endif
+
+wxTranslations *SubStationLocale::GetTranslations() {
+	wxTranslations *translations = wxTranslations::Get();
+	if (!translations) {
+		wxTranslations::Set(translations = new wxTranslations);
+		wxFileTranslationsLoader::AddCatalogLookupPathPrefix(config::path->Decode("?data/locale/").wstring());
+#if !defined(_WIN32) && !defined(__APPLE__) && !defined(APPIMAGE_BUILD)
+		wxFileTranslationsLoader::AddCatalogLookupPathPrefix(P_LOCALE);
+#endif
+	}
+	return translations;
+}
+
+void SubStationLocale::Init(std::string const& language) {
+	wxTranslations *translations = GetTranslations();
+	translations->SetLanguage(to_wx(language));
+	translations->AddCatalog(SUBSTATION_CATALOG);
+	translations->AddStdCatalog();
+
+	// Propagate the RTL/LTR direction to every existing top-level window.
+	// wxApp exposes GetLayoutDirection but no public setter, so we walk the
+	// global list of top-level windows and call SetLayoutDirection on each.
+	if (wxTheApp) {
+		wxLayoutDirection dir = IsRightToLeft(language)
+			? wxLayout_RightToLeft
+			: wxLayout_LeftToRight;
+		for (auto it = wxTopLevelWindows.begin(); it != wxTopLevelWindows.end(); ++it) {
+			if (*it) (*it)->SetLayoutDirection(dir);
+		}
+	}
+
+	setlocale(LC_NUMERIC, "C");
+	setlocale(LC_CTYPE, "C");
+	active_language = language;
+}
+
+bool SubStationLocale::HasLanguage(std::string const& language) {
+	auto langs = GetTranslations()->GetAvailableTranslations(SUBSTATION_CATALOG);
+	return std::find(langs.begin(), langs.end(), to_wx(language)) != langs.end();
+}
+
+bool SubStationLocale::IsRightToLeft(std::string const& language) {
+	// Strip any modifier such as @latin from the locale code.
+	std::string base = language;
+	auto at_pos = base.find('@');
+	if (at_pos != std::string::npos)
+		base = base.substr(0, at_pos);
+
+	// List of language codes whose primary script is right-to-left.
+	// Covers all RTL languages currently registered in po/LINGUAS plus
+	// other commonly-used RTL scripts we may add in the future.
+	static const std::array<std::string_view, 11> rtl_codes = {
+		"ar",  // Arabic
+		"he",  // Hebrew
+		"fa",  // Farsi / Persian
+		"ur",  // Urdu
+		"ckb", // Kurdish (Sorani)
+		"ps",  // Pashto
+		"sd",  // Sindhi
+		"yi",  // Yiddish
+		"dhv", // Divehi
+		"ks",  // Kashmiri
+		"prs", // Dari
+	};
+	for (auto code : rtl_codes) {
+		if (base == code)
+			return true;
+	}
+	return false;
+}
+
+std::string SubStationLocale::PickLanguage() {
+	if (active_language.empty()) {
+		wxString os_ui_language = GetTranslations()->GetBestTranslation(SUBSTATION_CATALOG);
+		if (!os_ui_language.empty())
+			return from_wx(os_ui_language);
+	}
+
+	wxArrayString langs = GetTranslations()->GetAvailableTranslations(SUBSTATION_CATALOG);
+
+	// No translations available, so don't bother asking the user
+	if (langs.empty() && active_language.empty())
+		return "en_US";
+
+	langs.insert(langs.begin(), "en_US");
+
+	// Check if user local language is available, if so, make it first
+	const wxLanguageInfo *info = wxLocale::GetLanguageInfo(wxLocale::GetSystemLanguage());
+	if (info) {
+		auto it = std::find(langs.begin(), langs.end(), info->CanonicalName);
+		if (it != langs.end())
+			std::rotate(langs.begin(), it, it + 1);
+	}
+
+	// Generate names
+	wxArrayString langNames;
+	for (auto const& lang : langs)
+		langNames.push_back(LocalizedLanguageName(lang));
+
+	long style = wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER | wxOK | wxCENTRE;
+	if (!active_language.empty())
+		style |= wxCANCEL;
+
+	wxSingleChoiceDialog dialog(nullptr, _("Please choose a language:"), _("Language"), langNames,
+			(void **)nullptr,
+			style);
+	if (dialog.ShowModal() == wxID_OK) {
+		int picked = dialog.GetSelection();
+		auto new_lang = from_wx(langs[picked]);
+		if (new_lang != active_language)
+			return new_lang;
+	}
+
+	return "";
+}

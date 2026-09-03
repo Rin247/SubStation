@@ -1,5 +1,5 @@
 // Copyright (c) 2005, Rodrigo Braz Monteiro
-// Copyright (c) 2010, Thomas Goyne <plorkyeran@aegisub.org>
+// Copyright (c) 2010, Thomas Goyne <plorkyeran@substation.org>
 // All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -10,7 +10,7 @@
 //   * Redistributions in binary form must reproduce the above copyright notice,
 //     this list of conditions and the following disclaimer in the documentation
 //     and/or other materials provided with the distribution.
-//   * Neither the name of the Aegisub Group nor the names of its contributors
+//   * Neither the name of the SubStation Group nor the names of its contributors
 //     may be used to endorse or promote products derived from this software
 //     without specific prior written permission.
 //
@@ -26,7 +26,7 @@
 // ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
-// Aegisub Project http://www.aegisub.org/
+// SubStation Project http://www.substation.org/
 
 /// @file subs_edit_box.cpp
 /// @brief Main subtitle editing area, including toolbars around the text control
@@ -41,8 +41,8 @@
 #include "compat.h"
 #include "dialog_style_editor.h"
 #include "flyweight_hash.h"
-#include "include/aegisub/context.h"
-#include "include/aegisub/hotkey.h"
+#include "include/substation/context.h"
+#include "include/substation/hotkey.h"
 #include "initial_line_state.h"
 #include "options.h"
 #include "placeholder_ctrl.h"
@@ -55,8 +55,8 @@
 #include "validators.h"
 #include "theme.h"
 
-#include <libaegisub/character_count.h>
-#include <libaegisub/util.h>
+#include <libsubstation/character_count.h>
+#include <libsubstation/util.h>
 
 #include <functional>
 #include <unordered_set>

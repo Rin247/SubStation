@@ -11,7 +11,7 @@
 //   * Redistributions in binary form must reproduce the above copyright notice,
 //     this list of conditions and the following disclaimer in the documentation
 //     and/or other materials provided with the distribution.
-//   * Neither the name of the Aegisub Group nor the names of its contributors
+//   * Neither the name of the SubStation Group nor the names of its contributors
 //     may be used to endorse or promote products derived from this software
 //     without specific prior written permission.
 //
@@ -27,20 +27,20 @@
 // ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
-// Aegisub Project http://www.aegisub.org/
+// SubStation Project http://www.substation.org/
 
 #include <wx/msgdlg.h>
 
 #include "command.h"
 
-#include <libaegisub/log.h>
+#include <libsubstation/log.h>
 
 #include "../compat.h"
 #include "../dialog_detached_video.h"
 #include "../dialog_manager.h"
 #include "../dialogs.h"
 #include "../frame_main.h"
-#include "../include/aegisub/context.h"
+#include "../include/substation/context.h"
 #include "../libresrc/libresrc.h"
 #include "../main.h"
 #include "../options.h"
@@ -55,7 +55,7 @@ struct app_about final : public Command {
 	CMD_ICON(about_menu)
 	STR_MENU("&About")
 	STR_DISP("About")
-	STR_HELP("About Aegisub")
+	STR_HELP("About SubStation")
 
 	void operator()(agi::Context *c) override {
 		ShowAboutDialog(c->parent);
@@ -154,7 +154,7 @@ struct app_language final : public Command {
 	CMD_ICON(languages_menu)
 	STR_MENU("&Language...")
 	STR_DISP("Language")
-	STR_HELP("Select Aegisub interface language")
+	STR_HELP("Select SubStation interface language")
 
 	void operator()(agi::Context *c) override {
 		// Get language
@@ -164,11 +164,11 @@ struct app_language final : public Command {
 		OPT_SET("App/Language")->SetString(new_language);
 
 		// Ask to restart program
-		int result = wxMessageBox(_("Aegisub needs to be restarted so that the new language can be applied. Restart now?"), _("Restart Aegisub?"), wxYES_NO | wxICON_QUESTION |  wxCENTER);
+		int result = wxMessageBox(_("SubStation needs to be restarted so that the new language can be applied. Restart now?"), _("Restart SubStation?"), wxYES_NO | wxICON_QUESTION |  wxCENTER);
 		if (result == wxYES) {
-			// Restart Aegisub
+			// Restart SubStation
 			if (c->frame->Close()) {
-				RestartAegisub();
+				RestartSubStation();
 			}
 		}
 	}
@@ -203,7 +203,7 @@ struct app_options final : public Command {
 	CMD_ICON(options_button)
 	STR_MENU("&Options...")
 	STR_DISP("Options")
-	STR_HELP("Configure Aegisub")
+	STR_HELP("Configure SubStation")
 
 	void operator()(agi::Context *c) override {
 		try {

@@ -1,13 +1,13 @@
-# Cantonese translation for Aegisub.
+# Cantonese translation for SubStation.
 # This catalogue intentionally starts with the language-selection strings;
 # remaining messages fall back to English until translated.
 msgid ""
 msgstr ""
-"Project-Id-Version: Aegisub 3.5.0\n"
+"Project-Id-Version: SubStation 3.5.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-07-26 14:45+0200\n"
 "PO-Revision-Date: 2026-09-02 18:00+0200\n"
-"Last-Translator: Aegisub contributors\n"
+"Last-Translator: SubStation contributors\n"
 "Language-Team: Cantonese\n"
 "Language: yue\n"
 "MIME-Version: 1.0\n"
@@ -15,11 +15,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: ../src/aegisublocale.cpp:113 ../src/command/app.cpp:156
+#: ../src/substationlocale.cpp:113 ../src/command/app.cpp:156
 msgid "Language"
 msgstr "語言"
 
-#: ../src/aegisublocale.cpp:113
+#: ../src/substationlocale.cpp:113
 msgid "Please choose a language:"
 msgstr "請揀一種語言："
 

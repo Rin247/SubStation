@@ -36,7 +36,7 @@ Getting text encoding
 This function returns a string describing the current text encoding used for
 a file stream.
 
-function aegisub.fstream.get_encoding(stream)
+function substation.fstream.get_encoding(stream)
 
 @stream (user data)
   The Input File Stream or Output File Stream to get the encoding for.
@@ -50,7 +50,7 @@ Setting text encoding
 
 This function changes the current text encoding used for a file stream.
 
-function aegisub.fstream.set_encoding(stream, encoding)
+function substation.fstream.set_encoding(stream, encoding)
 
 @stream (user data)
   The Input File Stream or Output File Stream to change the encoding for.
@@ -64,7 +64,7 @@ Returns: String describing the old encoding.
 
 File Pointer operations
 
-function aegisub.fstream.tell(stream)
+function substation.fstream.tell(stream)
 
 @stream (user data)
   The Input File Stream or Output File Stream get position of.
@@ -72,7 +72,7 @@ function aegisub.fstream.tell(stream)
 Returns: Number, the number of bytes since the beginning of the file.
 
 
-function aegisub.fstream.seek(stream, length)
+function substation.fstream.seek(stream, length)
 
 @stream (user data)
   The Input File Stream or Output File Stream to seek in.
@@ -85,7 +85,7 @@ function aegisub.fstream.seek(stream, length)
 Returns: nothing.
 
 
-function aegisub.fstream.reset(stream)
+function substation.fstream.reset(stream)
 
 Resets the file pointer to the start of the file. Truncates an Output File
 Stream to zero bytes.
@@ -102,7 +102,7 @@ Reading text
 All these functions assume the file is in the current encoding specified.
 
 
-function aegisub.fstream.skip_utf_bom(stream, change_encoding)
+function substation.fstream.skip_utf_bom(stream, change_encoding)
 
 This function has undefined behaviour unless called as the first
 read-operation on the stream.
@@ -120,7 +120,7 @@ encoding to match the detected BOM.
 Returns: Boolean, whether a BOM was detected or not.
 
 
-function aegisub.fstream.read(stream, length)
+function substation.fstream.read(stream, length)
 
 Read a number of characters from a file.
 
@@ -135,7 +135,7 @@ Read a number of characters from a file.
 Returns: String, the string read from the file.
 
 
-function aegisub.fstream.read_bytes(stream, length)
+function substation.fstream.read_bytes(stream, length)
 
 Read a number of bytes from a file and convert to a string.
 
@@ -148,7 +148,7 @@ Read a number of bytes from a file and convert to a string.
 Returns: String, best-effort converted from the bytes read.
 
 
-function aegisub.fstream.read_line(stream, include_newline)
+function substation.fstream.read_line(stream, include_newline)
 
 Read until next newline in the file. A newline is defined asone of these
 sequences of Unicode codepoints in the decoded text:
@@ -173,7 +173,7 @@ Writing text
 All these functions assume the file is in the current encoding specified.
 
 
-function aegisub.fstream.write_utf_bom(stream)
+function substation.fstream.write_utf_bom(stream)
 
 This function will corrupt your file if used anywhere else than on position 0.
 
@@ -186,7 +186,7 @@ in an UTF encoding.
 Returns: nothing.
 
 
-function aegisub.fstream.write(stream, text)
+function substation.fstream.write(stream, text)
 
 Write a string to a file.
 
@@ -199,7 +199,7 @@ Write a string to a file.
 Returns: nothing.
 
 
-function aegisub.fstream.write_line(stream, text)
+function substation.fstream.write_line(stream, text)
 
 Write a string to a file, followed by an "\r\n" newline.
 

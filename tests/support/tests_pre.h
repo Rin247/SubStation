@@ -1,1 +1,1 @@
-#include "../../libaegisub/lagi_pre.h"
+#include "../../libsubstation/lagi_pre.h"

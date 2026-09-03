@@ -9,7 +9,7 @@
 //   * Redistributions in binary form must reproduce the above copyright notice,
 //     this list of conditions and the following disclaimer in the documentation
 //     and/or other materials provided with the distribution.
-//   * Neither the name of the Aegisub Group nor the names of its contributors
+//   * Neither the name of the SubStation Group nor the names of its contributors
 //     may be used to endorse or promote products derived from this software
 //     without specific prior written permission.
 //
@@ -25,7 +25,7 @@
 // ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
-// Aegisub Project http://www.aegisub.org/
+// SubStation Project http://www.substation.org/
 
 /// @file main.cpp
 /// @brief Main entry point, as well as crash handling
@@ -35,7 +35,7 @@
 #include "main.h"
 
 #include "command/command.h"
-#include "include/aegisub/hotkey.h"
+#include "include/substation/hotkey.h"
 
 #include "auto4_base.h"
 #include "auto4_lua_factory.h"
@@ -46,7 +46,7 @@
 #include "export_framerate.h"
 #include "format.h"
 #include "frame_main.h"
-#include "include/aegisub/context.h"
+#include "include/substation/context.h"
 #include "libresrc/libresrc.h"
 #include "options.h"
 #include "project.h"
@@ -57,18 +57,20 @@
 #include "version.h"
 #include "xdg_desktop_portal_utils.h"
 
-#include <libaegisub/dispatch.h>
-#include <libaegisub/format_path.h>
-#include <libaegisub/fs.h>
-#include <libaegisub/io.h>
-#include <libaegisub/log.h>
-#include <libaegisub/path.h>
-#include <libaegisub/util.h>
+#include <libsubstation/dispatch.h>
+#include <libsubstation/format_path.h>
+#include <libsubstation/fs.h>
+#include <libsubstation/io.h>
+#include <libsubstation/log.h>
+#include <libsubstation/path.h>
+#include <libsubstation/util.h>
 
 #include <boost/interprocess/streams/bufferstream.hpp>
 #include <wx/clipbrd.h>
+#include <wx/filename.h>
 #include <wx/msgdlg.h>
 #include <wx/stackwalk.h>
+#include <wx/stdpaths.h>
 #include <wx/utils.h>
 
 namespace config {
@@ -78,27 +80,27 @@ namespace config {
 	Automation4::AutoloadScriptManager *global_scripts;
 }
 
-wxIMPLEMENT_APP(AegisubApp);
+wxIMPLEMENT_APP(SubStationApp);
 
 static const char *LastStartupState = nullptr;
 
 #ifdef WITH_STARTUPLOG
-#define StartupLog(a) MessageBox(0, L ## a, L"Aegisub startup log", 0)
+#define StartupLog(a) MessageBox(0, L ## a, L"SubStation startup log", 0)
 #else
 #define StartupLog(a) LastStartupState = a
 #endif
 
-void AegisubApp::OnAssertFailure(const wxChar *file, int line, const wxChar *func, const wxChar *cond, const wxChar *msg) {
+void SubStationApp::OnAssertFailure(const wxChar *file, int line, const wxChar *func, const wxChar *cond, const wxChar *msg) {
 	LOG_A("wx/assert") << wxString(file) << ":" << line << ":" << wxString(func) << "() " << wxString(cond) << ": " << wxString(msg);
 	wxApp::OnAssertFailure(file, line, func, cond, msg);
 }
 
-AegisubApp::AegisubApp() {
+SubStationApp::SubStationApp() {
 	// http://trac.wxwidgets.org/ticket/14302
 	wxSetEnv("UBUNTU_MENUPROXY", "0");
 
 	// Fallback to X11 if wxGTK implementation is build without Wayland EGL support
-	// Fix https://github.com/TypesettingTools/Aegisub/issues/233
+	// Fix https://github.com/TypesettingTools/SubStation/issues/233
 	#if defined(__WXGTK__) && !wxUSE_GLCANVAS_EGL && !wxHAS_EGL
 		wxString xdg_session_type = wxGetenv("XDG_SESSION_TYPE");
 		wxString wayland_display  = wxGetenv("WAYLAND_DISPLAY");
@@ -110,7 +112,7 @@ AegisubApp::AegisubApp() {
 				printf(" Falling back to X11.");
 				wxSetEnv("GDK_BACKEND", "x11");
 			} else {
-				printf(" Set GDK_BACKEND=x11 to run Aegisub under X11.");
+				printf(" Set GDK_BACKEND=x11 to run SubStation under X11.");
 			}
 			printf("\n");
 		}
@@ -123,16 +125,16 @@ wxDEFINE_EVENT(EVT_CALL_THUNK, ValueEvent<agi::dispatch::Thunk>);
 }
 
 /// Message displayed when an exception has occurred.
-static wxString exception_message = "Oops, Aegisub has crashed!\n\nAn attempt has been made to save a copy of your file to:\n\n%s\n\nAegisub will now close.";
+static wxString exception_message = "Oops, SubStation has crashed!\n\nAn attempt has been made to save a copy of your file to:\n\n%s\n\nSubStation will now close.";
 
 /// @brief Gets called when application starts.
 /// @return bool
-bool AegisubApp::OnInit() {
+bool SubStationApp::OnInit() {
 	// App name (yeah, this is a little weird to get rid of an odd warning)
 #if defined(__WXMSW__) || defined(__WXMAC__)
-	SetAppName("Aegisub");
+	SetAppName("SubStation");
 #else
-	SetAppName("aegisub");
+	SetAppName("substation");
 #endif
 
 	// The logger isn't created on demand on background threads, so force it to
@@ -162,9 +164,38 @@ bool AegisubApp::OnInit() {
 	agi::log::log->Subscribe(std::make_unique<agi::log::EmitSTDOUT>());
 #endif
 
+	// Pseudo-portable mode: if a "Data" subdirectory exists next to the
+	// executable, treat it as the install dir (?data) and redirect ?user /
+	// ?local to live inside it. The user can opt in to portability just by
+	// placing their SubStation build in a folder layout like:
+	//   /some/where/SubStation/SubStation.exe     (Windows)
+	//   /some/where/SubStation/SubStation         (Linux)
+	//   /some/where/SubStation.app/.../SubStation (macOS)
+	//   /some/where/SubStation/Data/              <- the magic dir
+	StartupLog("Check for portable Data dir");
+	{
+#ifdef __WXMSW__
+		wxFileName exe_path(wxStandardPaths::Get().GetExecutablePath());
+		agi::fs::path portable = exe_path.GetPath().ToStdString() / "Data";
+#else
+		agi::fs::path portable;
+		try {
+			portable = agi::fs::canonical(
+				agi::fs::path(wxStandardPaths::Get().GetExecutablePath().ToStdString())
+					.parent_path() / "Data");
+		} catch (...) {
+			portable.clear();
+		}
+#endif
+		if (!portable.empty() && agi::fs::FileExists(portable / "config.json")) {
+			config::path->SetToken("?data", portable);
+			config::path->SetToken("?user", portable);
+			config::path->SetToken("?local", portable);
+		}
+	}
+
 	// Set config file
 	StartupLog("Load local configuration");
-#ifdef __WXMSW__
 	// Try loading configuration from the install dir if one exists there
 	try {
 		auto conf_local(config::path->Decode("?data/config.json"));
@@ -178,7 +209,6 @@ bool AegisubApp::OnInit() {
 		// File doesn't exist or we can't read it
 		// Might be worth displaying an error in the second case
 	}
-#endif
 	crash_writer::Initialize(config::path->Decode("?user"));
 
 	StartupLog("Create log writer");
@@ -269,7 +299,7 @@ bool AegisubApp::OnInit() {
 		setlocale(LC_CTYPE, "en_US.UTF-8");
 #endif
 
-		exception_message = _("Oops, Aegisub has crashed!\n\nAn attempt has been made to save a copy of your file to:\n\n%s\n\nAegisub will now close.");
+		exception_message = _("Oops, SubStation has crashed!\n\nAn attempt has been made to save a copy of your file to:\n\n%s\n\nSubStation will now close.");
 
 		agi::xdp_utils::Initialize();
 
@@ -298,7 +328,7 @@ bool AegisubApp::OnInit() {
 		if (OPT_GET("App/First Start")->GetBool()) {
 			OPT_SET("App/First Start")->SetBool(false);
 #ifdef WITH_UPDATE_CHECKER
-			int result = wxMessageBox(_("Do you want Aegisub to check for updates whenever it starts? You can still do it manually via the Help menu."),_("Check for updates?"), wxYES_NO | wxCENTER);
+			int result = wxMessageBox(_("Do you want SubStation to check for updates whenever it starts? You can still do it manually via the Help menu."),_("Check for updates?"), wxYES_NO | wxCENTER);
 			OPT_SET("App/Auto/Check For Updates")->SetBool(result == wxYES);
 			try {
 				config::opt->Flush();
@@ -341,7 +371,7 @@ bool AegisubApp::OnInit() {
 	return true;
 }
 
-int AegisubApp::OnExit() {
+int SubStationApp::OnExit() {
 	for (auto frame : frames)
 		delete frame;
 	frames.clear();
@@ -369,7 +399,7 @@ int AegisubApp::OnExit() {
 	return wxApp::OnExit();
 }
 
-agi::Context& AegisubApp::NewProjectContext() {
+agi::Context& SubStationApp::NewProjectContext() {
 	auto frame = new FrameMain;
 	frame->Bind(wxEVT_DESTROY, [=, this](wxWindowDestroyEvent& evt) {
 		if (evt.GetWindow() != frame) {
@@ -386,14 +416,14 @@ agi::Context& AegisubApp::NewProjectContext() {
 	return *frame->context;
 }
 
-void AegisubApp::CloseAll() {
+void SubStationApp::CloseAll() {
 	for (auto frame : frames) {
 		if (!frame->Close())
 			break;
 	}
 }
 
-void AegisubApp::UnhandledException([[maybe_unused]] bool stackWalk) {
+void SubStationApp::UnhandledException([[maybe_unused]] bool stackWalk) {
 #if (!defined(_DEBUG) || defined(WITH_EXCEPTIONS)) && (wxUSE_ON_FATAL_EXCEPTION+0)
 	bool any = false;
 	agi::fs::path path;
@@ -420,23 +450,23 @@ void AegisubApp::UnhandledException([[maybe_unused]] bool stackWalk) {
 		wxMessageBox(agi::wxformat(exception_message, path), _("Program error"), wxOK | wxICON_ERROR | wxCENTER, nullptr);
 	}
 	else if (LastStartupState) {
-		wxMessageBox(fmt_tl("Aegisub has crashed while starting up!\n\nThe last startup step attempted was: %s.", LastStartupState), _("Program error"), wxOK | wxICON_ERROR | wxCENTER);
+		wxMessageBox(fmt_tl("SubStation has crashed while starting up!\n\nThe last startup step attempted was: %s.", LastStartupState), _("Program error"), wxOK | wxICON_ERROR | wxCENTER);
 	}
 #endif
 }
 
-void AegisubApp::OnUnhandledException() {
+void SubStationApp::OnUnhandledException() {
 	UnhandledException(false);
 }
 
-void AegisubApp::OnFatalException() {
+void SubStationApp::OnFatalException() {
 	UnhandledException(true);
 }
 
 #define SHOW_EXCEPTION(str) \
-	wxMessageBox(fmt_tl("An unexpected error has occurred. Please save your work and restart Aegisub.\n\nError Message: %s", str), \
+	wxMessageBox(fmt_tl("An unexpected error has occurred. Please save your work and restart SubStation.\n\nError Message: %s", str), \
 				_("Exception in event handler"), wxOK | wxICON_ERROR | wxCENTER | wxSTAY_ON_TOP)
-bool AegisubApp::OnExceptionInMainLoop() {
+bool SubStationApp::OnExceptionInMainLoop() {
 	try {
 		throw;
 	}
@@ -454,7 +484,7 @@ bool AegisubApp::OnExceptionInMainLoop() {
 
 #undef SHOW_EXCEPTION
 
-int AegisubApp::OnRun() {
+int SubStationApp::OnRun() {
 	std::string error;
 
 	try {
@@ -474,11 +504,11 @@ int AegisubApp::OnRun() {
 	return 1;
 }
 
-void AegisubApp::MacOpenFiles(wxArrayString const& filenames) {
+void SubStationApp::MacOpenFiles(wxArrayString const& filenames) {
 	OpenFiles(filenames);
 }
 
-void AegisubApp::OpenFiles(wxArrayStringsAdapter filenames) {
+void SubStationApp::OpenFiles(wxArrayStringsAdapter filenames) {
 	std::vector<agi::fs::path> files;
 	for (size_t i = 0; i < filenames.GetCount(); ++i)
 		files.push_back(from_wx(filenames[i]));

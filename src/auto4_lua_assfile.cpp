@@ -9,7 +9,7 @@
 //   * Redistributions in binary form must reproduce the above copyright notice,
 //     this list of conditions and the following disclaimer in the documentation
 //     and/or other materials provided with the distribution.
-//   * Neither the name of the Aegisub Group nor the names of its contributors
+//   * Neither the name of the SubStation Group nor the names of its contributors
 //     may be used to endorse or promote products derived from this software
 //     without specific prior written permission.
 //
@@ -25,7 +25,7 @@
 // ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
-// Aegisub Project http://www.aegisub.org/
+// SubStation Project http://www.substation.org/
 
 /// @file auto4_lua_assfile.cpp
 /// @brief Lua 5.1-based scripting engine (interface to subtitle files)
@@ -41,11 +41,11 @@
 #include "ass_style.h"
 #include "compat.h"
 
-#include <libaegisub/ass/karaoke.h>
-#include <libaegisub/exception.h>
-#include <libaegisub/log.h>
-#include <libaegisub/lua/utils.h>
-#include <libaegisub/string.h>
+#include <libsubstation/ass/karaoke.h>
+#include <libsubstation/exception.h>
+#include <libsubstation/log.h>
+#include <libsubstation/lua/utils.h>
+#include <libsubstation/string.h>
 
 #include <algorithm>
 #include <boost/algorithm/string/case_conv.hpp>
@@ -784,13 +784,13 @@ namespace Automation4 {
 		lua_setmetatable(L, -2);
 
 		// register misc functions
-		// assume the "aegisub" global table exists
-		lua_getglobal(L, "aegisub");
+		// assume the "substation" global table exists
+		lua_getglobal(L, "substation");
 
 		set_field<closure_wrapper<&LuaAssFile::LuaParseKaraokeData>>(L, "parse_karaoke_data");
 		set_field<closure_wrapper_v<&LuaAssFile::LuaSetUndoPoint, false>>(L, "set_undo_point");
 
-		lua_pop(L, 1); // pop "aegisub" table
+		lua_pop(L, 1); // pop "substation" table
 
 		// Leaves userdata object on stack
 	}

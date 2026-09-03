@@ -1,4 +1,4 @@
-// Copyright (c) 2010, Amar Takhar <verm@aegisub.org>
+// Copyright (c) 2010, Amar Takhar <verm@substation.org>
 //
 // Permission to use, copy, modify, and distribute this software for any
 // purpose with or without fee is hereby granted, provided that the above
@@ -12,16 +12,16 @@
 // ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 // OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
-#include <libaegisub/hotkey.h>
+#include <libsubstation/hotkey.h>
 
-#include "include/aegisub/hotkey.h"
+#include "include/substation/hotkey.h"
 
 #include "libresrc/libresrc.h"
 #include "command/command.h"
 #include "compat.h"
 #include "options.h"
 
-#include <libaegisub/path.h>
+#include <libsubstation/path.h>
 
 #include <boost/range/algorithm/find.hpp>
 #include <boost/range/iterator_range.hpp>

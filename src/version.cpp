@@ -9,7 +9,7 @@
 //   * Redistributions in binary form must reproduce the above copyright notice,
 //     this list of conditions and the following disclaimer in the documentation
 //     and/or other materials provided with the distribution.
-//   * Neither the name of the Aegisub Group nor the names of its contributors
+//   * Neither the name of the SubStation Group nor the names of its contributors
 //     may be used to endorse or promote products derived from this software
 //     without specific prior written permission.
 //
@@ -25,7 +25,7 @@
 // ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
-// Aegisub Project http://www.aegisub.org/
+// SubStation Project http://www.substation.org/
 
 /// @file version.cpp
 /// @brief Derive and return various information about the build and version at runtime
@@ -47,20 +47,20 @@
 	#define BUILD_CREDIT_SUFFIX ""
 #endif
 
-const char *GetAegisubLongVersionString() {
+const char *GetSubStationLongVersionString() {
 	return "3.5.0" DEBUG_SUFFIX;
 }
 
-const char *GetAegisubShortVersionString() {
+const char *GetSubStationShortVersionString() {
 	return "3.5.0" DEBUG_SUFFIX;
 }
 
 #ifdef BUILD_CREDIT
-const char *GetAegisubBuildTime() {
+const char *GetSubStationBuildTime() {
 	return __DATE__ " " __TIME__;
 }
 
-const char *GetAegisubBuildCredit() {
+const char *GetSubStationBuildCredit() {
 	return BUILD_CREDIT;
 	return "";
 }

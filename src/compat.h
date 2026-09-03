@@ -8,7 +8,7 @@
 #include <wx/arrstr.h>
 #include <wx/string.h>
 
-#include <libaegisub/color.h>
+#include <libsubstation/color.h>
 
 wxColour to_wx(agi::Color color);
 wxString to_wx(std::string_view str);

@@ -9,7 +9,7 @@
 //   * Redistributions in binary form must reproduce the above copyright notice,
 //     this list of conditions and the following disclaimer in the documentation
 //     and/or other materials provided with the distribution.
-//   * Neither the name of the Aegisub Group nor the names of its contributors
+//   * Neither the name of the SubStation Group nor the names of its contributors
 //     may be used to endorse or promote products derived from this software
 //     without specific prior written permission.
 //
@@ -25,7 +25,7 @@
 // ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
-// Aegisub Project http://www.aegisub.org/
+// SubStation Project http://www.substation.org/
 
 /// @file tooltip_binding.cpp
 /// @brief Generate tooltips for controls by combining a base text and any hotkeys found for the function
@@ -35,9 +35,9 @@
 #include "tooltip_binding.h"
 
 #include "compat.h"
-#include "include/aegisub/hotkey.h"
+#include "include/substation/hotkey.h"
 
-#include <libaegisub/hotkey.h>
+#include <libsubstation/hotkey.h>
 
 ToolTipBinding::ToolTipBinding(wxWindow *window, wxString tooltip, const char *context, const char *command)
 : window(window), toolTip(tooltip), context(context), command(command)

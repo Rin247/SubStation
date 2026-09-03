@@ -1,5 +1,5 @@
-// Copyright (c) 2011 Niels Martin Hansen <nielsm@aegisub.org>
-// Copyright (c) 2012 Thomas Goyne <plorkyeran@aegisub.org>
+// Copyright (c) 2011 Niels Martin Hansen <nielsm@substation.org>
+// Copyright (c) 2012 Thomas Goyne <plorkyeran@substation.org>
 //
 // Permission to use, copy, modify, and distribute this software for any
 // purpose with or without fee is hereby granted, provided that the above
@@ -13,7 +13,7 @@
 // ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 // OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 //
-// Aegisub Project http://www.aegisub.org/
+// SubStation Project http://www.substation.org/
 
 /// @file dialog_export_ebu3264.cpp
 /// @see dialog_export_ebu3264.h
@@ -25,7 +25,7 @@
 #include "format.h"
 #include "options.h"
 
-#include <libaegisub/charset_conv.h>
+#include <libsubstation/charset_conv.h>
 
 #include <boost/lexical_cast.hpp>
 #include <boost/regex.hpp>

@@ -24,17 +24,17 @@ function test5(subtitles, selected_lines, active_line)
 	for i = #selected_lines, 1, -1 do
 		local ri = selected_lines[i]
 		local l = subtitles[ri]
-		local k = aegisub.parse_karaoke_data(l)
+		local k = substation.parse_karaoke_data(l)
 		local left = 0
 		for j = 1, #k do
 			local nl = table.copy(l)
 			l.text = string.format("{\\t(%d,%d,\\fscx50)\\pos(%d,20)}%s", k[j].start_time, k[j].end_time, left, k[j].text_stripped)
-			left = left + (aegisub.text_extents(styles[l.style], k[j].text_stripped))
+			left = left + (substation.text_extents(styles[l.style], k[j].text_stripped))
 			subtitles.insert(ri+j, l)
 		end
 	end
-	aegisub.set_undo_point("karaoke-like stuff")
+	substation.set_undo_point("karaoke-like stuff")
 end
 
 
-aegisub.register_macro("More karaoke fun", "Makes some more karaoke-like stuff", test5, nil)
+substation.register_macro("More karaoke fun", "Makes some more karaoke-like stuff", test5, nil)

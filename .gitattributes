@@ -8,6 +8,6 @@ subprojects/luabins/meson.build -linguist-vendored
 
 src/MatroskaParser.*    linguist-vendored
 
-libaegisub/lua/modules/lpeg.*       linguist-vendored
+libsubstation/lua/modules/lpeg.*       linguist-vendored
 
 automation/include/moonscript.lua   linguist-vendored

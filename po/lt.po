@@ -1,12 +1,12 @@
-# Aegisub 3.5
+# SubStation 3.5
 # Copyright (C) 2005-2014 Rodrigo Braz Monteiro, Niels Martin Hansen, Thomas Goyne et. al.
-# This file is distributed under the same license as the Aegisub package.
-# Niels Martin Hansen <nielsm@aegisub.org>, 2005-2014.
+# This file is distributed under the same license as the SubStation package.
+# Niels Martin Hansen <nielsm@substation.org>, 2005-2014.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Aegisub 3.5.0\n"
+"Project-Id-Version: SubStation 3.5.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-07-26 14:45+0200\n"
 "PO-Revision-Date: 2026-07-28 10:30+0300\n"
@@ -20,11 +20,11 @@ msgstr ""
 "n%10>=2 && n%10<=9 && (n%100<11 || n%100>19) ? 1 : 2);\n"
 "X-Generator: Poedit 3.9\n"
 
-#: ../src/aegisublocale.cpp:113 ../src/command/app.cpp:156
+#: ../src/substationlocale.cpp:113 ../src/command/app.cpp:156
 msgid "Language"
 msgstr "Kalba"
 
-#: ../src/aegisublocale.cpp:113
+#: ../src/substationlocale.cpp:113
 msgid "Please choose a language:"
 msgstr "Prašome pasirinkti kalbą:"
 
@@ -396,10 +396,10 @@ msgstr ""
 
 #: ../src/charset_detect.cpp:50
 msgid ""
-"Aegisub could not narrow down the character set to a single one.\n"
+"SubStation could not narrow down the character set to a single one.\n"
 "Please pick one below:"
 msgstr ""
-"Aegisub nepavyko išrinkti vieno ženklų rinkinio.\n"
+"SubStation nepavyko išrinkti vieno ženklų rinkinio.\n"
 "Prašome pasirinkti:"
 
 #: ../src/charset_detect.cpp:51
@@ -415,8 +415,8 @@ msgid "About"
 msgstr "Apie"
 
 #: ../src/command/app.cpp:58 ../src/dialog_about.cpp:44
-msgid "About Aegisub"
-msgstr "Apie Aegisub"
+msgid "About SubStation"
+msgstr "Apie SubStation"
 
 #: ../src/command/app.cpp:67
 msgid "&Audio+Subs View"
@@ -483,20 +483,20 @@ msgid "&Language..."
 msgstr "&Kalba..."
 
 #: ../src/command/app.cpp:157
-msgid "Select Aegisub interface language"
-msgstr "Pasirinkti Aegisub sąsajos kalbą"
+msgid "Select SubStation interface language"
+msgstr "Pasirinkti SubStation sąsajos kalbą"
 
 #: ../src/command/app.cpp:167
 msgid ""
-"Aegisub needs to be restarted so that the new language can be applied. "
+"SubStation needs to be restarted so that the new language can be applied. "
 "Restart now?"
 msgstr ""
-"Norint priimti kalbos keitimus reikia iš naujo paleisti Aegisub. Ar paleisti "
+"Norint priimti kalbos keitimus reikia iš naujo paleisti SubStation. Ar paleisti "
 "iš naujo dabar pat?"
 
 #: ../src/command/app.cpp:167
-msgid "Restart Aegisub?"
-msgstr "Paleisti Aegisub iš naujo?"
+msgid "Restart SubStation?"
+msgstr "Paleisti SubStation iš naujo?"
 
 #: ../src/command/app.cpp:180
 msgid "&Log window"
@@ -533,8 +533,8 @@ msgid "Options"
 msgstr "Parinktys"
 
 #: ../src/command/app.cpp:206
-msgid "Configure Aegisub"
-msgstr "Konfigūruoti Aegisub"
+msgid "Configure SubStation"
+msgstr "Konfigūruoti SubStation"
 
 #: ../src/command/app.cpp:220 ../src/command/app.cpp:221
 msgid "Toggle global hotkey overrides"
@@ -566,8 +566,8 @@ msgid "Check for Updates"
 msgstr "Tikrinti, ar yra atnaujinimų"
 
 #: ../src/command/app.cpp:260
-msgid "Check to see if there is a new version of Aegisub available"
-msgstr "Patikrinti, ar yra prieinama nauja Aegisub versija"
+msgid "Check to see if there is a new version of SubStation available"
+msgstr "Patikrinti, ar yra prieinama nauja SubStation versija"
 
 #: ../src/command/app.cpp:270 ../src/command/app.cpp:271
 msgid "Minimize"
@@ -1642,9 +1642,9 @@ msgid "Bug Tracker"
 msgstr "Klaidų sekimas"
 
 #: ../src/command/help.cpp:49
-msgid "Visit Aegisub's bug tracker to report bugs and request new features"
+msgid "Visit SubStation's bug tracker to report bugs and request new features"
 msgstr ""
-"Apsilankyti Aegisub klaidų sekimo tinklalapyje ir pranešti apie klaidas bei "
+"Apsilankyti SubStation klaidų sekimo tinklalapyje ir pranešti apie klaidas bei "
 "prašyti naujų funkcijų"
 
 #: ../src/command/help.cpp:68
@@ -1668,8 +1668,8 @@ msgid "IRC Channel"
 msgstr "IRC kanalas"
 
 #: ../src/command/help.cpp:82
-msgid "Visit Aegisub's official IRC channel"
-msgstr "Apsilankyti oficialiame Aegisub IRC kanale"
+msgid "Visit SubStation's official IRC channel"
+msgstr "Apsilankyti oficialiame SubStation IRC kanale"
 
 #: ../src/command/help.cpp:92
 msgid "&Visual Typesetting"
@@ -1692,8 +1692,8 @@ msgid "Website"
 msgstr "Svetainė"
 
 #: ../src/command/help.cpp:106
-msgid "Visit Aegisub's official website"
-msgstr "Apsilankyti oficialioje Aegisub svetainėje"
+msgid "Visit SubStation's official website"
+msgstr "Apsilankyti oficialioje SubStation svetainėje"
 
 #: ../src/command/keyframe.cpp:49 ../src/command/keyframe.cpp:50
 msgid "Close Keyframes"
@@ -1895,7 +1895,7 @@ msgid "Open Autosaved Subtitles"
 msgstr "Atidaryti automatiškai išsaugotus subtitrus"
 
 #: ../src/command/subtitle.cpp:284
-msgid "Open a previous version of a file which was autosaved by Aegisub"
+msgid "Open a previous version of a file which was autosaved by SubStation"
 msgstr "Atidaryti ankstesnę automatiškai išsaugoto failo versiją"
 
 #: ../src/command/subtitle.cpp:297
@@ -4358,16 +4358,16 @@ msgid "Remove fro&m dictionary"
 msgstr "Pašalinti iš &žodyno"
 
 #: ../src/dialog_spellchecker.cpp:279
-msgid "Aegisub has finished checking spelling of this script."
-msgstr "Aegisub baigė šio skripto rašybos tikrinimą."
+msgid "SubStation has finished checking spelling of this script."
+msgstr "SubStation baigė šio skripto rašybos tikrinimą."
 
 #: ../src/dialog_spellchecker.cpp:279 ../src/dialog_spellchecker.cpp:283
 msgid "Spell checking complete."
 msgstr "Rašybos tikrinimas baigtas."
 
 #: ../src/dialog_spellchecker.cpp:283
-msgid "Aegisub has found no spelling mistakes in this script."
-msgstr "Aegisub nerado šiame skripte jokių rašybos klaidų."
+msgid "SubStation has found no spelling mistakes in this script."
+msgstr "SubStation nerado šiame skripte jokių rašybos klaidų."
 
 #: ../src/dialog_spellchecker.cpp:329 ../src/dialog_spellchecker.cpp:343
 msgid "spell check replace"
@@ -5120,35 +5120,35 @@ msgid "Checking for updates failed: %s."
 msgstr "Nepavyko patikrinti, ar yra atnaujinimų: %s."
 
 #: ../src/dialog_version_check.cpp:345
-msgid "An update to Aegisub was found."
-msgstr "Rastas Aegisub atnaujinimas."
+msgid "An update to SubStation was found."
+msgstr "Rastas SubStation atnaujinimas."
 
 #: ../src/dialog_version_check.cpp:347
-msgid "Several possible updates to Aegisub were found."
-msgstr "Rasti keli galimi Aegisub atnaujinimai."
+msgid "Several possible updates to SubStation were found."
+msgstr "Rasti keli galimi SubStation atnaujinimai."
 
 #: ../src/dialog_version_check.cpp:349
-msgid "There are no updates to Aegisub."
-msgstr "Nėra Aegisub atnaujinimų."
+msgid "There are no updates to SubStation."
+msgstr "Nėra SubStation atnaujinimų."
 
 #: ../src/dialog_version_check.cpp:377
 #, c-format
 msgid ""
-"There was an error checking for updates to Aegisub:\n"
+"There was an error checking for updates to SubStation:\n"
 "%s\n"
 "\n"
 "If other applications can access the Internet fine, this is probably a "
 "temporary server problem on our end."
 msgstr ""
-"Tikrinant, ar yra Aegisub atnaujinimų, įvyko klaida:\n"
+"Tikrinant, ar yra SubStation atnaujinimų, įvyko klaida:\n"
 "%s\n"
 "\n"
 "Jei kitos programos sklandžiai pasiekia internetą, mūsų serveriuose "
 "tikriausiai kilo laikinų bėdų."
 
 #: ../src/dialog_version_check.cpp:381
-msgid "An unknown error occurred while checking for updates to Aegisub."
-msgstr "Tikrinant, ar yra Aegisub atnaujinimų, įvyko nežinoma klaida."
+msgid "An unknown error occurred while checking for updates to SubStation."
+msgstr "Tikrinant, ar yra SubStation atnaujinimų, įvyko nežinoma klaida."
 
 #: ../src/dialog_video_details.cpp:46
 msgid "Video Details"
@@ -5206,7 +5206,7 @@ msgstr "Dekoduotojas:"
 #: ../src/dialog_video_properties.cpp:135
 #, c-format
 msgid ""
-"The video you have loaded has no specified color matrix. Aegisub will guess "
+"The video you have loaded has no specified color matrix. SubStation will guess "
 "the color matrix to be %s, but there is no guarantee that other programs "
 "will guess the same matrix. This may make the video appear with different "
 "colors in different media players and can prevent subtitle colors from "
@@ -5216,7 +5216,7 @@ msgid ""
 "displays consistently in all players and that subtitle colors can reliably "
 "match video colors."
 msgstr ""
-"Jūsų įkeltame vaizde nėra nurodyta spalvų matrica. Aegisub spėjimu tai %s "
+"Jūsų įkeltame vaizde nėra nurodyta spalvų matrica. SubStation spėjimu tai %s "
 "spalvų matrica, bet neužtikriname, jog kitose programose bus nuspėta ta pati "
 "matrica. Taigi, vaizdas skirtinguose grotuvuose galimai bus atkuriamas "
 "skirtingomis spalvomis, o tai neleis subtitrų spalvoms atitikti vaizdo "
@@ -5719,21 +5719,21 @@ msgstr ""
 #: ../src/main.cpp:266
 #, c-format
 msgid ""
-"Oops, Aegisub has crashed!\n"
+"Oops, SubStation has crashed!\n"
 "\n"
 "An attempt has been made to save a copy of your file to:\n"
 "\n"
 "%s\n"
 "\n"
-"Aegisub will now close."
+"SubStation will now close."
 msgstr ""
-"Vaje, užstrigo Aegisub!\n"
+"Vaje, užstrigo SubStation!\n"
 "\n"
 "Pabandyta išsaugoti jūsų failą šiame kataloge:\n"
 "\n"
 "%s\n"
 "\n"
-"Aegisub netrukus užsivers."
+"SubStation netrukus užsivers."
 
 #: ../src/main.cpp:295
 msgid "Check for updates?"
@@ -5741,10 +5741,10 @@ msgstr "Patikrinti, ar yra atnaujinimų?"
 
 #: ../src/main.cpp:295
 msgid ""
-"Do you want Aegisub to check for updates whenever it starts? You can still "
+"Do you want SubStation to check for updates whenever it starts? You can still "
 "do it manually via the Help menu."
 msgstr ""
-"Ar norite, kad paleidus Aegisub būtų patikrinama, ar yra atnaujinimų? "
+"Ar norite, kad paleidus SubStation būtų patikrinama, ar yra atnaujinimų? "
 "Galėsite ir toliau tikrinti rankiniu režimu per pagalbos meniu."
 
 #: ../src/main.cpp:301
@@ -5766,11 +5766,11 @@ msgstr "Programos klaida"
 #: ../src/main.cpp:417
 #, c-format
 msgid ""
-"Aegisub has crashed while starting up!\n"
+"SubStation has crashed while starting up!\n"
 "\n"
 "The last startup step attempted was: %s."
 msgstr ""
-"Aegisub pasileidžiant užstrigo!\n"
+"SubStation pasileidžiant užstrigo!\n"
 "\n"
 "Paskutinis bandytas pasileidimo žingsnis: %s."
 
@@ -5778,11 +5778,11 @@ msgstr ""
 #, c-format
 msgid ""
 "An unexpected error has occurred. Please save your work and restart "
-"Aegisub.\n"
+"SubStation.\n"
 "\n"
 "Error Message: %s"
 msgstr ""
-"Įvyko netikėta klaida. Prašome išsisaugoti darbą ir paleisti Aegisub iš "
+"Įvyko netikėta klaida. Prašome išsisaugoti darbą ir paleisti SubStation iš "
 "naujo.\n"
 "\n"
 "Klaidos pranešimas: %s"
@@ -7546,8 +7546,8 @@ msgid "Create a start menu icon"
 msgstr "Sukurti Pradėti meniu nuorodą"
 
 #: packages/win_installer/fragment_strings.iss:1
-msgid "Automatically check for new versions of Aegisub"
-msgstr "Automatiškai tikrinti, ar yra Aegisub atnaujinimų"
+msgid "Automatically check for new versions of SubStation"
+msgstr "Automatiškai tikrinti, ar yra SubStation atnaujinimų"
 
 #: packages/win_installer/fragment_strings.iss:1
 msgid "Update Checker:"
@@ -7555,122 +7555,122 @@ msgstr "Atnaujinimų tikrintojas:"
 
 #: packages/win_installer/fragment_strings.iss:1
 msgid ""
-"This will install Aegisub {#BUILD_GIT_VERSION_STRING} on your computer."
+"This will install SubStation {#BUILD_GIT_VERSION_STRING} on your computer."
 "%n%nAegisub is covered by the GNU General Public License version 2. This "
 "means you may use the application for any purpose without charge, but that "
-"no warranties of any kind are given either.%n%nSee the Aegisub website for "
+"no warranties of any kind are given either.%n%nSee the SubStation website for "
 "information on obtaining the source code."
 msgstr ""
-"Jūsų kompiuteryje bus įrašytas Aegisub {#BUILD_GIT_VERSION_STRING}."
+"Jūsų kompiuteryje bus įrašytas SubStation {#BUILD_GIT_VERSION_STRING}."
 "%n%nAegisub suteikiama antra GNU bendrosios viešosios licencijos versija. "
 "Vadinasi, galite nemokamai bet kokiais tikslais naudotis programa, bet nebus "
 "suteiktos jokios garantijos.%n%nJei norite sužinoti, kaip gauti pirminį "
-"programos tekstą, patikrinkite Aegisub svetainę."
+"programos tekstą, patikrinkite SubStation svetainę."
 
-#: ../packages/desktop/aegisub.desktop.in.in:4
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:6
-msgid "Aegisub"
-msgstr "Aegisub"
+#: ../packages/desktop/substation.desktop.in.in:4
+#: ../packages/desktop/substation.metainfo.xml.in.in:6
+msgid "SubStation"
+msgstr "SubStation"
 
-#: ../packages/desktop/aegisub.desktop.in.in:5
+#: ../packages/desktop/substation.desktop.in.in:5
 msgid "Subtitle Editor"
 msgstr "Subtitrų rašyklė"
 
-#: ../packages/desktop/aegisub.desktop.in.in:6
+#: ../packages/desktop/substation.desktop.in.in:6
 msgid "Create and edit subtitles for film and videos."
 msgstr "Kurti bei redaguoti filmų bei vaizdo įrašų subtitrus."
 
-#: ../packages/desktop/aegisub.desktop.in.in:12
+#: ../packages/desktop/substation.desktop.in.in:12
 msgid "subtitles;subtitle;captions;captioning;video;audio;"
 msgstr "subtitrai;subtitras;titrai;titravimas;vaizdas;garsas;"
 
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:7
+#: ../packages/desktop/substation.metainfo.xml.in.in:7
 msgid "Create and modify subtitles"
 msgstr "Kurti ir modifikuoti subtitrus"
 
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:9
+#: ../packages/desktop/substation.metainfo.xml.in.in:9
 msgid ""
-"Aegisub is a free, cross-platform open source tool for creating and "
-"modifying subtitles. Aegisub makes it quick and easy to time subtitles to "
+"SubStation is a free, cross-platform open source tool for creating and "
+"modifying subtitles. SubStation makes it quick and easy to time subtitles to "
 "audio, and features many powerful tools for styling them, including a built-"
 "in real-time video preview."
 msgstr ""
-"Aegisub – tai nemokamas, daugiaplatformis atvirasis įrankis subtitrų kūrimui "
-"ir modifikavimui. Per Aegisub galima greitai bei lengvai sinchronizuoti "
+"SubStation – tai nemokamas, daugiaplatformis atvirasis įrankis subtitrų kūrimui "
+"ir modifikavimui. Per SubStation galima greitai bei lengvai sinchronizuoti "
 "subtitrus su garsu ir yra daug galingų įrankių jų stilizavimui, įskaitant ir "
 "įtaisyta tikralaikę vaizdo peržiūrą."
 
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:10
+#: ../packages/desktop/substation.metainfo.xml.in.in:10
 msgid ""
-"Aegisub was originally created as a tool to make typesetting, particularly "
+"SubStation was originally created as a tool to make typesetting, particularly "
 "in anime fansubs, a less painful experience. At the time of the start of the "
 "project, many other programs that supported the Advanced Substation Alpha "
 "format lacked (and in many cases, still lack; development on several "
 "competing programs have since been dropped for various reasons completely "
-"unrelated to Aegisub) many vital functions, or were too buggy and/or "
+"unrelated to SubStation) many vital functions, or were too buggy and/or "
 "unreliable to be really useful."
 msgstr ""
-"Aegisub iš pradžių buvo sukurtas kaip įrankis, kuris palengvintų vaizdinį "
+"SubStation iš pradžių buvo sukurtas kaip įrankis, kuris palengvintų vaizdinį "
 "komponavimą, ypač anime gerbėjų subtitruose. Projekto pradžioje daugelyje "
 "kitų „Advanced Substation Alpha“ formatą palaikiusių programų trūko (ir "
 "daugeliu atvejų vis dar trūksta; ne vienos varžovų programos kūrimas nuo "
-"tada buvo nutrauktas dėl įvairių visiškai su Aegisub nesusijusių priežasčių) "
+"tada buvo nutrauktas dėl įvairių visiškai su SubStation nesusijusių priežasčių) "
 "daug esminių funkcijų arba buvo per daug klaidų, kad būtų galima patikimai "
 "jomis naudotis."
 
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:11
+#: ../packages/desktop/substation.metainfo.xml.in.in:11
 msgid ""
-"Since then, Aegisub has grown into a fully fledged, highly customizable "
+"Since then, SubStation has grown into a fully fledged, highly customizable "
 "subtitle editor. It features a lot of convenient tools to help you with "
 "timing, typesetting, editing and translating subtitles, as well as a "
 "powerful scripting environment called Automation (originally mostly intended "
 "for creating karaoke effects, Automation can now be used much else, "
 "including creating macros and various other convenient tools)."
 msgstr ""
-"Nuo tada Aegisub išaugo į pilnavertę, itin tinkinamą subtitrų rašyklę. "
+"Nuo tada SubStation išaugo į pilnavertę, itin tinkinamą subtitrų rašyklę. "
 "Programoje yra daug patogių įrankių, kurie padeda sinchronizuoti, vaizdiškai "
 "komponuoti, redaguoti ir versti subtitrus. Be to, čia yra galinga skriptų "
 "aplinka vadinama automatizacija (iš pradžių labiausiai skirta karaokės "
 "efektų kūrimui, bet dabar gali būti naudojama daugeliui kitų paskirčių, "
 "įskaitant makrokomandų ir įvairių kitų patogių įrankių kūrimą)."
 
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:12
-msgid "Some highlights of Aegisub:"
-msgstr "Dalis išskirtinių Aegisub bruožų:"
+#: ../packages/desktop/substation.metainfo.xml.in.in:12
+msgid "Some highlights of SubStation:"
+msgstr "Dalis išskirtinių SubStation bruožų:"
 
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:14
+#: ../packages/desktop/substation.metainfo.xml.in.in:14
 msgid "Simple and intuitive yet powerful interface for editing subtitles"
 msgstr "Paprasta ir intuityvi, bet galinga sąsaja subtitrų redagavimui"
 
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:15
+#: ../packages/desktop/substation.metainfo.xml.in.in:15
 msgid "Support for many formats and character sets"
 msgstr "Palaiko daug formatų ir ženklų rinkinių"
 
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:16
+#: ../packages/desktop/substation.metainfo.xml.in.in:16
 msgid "Powerful video mode"
 msgstr "Galingas vaizdo režimas"
 
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:17
+#: ../packages/desktop/substation.metainfo.xml.in.in:17
 msgid "Visual typesetting tools"
 msgstr "Vaizdinio komponavimo įrankiai"
 
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:18
+#: ../packages/desktop/substation.metainfo.xml.in.in:18
 msgid "Intuitive and customizable audio timing mode"
 msgstr "Intuityvus ir tinkinamas garso sinchronizavimo režimas"
 
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:19
+#: ../packages/desktop/substation.metainfo.xml.in.in:19
 msgid "Fully scriptable through the Automation module"
 msgstr "Automatizacijos modulyje galima kurti skriptus"
 
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:43
+#: ../packages/desktop/substation.metainfo.xml.in.in:43
 msgid "Typesetting"
 msgstr "Vaizdinis komponavimas"
 
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:47
+#: ../packages/desktop/substation.metainfo.xml.in.in:47
 msgid "Audio video"
 msgstr "Garsas vaizdas"
 
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:51
+#: ../packages/desktop/substation.metainfo.xml.in.in:51
 msgid "Audio timing"
 msgstr "Garso sinchronizavimas"
 

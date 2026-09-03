@@ -9,10 +9,10 @@ script_version = "1"
 include("utils.lua")
 
 function test7(subtitles, selected_lines, active_line)
-	local a, b = aegisub.dialog.display({{class="label", label="Test..."}}, {})
+	local a, b = substation.dialog.display({{class="label", label="Test..."}}, {})
 	report_dialog_result(a, b)
-	aegisub.progress.set(50)
-	a, b = aegisub.dialog.display(
+	substation.progress.set(50)
+	a, b = substation.dialog.display(
 		{
 			{class="edit", name="foo", text="", x=0, y=0},
 			{class="intedit", name="e1", value=20, x=0, y=1},
@@ -38,19 +38,19 @@ function test7(subtitles, selected_lines, active_line)
 end
 
 function report_dialog_result(button, controls)
-	aegisub.debug.out("Dialog closed: ")
+	substation.debug.out("Dialog closed: ")
 	if button == false then
-		aegisub.debug.out("cancelled\n")
+		substation.debug.out("cancelled\n")
 	elseif button == true then
-		aegisub.debug.out("clicked Ok\n")
+		substation.debug.out("clicked Ok\n")
 	else
-		aegisub.debug.out("clicked '" .. button .. "'\n")
+		substation.debug.out("clicked '" .. button .. "'\n")
 	end
 	for key, val in pairs(controls) do
 		local printable = (val == true and "true") or (val == false and "false") or tostring(val)
-		aegisub.debug.out("%s: %s\n", key, printable)
+		substation.debug.out("%s: %s\n", key, printable)
 	end
-	aegisub.debug.out(" - - - - -\n")
+	substation.debug.out(" - - - - -\n")
 end
 
 
@@ -110,5 +110,5 @@ function export_config_dialog(subs, store)
 end
 
 
-aegisub.register_macro("Config Dialog 1", "Show a stupid config dialog", test7, nil)
-aegisub.register_filter("Export Config", "Test export filter config dialog stuff", 500, exporter, export_config_dialog)
+substation.register_macro("Config Dialog 1", "Show a stupid config dialog", test7, nil)
+substation.register_filter("Export Config", "Test export filter config dialog stuff", 500, exporter, export_config_dialog)

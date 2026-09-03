@@ -1,4 +1,4 @@
-// Copyright (c) 2012, Thomas Goyne <plorkyeran@aegisub.org>
+// Copyright (c) 2012, Thomas Goyne <plorkyeran@substation.org>
 //
 // Permission to use, copy, modify, and distribute this software for any
 // purpose with or without fee is hereby granted, provided that the above
@@ -12,7 +12,7 @@
 // ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 // OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 //
-// Aegisub Project http://www.aegisub.org/
+// SubStation Project http://www.substation.org/
 
 #include "font_file_lister.h"
 
@@ -20,16 +20,16 @@
 #include "dialog_manager.h"
 #include "format.h"
 #include "help_button.h"
-#include "include/aegisub/context.h"
+#include "include/substation/context.h"
 #include "libresrc/libresrc.h"
 #include "options.h"
 #include "utils.h"
 #include "value_event.h"
 
-#include <libaegisub/dispatch.h>
-#include <libaegisub/format_path.h>
-#include <libaegisub/fs.h>
-#include <libaegisub/path.h>
+#include <libsubstation/dispatch.h>
+#include <libsubstation/format_path.h>
+#include <libsubstation/fs.h>
+#include <libsubstation/path.h>
 
 #include <wx/button.h>
 #include <wx/dialog.h>

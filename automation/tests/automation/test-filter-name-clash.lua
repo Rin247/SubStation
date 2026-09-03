@@ -9,11 +9,11 @@ script_version = "1"
 include("utils.lua")
 
 function function1(subtitles, config)
-	aegisub.debug.out("function 1")
+	substation.debug.out("function 1")
 end
 function function2(subtitles, config)
-	aegisub.debug.out("function 2")
+	substation.debug.out("function 2")
 end
 
-aegisub.register_filter("Export breaker", "Export filter with nameclash (1)", 500, function1)
-aegisub.register_filter("Export breaker", "Export filter with nameclash (2)", 500, function2)
+substation.register_filter("Export breaker", "Export filter with nameclash (1)", 500, function1)
+substation.register_filter("Export breaker", "Export filter with nameclash (2)", 500, function2)

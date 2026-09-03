@@ -1,8 +1,8 @@
 #include "fragment_dictbase.iss"
 
 [Setup]
-OutputBaseFilename=Aegisub-3.0-dict-{#LANGCODE}
-VersionInfoDescription=Aegisub 3.0 {#LANGNAME} dictionary
+OutputBaseFilename=SubStation-3.0-dict-{#LANGCODE}
+VersionInfoDescription=SubStation 3.0 {#LANGNAME} dictionary
 
 [Files]
 Source: src\dictionaries\{#LANGCODE}.aff; DestDir: {app}\dictionaries; Flags: ignoreversion; Components: dic/{#LANGCODE}

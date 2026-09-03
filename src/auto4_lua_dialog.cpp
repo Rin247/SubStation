@@ -9,7 +9,7 @@
 //   * Redistributions in binary form must reproduce the above copyright notice,
 //     this list of conditions and the following disclaimer in the documentation
 //     and/or other materials provided with the distribution.
-//   * Neither the name of the Aegisub Group nor the names of its contributors
+//   * Neither the name of the SubStation Group nor the names of its contributors
 //     may be used to endorse or promote products derived from this software
 //     without specific prior written permission.
 //
@@ -25,7 +25,7 @@
 // ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
-// Aegisub Project http://www.aegisub.org/
+// SubStation Project http://www.substation.org/
 
 /// @file auto4_lua_dialog.cpp
 /// @brief Lua 5.1-based scripting engine (configuration-dialogue interface)
@@ -38,11 +38,11 @@
 #include "compat.h"
 #include "validators.h"
 
-#include <libaegisub/ass/string_codec.h>
-#include <libaegisub/log.h>
-#include <libaegisub/lua/utils.h>
-#include <libaegisub/split.h>
-#include <libaegisub/string.h>
+#include <libsubstation/ass/string_codec.h>
+#include <libsubstation/log.h>
+#include <libsubstation/lua/utils.h>
+#include <libsubstation/split.h>
+#include <libsubstation/string.h>
 
 #include <boost/algorithm/string/case_conv.hpp>
 #include <boost/range/adaptor/map.hpp>

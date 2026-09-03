@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Simple AppImage creator for Aegisub (x86_64 or ARM64 Linux)
+# Simple AppImage creator for SubStation (x86_64 or ARM64 Linux)
 # Usage: tools/create_appimage.sh [build-dir]
 # Requirements:
 #  - meson & ninja
@@ -16,7 +16,7 @@ case "$BUILD_DIR" in
     ;;
 esac
 APPDIR=AppDir
-APPNAME=Aegisub
+APPNAME=SubStation
 APP_VERSION=${APP_VERSION:-3.5.0}
 case "${APPIMAGE_ARCH:-$(uname -m)}" in
   x86_64|amd64)
@@ -58,30 +58,30 @@ meson install -C "$BUILD_DIR" --destdir "$PWD/$APPDIR"
 cat > "$APPDIR/AppRun" <<'EOF'
 #!/usr/bin/env bash
 HERE="$(dirname "$(readlink -f "$0")")"
-exec "$HERE/usr/bin/aegisub" "$@"
+exec "$HERE/usr/bin/substation" "$@"
 EOF
 chmod +x "$APPDIR/AppRun"
 
 # Ensure desktop file exists
 DESKTOP_DIR="$APPDIR/usr/share/applications"
 mkdir -p "$DESKTOP_DIR"
-if [ ! -f "$DESKTOP_DIR/aegisub.desktop" ]; then
-  cat > "$DESKTOP_DIR/aegisub.desktop" <<'EOF'
+if [ ! -f "$DESKTOP_DIR/substation.desktop" ]; then
+  cat > "$DESKTOP_DIR/substation.desktop" <<'EOF'
 [Desktop Entry]
 Version=1.0
 Type=Application
-Name=Aegisub
+Name=SubStation
 GenericName=Subtitle Editor
 Comment=Create and edit subtitles for film and videos.
-Exec=aegisub %f
-TryExec=aegisub
-Icon=aegisub
+Exec=substation %f
+TryExec=substation
+Icon=substation
 Terminal=false
 Categories=AudioVideo;AudioVideoEditing;GTK;
 Keywords=subtitles;subtitle;captions;captioning;video;audio;
 MimeType=application/x-srt;text/plain;text/x-ass;text/x-microdvd;text/x-ssa;
 StartupNotify=true
-StartupWMClass=aegisub
+StartupWMClass=substation
 EOF
 fi
 
@@ -90,7 +90,7 @@ ICON_DEST="$APPDIR/usr/share/icons/hicolor/256x256/apps"
 mkdir -p "$ICON_DEST"
 ICON_SRC=""
 # Common locations (png, svg, icns)
-for p in "packages/icons/aegisub.png" "packages/icons/aegisub.svg" "packages/icons/256x256/apps/aegisub.png" "packages/osx_bundle/Contents/Resources/aegisub.svg" "packages/osx_bundle/Contents/Resources/Aegisub.icns"; do
+for p in "packages/icons/substation.png" "packages/icons/substation.svg" "packages/icons/256x256/apps/substation.png" "packages/osx_bundle/Contents/Resources/substation.svg" "packages/osx_bundle/Contents/Resources/SubStation.icns"; do
   if [ -f "$p" ]; then
     ICON_SRC="$p"
     break
@@ -100,22 +100,22 @@ done
 if [ -n "$ICON_SRC" ]; then
   case "$ICON_SRC" in
     *.png)
-      cp "$ICON_SRC" "$ICON_DEST/aegisub.png" || true
+      cp "$ICON_SRC" "$ICON_DEST/substation.png" || true
       ;;
     *.svg)
       # Try to convert SVG to PNG using available tools
       if command -v rsvg-convert >/dev/null 2>&1; then
         echo "Converting SVG to PNG with rsvg-convert"
-        rsvg-convert -w 256 -h 256 "$ICON_SRC" -o "$ICON_DEST/aegisub.png" || true
+        rsvg-convert -w 256 -h 256 "$ICON_SRC" -o "$ICON_DEST/substation.png" || true
       elif command -v inkscape >/dev/null 2>&1; then
         echo "Converting SVG to PNG with inkscape"
-        inkscape "$ICON_SRC" --export-type=png --export-filename="$ICON_DEST/aegisub.png" --export-width=256 --export-height=256 || true
+        inkscape "$ICON_SRC" --export-type=png --export-filename="$ICON_DEST/substation.png" --export-width=256 --export-height=256 || true
       elif command -v convert >/dev/null 2>&1; then
         echo "Converting SVG to PNG with ImageMagick convert"
-        convert "$ICON_SRC" -resize 256x256 "$ICON_DEST/aegisub.png" || true
+        convert "$ICON_SRC" -resize 256x256 "$ICON_DEST/substation.png" || true
       else
         echo "SVG icon found but no SVG->PNG conversion tool available; copying raw SVG as fallback" >&2
-        cp "$ICON_SRC" "$ICON_DEST/aegisub.svg" || true
+        cp "$ICON_SRC" "$ICON_DEST/substation.svg" || true
       fi
       ;;
     *.icns)
@@ -129,10 +129,10 @@ if [ -n "$ICON_SRC" ]; then
           cp "$tmpdir/aicon.iconset"/*.png "$ICON_DEST/" || true
           # pick a 256x256 if present
           if [ -f "$ICON_DEST/icon_256x256.png" ]; then
-            cp "$ICON_DEST/icon_256x256.png" "$ICON_DEST/aegisub.png" || true
+            cp "$ICON_DEST/icon_256x256.png" "$ICON_DEST/substation.png" || true
           else
             # fallback: pick any png
-            cp "$ICON_DEST"/*.png "$ICON_DEST/aegisub.png" || true
+            cp "$ICON_DEST"/*.png "$ICON_DEST/substation.png" || true
           fi
         fi
         rm -rf "$tmpdir" || true

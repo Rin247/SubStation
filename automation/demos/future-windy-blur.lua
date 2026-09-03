@@ -9,14 +9,14 @@ script_author = "jfs"
 script_version = "1.4"
 
 function new_windy_blur(subs)
-	aegisub.progress.task("Getting header data...")
+	substation.progress.task("Getting header data...")
 	local meta, styles = karaskel.collect_head(subs)
 	
-	aegisub.progress.task("Applying effect...")
+	substation.progress.task("Applying effect...")
 	local i, ai, maxi, maxai = 1, 1, #subs, #subs
 	while i <= maxi do
-		aegisub.progress.task(string.format("Applying effect (%d/%d)...", ai, maxai))
-		aegisub.progress.set((ai-1)/maxai*100)
+		substation.progress.task(string.format("Applying effect (%d/%d)...", ai, maxai))
+		substation.progress.set((ai-1)/maxai*100)
 		local l = subs[i]
 		if l.class == "dialogue" and
 				not l.comment then
@@ -29,8 +29,8 @@ function new_windy_blur(subs)
 		end
 		ai = ai + 1
 	end
-	aegisub.progress.task("Finished!")
-	aegisub.progress.set(100)
+	substation.progress.task("Finished!")
+	substation.progress.set(100)
 end
 
 function do_fx(subs, meta, line)
@@ -61,4 +61,4 @@ function do_fx(subs, meta, line)
 	end
 end
 
-aegisub.register_filter("Future Windy Blur", "", 2000, new_windy_blur)
+substation.register_filter("Future Windy Blur", "", 2000, new_windy_blur)

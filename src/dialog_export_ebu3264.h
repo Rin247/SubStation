@@ -1,5 +1,5 @@
-// Copyright (c) 2011 Niels Martin Hansen <nielsm@aegisub.org>
-// Copyright (c) 2012 Thomas Goyne <plorkyeran@aegisub.org>
+// Copyright (c) 2011 Niels Martin Hansen <nielsm@substation.org>
+// Copyright (c) 2012 Thomas Goyne <plorkyeran@substation.org>
 //
 // Permission to use, copy, modify, and distribute this software for any
 // purpose with or without fee is hereby granted, provided that the above
@@ -13,13 +13,13 @@
 // ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 // OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 //
-// Aegisub Project http://www.aegisub.org/
+// SubStation Project http://www.substation.org/
 
 /// @file dialog_export_ebu3264.h
 /// @see dialog_export_ebu3264.cpp
 /// @ingroup subtitle_io export
 
-#include <libaegisub/vfr.h>
+#include <libsubstation/vfr.h>
 
 #include <memory>
 
@@ -88,7 +88,7 @@ public:
 	/// Translate SSA alignments?
 	bool translate_alignments;
 
-	/// Timecode which time 0 in Aegisub corresponds to
+	/// Timecode which time 0 in SubStation corresponds to
 	EbuTimecode timecode_offset;
 
 	/// Are end timecodes inclusive or exclusive?

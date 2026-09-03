@@ -36,7 +36,7 @@ This work is licensed under a Creative Commons Attribution-Share Alike 3.0 Licen
 
 \begin{minipage}{0.4\textwidth}
 \begin{flushleft} \large
-\includegraphics[width=0.7\textwidth]{./aegisub}
+\includegraphics[width=0.7\textwidth]{./substation}
 \end{flushleft}
 \end{minipage}
 \begin{minipage}{0.4\textwidth}
@@ -58,7 +58,7 @@ This work is licensed under a Creative Commons Attribution-Share Alike 3.0 Licen
 
 \section{Abstract}
 This document specifies the \emph{AS5 Subtitle Format}, developed jointly by the
-Aegisub\cite{Aegisub} and asa\cite{asa} teams in order to replace the old
+SubStation\cite{SubStation} and asa\cite{asa} teams in order to replace the old
 \emph{Sub Station Alpha}\cite{SSA} subtitle format and its extensions:
 
 \begin{itemize}
@@ -73,7 +73,7 @@ softsubs. The syntax is heavily influenced by the older SSA and ASS formats, whi
 turn vaguely resemble the TeX typesetting language; but AS5 also has many differences
 compared to these older formats and you should not expect it to behave exactly like them.
 
-AS5 has no official meaning. The ``A'' can stand for Aegisub, asa, ASS or Advanced,
+AS5 has no official meaning. The ``A'' can stand for SubStation, asa, ASS or Advanced,
 the ``S'' for Subtitles, and the 5 is a reference to the fact that it's a major
 rework of the SSA4 format (from which ASS, ASS2 and ASS3 derive). The full
 name of the format is ``AS5 Subtitle Format''.
@@ -129,8 +129,8 @@ can be ommitted from the file, and need not be implemented by all parsers.
 
 Finally, there is a special type of undefined group, \emph{[Private:PROGNAME]}, which 
 \must\ be \emph{ENTIRELY} preserved by other programs when re-saving it. This is used to
-store program-specific data. For example, Aegisub would create a group called
-\emph{[Private:Aegisub]} to store its data inside. This type of group is identified
+store program-specific data. For example, SubStation would create a group called
+\emph{[Private:SubStation]} to store its data inside. This type of group is identified
 by the fact that it starts with \emph{``[Private:''}.
 
 Additionally, private data may also be stored in any other section by using commented-out
@@ -194,7 +194,7 @@ to reject the entire file as invalid.
 The following items \may\ also be used; they are not required, but are recommended. They all have default values:
 
 \begin{itemize}
-\item Generator: The name of the program that generated this script, e.g. \textit{``Generator: Aegisub''}.
+\item Generator: The name of the program that generated this script, e.g. \textit{``Generator: SubStation''}.
 Default value is empty. This should be ignored by the renderer, but might be useful for inter-editing-program
 interaction.
 \item Wrapping: The line wrapping style. This can be ``Manual'', in which case only \textbackslash{n} can
@@ -1146,8 +1146,8 @@ while inside the Matroska file. The remaining fields should just be copied from 
 \addcontentsline{toc}{section}{References}
 \begin{thebibliography}{1}
 
-\bibitem{Aegisub} Rodrigo Braz Monteiro, Niels Martin Hansen, David Lamparter et al., Aegisub. Application, 2005-2007.\\
-\url{http://www.aegisub.net/}
+\bibitem{SubStation} Rodrigo Braz Monteiro, Niels Martin Hansen, David Lamparter et al., SubStation. Application, 2005-2007.\\
+\url{http://www.substation.net/}
 
 \bibitem{asa} David Lamparter, asa. Application, 2004-2007.\\
 \url{http://asa.diac24.net/}

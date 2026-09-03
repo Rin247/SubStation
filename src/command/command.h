@@ -1,4 +1,4 @@
-// Copyright (c) 2010, Amar Takhar <verm@aegisub.org>
+// Copyright (c) 2010, Amar Takhar <verm@substation.org>
 //
 // Permission to use, copy, modify, and distribute this software for any
 // purpose with or without fee is hereby granted, provided that the above
@@ -27,7 +27,7 @@
 #include <wx/intl.h>
 #include <wx/string.h>
 
-#include <libaegisub/exception.h>
+#include <libsubstation/exception.h>
 
 namespace agi { struct Context; }
 

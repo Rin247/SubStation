@@ -23,10 +23,10 @@ function selecttest(subtitles, selected_lines, active_line)
 	-- select some new lines
 	selected_lines = { lid-1, lid, lid+1 }
 	-- and set undo point (never forget!)
-	aegisub.set_undo_point("Insert+select Stuff")
+	substation.set_undo_point("Insert+select Stuff")
 	-- return the new selection
 	return selected_lines
 end
 
 
-aegisub.register_macro("Insert+select stuff", "Inserts some lines near the active line and selects the new lines", selecttest, nil)
+substation.register_macro("Insert+select stuff", "Inserts some lines near the active line and selects the new lines", selecttest, nil)

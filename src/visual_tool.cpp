@@ -1,4 +1,4 @@
-// Copyright (c) 2013, Thomas Goyne <plorkyeran@aegisub.org>
+// Copyright (c) 2013, Thomas Goyne <plorkyeran@substation.org>
 //
 // Permission to use, copy, modify, and distribute this software for any
 // purpose with or without fee is hereby granted, provided that the above
@@ -12,7 +12,7 @@
 // ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 // OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 //
-// Aegisub Project http://www.aegisub.org/
+// SubStation Project http://www.substation.org/
 
 #include "visual_tool.h"
 
@@ -20,7 +20,7 @@
 #include "ass_file.h"
 #include "ass_style.h"
 #include "compat.h"
-#include "include/aegisub/context.h"
+#include "include/substation/context.h"
 #include "options.h"
 #include "selection_controller.h"
 #include "video_controller.h"
@@ -29,10 +29,10 @@
 #include "visual_tool_drag.h"
 #include "visual_tool_vector_clip.h"
 
-#include <libaegisub/ass/time.h>
-#include <libaegisub/format.h>
-#include <libaegisub/of_type_adaptor.h>
-#include <libaegisub/string.h>
+#include <libsubstation/ass/time.h>
+#include <libsubstation/format.h>
+#include <libsubstation/of_type_adaptor.h>
+#include <libsubstation/string.h>
 
 #include <algorithm>
 

@@ -1,4 +1,4 @@
-// Copyright (c) 2014, Thomas Goyne <plorkyeran@aegisub.org>
+// Copyright (c) 2014, Thomas Goyne <plorkyeran@substation.org>
 //
 // Permission to use, copy, modify, and distribute this software for any
 // purpose with or without fee is hereby granted, provided that the above
@@ -12,7 +12,7 @@
 // ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 // OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 //
-// Aegisub Project http://www.aegisub.org/
+// SubStation Project http://www.substation.org/
 
 // main app icon should always be first
 // (windows explorer uses the first icon resource by default)
@@ -51,12 +51,12 @@ BEGIN
     BEGIN
         BLOCK "040904B0" // 0x0409: en-US, 0x04B0: unicode
         BEGIN
-            VALUE "CompanyName",      "Aegisub"
-            VALUE "FileDescription",  "Aegisub subtitle editor"
+            VALUE "CompanyName",      "SubStation"
+            VALUE "FileDescription",  "SubStation subtitle editor"
             VALUE "FileVersion",      BUILD_GIT_VERSION_STRING
-            VALUE "InternalName",     "aegisub"
-            VALUE "OriginalFilename", "aegisub.exe"
-            VALUE "ProductName",      "Aegisub"
+            VALUE "InternalName",     "substation"
+            VALUE "OriginalFilename", "substation.exe"
+            VALUE "ProductName",      "SubStation"
             VALUE "ProductVersion",   BUILD_GIT_VERSION_STRING
         END
     END

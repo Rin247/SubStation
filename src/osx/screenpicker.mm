@@ -1,5 +1,5 @@
 // Copyright (c) 2026, arch1t3cht <arch1t3cht@gmail.com>
-// Copyright (c) 2012 Thomas Goyne, <plorkyeran@aegisub.org>
+// Copyright (c) 2012 Thomas Goyne, <plorkyeran@substation.org>
 //
 // Permission to use, copy, modify, and distribute this software for any
 // purpose with or without fee is hereby granted, provided that the above
@@ -13,9 +13,9 @@
 // ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 // OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 //
-// Aegisub Project https://aegisub.org/
+// SubStation Project https://substation.org/
 
-#include <libaegisub/scoped_ptr.h>
+#include <libsubstation/scoped_ptr.h>
 
 #include <wx/dcmemory.h>
 #include <wx/thread.h>

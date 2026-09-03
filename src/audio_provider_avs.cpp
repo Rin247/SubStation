@@ -9,7 +9,7 @@
 //   * Redistributions in binary form must reproduce the above copyright notice,
 //     this list of conditions and the following disclaimer in the documentation
 //     and/or other materials provided with the distribution.
-//   * Neither the name of the Aegisub Group nor the names of its contributors
+//   * Neither the name of the SubStation Group nor the names of its contributors
 //     may be used to endorse or promote products derived from this software
 //     without specific prior written permission.
 //
@@ -25,7 +25,7 @@
 // ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
-// Aegisub Project http://www.aegisub.org/
+// SubStation Project http://www.substation.org/
 
 /// @file audio_provider_avs.cpp
 /// @brief Avisynth-based audio provider
@@ -33,7 +33,7 @@
 ///
 
 #ifdef WITH_AVISYNTH
-#include <libaegisub/audio/provider.h>
+#include <libsubstation/audio/provider.h>
 
 #include "avisynth.h"
 #include "avisynth_wrap.h"
@@ -41,10 +41,10 @@
 #include "options.h"
 #include "utils.h"
 
-#include <libaegisub/access.h>
-#include <libaegisub/charset_conv.h>
-#include <libaegisub/fs.h>
-#include <libaegisub/path.h>
+#include <libsubstation/access.h>
+#include <libsubstation/charset_conv.h>
+#include <libsubstation/fs.h>
+#include <libsubstation/path.h>
 
 #include <mutex>
 
@@ -88,7 +88,7 @@ AvisynthAudioProvider::AvisynthAudioProvider(agi::fs::path const& filename) {
 				LoadFromClip(env->Invoke("DirectShowSource", AVSValue(args, 3), argnames));
 			// Otherwise fail
 			else
-				throw agi::AudioProviderError("No suitable audio source filter found. Try placing DirectShowSource.dll in the Aegisub application directory.");
+				throw agi::AudioProviderError("No suitable audio source filter found. Try placing DirectShowSource.dll in the SubStation application directory.");
 		}
 	}
 	catch (AvisynthError &err) {

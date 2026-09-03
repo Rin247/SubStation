@@ -25,14 +25,14 @@ elif host_machine.system() == 'darwin'
     run_target('osx-build-dmg',
                command: [build_dmg_sh, meson.project_source_root(), meson.project_build_root(), meson.project_version()])
 else
-    aegisub_rdns_developer = 'org.aegisub'
-    aegisub_rdns_name = aegisub_rdns_developer + '.Aegisub'
-    conf_pkg.set('AEGISUB_COMMAND', 'aegisub')
+    aegisub_rdns_developer = 'org.substation'
+    aegisub_rdns_name = aegisub_rdns_developer + '.SubStation'
+    conf_pkg.set('AEGISUB_COMMAND', 'substation')
     conf_pkg.set('AEGISUB_RDNS_DEVELOPER', aegisub_rdns_developer)
     conf_pkg.set('AEGISUB_RDNS_NAME', aegisub_rdns_name)
 
-    desktop_template = configure_file(input: 'desktop/aegisub.desktop.in.in',
-                                      output: 'aegisub.desktop.in',
+    desktop_template = configure_file(input: 'desktop/substation.desktop.in.in',
+                                      output: 'substation.desktop.in',
                                       configuration: conf_pkg)
 
     i18n = import('i18n')
@@ -43,8 +43,8 @@ else
                     install: true,
                     install_dir: datadir / 'applications')
 
-	metainfo_template = configure_file(input: 'desktop/aegisub.metainfo.xml.in.in',
-                                      output: 'aegisub.metainfo.xml.in',
+	metainfo_template = configure_file(input: 'desktop/substation.metainfo.xml.in.in',
+                                      output: 'substation.metainfo.xml.in',
                                       configuration: conf_pkg)
 	i18n.merge_file(input: metainfo_template,
                     output: aegisub_rdns_name + '.metainfo.xml',
@@ -58,7 +58,7 @@ else
     foreach s: aegisub_logos
         dir = s.split('.')[0]
         ext = s.split('.')[1]
-        install_data('desktop' / dir / 'aegisub.' + ext,
+        install_data('desktop' / dir / 'substation.' + ext,
                      rename: aegisub_rdns_name + '.' + ext,
                      install_dir: datadir / 'icons' / 'hicolor' / dir / 'apps')
     endforeach

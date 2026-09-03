@@ -1,4 +1,4 @@
-// Copyright (c) 2011, Thomas Goyne <plorkyeran@aegisub.org>
+// Copyright (c) 2011, Thomas Goyne <plorkyeran@substation.org>
 //
 // Permission to use, copy, modify, and distribute this software for any
 // purpose with or without fee is hereby granted, provided that the above
@@ -12,7 +12,7 @@
 // ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 // OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 //
-// Aegisub Project http://www.aegisub.org/
+// SubStation Project http://www.substation.org/
 
 /// @file visual_tool_cross.cpp
 /// @brief Crosshair double-click-to-position visual typesetting tool
@@ -21,12 +21,12 @@
 #include "visual_tool_cross.h"
 
 #include "gl_text.h"
-#include "include/aegisub/context.h"
+#include "include/substation/context.h"
 #include "selection_controller.h"
 #include "video_display.h"
 
-#include <libaegisub/color.h>
-#include <libaegisub/format.h>
+#include <libsubstation/color.h>
+#include <libsubstation/format.h>
 
 VisualToolCross::VisualToolCross(VideoDisplay *parent, agi::Context *context)
 : VisualTool<VisualDraggableFeature>(parent, context)

@@ -1,7 +1,7 @@
 #!/bin/sh
 # USAGE: osx-dmg.sh [Bundle Directory] "[Package Name]"
 #
-# Amar Takhar <verm@aegisub.org>
+# Amar Takhar <verm@substation.org>
 #
 # -------------------------------------------------------------------------------------
 # This script is based on osx-dmg.sh from the Inkscape Project http://www.inkscape.org/
@@ -20,10 +20,10 @@ BUILD_DIR="${2}"
 AEGI_VER="${3}"
 
 ARCH="$(uname -m)"
-PKG_NAME="Aegisub-v${AEGI_VER}-${ARCH}"
+PKG_NAME="SubStation-v${AEGI_VER}-${ARCH}"
 PKG_NAME_VOLUME="${PKG_NAME}"
 
-PKG_DIR="${BUILD_DIR}/Aegisub.app"
+PKG_DIR="${BUILD_DIR}/SubStation.app"
 DMG_TMP_DIR="${BUILD_DIR}/temp_dmg"
 DMG_PATH="${BUILD_DIR}/${PKG_NAME}.dmg"
 DMG_RW_PATH="${BUILD_DIR}/${PKG_NAME}_rw.dmg"
@@ -47,7 +47,7 @@ echo "---- Setting up ----"
 ln -vsf /Applications "${DMG_TMP_DIR}"
 mkdir -v "${DMG_TMP_DIR}/.background"
 cp -v "${SRC_DIR}/packages/osx_dmg/dmg_background.png" "${DMG_TMP_DIR}/.background/background.png"
-cp -v "${SRC_DIR}/packages/osx_bundle/Contents/Resources/Aegisub.icns" "${DMG_TMP_DIR}/.VolumeIcon.icns"
+cp -v "${SRC_DIR}/packages/osx_bundle/Contents/Resources/SubStation.icns" "${DMG_TMP_DIR}/.VolumeIcon.icns"
 
 echo
 echo "---- Creating image ----"

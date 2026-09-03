@@ -1,2 +1,2 @@
-lfs = require 'aegisub.lfs'
+lfs = require 'substation.lfs'
 return lfs

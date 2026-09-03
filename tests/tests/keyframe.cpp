@@ -1,4 +1,4 @@
-// Copyright (c) 2011, Thomas Goyne <plorkyeran@aegisub.org>
+// Copyright (c) 2011, Thomas Goyne <plorkyeran@substation.org>
 //
 // Permission to use, copy, modify, and distribute this software for any
 // purpose with or without fee is hereby granted, provided that the above
@@ -16,8 +16,8 @@
 /// @brief agi::keyframe tests
 /// @ingroup video_input
 
-#include <libaegisub/fs.h>
-#include <libaegisub/keyframe.h>
+#include <libsubstation/fs.h>
+#include <libsubstation/keyframe.h>
 
 #include <fstream>
 #include <iterator>

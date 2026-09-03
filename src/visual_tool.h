@@ -1,4 +1,4 @@
-// Copyright (c) 2013, Thomas Goyne <plorkyeran@aegisub.org>
+// Copyright (c) 2013, Thomas Goyne <plorkyeran@substation.org>
 //
 // Permission to use, copy, modify, and distribute this software for any
 // purpose with or without fee is hereby granted, provided that the above
@@ -12,7 +12,7 @@
 // ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 // OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 //
-// Aegisub Project http://www.aegisub.org/
+// SubStation Project http://www.substation.org/
 
 #pragma once
 
@@ -20,8 +20,8 @@
 #include "vector2d.h"
 #include "options.h"
 
-#include <libaegisub/owning_intrusive_list.h>
-#include <libaegisub/signal.h>
+#include <libsubstation/owning_intrusive_list.h>
+#include <libsubstation/signal.h>
 
 #include <set>
 

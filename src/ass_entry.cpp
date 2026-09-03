@@ -1,4 +1,4 @@
-// Copyright (c) 2012, Thomas Goyne <plorkyeran@aegisub.org>
+// Copyright (c) 2012, Thomas Goyne <plorkyeran@substation.org>
 //
 // Permission to use, copy, modify, and distribute this software for any
 // purpose with or without fee is hereby granted, provided that the above
@@ -12,7 +12,7 @@
 // ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 // OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 //
-// Aegisub Project http://www.aegisub.org/
+// SubStation Project http://www.substation.org/
 
 /// @file ass_entry.cpp
 /// @brief Superclass for different kinds of lines in subtitles
@@ -28,7 +28,7 @@ std::string const& AssEntry::GroupHeader() const {
 		"[Fonts]",
 		"[Graphics]",
 		"[Events]",
-		"[Aegisub Extradata]",
+		"[SubStation Extradata]",
 		""
 	};
 	return ass_headers[(int)Group()];

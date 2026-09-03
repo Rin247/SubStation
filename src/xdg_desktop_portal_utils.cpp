@@ -1,4 +1,4 @@
-// Copyright (c) 2026, Aegisub contributors
+// Copyright (c) 2026, SubStation contributors
 //
 // Permission to use, copy, modify, and distribute this software for any
 // purpose with or without fee is hereby granted, provided that the above
@@ -12,7 +12,7 @@
 // ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 // OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 //
-// Aegisub Project https://aegisub.org/
+// SubStation Project https://substation.org/
 
 /// @file xdg_desktop_portal_utils.cpp
 /// @brief Utilities related to XDG Desktop Portals

@@ -1,14 +1,14 @@
-# Aegisub - Cross-Platform Subtitle Editor
+# SubStation - Cross-Platform Subtitle Editor
 
-For binaries and general information [see the releases page](https://github.com/Rin247/Aegisub/releases).
+For binaries and general information [see the releases page](https://github.com/Rin247/SubStation/releases).
 
-The issue tracker can be found at https://github.com/Rin247/Aegisub/issues.
+The issue tracker can be found at https://github.com/Rin247/SubStation/issues.
 
-## Building Aegisub
+## Building SubStation
 
 ### Windows
 
-Aegisub targets 64-bit builds only (Windows x86_64/ARM64 and Linux x86_64/ARM64). 32-bit/x86 builds are no longer supported.
+SubStation targets 64-bit builds only (Windows x86_64/ARM64 and Linux x86_64/ARM64). 32-bit/x86 builds are no longer supported.
 
 Supported platforms (policy update):
 
@@ -43,11 +43,11 @@ All other dependencies are either stored in the repository or are included as su
 
 Building (x64):
 
-1. Clone Aegisub's repository: `git clone https://github.com/TypesettingTools/Aegisub.git`
+1. Clone SubStation's repository: `git clone https://github.com/TypesettingTools/SubStation.git`
 2. From the Visual Studio "x64 Native Tools Command Prompt", generate the build directory: `meson setup build -Ddefault_library=static` (if building for release, add `--buildtype=release`)
 3. Build with `cd build` and `ninja`
 
-You should now have a binary: `aegisub.exe`.
+You should now have a binary: `substation.exe`.
 
 To build a Windows ARM64 binary from an x64 machine, install the Visual Studio ARM64
 build tools, open an x64 Native Tools prompt, and select the ARM64 target when
@@ -68,7 +68,7 @@ For repeatable builds, the equivalent wrapper is:
 
 Linux AppImage (x86_64/ARM64)
 
-Aegisub supports creating a portable AppImage for x86_64 and ARM64 Linux hosts. A helper script is included at [tools/create_appimage.sh](C:/Users/Aura/Documents/GitHub/Aegisub/tools/create_appimage.sh).
+SubStation supports creating a portable AppImage for x86_64 and ARM64 Linux hosts. A helper script is included at [tools/create_appimage.sh](C:/Users/Aura/Documents/GitHub/SubStation/tools/create_appimage.sh).
 
 Prerequisites:
 
@@ -81,7 +81,7 @@ Build steps (recommended):
 
    ./tools/create_appimage.sh build
 
-   The script will configure and build the project (static default_library), install into an AppDir, and then use the matching native appimagetool to produce `Aegisub-v3.5.0-x86_64.AppImage` or `Aegisub-v3.5.0-arm64.AppImage`. Set `APP_VERSION` to override the release label.
+   The script will configure and build the project (static default_library), install into an AppDir, and then use the matching native appimagetool to produce `SubStation-v3.5.0-x86_64.AppImage` or `SubStation-v3.5.0-arm64.AppImage`. Set `APP_VERSION` to override the release label.
 
 AppImages must be built in Linux (natively or through WSL2, a virtual machine, or a container); a Windows host cannot execute the Linux build toolchain directly. The GitHub Actions workflow builds both architectures on native Linux runners.
 
@@ -105,7 +105,7 @@ Notes:
   meson setup build --reconfigure -Dwx_version=3.3.0 -Ddefault_library=static
   ./tools/create_appimage.sh build
 
-- The script will try to locate an icon in `packages/icons` or convert `packages/osx_bundle/Contents/Resources/Aegisub.icns` if conversion tools are available. If you have a preferred PNG icon, place it at `packages/icons/aegisub.png` before running the script.
+- The script will try to locate an icon in `packages/icons` or convert `packages/osx_bundle/Contents/Resources/SubStation.icns` if conversion tools are available. If you have a preferred PNG icon, place it at `packages/icons/substation.png` before running the script.
 
 Building with Visual Studio (MSVC)
 
@@ -116,7 +116,7 @@ If you prefer to use Visual Studio for iterative development and debugging, Meso
 meson setup vsbuild --backend vs -Dwx_version=3.3.0 -Dwindows_target=0x0A00
 
 # Open the generated solution in Visual Studio
-# (the solution is at vsbuild\Aegisub.sln)
+# (the solution is at vsbuild\SubStation.sln)
 ```
 
 Notes:
@@ -137,12 +137,12 @@ You can generate the x64 installer with the wrapper (after installing Inno Setup
 .\tools\build_windows.ps1 -Architecture x64 -Installer
 ```
 
-The installer is written to `build-x64\Aegisub-*.exe`. The lower-level equivalent
+The installer is written to `build-x64\SubStation-*.exe`. The lower-level equivalent
 is `meson compile -C build-x64 win-installer`.
 
 You can generate the portable zip with `ninja win-portable` after a successful build.
-Windows archives are named `aegisub-v3.5.0-portable-x64.zip` or
-`aegisub-v3.5.0-portable-arm64.zip`, with one matching top-level directory inside.
+Windows archives are named `substation-v3.5.0-portable-x64.zip` or
+`substation-v3.5.0-portable-arm64.zip`, with one matching top-level directory inside.
 
 The current installer dependency payload is x64-specific (including VSFilter and
 the bundled VC++ redistributable), so ARM64 binaries are not packaged by this
@@ -153,7 +153,7 @@ payloads and an ARM64 redistributable.
 
 A vaguely recent version of Xcode and the corresponding command-line tools are required.
 
-For personal usage, you can use pip and homebrew to install almost all of Aegisub's dependencies:
+For personal usage, you can use pip and homebrew to install almost all of SubStation's dependencies:
 
     pip3 install meson      # or brew install meson if you installed Python via brew
     brew install cmake ninja pkg-config  libass boost zlib ffms2 fftw hunspell uchardet
@@ -163,7 +163,7 @@ For personal usage, you can use pip and homebrew to install almost all of Aegisu
 
 When compiling on Apple Silicon, replace `/usr/local` with `/opt/homebrew`.
 
-Once the dependencies are installed, build Aegisub with `meson build && meson compile -C build`.
+Once the dependencies are installed, build SubStation with `meson build && meson compile -C build`.
 
 #### Build dmg
 
@@ -175,8 +175,8 @@ meson compile osx-bundle -C build_static
 meson compile osx-build-dmg -C build_static
 ```
 
-The generated DMG is named `Aegisub-v3.5.0-arm64.dmg` on Apple Silicon
-or `Aegisub-v3.5.0-x86_64.dmg` on Intel Macs.
+The generated DMG is named `SubStation-v3.5.0-arm64.dmg` on Apple Silicon
+or `SubStation-v3.5.0-x86_64.dmg` on Intel Macs.
 
 ### Linux or other
 
@@ -212,7 +212,7 @@ I.e. to install on Ubuntu 24.04 run this command:
 sudo apt install build-essential pkg-config meson ninja-build gettext intltool libfontconfig1-dev libass-dev libboost-chrono-dev libboost-locale-dev libboost-regex-dev libboost-system-dev libboost-thread-dev zlib1g-dev wx3.2-headers libwxgtk3.2-dev icu-devtools libicu-dev libpulse-dev libasound2-dev libopenal-dev libffms2-dev libfftw3-dev libhunspell-dev libuchardet-dev libcurl4-gnutls-dev libgl1-mesa-dev libgtest-dev libgmock-dev libportal-gtk3-dev
 ```
 
-#### Build Aegisub
+#### Build SubStation
 
 ``` bash
 meson setup build --prefix=/usr/local --buildtype=release --strip -Dsystem_luajit=false -Ddefault_library=static
@@ -221,19 +221,19 @@ meson install -C build --skip-subprojects luajit
 ```
 
 #### Packaging
-If you are packaging Aegisub for a Linux distribution, here are a few things you may need to know:
-- Aegisub cannot be built with LTO (See: https://github.com/TypesettingTools/Aegisub/issues/290).
-- Aegisub depends on LuaJIT and *requires* LuaJIT to be build with Lua 5.2 compatibility enabled.
-  We are aware that most distributions do not compile LuaJIT with this flag, and that this complicates packaging for them, see https://github.com/TypesettingTools/Aegisub/issues/239 for a detailed discussion of the situation.
+If you are packaging SubStation for a Linux distribution, here are a few things you may need to know:
+- SubStation cannot be built with LTO (See: https://github.com/TypesettingTools/SubStation/issues/290).
+- SubStation depends on LuaJIT and *requires* LuaJIT to be build with Lua 5.2 compatibility enabled.
+  We are aware that most distributions do not compile LuaJIT with this flag, and that this complicates packaging for them, see https://github.com/TypesettingTools/SubStation/issues/239 for a detailed discussion of the situation.
 
-  Like for its other dependencies, Aegisub includes a meson subproject for LuaJIT that can be used to statically link a version of LuaJIT with 5.2 compatibility.
+  Like for its other dependencies, SubStation includes a meson subproject for LuaJIT that can be used to statically link a version of LuaJIT with 5.2 compatibility.
   For distributions that do not allow downloading additional sources at build time, the downloaded LuaJIT subproject is included in the source tarballs distributed with releases.
-- When linked against libstdc++, Aegisub needs libstdc++ 6.0.32 or later due to https://gcc.gnu.org/bugzilla/show_bug.cgi?id=95048.
-  Aegisub's tests will detect this bug, but if you're not running tests on packaging you'll need to make sure the libstdc++ version is recent enough.
-- Aegisub uses OpenGL through wxWidgets. For Aegisub to work directly on Wayland (as opposed to Xwayland), wxWidgets needs to be built with EGL enabled.
-  Aegisub will automatically fall back to X11 when it detects missing EGL support.
+- When linked against libstdc++, SubStation needs libstdc++ 6.0.32 or later due to https://gcc.gnu.org/bugzilla/show_bug.cgi?id=95048.
+  SubStation's tests will detect this bug, but if you're not running tests on packaging you'll need to make sure the libstdc++ version is recent enough.
+- SubStation uses OpenGL through wxWidgets. For SubStation to work directly on Wayland (as opposed to Xwayland), wxWidgets needs to be built with EGL enabled.
+  SubStation will automatically fall back to X11 when it detects missing EGL support.
 
-The following commands are an example for how to build Aegisub with the goal of creating a distribution package:
+The following commands are an example for how to build SubStation with the goal of creating a distribution package:
 
 ```bash
 meson subprojects download luajit              # Or use the tarball

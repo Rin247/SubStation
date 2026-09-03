@@ -1,4 +1,4 @@
-project('Aegisub', ['c', 'cpp'],
+project('SubStation', ['c', 'cpp'],
         license: 'BSD-3-Clause',
         meson_version: '>=0.60.0',
         default_options: [
@@ -14,7 +14,7 @@ project('Aegisub', ['c', 'cpp'],
             'luajit:lua52compat=true',
             'luajit:luajit=false',
         ],
-        version: '3.5.0')
+        version: '1.0.0')
 
 cmake = import('cmake')
 
@@ -61,7 +61,7 @@ version_h = custom_target('git_version.h',
 meson.add_dist_script(version_sh, meson.current_build_dir(), meson.current_source_dir(), 'dist')
 
 if host_machine.system() == 'darwin' and get_option('build_osx_bundle')
-    prefix = meson.current_build_dir() / 'Aegisub.app' / 'Contents'
+    prefix = meson.current_build_dir() / 'SubStation.app' / 'Contents'
     bindir = prefix / 'MacOS'
     datadir = prefix / 'SharedSupport'
     localedir = prefix / 'Resources'
@@ -71,7 +71,7 @@ else
     bindir = prefix / get_option('bindir')
     datadir = prefix / get_option('datadir')
     localedir = prefix / get_option('localedir')
-    dataroot = datadir / 'aegisub'
+    dataroot = datadir / 'substation'
 endif
 docdir = prefix / 'doc'
 
@@ -114,7 +114,7 @@ deps += cc.find_library('dl', required: false)
 
 deps += dependency('iconv', fallback: ['iconv', 'libiconv_dep'])
 
-deps += dependency('libass', version: '>=0.17.5',
+deps += dependency('libass', version: '1.0.0',
                    fallback: ['libass', 'libass_dep'])
 
 boost_static = meson.version().version_compare('>=0.63.0') and get_option('prefer_static')    # boost dependencies do not respect prefer_static https://github.com/mesonbuild/meson/issues/15458
@@ -125,7 +125,7 @@ if boost_static
 endif
 
 if not get_option('local_boost')
-    boost_dep = dependency('boost', version: '>=1.70.0',
+    boost_dep = dependency('boost', version: '1.0.0',
                             modules: boost_modules,
                             required: false,
                             static: boost_static)
@@ -133,7 +133,7 @@ if not get_option('local_boost')
     if boost_dep.version().version_compare('<1.77.0')
         # boost regex is header-only since version 1.77.0, and some distributions have stopped shipping the stub module since then.
         # So we need to require boost.regex for older versions but can't require it for newer versions.
-        boost_dep = dependency('boost', version: '>=1.70.0',
+        boost_dep = dependency('boost', version: '1.0.0',
                                 modules: boost_modules + ['regex'],
                                 required: false,
                                 static: boost_static)
@@ -162,7 +162,7 @@ endif
 
 deps += dependency('zlib')
 
-wx_dep = dependency('wxWidgets', version: '>=' + get_option('wx_version'),
+wx_dep = dependency('wxWidgets', version: '1.0.0' + get_option('wx_version'),
                     required: false,
                     modules: ['std', 'stc', 'gl'])
 
@@ -250,8 +250,8 @@ else
     conf.set('WITH_INTERNAL_WXWIDGETS', 1)
 endif
 
-deps += dependency('icu-uc', version: '>=4.8.1.1')
-deps += dependency('icu-i18n', version: '>=4.8.1.1')
+deps += dependency('icu-uc', version: '1.0.0')
+deps += dependency('icu-i18n', version: '1.0.0')
 
 check_deps = [
     # audio, in order of precedence
@@ -368,7 +368,7 @@ if get_option('enable_update_checker')
     deps += dependency('libcurl', allow_fallback: true, default_options: curl_options)
 endif
 
-luajit = dependency('luajit', version: '>=2.0.0', required: get_option('system_luajit'),
+luajit = dependency('luajit', version: '1.0.0', required: get_option('system_luajit'),
                     allow_fallback: false, method: 'pkg-config')
 if luajit.found() and luajit.type_name() != 'internal'
     luajit_test = cc.run(files('tests/tests/luajit_52.c'), dependencies: luajit)
@@ -473,7 +473,7 @@ else
 endif
 
 subdir('automation')
-subdir('libaegisub')
+subdir('libsubstation')
 subdir('packages')
 subdir('po')
 subdir('src')
@@ -488,18 +488,18 @@ aegisub_c_pch = ['src/include/agi_pre_c.h']
 link_args = []
 link_depends = []
 if host_machine.system() == 'windows'
-    manifest_file = configure_file(copy: true, input: 'src/res/aegisub.exe.manifest', output: 'aegisub.exe.manifest')
+    manifest_file = configure_file(copy: true, input: 'src/res/substation.exe.manifest', output: 'substation.exe.manifest')
     link_args += ['/MANIFEST:EMBED', '/MANIFESTINPUT:@0@'.format(manifest_file)]
     link_depends += manifest_file
 endif
 
-aegisub = executable('aegisub', aegisub_src, version_h, resrc, aegisub_order_dep,
+substation = executable('substation', aegisub_src, version_h, resrc, aegisub_order_dep,
                      c_args: aegisub_defines,
                      cpp_args: aegisub_defines,
-                     link_with: [libresrc, libaegisub],
+                     link_with: [libresrc, libsubstation],
                      link_args: link_args,
                      link_depends: link_depends,
-                     include_directories: [libaegisub_inc, libresrc_inc, version_inc, include_directories('src')],
+                     include_directories: [libsubstation_inc, libresrc_inc, version_inc, include_directories('src')],
                      cpp_pch: aegisub_cpp_pch,
                      c_pch: aegisub_c_pch,
                      install: true,

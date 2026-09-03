@@ -9,7 +9,7 @@
 //   * Redistributions in binary form must reproduce the above copyright notice,
 //     this list of conditions and the following disclaimer in the documentation
 //     and/or other materials provided with the distribution.
-//   * Neither the name of the Aegisub Group nor the names of its contributors
+//   * Neither the name of the SubStation Group nor the names of its contributors
 //     may be used to endorse or promote products derived from this software
 //     without specific prior written permission.
 //
@@ -25,12 +25,12 @@
 // ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
-// Aegisub Project http://www.aegisub.org/
+// SubStation Project http://www.substation.org/
 
 #pragma once
 
-#include <libaegisub/exception.h>
-#include <libaegisub/fs.h>
+#include <libsubstation/exception.h>
+#include <libsubstation/fs.h>
 
 #include <string>
 #include <vector>
@@ -57,7 +57,7 @@ public:
 	static void StripComments(AssFile &file);
 	/// @brief Split and merge lines so there are no overlapping lines
 	///
-	/// Algorithm described at http://devel.aegisub.org/wiki/Technical/SplitMerge
+	/// Algorithm described at http://devel.substation.org/wiki/Technical/SplitMerge
 	static void RecombineOverlaps(AssFile &file);
 	/// Merge sequential identical lines
 	static void MergeIdentical(AssFile &file);

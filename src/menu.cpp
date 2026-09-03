@@ -1,4 +1,4 @@
-// Copyright (c) 2011, Thomas Goyne <plorkyeran@aegisub.org>
+// Copyright (c) 2011, Thomas Goyne <plorkyeran@substation.org>
 //
 // Permission to use, copy, modify, and distribute this software for any
 // purpose with or without fee is hereby granted, provided that the above
@@ -16,10 +16,10 @@
 /// @brief Dynamic menu and toolbar generator.
 /// @ingroup menu
 
-#include "include/aegisub/menu.h"
+#include "include/substation/menu.h"
 
-#include "include/aegisub/context.h"
-#include "include/aegisub/hotkey.h"
+#include "include/substation/context.h"
+#include "include/substation/hotkey.h"
 
 #include "auto4_base.h"
 #include "command/command.h"
@@ -29,12 +29,12 @@
 #include "options.h"
 #include "utils.h"
 
-#include <libaegisub/cajun/reader.h>
-#include <libaegisub/hotkey.h>
-#include <libaegisub/json.h>
-#include <libaegisub/log.h>
-#include <libaegisub/path.h>
-#include <libaegisub/split.h>
+#include <libsubstation/cajun/reader.h>
+#include <libsubstation/hotkey.h>
+#include <libsubstation/json.h>
+#include <libsubstation/log.h>
+#include <libsubstation/path.h>
+#include <libsubstation/split.h>
 
 #include <algorithm>
 #include <boost/algorithm/string/case_conv.hpp>

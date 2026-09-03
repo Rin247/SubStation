@@ -1,11 +1,11 @@
 ﻿--[[ 
 "Clean Tags" -- An Auto4 LUA script for cleaning up ASS subtitle lines of badly-formed override 
 blocks and redundant/duplicate tags
-* Designed to work for Aegisub 2.0 and above
+* Designed to work for SubStation 2.0 and above
 * include()'ed this file from any auto4 script to use the cleantags() function below
 * Might change from time to time so look out for cleantags_version below
 
-Copyright (c) 2007-2009 Muhammad Lukman Nasaruddin (aka ai-chan, Aegisub's forum member)
+Copyright (c) 2007-2009 Muhammad Lukman Nasaruddin (aka ai-chan, SubStation's forum member)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and 
 associated documentation files (the "Software"), to deal in the Software without restriction, 
@@ -44,7 +44,7 @@ function cleantags(text)
 		end
 	end
 	repeat
-		if aegisub.progress.is_cancelled() then return end
+		if substation.progress.is_cancelled() then return end
 		text, replaced = string.gsub(text,"{(.-)}{(.-)}", combineadjacentnotks)
 	until replaced == 0
 	text = string.gsub(text, string.char(1), "") -- removes all char(1) we inserted
@@ -55,7 +55,7 @@ function cleantags(text)
 	--[[ For some reasons if one override block has more than one \k tag, 
 	push those to behind the first \k tag (which has been pushed to front already) ]]
 	repeat
-		if aegisub.progress.is_cancelled() then return end
+		if substation.progress.is_cancelled() then return end
 		text, replaced = string.gsub(text, "{([^{}]-)(" .. ktag .. ")(\\[^kK][^}]-)(" .. ktag .. ")(.-)}", "{%1%2%4%3%5}")
 	until replaced == 0
 				

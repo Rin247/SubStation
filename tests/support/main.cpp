@@ -1,4 +1,4 @@
-// Copyright (c) 2010, Amar Takhar <verm@aegisub.org>
+// Copyright (c) 2010, Amar Takhar <verm@substation.org>
 //
 // Permission to use, copy, modify, and distribute this software for any
 // purpose with or without fee is hereby granted, provided that the above
@@ -14,10 +14,10 @@
 
 #include <gtest/gtest.h>
 
-#include <libaegisub/dispatch.h>
-#include <libaegisub/fs.h>
-#include <libaegisub/log.h>
-#include <libaegisub/util.h>
+#include <libsubstation/dispatch.h>
+#include <libsubstation/fs.h>
+#include <libsubstation/log.h>
+#include <libsubstation/util.h>
 
 #include <cstdlib>
 #include <ctime>

@@ -10,7 +10,7 @@
    * Redistributions in binary form must reproduce the above copyright notice,
      this list of conditions and the following disclaimer in the documentation
      and/or other materials provided with the distribution.
-   * Neither the name of the Aegisub Group nor the names of its contributors
+   * Neither the name of the SubStation Group nor the names of its contributors
      may be used to endorse or promote products derived from this software
      without specific prior written permission.
 
@@ -53,7 +53,7 @@ function karaskel.collect_head(subs, generate_furigana)
 	
 	-- First pass: collect all existing styles and get resolution info
 	for i, l in ipairs(subs) do
-		if aegisub.progress.is_cancelled() then error("User cancelled") end
+		if substation.progress.is_cancelled() then error("User cancelled") end
 		
 		if l.class == "style" then
 			if not first_style_line then
@@ -67,7 +67,7 @@ function karaskel.collect_head(subs, generate_furigana)
 			
 			-- And also generate furigana styles if wanted
 			if generate_furigana and not l.name:match("furigana") then
-				aegisub.debug.out(5, "Creating furigana style for style: %s\n", l.name)
+				substation.debug.out(5, "Creating furigana style for style: %s\n", l.name)
 				local fs = table.copy(l)
 				fs.fontsize = l.fontsize * karaskel.furigana_scale
 				fs.outline = l.outline * karaskel.furigana_scale
@@ -105,7 +105,7 @@ function karaskel.collect_head(subs, generate_furigana)
 	-- Fix resolution data
 	meta.res_x, meta.res_y = subs.script_resolution()
 	
-	local video_x, video_y = aegisub.video_size()
+	local video_x, video_y = substation.video_size()
 	if video_y then
 		-- Correction factor for TextSub weirdness when render resolution does
 		-- not match script resolution. Text pixels are considered square in
@@ -114,7 +114,7 @@ function karaskel.collect_head(subs, generate_furigana)
 		meta.video_x_correct_factor =
 			(video_y / video_x) / (meta.res_y / meta.res_x)
 	end
-	aegisub.debug.out(4, "Karaskel: Video X correction factor = %f\n\n", meta.video_x_correct_factor)
+	substation.debug.out(4, "Karaskel: Video X correction factor = %f\n\n", meta.video_x_correct_factor)
 	
 	return meta, styles
 end
@@ -124,7 +124,7 @@ end
 -- Modifies the object passed for line
 function karaskel.preproc_line_text(meta, styles, line)
 	-- Assume line is class=dialogue
-	local kara = aegisub.parse_karaoke_data(line)
+	local kara = substation.parse_karaoke_data(line)
 	line.kara = { n = 0 }
 	line.furi = { n = 0 }
 	
@@ -264,36 +264,36 @@ function karaskel.preproc_line_size(meta, styles, line)
 	if styles[line.style] then
 		line.styleref = styles[line.style]
 	else
-		aegisub.debug.out(2, "WARNING: Style not found: " .. line.style .. "\n")
+		substation.debug.out(2, "WARNING: Style not found: " .. line.style .. "\n")
 		line.styleref = styles[1]
 	end
 	
 	-- Calculate whole line sizing
-	line.width, line.height, line.descent, line.extlead = aegisub.text_extents(line.styleref, line.text_stripped)
+	line.width, line.height, line.descent, line.extlead = substation.text_extents(line.styleref, line.text_stripped)
 	line.width = line.width * meta.video_x_correct_factor
 
 	-- Calculate syllable sizing
 	for s = 0, line.kara.n do
 		local syl = line.kara[s]
 		syl.style = line.styleref
-		syl.width, syl.height = aegisub.text_extents(syl.style, syl.text_spacestripped)
+		syl.width, syl.height = substation.text_extents(syl.style, syl.text_spacestripped)
 		syl.width = syl.width * meta.video_x_correct_factor
-		syl.prespacewidth = aegisub.text_extents(syl.style, syl.prespace) * meta.video_x_correct_factor
-		syl.postspacewidth = aegisub.text_extents(syl.style, syl.postspace) * meta.video_x_correct_factor
+		syl.prespacewidth = substation.text_extents(syl.style, syl.prespace) * meta.video_x_correct_factor
+		syl.postspacewidth = substation.text_extents(syl.style, syl.postspace) * meta.video_x_correct_factor
 	end
 	
 	-- Calculate furigana sizing
 	if styles[line.style .. "-furigana"] then
 		line.furistyle = styles[line.style .. "-furigana"]
 	else
-		aegisub.debug.out(4, "No furigana style defined for style '%s'\n", line.style)
+		substation.debug.out(4, "No furigana style defined for style '%s'\n", line.style)
 		line.furistyle = false
 	end
 	if line.furistyle then
 		for f = 1, line.furi.n do
 			local furi = line.furi[f]
 			furi.style = line.furistyle
-			furi.width, furi.height = aegisub.text_extents(furi.style, furi.text)
+			furi.width, furi.height = substation.text_extents(furi.style, furi.text)
 			furi.width = furi.width * meta.video_x_correct_factor
 			furi.prespacewidth = 0
 			furi.postspacewidth = 0
@@ -403,9 +403,9 @@ function karaskel.do_furigana_layout(meta, styles, line)
 		-- Furigana-less syllables always generate a new layout group
 		-- So do furigana-endowed syllables that are marked as split
 		-- But if current lg has no width (usually only first) don't create a new
-		aegisub.debug.out(5, "syl.furi.n=%d, isbreak=%s, last_had_furi=%s, lg.basewidth=%d\n", syl.furi.n, syl.furi.n > 0 and syl.furi[1].isbreak and "y" or "n", last_had_furi and "y" or "n", lg.basewidth)
+		substation.debug.out(5, "syl.furi.n=%d, isbreak=%s, last_had_furi=%s, lg.basewidth=%d\n", syl.furi.n, syl.furi.n > 0 and syl.furi[1].isbreak and "y" or "n", last_had_furi and "y" or "n", lg.basewidth)
 		if (syl.furi.n == 0 or syl.furi[1].isbreak or not last_had_furi) and lg.basewidth > 0 then
-			aegisub.debug.out(5, "Inserting layout group, basewidth=%d, furiwidth=%d, isbreak=%s\n", lg.basewidth, lg.furiwidth, syl.furi.n > 0 and syl.furi[1].isbreak and "y" or "n")
+			substation.debug.out(5, "Inserting layout group, basewidth=%d, furiwidth=%d, isbreak=%s\n", lg.basewidth, lg.furiwidth, syl.furi.n > 0 and syl.furi[1].isbreak and "y" or "n")
 			table.insert(lgroups, lg)
 			lg = { basewidth=0, furiwidth=0, syls={}, furi={}, spillback=false }
 			last_had_furi = false
@@ -414,7 +414,7 @@ function karaskel.do_furigana_layout(meta, styles, line)
 		-- Add this syllable to lg
 		lg.basewidth = lg.basewidth + syl.prespacewidth + syl.width + syl.postspacewidth
 		table.insert(lg.syls, syl)
-		aegisub.debug.out(5, "\tAdding syllable to layout group: '%s', width=%d, isbreak=%s\n", syl.text_stripped, syl.width, syl.furi.n > 0 and syl.furi[1].isbreak and "y" or "n")
+		substation.debug.out(5, "\tAdding syllable to layout group: '%s', width=%d, isbreak=%s\n", syl.text_stripped, syl.width, syl.furi.n > 0 and syl.furi[1].isbreak and "y" or "n")
 		
 		-- Add this syllable's furi to lg
 		for f = 1, syl.furi.n do
@@ -422,24 +422,24 @@ function karaskel.do_furigana_layout(meta, styles, line)
 			lg.furiwidth = lg.furiwidth + furi.width
 			lg.spillback = lg.spillback or furi.spillback
 			table.insert(lg.furi, furi)
-			aegisub.debug.out(5, "\tAdding furigana to layout group: %s (width=%d)\n", furi.text, furi.width)
+			substation.debug.out(5, "\tAdding furigana to layout group: %s (width=%d)\n", furi.text, furi.width)
 			last_had_furi = true
 		end
 	end
 	-- Insert last lg
-	aegisub.debug.out(5, "Inserting layout group, basewidth=%d, furiwidth=%d\n", lg.basewidth, lg.furiwidth)
+	substation.debug.out(5, "Inserting layout group, basewidth=%d, furiwidth=%d\n", lg.basewidth, lg.furiwidth)
 	table.insert(lgroups, lg)
 	-- And end-sentinel
 	table.insert(lgroups, lgsentinel)
 
-	aegisub.debug.out(5, "\nProducing layout from %d layout groups\n", #lgroups-1)
+	substation.debug.out(5, "\nProducing layout from %d layout groups\n", #lgroups-1)
 	-- Layout the groups at macro-level
 	-- Skip sentinel at ends in loop
 	local curx = 0
 	for i = 2, #lgroups-1 do
 		local lg = lgroups[i]
 		local prev = lgroups[i-1]
-		aegisub.debug.out(5, "Layout group, nsyls=%d, nfuri=%d, syl1text='%s', basewidth=%f furiwidth=%f, ", #lg.syls, #lg.furi, lg.syls[1] and lg.syls[1].text or "", lg.basewidth, lg.furiwidth)
+		substation.debug.out(5, "Layout group, nsyls=%d, nfuri=%d, syl1text='%s', basewidth=%f furiwidth=%f, ", #lg.syls, #lg.furi, lg.syls[1] and lg.syls[1].text or "", lg.basewidth, lg.furiwidth)
 		
 		-- Three cases: No furigana, furigana smaller than base and furigana larger than base
 		if lg.furiwidth == 0 then
@@ -448,7 +448,7 @@ function karaskel.do_furigana_layout(meta, styles, line)
 			lg.right = lg.left + lg.basewidth
 			-- If there was any spillover from a previous group, add it to here
 			if prev.rightspill  and prev.rightspill > 0 then
-				aegisub.debug.out(5, "eat rightspill=%f, ", prev.rightspill)
+				substation.debug.out(5, "eat rightspill=%f, ", prev.rightspill)
 				lg.leftspill = 0
 				lg.rightspill = prev.rightspill - lg.basewidth
 				prev.rightspill = 0
@@ -457,7 +457,7 @@ function karaskel.do_furigana_layout(meta, styles, line)
 		elseif lg.furiwidth <= lg.basewidth then
 			-- If there was any rightspill from previous group, we have to stay 100% clear of that
 			if prev.rightspill and prev.rightspill > 0 then
-				aegisub.debug.out(5, "skip rightspill=%f, ", prev.rightspill)
+				substation.debug.out(5, "skip rightspill=%f, ", prev.rightspill)
 				curx = curx + prev.rightspill
 				prev.rightspill = 0
 			end
@@ -470,7 +470,7 @@ function karaskel.do_furigana_layout(meta, styles, line)
 		else
 			-- Furigana is wider than base, we'll have to spill in some direction
 			if prev.rightspill and prev.rightspill > 0 then
-				aegisub.debug.out(5, "skip rightspill=%f, ", prev.rightspill)
+				substation.debug.out(5, "skip rightspill=%f, ", prev.rightspill)
 				curx = curx + prev.rightspill
 				prev.rightspill = 0
 			end
@@ -479,7 +479,7 @@ function karaskel.do_furigana_layout(meta, styles, line)
 				-- Both directions
 				lg.leftspill = (lg.furiwidth - lg.basewidth) / 2
 				lg.rightspill = lg.leftspill
-				aegisub.debug.out(5, "spill left=%f right=%f, ", lg.leftspill, lg.rightspill)
+				substation.debug.out(5, "spill left=%f right=%f, ", lg.leftspill, lg.rightspill)
 				-- If there was any furigana or spill on previous syllable we can't overlap it
 				if prev.rightspill then
 					lg.left = curx + lg.leftspill
@@ -490,13 +490,13 @@ function karaskel.do_furigana_layout(meta, styles, line)
 				-- Only to the right
 				lg.leftspill = 0
 				lg.rightspill = lg.furiwidth - lg.basewidth
-				aegisub.debug.out(5, "spill right=%f, ", lg.rightspill)
+				substation.debug.out(5, "spill right=%f, ", lg.rightspill)
 				lg.left = curx
 			end
 			lg.right = lg.left + lg.basewidth
 			curx = lg.right
 		end
-		aegisub.debug.out(5, "left=%f, right=%f\n", lg.left, lg.right)
+		substation.debug.out(5, "left=%f, right=%f\n", lg.left, lg.right)
 	end
 	
 	-- Now the groups are layouted, so place the individual syllables/furigana
@@ -550,17 +550,17 @@ end
 local fx_library_registered = false
 function karaskel.use_fx_library_furi(use_furigana, macrotoo)
 	local function fx_library_main(subs)
-		aegisub.progress.task("Collecting header info")
+		substation.progress.task("Collecting header info")
 		meta, styles = karaskel.collect_head(subs, use_furigana)
 		
-		aegisub.progress.task("Processing subs")
+		substation.progress.task("Processing subs")
 		local i, maxi = 1, #subs
 		while i <= maxi do
-			aegisub.progress.set(i/maxi*100)
+			substation.progress.set(i/maxi*100)
 			local l = subs[i]
 			
 			if l.class == "dialogue" then
-				aegisub.progress.task(l.text)
+				substation.progress.task(l.text)
 				karaskel.preproc_line(subs, meta, styles, l)
 				local keep = true
 				local fx, fxdata = string.headtail(l.effect)
@@ -582,14 +582,14 @@ function karaskel.use_fx_library_furi(use_furigana, macrotoo)
 	end
 
 	if fx_library_registered then return end
-	aegisub.register_filter(script_name or "fx_library", script_description or "Apply karaoke effects (fx_library skeleton)", 2000, fx_library_main)
+	substation.register_filter(script_name or "fx_library", script_description or "Apply karaoke effects (fx_library skeleton)", 2000, fx_library_main)
 	
 	if macrotoo then
 		local function fxlibmacro(subs)
 			fx_library_main(subs)
-			aegisub.set_undo_point(script_name or "karaoke effect")
+			substation.set_undo_point(script_name or "karaoke effect")
 		end
-		aegisub.register_macro(script_name or "fx_library", script_description or "Apply karaoke effects (fx_library skeleton)", fxlibmacro)
+		substation.register_macro(script_name or "fx_library", script_description or "Apply karaoke effects (fx_library skeleton)", fxlibmacro)
 	end
 end
 function karaskel.use_fx_library(macrotoo)
@@ -625,17 +625,17 @@ function karaskel.use_classic_adv(use_furigana, macrotoo)
 			end
 		end
 		
-		aegisub.progress.task("Collecting header info")
+		substation.progress.task("Collecting header info")
 		local meta, styles = karaskel.collect_head(subs, use_furigana)
 		
 		-- Collect lines
-		aegisub.progress.task("Collecting subtitle lines")
+		substation.progress.task("Collecting subtitle lines")
 		local lines = { n=0 }
 		local prevline = nil
 		local i = 1
 		local curorgline, maxorglines = 1, #subs
 		while i <= #subs do
-			aegisub.progress.set(curorgline/maxorglines*100)
+			substation.progress.set(curorgline/maxorglines*100)
 			local l = subs[i]
 			if l.class == "dialogue" then
 				-- Link prev of this one
@@ -661,7 +661,7 @@ function karaskel.use_classic_adv(use_furigana, macrotoo)
 			curorgline = curorgline + 1
 		end
 		
-		aegisub.progress.task("Processing subtitles")
+		substation.progress.task("Processing subtitles")
 		local linefunc = default_do_line
 		if type(_G.do_line)=="function" then
 			linefunc = function(subs, meta, styles, lines, line)
@@ -669,22 +669,22 @@ function karaskel.use_classic_adv(use_furigana, macrotoo)
 			end
 		end
 		for i = 1, lines.n do
-			aegisub.progress.set(i/lines.n*100)
+			substation.progress.set(i/lines.n*100)
 			linefunc(subs, meta, styles, lines, lines[i])
 		end
 		
-		aegisub.progress.task("Finished")
-		aegisub.progress.set(100)
+		substation.progress.task("Finished")
+		substation.progress.set(100)
 	end
 	
 	if classic_adv_registered then return end
-	aegisub.register_filter(script_name or "classic_adv", script_description or "Apply karaoke effects (classic_adv skeleton)", 2000, classic_adv_main)
+	substation.register_filter(script_name or "classic_adv", script_description or "Apply karaoke effects (classic_adv skeleton)", 2000, classic_adv_main)
 	
 	if macrotoo then
 		local function classic_adv_macro(subs)
 			classic_adv_main(subs)
-			aegisub.set_undo_point(script_name or "karaoke effect")
+			substation.set_undo_point(script_name or "karaoke effect")
 		end
-		aegisub.register_macro(script_name or "classic_adv", script_description or "Apply karaoke effects (classic_adv skeleton)", classic_adv_macro)
+		substation.register_macro(script_name or "classic_adv", script_description or "Apply karaoke effects (classic_adv skeleton)", classic_adv_macro)
 	end
 end

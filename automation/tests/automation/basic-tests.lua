@@ -8,8 +8,8 @@ script_version = "2"
 
 
 function macro_test2(subtitles, selected_lines, active_line)
-	aegisub.debug.out(subtitles.n .. " and " .. #subtitles .. " should be the same value")
-	aegisub.debug.out(subtitles[selected_lines[1]].raw)
+	substation.debug.out(subtitles.n .. " and " .. #subtitles .. " should be the same value")
+	substation.debug.out(subtitles[selected_lines[1]].raw)
 end
 
 function dumper(subtitles, selected_lines, active_line)
@@ -28,7 +28,7 @@ function dumper(subtitles, selected_lines, active_line)
 		elseif l.class == "dialogue" then
 			s = s .. string.format("layer: %d\nstyle: %s\ntext: %s\n", l.layer, l.style, l.text)
 		end
-		aegisub.debug.out(s)
+		substation.debug.out(s)
 	end
 end
 
@@ -39,12 +39,12 @@ function inserttest(subtitles, selected_lines, active_line)
 	local l = subtitles[lid]
 	l.text = "A4 was here!"
 	subtitles[lid] = l
-	aegisub.set_undo_point("Insert Stuff")
+	substation.set_undo_point("Insert Stuff")
 end
 
 
-aegisub.register_macro("File line count", "Count the number of lines in the ASS file", macro_test2, nil)
+substation.register_macro("File line count", "Count the number of lines in the ASS file", macro_test2, nil)
 
-aegisub.register_macro("Dump", "Dumps info on every line in the file", dumper, nil)
+substation.register_macro("Dump", "Dumps info on every line in the file", dumper, nil)
 
-aegisub.register_macro("Insert stuff", "Inserts some lines near the active line", inserttest, nil)
+substation.register_macro("Insert stuff", "Inserts some lines near the active line", inserttest, nil)

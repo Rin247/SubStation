@@ -1,4 +1,4 @@
-// Copyright (c) 2011, Thomas Goyne <plorkyeran@aegisub.org>
+// Copyright (c) 2011, Thomas Goyne <plorkyeran@substation.org>
 //
 // Permission to use, copy, modify, and distribute this software for any
 // purpose with or without fee is hereby granted, provided that the above
@@ -12,7 +12,7 @@
 // ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 // OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 //
-// Aegisub Project http://www.aegisub.org/
+// SubStation Project http://www.substation.org/
 
 #include "ass_dialogue.h"
 #include "ass_file.h"
@@ -22,14 +22,14 @@
 #include "audio_rendering_style.h"
 #include "audio_timing.h"
 #include "compat.h"
-#include "include/aegisub/context.h"
+#include "include/substation/context.h"
 #include "options.h"
 #include "pen.h"
 #include "selection_controller.h"
 #include "utils.h"
 
-#include <libaegisub/ass/karaoke.h>
-#include <libaegisub/signal.h>
+#include <libsubstation/ass/karaoke.h>
+#include <libsubstation/signal.h>
 
 #include <boost/range/algorithm/copy.hpp>
 #include <boost/range/adaptor/filtered.hpp>

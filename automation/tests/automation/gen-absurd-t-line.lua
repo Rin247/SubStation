@@ -16,7 +16,7 @@ function gen_one_absurd(subs, sel)
 	end
 	l.text = l.text .. "a"
 	subs[-sel[1]] = l
-	aegisub.set_undo_point("absurdness 1")
+	substation.set_undo_point("absurdness 1")
 end
 
 function gen_absurd_many(subs, sel)
@@ -27,8 +27,8 @@ function gen_absurd_many(subs, sel)
 		l.text = string.format("{\\t(0,100,%s)}a", ttext)
 		subs[-sel[1]] = l
 	end
-	aegisub.set_undo_point("absurdness 2")
+	substation.set_undo_point("absurdness 2")
 end
 
-aegisub.register_macro("Generate absurd line", "Absurd", gen_one_absurd)
-aegisub.register_macro("Generate absurdly many lines", "Absurd", gen_absurd_many)
+substation.register_macro("Generate absurd line", "Absurd", gen_one_absurd)
+substation.register_macro("Generate absurdly many lines", "Absurd", gen_absurd_many)

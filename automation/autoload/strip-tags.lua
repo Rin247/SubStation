@@ -1,4 +1,4 @@
-﻿-- Copyright (c) 2010, Thomas Goyne <plorkyeran@aegisub.org>
+﻿-- Copyright (c) 2010, Thomas Goyne <plorkyeran@substation.org>
 --
 -- Permission to use, copy, modify, and distribute this software for any
 -- purpose with or without fee is hereby granted, provided that the above
@@ -12,7 +12,7 @@
 -- ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 -- OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
-local tr = aegisub.gettext
+local tr = substation.gettext
 
 script_name = tr"Strip tags"
 script_description = tr"Remove all override tags from selected lines"
@@ -25,8 +25,8 @@ function strip_tags(subs, sel)
         line.text = line.text:gsub("{[^}]+}", "")
         subs[i] = line
     end
-    aegisub.set_undo_point(tr"strip tags")
+    substation.set_undo_point(tr"strip tags")
 end
 
-aegisub.register_macro(script_name, script_description, strip_tags)
+substation.register_macro(script_name, script_description, strip_tags)
 

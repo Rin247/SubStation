@@ -9,7 +9,7 @@
 //   * Redistributions in binary form must reproduce the above copyright notice,
 //     this list of conditions and the following disclaimer in the documentation
 //     and/or other materials provided with the distribution.
-//   * Neither the name of the Aegisub Group nor the names of its contributors
+//   * Neither the name of the SubStation Group nor the names of its contributors
 //     may be used to endorse or promote products derived from this software
 //     without specific prior written permission.
 //
@@ -25,11 +25,11 @@
 // ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
-// Aegisub Project http://www.aegisub.org/
+// SubStation Project http://www.substation.org/
 
 #pragma once
 
-#include <libaegisub/fs.h>
+#include <libsubstation/fs.h>
 
 #include <cstdint>
 #include <string>
@@ -53,11 +53,11 @@ std::string float_to_string(double val, int precision = 3);
 /// Algorithm from http://bob.allegronetwork.com/prog/tricks.html
 int SmallestPowerOf2(int x);
 
-/// @brief Launch a new copy of Aegisub.
+/// @brief Launch a new copy of SubStation.
 ///
 /// Contrary to what the name suggests, this does not close the currently
 /// running process.
-void RestartAegisub();
+void RestartSubStation();
 
 /// Add the OS X 10.7+ full-screen button to a window
 void AddFullScreenButton(wxWindow *window);

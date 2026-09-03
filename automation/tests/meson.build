@@ -5,12 +5,12 @@ if host_machine.system() == 'windows'
 endif
 
 aegisub_lua = executable(
-    'aegisub-lua',
-    'aegisub.cpp',
-    include_directories: libaegisub_inc,
+    'substation-lua',
+    'substation.cpp',
+    include_directories: libsubstation_inc,
     dependencies: deps,
     cpp_args: aegisub_lua_args + conf_defines,
-    link_with: libaegisub,
+    link_with: libsubstation,
 )
 
 # Requires busted installed through luarocks for Lua 5.1; the fixtures are

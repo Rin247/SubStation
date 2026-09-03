@@ -1,4 +1,4 @@
-// Copyright (c) 2010, Thomas Goyne <plorkyeran@aegisub.org>
+// Copyright (c) 2010, Thomas Goyne <plorkyeran@substation.org>
 //
 // Permission to use, copy, modify, and distribute this software for any
 // purpose with or without fee is hereby granted, provided that the above
@@ -12,10 +12,10 @@
 // ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 // OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 //
-// Aegisub Project http://www.aegisub.org/
+// SubStation Project http://www.substation.org/
 
-#include <libaegisub/fs.h>
-#include <libaegisub/vfr.h>
+#include <libsubstation/fs.h>
+#include <libsubstation/vfr.h>
 
 #include <climits>
 #include <fstream>

@@ -13,15 +13,15 @@ include("utils.lua")
 max_iter = 3
 
 function raytrace(subs)
-	aegisub.progress.task("Reading scene...")
+	substation.progress.task("Reading scene...")
 	local lights, tris, camera, xres, yres = read_scene(subs)
 	
-	aegisub.progress.task("Raytracing...")
+	substation.progress.task("Raytracing...")
 	local curp, totalp = 0, xres*yres
 	for y = 0, yres-1 do
-		aegisub.progress.task(string.format("Raytracing, line %d/%d...", y+1, yres))
+		substation.progress.task(string.format("Raytracing, line %d/%d...", y+1, yres))
 		for x = 0, xres-1 do
-			aegisub.progress.set(curp/totalp*100)
+			substation.progress.set(curp/totalp*100)
 			local l = trace_point(x, y, (x+0.5)/xres, (y+0.5)/yres, lights, tris, camera)
 			if l then
 				subs.append(l)
@@ -30,8 +30,8 @@ function raytrace(subs)
 		end
 	end
 	
-	aegisub.progress.task("Done.")
-	aegisub.progress.set(100)
+	substation.progress.task("Done.")
+	substation.progress.set(100)
 end
 
 
@@ -210,7 +210,7 @@ function read_scene(subs)
 	local i, maxi = 1, #subs
 	local replaced_style = false
 	while i < maxi do
-		aegisub.progress.set(i / maxi * 100)
+		substation.progress.set(i / maxi * 100)
 		local l = subs[i]
 		if l.class == "dialogue" then
 			parse_line(l, lights, tris, camera)
@@ -400,8 +400,8 @@ end
 
 function raytrace_macro(subs)
 	raytrace(subs)
-	aegisub.set_undo_point("raytracing")
+	substation.set_undo_point("raytracing")
 end
 
-aegisub.register_macro("Raytrace!", "Raytrace the scene", raytrace_macro)
-aegisub.register_filter("Raytrace", "Raytrace the scene", 2000, raytrace)
+substation.register_macro("Raytrace!", "Raytrace the scene", raytrace_macro)
+substation.register_filter("Raytrace", "Raytrace the scene", 2000, raytrace)

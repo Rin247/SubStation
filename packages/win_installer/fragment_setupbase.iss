@@ -7,15 +7,15 @@
 #include BUILD_ROOT + "\git_version.h"
 
 [Setup]
-AppName=Aegisub
-AppVerName=Aegisub {#BUILD_GIT_VERSION_STRING}
+AppName=SubStation
+AppVerName=SubStation {#BUILD_GIT_VERSION_STRING}
 AppVersion={#INSTALLER_VERSION}
-AppPublisher=Aegisub Team
-AppPublisherURL=https://github.com/Rin247/Aegisub
-AppSupportURL=https://github.com/Rin247/Aegisub/issues
-AppCopyright=2005-{#CURRENT_YEAR} The Aegisub Team
+AppPublisher=SubStation Team
+AppPublisherURL=https://github.com/Rin247/SubStation
+AppSupportURL=https://github.com/Rin247/SubStation/issues
+AppCopyright=2005-{#CURRENT_YEAR} The SubStation Team
 VersionInfoVersion={#INSTALLER_VERSION}
-DefaultGroupName=Aegisub
+DefaultGroupName=SubStation
 AllowNoIcons=true
 OutputDir={#BUILD_ROOT}
 Compression=lzma/ultra64
@@ -29,18 +29,18 @@ UsePreviousSetupType=no
 UsePreviousAppDir=yes
 UsePreviousTasks=no
 UsedUserAreasWarning=no
-UninstallDisplayIcon={app}\aegisub.exe
+UninstallDisplayIcon={app}\substation.exe
 ; Default to a large welcome bitmap, suitable for large fonts
 ; The normal fonts version is selected by code below
 WizardImageFile={#INSTALLER_DIR}\welcome-large.bmp
-WizardSmallImageFile={#INSTALLER_DIR}\aegisub-large.bmp
+WizardSmallImageFile={#INSTALLER_DIR}\substation-large.bmp
 
 ; Filename mirrors the macOS AppImage convention:
-;   tagged release:    Aegisub-v3.5.0-x64.exe
-;   N commits after:   Aegisub-v3.5.0-N-x64.exe
+;   tagged release:    SubStation-v3.5.0-x64.exe
+;   N commits after:   SubStation-v3.5.0-N-x64.exe
 ; BUILD_GIT_VERSION_SHORT is "v3.5.0" or "v3.5.0-1" etc. (no branch/hash).
-OutputBaseFilename=Aegisub-{#BUILD_GIT_VERSION_SHORT}-x64
-VersionInfoDescription=Aegisub {#BUILD_GIT_VERSION_STRING}
+OutputBaseFilename=SubStation-{#BUILD_GIT_VERSION_SHORT}-x64
+VersionInfoDescription=SubStation {#BUILD_GIT_VERSION_STRING}
 
 [Languages]
 Name: "en"; MessagesFile: "compiler:Default.isl"
@@ -79,7 +79,7 @@ Name: "zh_TW"; MessagesFile: {#DEPS_DIR}\innosetup-langs\ChineseTraditional.isl
 [Files]
 ; small bitmaps (used by beautify code)
 DestDir: {tmp}; Flags: dontcopy; Source: {#INSTALLER_DIR}\welcome.bmp
-DestDir: {tmp}; Flags: dontcopy; Source: {#INSTALLER_DIR}\aegisub.bmp
+DestDir: {tmp}; Flags: dontcopy; Source: {#INSTALLER_DIR}\substation.bmp
 ; uninstall data (used by migration code)
 DestDir: {tmp}; Flags: dontcopy; Source: {#INSTALLER_DIR}\legacy_filelist.txt
 DestDir: {tmp}; Flags: dontcopy; Source: {#INSTALLER_DIR}\legacy_dirlist.txt

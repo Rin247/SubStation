@@ -9,7 +9,7 @@
 //   * Redistributions in binary form must reproduce the above copyright notice,
 //     this list of conditions and the following disclaimer in the documentation
 //     and/or other materials provided with the distribution.
-//   * Neither the name of the Aegisub Group nor the names of its contributors
+//   * Neither the name of the SubStation Group nor the names of its contributors
 //     may be used to endorse or promote products derived from this software
 //     without specific prior written permission.
 //
@@ -25,7 +25,7 @@
 // ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
-// Aegisub Project http://www.aegisub.org/
+// SubStation Project http://www.substation.org/
 
 /// @file frame_main.cpp
 /// @brief Main window creation and control management
@@ -33,10 +33,10 @@
 
 #include "frame_main.h"
 
-#include "include/aegisub/context.h"
-#include "include/aegisub/menu.h"
-#include "include/aegisub/toolbar.h"
-#include "include/aegisub/hotkey.h"
+#include "include/substation/context.h"
+#include "include/substation/menu.h"
+#include "include/substation/toolbar.h"
+#include "include/substation/hotkey.h"
 
 #include "ass_file.h"
 #include "async_video_provider.h"
@@ -59,8 +59,8 @@
 #include "video_controller.h"
 #include "video_display.h"
 
-#include <libaegisub/dispatch.h>
-#include <libaegisub/log.h>
+#include <libsubstation/dispatch.h>
+#include <libsubstation/log.h>
 
 #include <wx/dnd.h>
 #include <wx/msgdlg.h>
@@ -74,16 +74,16 @@ enum {
 };
 
 #ifdef WITH_STARTUPLOG
-#define StartupLog(a) MessageBox(0, a, "Aegisub startup log", 0)
+#define StartupLog(a) MessageBox(0, a, "SubStation startup log", 0)
 #else
 #define StartupLog(a) LOG_I("frame_main/init") << a
 #endif
 
-/// Handle files drag and dropped onto Aegisub
-class AegisubFileDropTarget final : public wxFileDropTarget {
+/// Handle files drag and dropped onto SubStation
+class SubStationFileDropTarget final : public wxFileDropTarget {
 	agi::Context *context;
 public:
-	AegisubFileDropTarget(agi::Context *context) : context(context) { }
+	SubStationFileDropTarget(agi::Context *context) : context(context) { }
 	bool OnDropFiles(wxCoord, wxCoord, wxArrayString const& filenames) override {
 		std::vector<agi::fs::path> files;
 		for (wxString const& fn : filenames)
@@ -149,7 +149,7 @@ FrameMain::FrameMain()
 	BindConnection(OPT_SUB("Video/Detached/Enabled", &FrameMain::OnVideoDetach, this));
 
 	StartupLog("Set up drag/drop target");
-	SetDropTarget(new AegisubFileDropTarget(context.get()));
+	SetDropTarget(new SubStationFileDropTarget(context.get()));
 
 	StartupLog("Load default file");
 	context->project->CloseSubtitles();
@@ -254,7 +254,7 @@ void FrameMain::UpdateTitle() {
 	newTitle << context->subsController->Filename().filename().wstring();
 
 #ifndef __WXMAC__
-	newTitle << " - Aegisub " << GetAegisubLongVersionString();
+	newTitle << " - SubStation " << GetSubStationLongVersionString();
 #endif
 
 #if defined(__WXMAC__)

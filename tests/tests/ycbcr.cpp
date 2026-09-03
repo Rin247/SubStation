@@ -12,9 +12,9 @@
 // ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 // OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 //
-// Aegisub Project https://aegisub.org/
+// SubStation Project https://substation.org/
 
-#include <libaegisub/ycbcr.h>
+#include <libsubstation/ycbcr.h>
 
 #include <main.h>
 

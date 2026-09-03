@@ -1,4 +1,4 @@
-// Copyright (c) 2010, Amar Takhar <verm@aegisub.org>
+// Copyright (c) 2010, Amar Takhar <verm@substation.org>
 //
 // Permission to use, copy, modify, and distribute this software for any
 // purpose with or without fee is hereby granted, provided that the above
@@ -17,10 +17,10 @@
 #include "compat.h"
 #include "format.h"
 
-#include <libaegisub/log.h>
-#include <libaegisub/string.h>
+#include <libsubstation/log.h>
+#include <libsubstation/string.h>
 
-#include "include/aegisub/hotkey.h"
+#include "include/substation/hotkey.h"
 
 #include <wx/intl.h>
 

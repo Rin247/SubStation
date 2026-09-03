@@ -1,4 +1,4 @@
-// Copyright (c) 2014, Thomas Goyne <plorkyeran@aegisub.org>
+// Copyright (c) 2014, Thomas Goyne <plorkyeran@substation.org>
 //
 // Permission to use, copy, modify, and distribute this software for any
 // purpose with or without fee is hereby granted, provided that the above
@@ -12,14 +12,14 @@
 // ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 // OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 //
-// Aegisub Project http://www.aegisub.org/
+// SubStation Project http://www.substation.org/
 
 #include <main.h>
 
-#include <libaegisub/audio/provider.h>
-#include <libaegisub/fs.h>
-#include <libaegisub/path.h>
-#include <libaegisub/util.h>
+#include <libsubstation/audio/provider.h>
+#include <libsubstation/fs.h>
+#include <libsubstation/path.h>
+#include <libsubstation/util.h>
 
 #include <fstream>
 

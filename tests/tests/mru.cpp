@@ -1,4 +1,4 @@
-// Copyright (c) 2010, Amar Takhar <verm@aegisub.org>
+// Copyright (c) 2010, Amar Takhar <verm@substation.org>
 //
 // Permission to use, copy, modify, and distribute this software for any
 // purpose with or without fee is hereby granted, provided that the above
@@ -12,11 +12,11 @@
 // ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 // OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
-#include <libaegisub/mru.h>
+#include <libsubstation/mru.h>
 
-#include <libaegisub/fs.h>
-#include <libaegisub/option.h>
-#include <libaegisub/option_value.h>
+#include <libsubstation/fs.h>
+#include <libsubstation/option.h>
+#include <libsubstation/option_value.h>
 
 #include <main.h>
 

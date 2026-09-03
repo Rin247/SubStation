@@ -16,25 +16,25 @@ function wait()
 end
 
 function progression(subtitles, selected_lines, active_line)
-	while not aegisub.progress.is_cancelled() do
-		aegisub.progress.task("Counting up...")
+	while not substation.progress.is_cancelled() do
+		substation.progress.task("Counting up...")
 		for i = 0, 100, 0.2 do
-			aegisub.progress.set(i)
-			if aegisub.progress.is_cancelled() then
+			substation.progress.set(i)
+			if substation.progress.is_cancelled() then
 				break
 			end
 			wait()
 		end
-		if aegisub.progress.is_cancelled() then
+		if substation.progress.is_cancelled() then
 			break
 		end
-		aegisub.progress.task("Counting down...")
+		substation.progress.task("Counting down...")
 		for i = 0, 100 do
-			aegisub.progress.set(100-i)
+			substation.progress.set(100-i)
 			wait()
 		end
 	end
 end
 
 
-aegisub.register_macro("Progress fun", "Does absolutely nothing", progression, nil)
+substation.register_macro("Progress fun", "Does absolutely nothing", progression, nil)

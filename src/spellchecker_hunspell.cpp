@@ -1,4 +1,4 @@
-// Copyright (c) 2012, Thomas Goyne <plorkyeran@aegisub.org>
+// Copyright (c) 2012, Thomas Goyne <plorkyeran@substation.org>
 //
 // Permission to use, copy, modify, and distribute this software for any
 // purpose with or without fee is hereby granted, provided that the above
@@ -18,13 +18,13 @@
 
 #include "options.h"
 
-#include <libaegisub/charset_conv.h>
-#include <libaegisub/format.h>
-#include <libaegisub/fs.h>
-#include <libaegisub/io.h>
-#include <libaegisub/line_iterator.h>
-#include <libaegisub/log.h>
-#include <libaegisub/path.h>
+#include <libsubstation/charset_conv.h>
+#include <libsubstation/format.h>
+#include <libsubstation/fs.h>
+#include <libsubstation/io.h>
+#include <libsubstation/line_iterator.h>
+#include <libsubstation/log.h>
+#include <libsubstation/path.h>
 
 #include <boost/range/algorithm.hpp>
 
@@ -208,7 +208,7 @@ void HunspellSpellChecker::OnLanguageChanged() {
 			hunspell->add(conv->Convert(word));
 		}
 		catch (agi::charset::ConvError const&) {
-			// Normally this shouldn't happen, but some versions of Aegisub
+			// Normally this shouldn't happen, but some versions of SubStation
 			// wrote words in the wrong charset
 		}
 	}

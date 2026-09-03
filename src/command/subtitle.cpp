@@ -11,7 +11,7 @@
 //   * Redistributions in binary form must reproduce the above copyright notice,
 //     this list of conditions and the following disclaimer in the documentation
 //     and/or other materials provided with the distribution.
-//   * Neither the name of the Aegisub Group nor the names of its contributors
+//   * Neither the name of the SubStation Group nor the names of its contributors
 //     may be used to endorse or promote products derived from this software
 //     without specific prior written permission.
 //
@@ -27,7 +27,7 @@
 // ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
-// Aegisub Project http://www.aegisub.org/
+// SubStation Project http://www.substation.org/
 
 #include "command.h"
 
@@ -37,7 +37,7 @@
 #include "../dialog_search_replace.h"
 #include "../dialogs.h"
 #include "../frame_main.h"
-#include "../include/aegisub/context.h"
+#include "../include/substation/context.h"
 #include "../libresrc/libresrc.h"
 #include "../main.h"
 #include "../options.h"
@@ -49,8 +49,8 @@
 #include "../utils.h"
 #include "../video_controller.h"
 
-#include <libaegisub/address_of_adaptor.h>
-#include <libaegisub/charset_conv.h>
+#include <libsubstation/address_of_adaptor.h>
+#include <libsubstation/charset_conv.h>
 
 #include <boost/range/algorithm/copy.hpp>
 #include <wx/msgdlg.h>
@@ -281,7 +281,7 @@ struct subtitle_open_autosave final : public Command {
 	CMD_NAME("subtitle/open/autosave")
 	STR_MENU("Open A&utosaved Subtitles...")
 	STR_DISP("Open Autosaved Subtitles")
-	STR_HELP("Open a previous version of a file which was autosaved by Aegisub")
+	STR_HELP("Open a previous version of a file which was autosaved by SubStation")
 
 	void operator()(agi::Context *c) override {
 		if (!is_okay_to_close_subtitles(c)) return;

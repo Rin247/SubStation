@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Aegisub\n"
+"Project-Id-Version: SubStation\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-07-25 16:15+0200\n"
 "PO-Revision-Date: 2026-05-12 00:00+0900\n"
@@ -13,11 +13,11 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 3.9\n"
 
-#: ../src/aegisublocale.cpp:113 ../src/command/app.cpp:156
+#: ../src/substationlocale.cpp:113 ../src/command/app.cpp:156
 msgid "Language"
 msgstr "언어"
 
-#: ../src/aegisublocale.cpp:113
+#: ../src/substationlocale.cpp:113
 msgid "Please choose a language:"
 msgstr "언어 선택 :"
 
@@ -385,10 +385,10 @@ msgstr ""
 
 #: ../src/charset_detect.cpp:50
 msgid ""
-"Aegisub could not narrow down the character set to a single one.\n"
+"SubStation could not narrow down the character set to a single one.\n"
 "Please pick one below:"
 msgstr ""
-"Aegisub에서 문자 집합을 자동 인식하지 못했습니다.\n"
+"SubStation에서 문자 집합을 자동 인식하지 못했습니다.\n"
 "아래에서 하나를 선택 :"
 
 #: ../src/charset_detect.cpp:51
@@ -404,8 +404,8 @@ msgid "About"
 msgstr "정보"
 
 #: ../src/command/app.cpp:58 ../src/dialog_about.cpp:44
-msgid "About Aegisub"
-msgstr "Aegisub 정보"
+msgid "About SubStation"
+msgstr "SubStation 정보"
 
 #: ../src/command/app.cpp:67
 msgid "&Audio+Subs View"
@@ -472,20 +472,20 @@ msgid "&Language..."
 msgstr "언어(&L)"
 
 #: ../src/command/app.cpp:157
-msgid "Select Aegisub interface language"
-msgstr "Aegisub 인터페이스 언어 선택"
+msgid "Select SubStation interface language"
+msgstr "SubStation 인터페이스 언어 선택"
 
 #: ../src/command/app.cpp:167
 msgid ""
-"Aegisub needs to be restarted so that the new language can be applied. "
+"SubStation needs to be restarted so that the new language can be applied. "
 "Restart now?"
 msgstr ""
-"새 언어를 적용하려면 Aegisub을 다시 시작해야 합니다. 지금 다시 시작하시겠습니"
+"새 언어를 적용하려면 SubStation을 다시 시작해야 합니다. 지금 다시 시작하시겠습니"
 "까?"
 
 #: ../src/command/app.cpp:167
-msgid "Restart Aegisub?"
-msgstr "Aegisub을 다시 시작하시겠습니까?"
+msgid "Restart SubStation?"
+msgstr "SubStation을 다시 시작하시겠습니까?"
 
 #: ../src/command/app.cpp:180
 msgid "&Log window"
@@ -522,8 +522,8 @@ msgid "Options"
 msgstr "옵션"
 
 #: ../src/command/app.cpp:206
-msgid "Configure Aegisub"
-msgstr "Aegisub 설정"
+msgid "Configure SubStation"
+msgstr "SubStation 설정"
 
 #: ../src/command/app.cpp:220 ../src/command/app.cpp:221
 msgid "Toggle global hotkey overrides"
@@ -554,8 +554,8 @@ msgid "Check for Updates"
 msgstr "업데이트 확인"
 
 #: ../src/command/app.cpp:260
-msgid "Check to see if there is a new version of Aegisub available"
-msgstr "사용 가능한 새 버전의 Aegisub가 있는지 확인"
+msgid "Check to see if there is a new version of SubStation available"
+msgstr "사용 가능한 새 버전의 SubStation가 있는지 확인"
 
 #: ../src/command/app.cpp:270 ../src/command/app.cpp:271
 msgid "Minimize"
@@ -1605,7 +1605,7 @@ msgid "Bug Tracker"
 msgstr "버그 제보"
 
 #: ../src/command/help.cpp:49
-msgid "Visit Aegisub's bug tracker to report bugs and request new features"
+msgid "Visit SubStation's bug tracker to report bugs and request new features"
 msgstr "새 기능 요청 및 버그 제보가 필요할 때, Aegusub 버그 제보 페이지 방문"
 
 #: ../src/command/help.cpp:68
@@ -1629,8 +1629,8 @@ msgid "IRC Channel"
 msgstr "IRC 채널"
 
 #: ../src/command/help.cpp:82
-msgid "Visit Aegisub's official IRC channel"
-msgstr "Aegisub 공식 IRC 채널 방문"
+msgid "Visit SubStation's official IRC channel"
+msgstr "SubStation 공식 IRC 채널 방문"
 
 #: ../src/command/help.cpp:92
 msgid "&Visual Typesetting"
@@ -1653,8 +1653,8 @@ msgid "Website"
 msgstr "웹사이트"
 
 #: ../src/command/help.cpp:106
-msgid "Visit Aegisub's official website"
-msgstr "Aegisub 공식 웹사이트 방문"
+msgid "Visit SubStation's official website"
+msgstr "SubStation 공식 웹사이트 방문"
 
 #: ../src/command/keyframe.cpp:49 ../src/command/keyframe.cpp:50
 msgid "Close Keyframes"
@@ -1854,8 +1854,8 @@ msgid "Open Autosaved Subtitles"
 msgstr "자동 저장한 자막 열기"
 
 #: ../src/command/subtitle.cpp:284
-msgid "Open a previous version of a file which was autosaved by Aegisub"
-msgstr "Aegisub에서 자동 저장한 파일의 이전 버전 열기"
+msgid "Open a previous version of a file which was autosaved by SubStation"
+msgstr "SubStation에서 자동 저장한 파일의 이전 버전 열기"
 
 #: ../src/command/subtitle.cpp:297
 msgid "Open Subtitles with &Charset..."
@@ -4285,16 +4285,16 @@ msgid "Remove fro&m dictionary"
 msgstr "디렉터리에서 제거(&M)"
 
 #: ../src/dialog_spellchecker.cpp:279
-msgid "Aegisub has finished checking spelling of this script."
-msgstr "Aegisub이 이 스크립트의 맘춤법 검사를 완료했습니다."
+msgid "SubStation has finished checking spelling of this script."
+msgstr "SubStation이 이 스크립트의 맘춤법 검사를 완료했습니다."
 
 #: ../src/dialog_spellchecker.cpp:279 ../src/dialog_spellchecker.cpp:283
 msgid "Spell checking complete."
 msgstr "맞춤법 검사가 완료되었습니다."
 
 #: ../src/dialog_spellchecker.cpp:283
-msgid "Aegisub has found no spelling mistakes in this script."
-msgstr "Aegisub는 이 스크립트에서 맞춤법 오류를 발견하지 못했습니다."
+msgid "SubStation has found no spelling mistakes in this script."
+msgstr "SubStation는 이 스크립트에서 맞춤법 오류를 발견하지 못했습니다."
 
 #: ../src/dialog_spellchecker.cpp:329 ../src/dialog_spellchecker.cpp:343
 msgid "spell check replace"
@@ -5038,35 +5038,35 @@ msgid "Checking for updates failed: %s."
 msgstr "업데이트 확인 실패 : %s."
 
 #: ../src/dialog_version_check.cpp:345
-msgid "An update to Aegisub was found."
-msgstr "Aegisub 업데이트가 발견되었습니다."
+msgid "An update to SubStation was found."
+msgstr "SubStation 업데이트가 발견되었습니다."
 
 #: ../src/dialog_version_check.cpp:347
-msgid "Several possible updates to Aegisub were found."
-msgstr "Aegisub에 대한 몇 가지 가능한 업데이트가 발견되었습니다."
+msgid "Several possible updates to SubStation were found."
+msgstr "SubStation에 대한 몇 가지 가능한 업데이트가 발견되었습니다."
 
 #: ../src/dialog_version_check.cpp:349
-msgid "There are no updates to Aegisub."
-msgstr "Aegisub 업데이트가 없습니다."
+msgid "There are no updates to SubStation."
+msgstr "SubStation 업데이트가 없습니다."
 
 #: ../src/dialog_version_check.cpp:377
 #, c-format
 msgid ""
-"There was an error checking for updates to Aegisub:\n"
+"There was an error checking for updates to SubStation:\n"
 "%s\n"
 "\n"
 "If other applications can access the Internet fine, this is probably a "
 "temporary server problem on our end."
 msgstr ""
-"Aegisub 업데이트를 확인하는 동안 오류가 발생 :\n"
+"SubStation 업데이트를 확인하는 동안 오류가 발생 :\n"
 "%s\n"
 "\n"
 "다른 앱이 인터넷에 정상적으로 액세스할 수 있다면 이는 일시적인 서버 문제일 "
 "수 있습니다."
 
 #: ../src/dialog_version_check.cpp:381
-msgid "An unknown error occurred while checking for updates to Aegisub."
-msgstr "Aegisub 업데이트를 확인하는 동안 알 수 없는 오류가 발생했습니다."
+msgid "An unknown error occurred while checking for updates to SubStation."
+msgstr "SubStation 업데이트를 확인하는 동안 알 수 없는 오류가 발생했습니다."
 
 #: ../src/dialog_video_details.cpp:46
 msgid "Video Details"
@@ -5372,21 +5372,21 @@ msgstr ""
 #: ../src/main.cpp:266
 #, c-format
 msgid ""
-"Oops, Aegisub has crashed!\n"
+"Oops, SubStation has crashed!\n"
 "\n"
 "An attempt has been made to save a copy of your file to:\n"
 "\n"
 "%s\n"
 "\n"
-"Aegisub will now close."
+"SubStation will now close."
 msgstr ""
-"죄송합니다, Aegisub가 충돌했습니다!\n"
+"죄송합니다, SubStation가 충돌했습니다!\n"
 "\n"
 "파일 복사본을 저장 시도 :\n"
 "\n"
 "%s\n"
 "\n"
-"Aegisub가 종료됩니다."
+"SubStation가 종료됩니다."
 
 #: ../src/main.cpp:295
 msgid "Check for updates?"
@@ -5394,10 +5394,10 @@ msgstr "업데이트를 확인하시겠습니까?"
 
 #: ../src/main.cpp:295
 msgid ""
-"Do you want Aegisub to check for updates whenever it starts? You can still "
+"Do you want SubStation to check for updates whenever it starts? You can still "
 "do it manually via the Help menu."
 msgstr ""
-"Aegisub가 시작될 때마다 업데이트를 확인하도록 하시겠습니까? 계속 도움말 메뉴"
+"SubStation가 시작될 때마다 업데이트를 확인하도록 하시겠습니까? 계속 도움말 메뉴"
 "를 통해 수동으로 확인할 수 있습니다."
 
 #: ../src/main.cpp:301
@@ -5419,11 +5419,11 @@ msgstr "프로그램 오류"
 #: ../src/main.cpp:417
 #, c-format
 msgid ""
-"Aegisub has crashed while starting up!\n"
+"SubStation has crashed while starting up!\n"
 "\n"
 "The last startup step attempted was: %s."
 msgstr ""
-"Aegisub이 시작 중에 충돌했습니다!\n"
+"SubStation이 시작 중에 충돌했습니다!\n"
 "\n"
 "마지막으로 시도한 시작 단계 : %s."
 
@@ -5431,11 +5431,11 @@ msgstr ""
 #, c-format
 msgid ""
 "An unexpected error has occurred. Please save your work and restart "
-"Aegisub.\n"
+"SubStation.\n"
 "\n"
 "Error Message: %s"
 msgstr ""
-"예기치 않은 오류가 발생했습니다. 작업을 저장하고 Aegisub를 다시 시작하세요.\n"
+"예기치 않은 오류가 발생했습니다. 작업을 저장하고 SubStation를 다시 시작하세요.\n"
 "\n"
 "오류 메시지 : %s"
 
@@ -7129,8 +7129,8 @@ msgid "Create a start menu icon"
 msgstr "시작 메뉴 아이콘 만들기"
 
 #: packages/win_installer/fragment_strings.iss:1
-msgid "Automatically check for new versions of Aegisub"
-msgstr "새 버전의 Aegisub 자동 확인"
+msgid "Automatically check for new versions of SubStation"
+msgstr "새 버전의 SubStation 자동 확인"
 
 #: packages/win_installer/fragment_strings.iss:1
 msgid "Update Checker:"
@@ -7138,117 +7138,117 @@ msgstr "업데이트 확인 :"
 
 #: packages/win_installer/fragment_strings.iss:1
 msgid ""
-"This will install Aegisub {#BUILD_GIT_VERSION_STRING} on your computer."
+"This will install SubStation {#BUILD_GIT_VERSION_STRING} on your computer."
 "%n%nAegisub is covered by the GNU General Public License version 2. This "
 "means you may use the application for any purpose without charge, but that "
-"no warranties of any kind are given either.%n%nSee the Aegisub website for "
+"no warranties of any kind are given either.%n%nSee the SubStation website for "
 "information on obtaining the source code."
 msgstr ""
-"그러면 컴퓨터에 Aegisub {#BUILD_GIT_VERSION_STRING}이 설치됩니다.%n%nAegisub"
+"그러면 컴퓨터에 SubStation {#BUILD_GIT_VERSION_STRING}이 설치됩니다.%n%nAegisub"
 "는 GNU 일반 공중 사용 허가서 버전 2의 적용을 받습니다. 즉, 어떤 용도로든 무료"
 "로 앱을 사용할 수 있지만 어떠한 종류의 보증도 제공되지 않습니다.%n%n소스 코"
-"드 입수에 대한 자세한 내용은 Aegisub 웹사이트를 참조하세요."
+"드 입수에 대한 자세한 내용은 SubStation 웹사이트를 참조하세요."
 
-#: ../packages/desktop/aegisub.desktop.in.in:4
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:6
-msgid "Aegisub"
-msgstr "Aegisub"
+#: ../packages/desktop/substation.desktop.in.in:4
+#: ../packages/desktop/substation.metainfo.xml.in.in:6
+msgid "SubStation"
+msgstr "SubStation"
 
-#: ../packages/desktop/aegisub.desktop.in.in:5
+#: ../packages/desktop/substation.desktop.in.in:5
 msgid "Subtitle Editor"
 msgstr "자막 편집기"
 
-#: ../packages/desktop/aegisub.desktop.in.in:6
+#: ../packages/desktop/substation.desktop.in.in:6
 msgid "Create and edit subtitles for film and videos."
 msgstr "영화 및 영상 자막을 만들고 편집하세요."
 
-#: ../packages/desktop/aegisub.desktop.in.in:12
+#: ../packages/desktop/substation.desktop.in.in:12
 msgid "subtitles;subtitle;captions;captioning;video;audio;"
 msgstr "자막;캡션;영상;음향;"
 
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:7
+#: ../packages/desktop/substation.metainfo.xml.in.in:7
 msgid "Create and modify subtitles"
 msgstr "자막 만들기 및 수정"
 
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:9
+#: ../packages/desktop/substation.metainfo.xml.in.in:9
 msgid ""
-"Aegisub is a free, cross-platform open source tool for creating and "
-"modifying subtitles. Aegisub makes it quick and easy to time subtitles to "
+"SubStation is a free, cross-platform open source tool for creating and "
+"modifying subtitles. SubStation makes it quick and easy to time subtitles to "
 "audio, and features many powerful tools for styling them, including a built-"
 "in real-time video preview."
 msgstr ""
-"Aegisub는 자막을 만들고 수정할 수 있는 무료 크로스 플랫폼 오픈 소스 도구입니"
-"다. Aegisub를 사용하면 음향에 자막 시간을 빠르고 쉽게 맞출 수 있으며, 내장된 "
+"SubStation는 자막을 만들고 수정할 수 있는 무료 크로스 플랫폼 오픈 소스 도구입니"
+"다. SubStation를 사용하면 음향에 자막 시간을 빠르고 쉽게 맞출 수 있으며, 내장된 "
 "실시간 영상 미리 보기를 비롯하여 자막 스타일을 지정할 수 있는 강력한 도구가 "
 "많이 있습니다."
 
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:10
+#: ../packages/desktop/substation.metainfo.xml.in.in:10
 msgid ""
-"Aegisub was originally created as a tool to make typesetting, particularly "
+"SubStation was originally created as a tool to make typesetting, particularly "
 "in anime fansubs, a less painful experience. At the time of the start of the "
 "project, many other programs that supported the Advanced Substation Alpha "
 "format lacked (and in many cases, still lack; development on several "
 "competing programs have since been dropped for various reasons completely "
-"unrelated to Aegisub) many vital functions, or were too buggy and/or "
+"unrelated to SubStation) many vital functions, or were too buggy and/or "
 "unreliable to be really useful."
 msgstr ""
-"Aegisub는 원래 서체, 특히 애니메이션 자막러가 괴로움을 덜어드리기 위한 도구"
+"SubStation는 원래 서체, 특히 애니메이션 자막러가 괴로움을 덜어드리기 위한 도구"
 "로 만들어졌습니다. 프로젝트가 시작될 당시 고급 변전소 알파 형식을 지원하던 다"
 "른 많은 프로그램에는 중요한 기능이 부족하거나(많은 경우 여전히 부족합니다. "
-"Aegisub와는 전혀 무관한 여러 가지 이유로 여러 경쟁 프로그램의 개발이 중단되었"
+"SubStation와는 전혀 무관한 여러 가지 이유로 여러 경쟁 프로그램의 개발이 중단되었"
 "습니다) 너무 버그가 많거나 안정적이지 않아서 실제로 유용하지 않았습니다."
 
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:11
+#: ../packages/desktop/substation.metainfo.xml.in.in:11
 msgid ""
-"Since then, Aegisub has grown into a fully fledged, highly customizable "
+"Since then, SubStation has grown into a fully fledged, highly customizable "
 "subtitle editor. It features a lot of convenient tools to help you with "
 "timing, typesetting, editing and translating subtitles, as well as a "
 "powerful scripting environment called Automation (originally mostly intended "
 "for creating karaoke effects, Automation can now be used much else, "
 "including creating macros and various other convenient tools)."
 msgstr ""
-"이후, Aegisub는 완벽한 고도의 맞춤형 자막 편집기로 성장했습니다. 싱크, 서체, "
+"이후, SubStation는 완벽한 고도의 맞춤형 자막 편집기로 성장했습니다. 싱크, 서체, "
 "편집 및 자막 번역에 도움이 되는 다양한 편리한 도구와 자동화라는 강력한 스크립"
 "팅 환경(처음에는 주로 가라오케 효과를 만들기 위한 것이었지만, 현재는 매크로 "
 "및 기타 다양한 편리한 도구를 만드는 등 다용도로 자동화 기능을 사용할 수 있음)"
 "을 갖추고 있습니다."
 
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:12
-msgid "Some highlights of Aegisub:"
-msgstr "Aegisub의 주요 기능 :"
+#: ../packages/desktop/substation.metainfo.xml.in.in:12
+msgid "Some highlights of SubStation:"
+msgstr "SubStation의 주요 기능 :"
 
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:14
+#: ../packages/desktop/substation.metainfo.xml.in.in:14
 msgid "Simple and intuitive yet powerful interface for editing subtitles"
 msgstr "자막 편집을 위한 간단하고 직관적이면서도 강력한 인터페이스"
 
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:15
+#: ../packages/desktop/substation.metainfo.xml.in.in:15
 msgid "Support for many formats and character sets"
 msgstr "다양한 형식 및 문자 집합 지원"
 
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:16
+#: ../packages/desktop/substation.metainfo.xml.in.in:16
 msgid "Powerful video mode"
 msgstr "강력한 영상 모드"
 
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:17
+#: ../packages/desktop/substation.metainfo.xml.in.in:17
 msgid "Visual typesetting tools"
 msgstr "시각 서체 도구"
 
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:18
+#: ../packages/desktop/substation.metainfo.xml.in.in:18
 msgid "Intuitive and customizable audio timing mode"
 msgstr "직관적인 맞춤형 음향 타이밍 모드"
 
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:19
+#: ../packages/desktop/substation.metainfo.xml.in.in:19
 msgid "Fully scriptable through the Automation module"
 msgstr "모듈 자동화를 통해 완전히 스크립트화 가능"
 
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:43
+#: ../packages/desktop/substation.metainfo.xml.in.in:43
 msgid "Typesetting"
 msgstr "서체"
 
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:47
+#: ../packages/desktop/substation.metainfo.xml.in.in:47
 msgid "Audio video"
 msgstr "음향 영상"
 
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:51
+#: ../packages/desktop/substation.metainfo.xml.in.in:51
 msgid "Audio timing"
 msgstr "음향 타이밍"

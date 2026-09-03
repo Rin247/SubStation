@@ -1,7 +1,7 @@
 ﻿-- Automation 4 demo script
 -- Converts halfwidth (ASCII) Latin letters to fullwidth JIS Latin letters
 
-local tr = aegisub.gettext
+local tr = substation.gettext
 
 script_name = tr"Make text fullwidth"
 script_description = tr"Shows how to use the unicode include to iterate over characters and a lookup table to convert those characters to something else."
@@ -44,25 +44,25 @@ function make_fullwidth(subtitles, selected_lines, active_line)
 	for z, i in ipairs(selected_lines) do
 		local l = subtitles[i]
 		
-		aegisub.debug.out(string.format('Processing line %d: "%s"\n', i, l.text))
-		aegisub.debug.out("Chars: \n")
+		substation.debug.out(string.format('Processing line %d: "%s"\n', i, l.text))
+		substation.debug.out("Chars: \n")
 		
 		local in_tags = false
 		local newtext = ""
 		for c in unicode.chars(l.text) do
-			aegisub.debug.out(c .. ' -> ')
+			substation.debug.out(c .. ' -> ')
 			if c == "{" then
 				in_tags = true
 			end
 			if in_tags then
-				aegisub.debug.out(c .. " (ignored, in tags)\n")
+				substation.debug.out(c .. " (ignored, in tags)\n")
 				newtext = newtext .. c
 			else
 				if lookup[c] then
-					aegisub.debug.out(lookup[c] .. " (converted)\n")
+					substation.debug.out(lookup[c] .. " (converted)\n")
 					newtext = newtext .. lookup[c]
 				else
-					aegisub.debug.out(c .. " (not found in lookup)\n")
+					substation.debug.out(c .. " (not found in lookup)\n")
 					newtext = newtext .. c
 				end
 			end
@@ -74,7 +74,7 @@ function make_fullwidth(subtitles, selected_lines, active_line)
 		l.text = newtext
 		subtitles[i] = l
 	end
-	aegisub.set_undo_point(tr"Make fullwidth")
+	substation.set_undo_point(tr"Make fullwidth")
 end
 
-aegisub.register_macro(tr"Make fullwidth", tr"Convert Latin letters to SJIS fullwidth letters", make_fullwidth)
+substation.register_macro(tr"Make fullwidth", tr"Convert Latin letters to SJIS fullwidth letters", make_fullwidth)

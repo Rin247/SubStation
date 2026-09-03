@@ -1,4 +1,4 @@
-// Copyright (c) 2010, Amar Takhar <verm@aegisub.org>
+// Copyright (c) 2010, Amar Takhar <verm@substation.org>
 //
 // Permission to use, copy, modify, and distribute this software for any
 // purpose with or without fee is hereby granted, provided that the above
@@ -25,9 +25,9 @@
 #include "compat.h"
 #include "help_button.h"
 #include "hotkey_data_view_model.h"
-#include "include/aegisub/audio_player.h"
-#include "include/aegisub/hotkey.h"
-#include "include/aegisub/subtitles_provider.h"
+#include "include/substation/audio_player.h"
+#include "include/substation/hotkey.h"
+#include "include/substation/subtitles_provider.h"
 #include "libresrc/libresrc.h"
 #include "options.h"
 #include "preferences_base.h"
@@ -41,7 +41,7 @@
 #include <ffms.h>
 #endif
 
-#include <libaegisub/hotkey.h>
+#include <libsubstation/hotkey.h>
 
 #include <unordered_set>
 

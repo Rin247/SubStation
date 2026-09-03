@@ -9,7 +9,7 @@
 //   * Redistributions in binary form must reproduce the above copyright notice,
 //     this list of conditions and the following disclaimer in the documentation
 //     and/or other materials provided with the distribution.
-//   * Neither the name of the Aegisub Group nor the names of its contributors
+//   * Neither the name of the SubStation Group nor the names of its contributors
 //     may be used to endorse or promote products derived from this software
 //     without specific prior written permission.
 //
@@ -25,14 +25,14 @@
 // ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
-// Aegisub Project http://www.aegisub.org/
+// SubStation Project http://www.substation.org/
 
 #include "charset_detect.h"
 
 #include "compat.h"
 
-#include <libaegisub/charset.h>
-#include <libaegisub/charset_conv.h>
+#include <libsubstation/charset.h>
+#include <libsubstation/charset_conv.h>
 
 #include <wx/arrstr.h>
 #include <wx/choicdlg.h>
@@ -47,7 +47,7 @@ std::string GetEncoding(agi::fs::path const& filename) {
 
 	auto choices = agi::charset::GetEncodingsList<wxArrayString>();
 	int choice = wxGetSingleChoiceIndex(
-		_("Aegisub could not narrow down the character set to a single one.\nPlease pick one below:"),
+		_("SubStation could not narrow down the character set to a single one.\nPlease pick one below:"),
 		_("Choose character set"),
 		choices);
 	if (choice == -1) throw agi::UserCancelException("Cancelled encoding selection");

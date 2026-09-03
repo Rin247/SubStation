@@ -1,4 +1,4 @@
-// Copyright (c) 2011, Thomas Goyne <plorkyeran@aegisub.org>
+// Copyright (c) 2011, Thomas Goyne <plorkyeran@substation.org>
 //
 // Permission to use, copy, modify, and distribute this software for any
 // purpose with or without fee is hereby granted, provided that the above
@@ -20,10 +20,10 @@
 
 #include <main.h>
 
-#include <libaegisub/cajun/reader.h>
-#include <libaegisub/cajun/writer.h>
-#include <libaegisub/cajun/elements.h>
-#include <libaegisub/cajun/visitor.h>
+#include <libsubstation/cajun/reader.h>
+#include <libsubstation/cajun/writer.h>
+#include <libsubstation/cajun/elements.h>
+#include <libsubstation/cajun/visitor.h>
 
 class lagi_cajun : public libagi { };
 

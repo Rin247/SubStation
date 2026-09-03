@@ -1,4 +1,4 @@
-// Copyright (c) 2012, Thomas Goyne <plorkyeran@aegisub.org>
+// Copyright (c) 2012, Thomas Goyne <plorkyeran@substation.org>
 //
 // Permission to use, copy, modify, and distribute this software for any
 // purpose with or without fee is hereby granted, provided that the above
@@ -21,9 +21,9 @@
 #include "ass_style.h"
 #include "subtitle_format.h"
 
-#include <libaegisub/ass/string_codec.h>
-#include <libaegisub/ass/uuencode.h>
-#include <libaegisub/util.h>
+#include <libsubstation/ass/string_codec.h>
+#include <libsubstation/ass/uuencode.h>
+#include <libsubstation/util.h>
 
 #include <algorithm>
 #include <boost/algorithm/string/case_conv.hpp>
@@ -60,10 +60,10 @@ public:
 		{"Video Position", &ProjectProperties::video_position},
 		{"Video AR Mode", &ProjectProperties::ar_mode},
 		{"Video AR Value", &ProjectProperties::ar_value},
-		{"Aegisub Video Zoom Percent", &ProjectProperties::video_zoom},
-		{"Aegisub Scroll Position", &ProjectProperties::scroll_position},
-		{"Aegisub Active Line", &ProjectProperties::active_row},
-		{"Aegisub Video Position", &ProjectProperties::video_position}
+		{"SubStation Video Zoom Percent", &ProjectProperties::video_zoom},
+		{"SubStation Scroll Position", &ProjectProperties::scroll_position},
+		{"SubStation Active Line", &ProjectProperties::active_row},
+		{"SubStation Video Position", &ProjectProperties::video_position}
 	})
 	{
 	}
@@ -258,9 +258,9 @@ void AssParser::AddLine(std::string const& data) {
 			state = &AssParser::ParseEventLine;
 		else if (low == "[script info]")
 			state = &AssParser::ParseScriptInfoLine;
-		else if (low == "[aegisub project garbage]")
+		else if (low == "[substation project garbage]")
 			state = &AssParser::ParseMetadataLine;
-		else if (low == "[aegisub extradata]")
+		else if (low == "[substation extradata]")
 			state = &AssParser::ParseExtradataLine;
 		else if (low == "[graphics]")
 			state = &AssParser::ParseGraphicsLine;

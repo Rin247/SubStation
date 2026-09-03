@@ -6,7 +6,7 @@ include "utils.lua"
 
 function test_tablecopy_deep()
 	local function test_table(tab, desc)
-		local l = aegisub.log
+		local l = substation.log
 		l("--- %15s -------------\n", desc)
 		l("tab.a = %d\n", tab.a)
 		l("type(tab.b) = %s\n", type(tab.b))
@@ -34,4 +34,4 @@ function test_tablecopy_deep()
 	test_table(cpytab, "Copied table")
 end
 
-aegisub.register_macro("TEST table.copy_deep", "", test_tablecopy_deep)
+substation.register_macro("TEST table.copy_deep", "", test_tablecopy_deep)

@@ -25,8 +25,8 @@ begin
         SmallBitmap.Free;
       end;
 
-      ExtractTemporaryFile('aegisub.bmp');
-      SmallBitmap := TFileStream.Create(ExpandConstant('{tmp}\aegisub.bmp'),fmOpenRead);
+      ExtractTemporaryFile('substation.bmp');
+      SmallBitmap := TFileStream.Create(ExpandConstant('{tmp}\substation.bmp'),fmOpenRead);
       try
         WizardForm.WizardSmallBitmapImage.Bitmap.LoadFromStream(SmallBitmap);
       finally

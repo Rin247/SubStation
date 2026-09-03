@@ -1,4 +1,4 @@
-// Copyright (c) 2011, Thomas Goyne <plorkyeran@aegisub.org>
+// Copyright (c) 2011, Thomas Goyne <plorkyeran@substation.org>
 //
 // Permission to use, copy, modify, and distribute this software for any
 // purpose with or without fee is hereby granted, provided that the above
@@ -12,14 +12,14 @@
 // ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 // OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 //
-// Aegisub Project http://www.aegisub.org/
+// SubStation Project http://www.substation.org/
 
 #include "ass_dialogue.h"
 #include "ass_file.h"
 #include "compat.h"
 #include "dialog_manager.h"
 #include "format.h"
-#include "include/aegisub/context.h"
+#include "include/substation/context.h"
 #include "help_button.h"
 #include "libresrc/libresrc.h"
 #include "options.h"
@@ -28,17 +28,17 @@
 #include "subs_controller.h"
 #include "timeedit_ctrl.h"
 
-#include <libaegisub/ass/time.h>
-#include <libaegisub/fs.h>
-#include <libaegisub/io.h>
-#include <libaegisub/log.h>
-#include <libaegisub/path.h>
-#include <libaegisub/signal.h>
-#include <libaegisub/vfr.h>
+#include <libsubstation/ass/time.h>
+#include <libsubstation/fs.h>
+#include <libsubstation/io.h>
+#include <libsubstation/log.h>
+#include <libsubstation/path.h>
+#include <libsubstation/signal.h>
+#include <libsubstation/vfr.h>
 
-#include <libaegisub/cajun/elements.h>
-#include <libaegisub/cajun/reader.h>
-#include <libaegisub/cajun/writer.h>
+#include <libsubstation/cajun/elements.h>
+#include <libsubstation/cajun/reader.h>
+#include <libsubstation/cajun/writer.h>
 
 #include <wx/dialog.h>
 #include <wx/listbox.h>

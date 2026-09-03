@@ -9,7 +9,7 @@
 //   * Redistributions in binary form must reproduce the above copyright notice,
 //     this list of conditions and the following disclaimer in the documentation
 //     and/or other materials provided with the distribution.
-//   * Neither the name of the Aegisub Group nor the names of its contributors
+//   * Neither the name of the SubStation Group nor the names of its contributors
 //     may be used to endorse or promote products derived from this software
 //     without specific prior written permission.
 //
@@ -25,7 +25,7 @@
 // ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
-// Aegisub Project http://www.aegisub.org/
+// SubStation Project http://www.substation.org/
 
 /// @file subtitle_format.cpp
 /// @brief Base class for subtitle format handlers
@@ -49,10 +49,10 @@
 #include "subtitle_format_ttxt.h"
 #include "subtitle_format_txt.h"
 
-#include <libaegisub/fs.h>
-#include <libaegisub/vfr.h>
-#include <libaegisub/string.h>
-#include <libaegisub/util.h>
+#include <libsubstation/fs.h>
+#include <libsubstation/vfr.h>
+#include <libsubstation/string.h>
+#include <libsubstation/util.h>
 
 #include <algorithm>
 #include <boost/algorithm/string/replace.hpp>
@@ -182,7 +182,7 @@ void SubtitleFormat::StripComments(AssFile &file) {
 
 /// @brief Split and merge lines so there are no overlapping lines
 ///
-/// Algorithm described at http://devel.aegisub.org/wiki/Technical/SplitMerge
+/// Algorithm described at http://devel.substation.org/wiki/Technical/SplitMerge
 void SubtitleFormat::RecombineOverlaps(AssFile &file) {
 	auto cur = file.Events.begin();
 	for (auto next = std::next(cur); next != file.Events.end(); cur = std::prev(next)) {

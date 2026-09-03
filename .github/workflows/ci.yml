@@ -158,7 +158,7 @@ jobs:
         if: matrix.config.arch != 'arm64'
         run: |
           ${{ matrix.config.devenv }}
-          meson test -C build --verbose --suite Aegisub
+          meson test -C build --verbose --suite SubStation
 
       # Windows artifacts
       - name: Generate Windows installer
@@ -174,7 +174,7 @@ jobs:
         if: startsWith(matrix.config.os, 'windows-') && matrix.config.arch == 'x64'
         with:
           name: ${{ matrix.config.name }} - installer
-          path: build/Aegisub-*.exe
+          path: build/SubStation-*.exe
           if-no-files-found: error
 
       # macOS artifacts
@@ -200,7 +200,7 @@ jobs:
         if: startsWith(matrix.config.os, 'macos-')
         with:
           name: ${{ matrix.config.name }} - installer
-          path: build/Aegisub-*.dmg
+          path: build/SubStation-*.dmg
           if-no-files-found: error
 
       # Tarball

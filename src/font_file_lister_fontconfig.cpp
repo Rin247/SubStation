@@ -1,4 +1,4 @@
-// Copyright (c) 2012, Thomas Goyne <plorkyeran@aegisub.org>
+// Copyright (c) 2012, Thomas Goyne <plorkyeran@substation.org>
 //
 // Permission to use, copy, modify, and distribute this software for any
 // purpose with or without fee is hereby granted, provided that the above
@@ -12,12 +12,12 @@
 // ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 // OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 //
-// Aegisub Project http://www.aegisub.org/
+// SubStation Project http://www.substation.org/
 
 #include "font_file_lister.h"
 
-#include <libaegisub/charset_conv_win.h>
-#include <libaegisub/log.h>
+#include <libsubstation/charset_conv_win.h>
+#include <libsubstation/log.h>
 
 #include <boost/algorithm/string/case_conv.hpp>
 #include <fontconfig/fontconfig.h>

@@ -1,4 +1,4 @@
-// Copyright (c) 2011 Niels Martin Hansen <nielsm@aegisub.org>
+// Copyright (c) 2011 Niels Martin Hansen <nielsm@substation.org>
 //
 // Permission to use, copy, modify, and distribute this software for any
 // purpose with or without fee is hereby granted, provided that the above
@@ -12,7 +12,7 @@
 // ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 // OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 //
-// Aegisub Project http://www.aegisub.org/
+// SubStation Project http://www.substation.org/
 
 /// @file subtitle_format_ebu3264.h
 /// @see subtitle_format_ebu3264.cpp

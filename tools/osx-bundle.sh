@@ -15,12 +15,12 @@ if [ "${MESON_BUILD_OSX_BUNDLE}" != "TRUE" ]; then
   exit 1
 fi
 
-PKG_DIR="${BUILD_DIR}/Aegisub.app"
+PKG_DIR="${BUILD_DIR}/SubStation.app"
 SKEL_DIR="${SRC_DIR}/packages/osx_bundle"
 
 if test -d "${PKG_DIR}"; then
   rm -rf "${PKG_DIR}"
-  echo "Removing old Aegisub.app"
+  echo "Removing old SubStation.app"
 fi
 
 echo
@@ -64,17 +64,17 @@ else
   mkdir -p "${BUILD_DIR}/dictionaries"
   if ! test -f "${BUILD_DIR}/dictionaries/en_US.aff"; then
       echo "Specified dictionary directory ${DICT_DIR} not found. Downloading dictionaries:"
-      curl -L "https://raw.githubusercontent.com/TypesettingTools/Aegisub-dictionaries/master/dicts/en_US.aff" -o "${BUILD_DIR}/dictionaries/en_US.aff"
-      curl -L "https://raw.githubusercontent.com/TypesettingTools/Aegisub-dictionaries/master/dicts/en_US.dic" -o "${BUILD_DIR}/dictionaries/en_US.dic"
+      curl -L "https://raw.githubusercontent.com/TypesettingTools/SubStation-dictionaries/master/dicts/en_US.aff" -o "${BUILD_DIR}/dictionaries/en_US.aff"
+      curl -L "https://raw.githubusercontent.com/TypesettingTools/SubStation-dictionaries/master/dicts/en_US.dic" -o "${BUILD_DIR}/dictionaries/en_US.dic"
   fi
   cp -v "${BUILD_DIR}/dictionaries/en_US.aff" "${PKG_DIR}/Contents/SharedSupport/dictionaries"
   cp -v "${BUILD_DIR}/dictionaries/en_US.dic" "${PKG_DIR}/Contents/SharedSupport/dictionaries"
 fi
 
 echo
-echo "---- Copying Aegisub locale files ----"
-# Let Aqua know that aegisub supports english.  English strings are
-# internal so we don't need an aegisub.mo file.
+echo "---- Copying SubStation locale files ----"
+# Let Aqua know that substation supports english.  English strings are
+# internal so we don't need an substation.mo file.
 mkdir -vp "${PKG_DIR}/Contents/Resources/en.lproj"
 
 # FIXME
@@ -83,7 +83,7 @@ mkdir -vp "${PKG_DIR}/Contents/Resources/en.lproj"
 #mv "${PKG_DIR}/Contents/Resources/sr_RS@latin.lproj" "${PKG_DIR}/Contents/Resources/sr_YU@latin.lproj"
 
 ## TODO: rm those lines
-##  xref: [Update and review translations · Issue #132 · TypesettingTools/Aegisub](https://github.com/TypesettingTools/Aegisub/issues/132)
+##  xref: [Update and review translations · Issue #132 · TypesettingTools/SubStation](https://github.com/TypesettingTools/SubStation/issues/132)
 # echo
 # echo "---- Copying WX locale files ----"
 #
@@ -97,19 +97,19 @@ mkdir -vp "${PKG_DIR}/Contents/Resources/en.lproj"
 #   if test -f "${WX_MO}"; then
 #     cp -v "${WX_MO}" "${PKG_DIR}/Contents/Resources/${i}.lproj/"
 #   else
-#     echo "WARNING: \"$i\" locale in aegisub but no WX catalog found!"
+#     echo "WARNING: \"$i\" locale in substation but no WX catalog found!"
 #   fi
 # done
 
 echo
 echo "---- Fixing libraries ----"
-sudo python3 "${SRC_DIR}/tools/osx-fix-libs.py" "${PKG_DIR}/Contents/MacOS/aegisub" || exit $?
+sudo python3 "${SRC_DIR}/tools/osx-fix-libs.py" "${PKG_DIR}/Contents/MacOS/substation" || exit $?
 
 echo
 echo "---- Signing ----"
 # Even if the binaries were already ad-hoc signed during compilation,
 # they need to be resigned after bundling and rewriting dylib paths.
-if codesign -d "${PKG_DIR}/Contents/MacOS/aegisub"; then
+if codesign -d "${PKG_DIR}/Contents/MacOS/substation"; then
   for fname in "${PKG_DIR}/Contents/MacOS/"*; do
     codesign -s ${AEGISUB_BUNDLE_SIGNATURE:--} -vf "${fname}"
   done

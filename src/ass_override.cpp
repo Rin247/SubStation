@@ -1,5 +1,5 @@
 // Copyright (c) 2005, Rodrigo Braz Monteiro
-// Copyright (c) 2010, Thomas Goyne <plorkyeran@aegisub.org>
+// Copyright (c) 2010, Thomas Goyne <plorkyeran@substation.org>
 // All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -10,7 +10,7 @@
 //   * Redistributions in binary form must reproduce the above copyright notice,
 //     this list of conditions and the following disclaimer in the documentation
 //     and/or other materials provided with the distribution.
-//   * Neither the name of the Aegisub Group nor the names of its contributors
+//   * Neither the name of the SubStation Group nor the names of its contributors
 //     may be used to endorse or promote products derived from this software
 //     without specific prior written permission.
 //
@@ -26,17 +26,17 @@
 // ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
-// Aegisub Project http://www.aegisub.org/
+// SubStation Project http://www.substation.org/
 
 #include "ass_dialogue.h"
 
 #include "utils.h"
 
-#include <libaegisub/color.h>
-#include <libaegisub/exception.h>
-#include <libaegisub/format.h>
-#include <libaegisub/split.h>
-#include <libaegisub/string.h>
+#include <libsubstation/color.h>
+#include <libsubstation/exception.h>
+#include <libsubstation/format.h>
+#include <libsubstation/split.h>
+#include <libsubstation/string.h>
 
 #include <boost/range/adaptor/filtered.hpp>
 #include <boost/range/adaptor/transformed.hpp>

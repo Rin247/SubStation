@@ -10,7 +10,7 @@
    * Redistributions in binary form must reproduce the above copyright notice,
      this list of conditions and the following disclaimer in the documentation
      and/or other materials provided with the distribution.
-   * Neither the name of the Aegisub Group nor the names of its contributors
+   * Neither the name of the SubStation Group nor the names of its contributors
      may be used to endorse or promote products derived from this software
      without specific prior written permission.
 
@@ -27,7 +27,7 @@
  POSSIBILITY OF SUCH DAMAGE.
 ]]
 
-local tr = aegisub.gettext
+local tr = substation.gettext
 
 script_name = tr"Automatic karaoke lead-in"
 script_description = tr"Join up the ends of selected lines and add \\k tags to shift karaoke"
@@ -57,17 +57,17 @@ function add_auto_leadin(subs, sel)
 			
 			subs[sel[i]] = B
 		else
-			aegisub.debug.out(2, "Warning: Skipping line-pair with zero or negative inter-duration:\n%s\n%s\n\n", A.text, B.text)
+			substation.debug.out(2, "Warning: Skipping line-pair with zero or negative inter-duration:\n%s\n%s\n\n", A.text, B.text)
 		end
 		
 	end
 	
 	if min_interdur then
-		aegisub.debug.out(0, "Smallest inter-line duration: %d milliseconds", min_interdur)
+		substation.debug.out(0, "Smallest inter-line duration: %d milliseconds", min_interdur)
 		
-		aegisub.set_undo_point(script_name)
+		substation.set_undo_point(script_name)
 	else
-		aegisub.debug.out(2, "Warning: No lines modified")
+		substation.debug.out(2, "Warning: No lines modified")
 	end
 	
 end
@@ -76,4 +76,4 @@ function check_minsel_2(subs, sel)
 	return #sel >= 2
 end
 
-aegisub.register_macro(script_name, script_description, add_auto_leadin, check_minsel_2)
+substation.register_macro(script_name, script_description, add_auto_leadin, check_minsel_2)

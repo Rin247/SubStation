@@ -1,4 +1,4 @@
-// Copyright (c) 2026, Aegisub Project http://www.aegisub.org/
+// Copyright (c) 2026, SubStation Project http://www.substation.org/
 //
 // Permission to use, copy, modify, and distribute this software for any
 // purpose with or without fee is hereby granted, provided that the above
@@ -12,12 +12,12 @@
 // ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 // OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 //
-// Aegisub Project http://www.aegisub.org/
+// SubStation Project http://www.substation.org/
 
 #include <main.h>
 
-#include <libaegisub/fs.h>
-#include <libaegisub/lua/modules.h>
+#include <libsubstation/fs.h>
+#include <libsubstation/lua/modules.h>
 
 #include <lua.hpp>
 #include <optional>
@@ -26,11 +26,11 @@
 namespace {
 // The lfs entry points are static in lua/modules/lfs.cpp and are only reachable
 // through the FFI table `luaopen_lfs_impl()` builds, so call `get_mode()` the way
-// aegisub.lfs's `attributes()` does.
+// substation.lfs's `attributes()` does.
 const char get_mode_chunk[] = R"LUA(
 local path = ...
 local ffi = require 'ffi'
-local impl = require 'aegisub.__lfs_impl'
+local impl = require 'substation.__lfs_impl'
 local err = ffi.new('char *[1]')
 local mode = impl.get_mode(path, err)
 if err[0] ~= nil then error(ffi.string(err[0]), 0) end

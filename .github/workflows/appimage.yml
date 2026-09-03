@@ -72,5 +72,5 @@ jobs:
       - name: Upload AppImage artifact
         uses: actions/upload-artifact@v6
         with:
-          name: aegisub-appimage-${{ matrix.arch }}
-          path: Aegisub-v3.5.0-${{ matrix.arch }}.AppImage
+          name: substation-appimage-${{ matrix.arch }}
+          path: SubStation-v*-${APPIMAGE_ARCH}.AppImage

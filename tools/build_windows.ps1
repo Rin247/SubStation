@@ -37,5 +37,5 @@ if ($Installer) {
         }
     }
     meson compile -C $BuildDirectory win-installer
-    Write-Host "Installer output: $((Resolve-Path $BuildDirectory).Path)\Aegisub-*.exe"
+    Write-Host "Installer output: $((Resolve-Path $BuildDirectory).Path)\SubStation-*.exe"
 }

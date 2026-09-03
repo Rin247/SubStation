@@ -1,4 +1,4 @@
-// Copyright (c) 2012, Thomas Goyne <plorkyeran@aegisub.org>
+// Copyright (c) 2012, Thomas Goyne <plorkyeran@substation.org>
 //
 // Permission to use, copy, modify, and distribute this software for any
 // purpose with or without fee is hereby granted, provided that the above
@@ -12,7 +12,7 @@
 // ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 // OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 //
-// Aegisub Project http://www.aegisub.org/
+// SubStation Project http://www.substation.org/
 
 #include <wx/frame.h>
 #include <wx/menu.h>
@@ -56,7 +56,7 @@ void SetPlaceholderText(wxWindow *window, wxString const& placeholder) {
     }
 }
 
-void RestartAegisub() {
+void RestartSubStation() {
     auto helperPath = [NSBundle.mainBundle pathForAuxiliaryExecutable:@"restart-helper"];
     if (helperPath)
         [NSTask launchedTaskWithLaunchPath:helperPath

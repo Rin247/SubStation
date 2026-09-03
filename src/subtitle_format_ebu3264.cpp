@@ -1,4 +1,4 @@
-// Copyright (c) 2011 Niels Martin Hansen <nielsm@aegisub.org>
+// Copyright (c) 2011 Niels Martin Hansen <nielsm@substation.org>
 //
 // Permission to use, copy, modify, and distribute this software for any
 // purpose with or without fee is hereby granted, provided that the above
@@ -12,7 +12,7 @@
 // ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 // OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 //
-// Aegisub Project http://www.aegisub.org/
+// SubStation Project http://www.substation.org/
 
 /// @file subtitle_format_ebu3264.cpp
 /// @see subtitle_format_ebu3264.h
@@ -32,10 +32,10 @@
 #include "options.h"
 #include "text_file_writer.h"
 
-#include <libaegisub/charset_conv.h>
-#include <libaegisub/exception.h>
-#include <libaegisub/io.h>
-#include <libaegisub/line_wrap.h>
+#include <libsubstation/charset_conv.h>
+#include <libsubstation/exception.h>
+#include <libsubstation/io.h>
+#include <libsubstation/line_wrap.h>
 
 #include <boost/algorithm/string/replace.hpp>
 #include <wx/utils.h>
@@ -594,7 +594,7 @@ namespace
 		memcpy(gsi.co, "XXX", 3);
 		gsi_encoder.Convert(scriptinfo_editing, std::span<char>(gsi.en, 32));
 		if (export_settings.text_encoding == EbuExportSettings::utf8)
-			strncpy(gsi.uda, "This file was exported by Aegisub using non-standard UTF-8 encoding for the subtitle blocks. The TTI.TF field contains UTF-8-encoded text interspersed with the standard formatting codes, which are not encoded. GSI.CCT is set to 'U8' to signify this.", sizeof(gsi.uda));
+			strncpy(gsi.uda, "This file was exported by SubStation using non-standard UTF-8 encoding for the subtitle blocks. The TTI.TF field contains UTF-8-encoded text interspersed with the standard formatting codes, which are not encoded. GSI.CCT is set to 'U8' to signify this.", sizeof(gsi.uda));
 
 		return gsi;
 	}

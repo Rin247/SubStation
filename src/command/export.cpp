@@ -12,11 +12,11 @@
 // ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 // OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 //
-// Aegisub Project https://aegisub.org/
+// SubStation Project https://substation.org/
 
 // Function for exporting a list of all commands to a yaml file that can be
 // included on the website. Very quick and very dirty.
-// This file is deliberately not linked into Aegisub on normal builds.
+// This file is deliberately not linked into SubStation on normal builds.
 
 #include "export.h"
 
@@ -40,7 +40,7 @@ std::string yaml_quote(std::string_view input) {
 }
 
 void ExportCommands(agi::Context *c) {
-	wxArrayString langs = wxTranslations::Get()->GetAvailableTranslations("aegisub");
+	wxArrayString langs = wxTranslations::Get()->GetAvailableTranslations("substation");
 
 	langs.Sort();
 	langs.insert(langs.begin(), "en_US");
@@ -57,7 +57,7 @@ void ExportCommands(agi::Context *c) {
 		wxTranslations *translations = new wxTranslations();
 		wxTranslations::Set(translations);
 		translations->SetLanguage(lang);
-		translations->AddCatalog("aegisub");
+		translations->AddCatalog("substation");
 		translations->AddStdCatalog();
 
 		for (auto const& name : commands) {

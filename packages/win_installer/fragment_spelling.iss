@@ -1,4 +1,4 @@
-; This file declares all installables related to spell checking and thesaurii in Aegisub
+; This file declares all installables related to spell checking and thesaurii in SubStation
 
 [Files]
 Source: {#DEPS_DIR}\dictionaries\en_US.aff; DestDir: {app}\dictionaries; Flags: skipifsourcedoesntexist ignoreversion; Components: dictionaries/en_US

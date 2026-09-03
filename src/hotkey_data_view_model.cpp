@@ -1,4 +1,4 @@
-// Copyright (c) 2011, Thomas Goyne <plorkyeran@aegisub.org>
+// Copyright (c) 2011, Thomas Goyne <plorkyeran@substation.org>
 //
 // Permission to use, copy, modify, and distribute this software for any
 // purpose with or without fee is hereby granted, provided that the above
@@ -12,17 +12,17 @@
 // ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 // OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 //
-// Aegisub Project http://www.aegisub.org/
+// SubStation Project http://www.substation.org/
 
 #include "hotkey_data_view_model.h"
 
 #include "command/command.h"
 #include "compat.h"
-#include "include/aegisub/hotkey.h"
+#include "include/substation/hotkey.h"
 #include "preferences.h"
 
-#include <libaegisub/exception.h>
-#include <libaegisub/hotkey.h>
+#include <libsubstation/exception.h>
+#include <libsubstation/hotkey.h>
 
 #include <algorithm>
 #include <boost/algorithm/string/case_conv.hpp>

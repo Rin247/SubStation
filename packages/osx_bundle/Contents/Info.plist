@@ -9,13 +9,13 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleExecutable</key>
-	<string>aegisub</string>
+	<string>substation</string>
 	<key>CFBundleIconFile</key>
-	<string>Aegisub</string>
+	<string>SubStation</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.aegisub.aegisub</string>
+	<string>com.substation.substation</string>
 	<key>CFBundleName</key>
-	<string>Aegisub</string>
+	<string>SubStation</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleSignature</key>
@@ -28,12 +28,12 @@
 	<key>CFBundleVersion</key>
 	<string>1</string>
 
-    <!-- aegisub version -->
+    <!-- substation version -->
     <key>CFBundleShortVersionString</key>
     <string>@PLIST_VERSION@</string>
 
     <key>CFBundleLongVersionString</key>
-    <string>@PLIST_VERSION@, Copyright 2005-2014, aegisub https://aegisub.org/</string>
+    <string>@PLIST_VERSION@, Copyright 2005-2014, substation https://substation.org/</string>
 
 	<!-- Target platform -->
 	<key>CFBundleSupportedPlatforms</key>
@@ -43,7 +43,7 @@
 
     <!-- Displayed in the 'Get Info' context menu dialogue -->
     <key>CFBundleGetInfoString</key>
-    <string>aegisub version @PLIST_VERSION@ built on @PLIST_BUILD_DATE@ https://aegisub.org/</string>
+    <string>substation version @PLIST_VERSION@ built on @PLIST_BUILD_DATE@ https://substation.org/</string>
 
     <!-- Whether to allow multiple instances across user logins -->
     <key>LSMultipleInstancesProhibited</key>

@@ -9,7 +9,7 @@
 //   * Redistributions in binary form must reproduce the above copyright notice,
 //     this list of conditions and the following disclaimer in the documentation
 //     and/or other materials provided with the distribution.
-//   * Neither the name of the Aegisub Group nor the names of its contributors
+//   * Neither the name of the SubStation Group nor the names of its contributors
 //     may be used to endorse or promote products derived from this software
 //     without specific prior written permission.
 //
@@ -25,7 +25,7 @@
 // ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
-// Aegisub Project http://www.aegisub.org/
+// SubStation Project http://www.substation.org/
 
 #include "auto4_base.h"
 
@@ -34,16 +34,16 @@
 #include "compat.h"
 #include "dialog_progress.h"
 #include "format.h"
-#include "include/aegisub/context.h"
+#include "include/substation/context.h"
 #include "options.h"
 #include "subs_controller.h"
 
-#include <libaegisub/ass/string_codec.h>
-#include <libaegisub/dispatch.h>
-#include <libaegisub/fs.h>
-#include <libaegisub/path.h>
-#include <libaegisub/split.h>
-#include <libaegisub/string.h>
+#include <libsubstation/ass/string_codec.h>
+#include <libsubstation/dispatch.h>
+#include <libsubstation/fs.h>
+#include <libsubstation/path.h>
+#include <libsubstation/split.h>
+#include <libsubstation/string.h>
 
 #include <boost/algorithm/string/replace.hpp>
 #include <future>
@@ -58,7 +58,7 @@
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
 
-#include <libaegisub/charset_conv_win.h>
+#include <libsubstation/charset_conv_win.h>
 #endif
 
 namespace Automation4 {

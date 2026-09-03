@@ -1,4 +1,4 @@
-// Copyright (c) 2013, Thomas Goyne <plorkyeran@aegisub.org>
+// Copyright (c) 2013, Thomas Goyne <plorkyeran@substation.org>
 //
 // Permission to use, copy, modify, and distribute this software for any
 // purpose with or without fee is hereby granted, provided that the above
@@ -12,7 +12,7 @@
 // ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 // OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 //
-// Aegisub Project http://www.aegisub.org/
+// SubStation Project http://www.substation.org/
 
 #include "resolution_resampler.h"
 
@@ -21,11 +21,11 @@
 #include "ass_style.h"
 #include "utils.h"
 
-#include <libaegisub/exception.h>
-#include <libaegisub/of_type_adaptor.h>
-#include <libaegisub/split.h>
-#include <libaegisub/util.h>
-#include <libaegisub/ycbcr_conv.h>
+#include <libsubstation/exception.h>
+#include <libsubstation/of_type_adaptor.h>
+#include <libsubstation/split.h>
+#include <libsubstation/util.h>
+#include <libsubstation/ycbcr_conv.h>
 
 #include <algorithm>
 #include <cmath>

@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Aegisub Hungarian translation\n"
+"Project-Id-Version: SubStation Hungarian translation\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-07-25 16:15+0200\n"
 "PO-Revision-Date: 2014-11-08 13:56+0100\n"
@@ -14,11 +14,11 @@ msgstr ""
 "X-Generator: Poedit 1.6.9\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../src/aegisublocale.cpp:113 ../src/command/app.cpp:156
+#: ../src/substationlocale.cpp:113 ../src/command/app.cpp:156
 msgid "Language"
 msgstr "Nyelv"
 
-#: ../src/aegisublocale.cpp:113
+#: ../src/substationlocale.cpp:113
 #, fuzzy
 #| msgid "Please choose the folder:"
 msgid "Please choose a language:"
@@ -360,10 +360,10 @@ msgstr ""
 
 #: ../src/charset_detect.cpp:50
 msgid ""
-"Aegisub could not narrow down the character set to a single one.\n"
+"SubStation could not narrow down the character set to a single one.\n"
 "Please pick one below:"
 msgstr ""
-"Az Aegisub nem tudta pontosan megállapítani a karakterkódolást.\n"
+"Az SubStation nem tudta pontosan megállapítani a karakterkódolást.\n"
 "Válasszon az alábbi listából:"
 
 #: ../src/charset_detect.cpp:51
@@ -379,8 +379,8 @@ msgid "About"
 msgstr "Névjegy"
 
 #: ../src/command/app.cpp:58 ../src/dialog_about.cpp:44
-msgid "About Aegisub"
-msgstr "Az Aegisub névjegye"
+msgid "About SubStation"
+msgstr "Az SubStation névjegye"
 
 #: ../src/command/app.cpp:67
 msgid "&Audio+Subs View"
@@ -447,20 +447,20 @@ msgid "&Language..."
 msgstr "N&yelv... (Language)"
 
 #: ../src/command/app.cpp:157
-msgid "Select Aegisub interface language"
-msgstr "Az Aegisub nyelvének kiválasztása."
+msgid "Select SubStation interface language"
+msgstr "Az SubStation nyelvének kiválasztása."
 
 #: ../src/command/app.cpp:167
 msgid ""
-"Aegisub needs to be restarted so that the new language can be applied. "
+"SubStation needs to be restarted so that the new language can be applied. "
 "Restart now?"
 msgstr ""
 
 #: ../src/command/app.cpp:167
 #, fuzzy
-#| msgid "About Aegisub"
-msgid "Restart Aegisub?"
-msgstr "Az Aegisub névjegye"
+#| msgid "About SubStation"
+msgid "Restart SubStation?"
+msgstr "Az SubStation névjegye"
 
 #: ../src/command/app.cpp:180
 msgid "&Log window"
@@ -497,8 +497,8 @@ msgid "Options"
 msgstr "Beállítások"
 
 #: ../src/command/app.cpp:206
-msgid "Configure Aegisub"
-msgstr "Az Aegisub beállításai"
+msgid "Configure SubStation"
+msgstr "Az SubStation beállításai"
 
 #: ../src/command/app.cpp:220 ../src/command/app.cpp:221
 msgid "Toggle global hotkey overrides"
@@ -529,7 +529,7 @@ msgid "Check for Updates"
 msgstr "Frissítések keresése"
 
 #: ../src/command/app.cpp:260
-msgid "Check to see if there is a new version of Aegisub available"
+msgid "Check to see if there is a new version of SubStation available"
 msgstr "Ellenőrzi, hogy az Aegisubnak van-e frissebb verziója."
 
 #: ../src/command/app.cpp:270 ../src/command/app.cpp:271
@@ -1601,9 +1601,9 @@ msgid "Bug Tracker"
 msgstr "Programhibák jelentése"
 
 #: ../src/command/help.cpp:49
-msgid "Visit Aegisub's bug tracker to report bugs and request new features"
+msgid "Visit SubStation's bug tracker to report bugs and request new features"
 msgstr ""
-"Az Aegisub bug trackere, ahol programhibákat jelenthet vagy új funkciók "
+"Az SubStation bug trackere, ahol programhibákat jelenthet vagy új funkciók "
 "beépítését kérheti."
 
 #: ../src/command/help.cpp:68
@@ -1627,8 +1627,8 @@ msgid "IRC Channel"
 msgstr "IRC csatorna"
 
 #: ../src/command/help.cpp:82
-msgid "Visit Aegisub's official IRC channel"
-msgstr "Az Aegisub hivatalos IRC csatornája."
+msgid "Visit SubStation's official IRC channel"
+msgstr "Az SubStation hivatalos IRC csatornája."
 
 #: ../src/command/help.cpp:92
 msgid "&Visual Typesetting"
@@ -1651,8 +1651,8 @@ msgid "Website"
 msgstr "Honlap"
 
 #: ../src/command/help.cpp:106
-msgid "Visit Aegisub's official website"
-msgstr "Az Aegisub hivatalos honlapja."
+msgid "Visit SubStation's official website"
+msgstr "Az SubStation hivatalos honlapja."
 
 #: ../src/command/keyframe.cpp:49 ../src/command/keyframe.cpp:50
 msgid "Close Keyframes"
@@ -1862,9 +1862,9 @@ msgid "Open Autosaved Subtitles"
 msgstr "Automentet felirat megnyitása"
 
 #: ../src/command/subtitle.cpp:284
-msgid "Open a previous version of a file which was autosaved by Aegisub"
+msgid "Open a previous version of a file which was autosaved by SubStation"
 msgstr ""
-"Az Aegisub által automentett feliratfájl korábbi változatának megnyitása."
+"Az SubStation által automentett feliratfájl korábbi változatának megnyitása."
 
 #: ../src/command/subtitle.cpp:297
 msgid "Open Subtitles with &Charset..."
@@ -4367,16 +4367,16 @@ msgid "Remove fro&m dictionary"
 msgstr "&Eltávolítás a szótárból"
 
 #: ../src/dialog_spellchecker.cpp:279
-msgid "Aegisub has finished checking spelling of this script."
-msgstr "Az Aegisub befejezte a feliratfájl helyesírás-ellenőrzését."
+msgid "SubStation has finished checking spelling of this script."
+msgstr "Az SubStation befejezte a feliratfájl helyesírás-ellenőrzését."
 
 #: ../src/dialog_spellchecker.cpp:279 ../src/dialog_spellchecker.cpp:283
 msgid "Spell checking complete."
 msgstr "Helyesírás-ellenőrzés befejezve"
 
 #: ../src/dialog_spellchecker.cpp:283
-msgid "Aegisub has found no spelling mistakes in this script."
-msgstr "Az Aegisub nem talált helyesírási hibákat a feliratfájlban."
+msgid "SubStation has found no spelling mistakes in this script."
+msgstr "Az SubStation nem talált helyesírási hibákat a feliratfájlban."
 
 #: ../src/dialog_spellchecker.cpp:329 ../src/dialog_spellchecker.cpp:343
 msgid "spell check replace"
@@ -5132,35 +5132,35 @@ msgid "Checking for updates failed: %s."
 msgstr ""
 
 #: ../src/dialog_version_check.cpp:345
-msgid "An update to Aegisub was found."
-msgstr "Elérhető egy frissebb Aegisub verzió."
+msgid "An update to SubStation was found."
+msgstr "Elérhető egy frissebb SubStation verzió."
 
 #: ../src/dialog_version_check.cpp:347
-msgid "Several possible updates to Aegisub were found."
-msgstr "Számos lehetséges Aegisub frissítés érhető el."
+msgid "Several possible updates to SubStation were found."
+msgstr "Számos lehetséges SubStation frissítés érhető el."
 
 #: ../src/dialog_version_check.cpp:349
-msgid "There are no updates to Aegisub."
-msgstr "Nem található frissebb Aegisub verzió."
+msgid "There are no updates to SubStation."
+msgstr "Nem található frissebb SubStation verzió."
 
 #: ../src/dialog_version_check.cpp:377
 #, c-format
 msgid ""
-"There was an error checking for updates to Aegisub:\n"
+"There was an error checking for updates to SubStation:\n"
 "%s\n"
 "\n"
 "If other applications can access the Internet fine, this is probably a "
 "temporary server problem on our end."
 msgstr ""
-"Hiba történt az Aegisub frissítésének ellenőrzésekor:\n"
+"Hiba történt az SubStation frissítésének ellenőrzésekor:\n"
 "%s\n"
 "\n"
 "Ha más alkalmazások elérik az Internetet, akkor ez csak egy ideiglenes "
 "szerverprobléma lehet a részünkről."
 
 #: ../src/dialog_version_check.cpp:381
-msgid "An unknown error occurred while checking for updates to Aegisub."
-msgstr "Ismeretlen hiba az Aegisub frissebb verziójának ellenőrzésekor."
+msgid "An unknown error occurred while checking for updates to SubStation."
+msgstr "Ismeretlen hiba az SubStation frissebb verziójának ellenőrzésekor."
 
 #: ../src/dialog_video_details.cpp:46
 msgid "Video Details"
@@ -5471,21 +5471,21 @@ msgstr ""
 #: ../src/main.cpp:266
 #, c-format
 msgid ""
-"Oops, Aegisub has crashed!\n"
+"Oops, SubStation has crashed!\n"
 "\n"
 "An attempt has been made to save a copy of your file to:\n"
 "\n"
 "%s\n"
 "\n"
-"Aegisub will now close."
+"SubStation will now close."
 msgstr ""
-"Hoppá, az Aegisub összeomlott!\n"
+"Hoppá, az SubStation összeomlott!\n"
 "\n"
 "Valószínűleg sikerült a betöltött fájlt az alábbi helyre lementeni:\n"
 "\n"
 "%s\n"
 "\n"
-"Az Aegisub most bezáródik."
+"Az SubStation most bezáródik."
 
 #: ../src/main.cpp:295
 msgid "Check for updates?"
@@ -5493,10 +5493,10 @@ msgstr "Frissítések keresése?"
 
 #: ../src/main.cpp:295
 msgid ""
-"Do you want Aegisub to check for updates whenever it starts? You can still "
+"Do you want SubStation to check for updates whenever it starts? You can still "
 "do it manually via the Help menu."
 msgstr ""
-"Szeretné, ha az Aegisub minden indításkor a program frissebb verziója után "
+"Szeretné, ha az SubStation minden indításkor a program frissebb verziója után "
 "keresne? Ezt kézzel is megteheti a Súgó menüponton keresztül."
 
 #: ../src/main.cpp:301
@@ -5518,7 +5518,7 @@ msgstr "Programhiba"
 #: ../src/main.cpp:417
 #, c-format
 msgid ""
-"Aegisub has crashed while starting up!\n"
+"SubStation has crashed while starting up!\n"
 "\n"
 "The last startup step attempted was: %s."
 msgstr ""
@@ -5527,7 +5527,7 @@ msgstr ""
 #, c-format
 msgid ""
 "An unexpected error has occurred. Please save your work and restart "
-"Aegisub.\n"
+"SubStation.\n"
 "\n"
 "Error Message: %s"
 msgstr ""
@@ -7265,8 +7265,8 @@ msgid "Create a start menu icon"
 msgstr "Start Menü bejegyzés létrehozása"
 
 #: packages/win_installer/fragment_strings.iss:1
-msgid "Automatically check for new versions of Aegisub"
-msgstr "Aegisub programfrissítések automatikus keresése"
+msgid "Automatically check for new versions of SubStation"
+msgstr "SubStation programfrissítések automatikus keresése"
 
 #: packages/win_installer/fragment_strings.iss:1
 msgid "Update Checker:"
@@ -7274,62 +7274,62 @@ msgstr "Frissítések keresése:"
 
 #: packages/win_installer/fragment_strings.iss:1
 msgid ""
-"This will install Aegisub {#BUILD_GIT_VERSION_STRING} on your computer."
+"This will install SubStation {#BUILD_GIT_VERSION_STRING} on your computer."
 "%n%nAegisub is covered by the GNU General Public License version 2. This "
 "means you may use the application for any purpose without charge, but that "
-"no warranties of any kind are given either.%n%nSee the Aegisub website for "
+"no warranties of any kind are given either.%n%nSee the SubStation website for "
 "information on obtaining the source code."
 msgstr ""
-"A telepítő az Aegisub {#BUILD_GIT_VERSION_STRING} verzióját fogja most a "
-"számítógépére telepíteni.%n%nAz Aegisub programot a GNU General Public "
+"A telepítő az SubStation {#BUILD_GIT_VERSION_STRING} verzióját fogja most a "
+"számítógépére telepíteni.%n%nAz SubStation programot a GNU General Public "
 "License version 2 licencszerződés védi. Ez azt jelenti, hogy a programot "
 "ingyenesen használhatja, viszont a fejlesztők semmiféle garanciát nem "
 "vállalnak a program működéséért.%n%nTovábbi információkért látogasson el az "
-"Aegisub weboldalára, ahol többek között beszerezheti a program forráskódját."
+"SubStation weboldalára, ahol többek között beszerezheti a program forráskódját."
 
-#: ../packages/desktop/aegisub.desktop.in.in:4
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:6
-msgid "Aegisub"
-msgstr "Aegisub"
+#: ../packages/desktop/substation.desktop.in.in:4
+#: ../packages/desktop/substation.metainfo.xml.in.in:6
+msgid "SubStation"
+msgstr "SubStation"
 
-#: ../packages/desktop/aegisub.desktop.in.in:5
+#: ../packages/desktop/substation.desktop.in.in:5
 msgid "Subtitle Editor"
 msgstr "Feliratszerkesztő"
 
-#: ../packages/desktop/aegisub.desktop.in.in:6
+#: ../packages/desktop/substation.desktop.in.in:6
 msgid "Create and edit subtitles for film and videos."
 msgstr "Feliratok készítése filmekhez és videókhoz."
 
-#: ../packages/desktop/aegisub.desktop.in.in:12
+#: ../packages/desktop/substation.desktop.in.in:12
 msgid "subtitles;subtitle;captions;captioning;video;audio;"
 msgstr ""
 
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:7
+#: ../packages/desktop/substation.metainfo.xml.in.in:7
 msgid "Create and modify subtitles"
 msgstr ""
 
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:9
+#: ../packages/desktop/substation.metainfo.xml.in.in:9
 msgid ""
-"Aegisub is a free, cross-platform open source tool for creating and "
-"modifying subtitles. Aegisub makes it quick and easy to time subtitles to "
+"SubStation is a free, cross-platform open source tool for creating and "
+"modifying subtitles. SubStation makes it quick and easy to time subtitles to "
 "audio, and features many powerful tools for styling them, including a built-"
 "in real-time video preview."
 msgstr ""
 
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:10
+#: ../packages/desktop/substation.metainfo.xml.in.in:10
 msgid ""
-"Aegisub was originally created as a tool to make typesetting, particularly "
+"SubStation was originally created as a tool to make typesetting, particularly "
 "in anime fansubs, a less painful experience. At the time of the start of the "
 "project, many other programs that supported the Advanced Substation Alpha "
 "format lacked (and in many cases, still lack; development on several "
 "competing programs have since been dropped for various reasons completely "
-"unrelated to Aegisub) many vital functions, or were too buggy and/or "
+"unrelated to SubStation) many vital functions, or were too buggy and/or "
 "unreliable to be really useful."
 msgstr ""
 
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:11
+#: ../packages/desktop/substation.metainfo.xml.in.in:11
 msgid ""
-"Since then, Aegisub has grown into a fully fledged, highly customizable "
+"Since then, SubStation has grown into a fully fledged, highly customizable "
 "subtitle editor. It features a lot of convenient tools to help you with "
 "timing, typesetting, editing and translating subtitles, as well as a "
 "powerful scripting environment called Automation (originally mostly intended "
@@ -7337,43 +7337,43 @@ msgid ""
 "including creating macros and various other convenient tools)."
 msgstr ""
 
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:12
-msgid "Some highlights of Aegisub:"
+#: ../packages/desktop/substation.metainfo.xml.in.in:12
+msgid "Some highlights of SubStation:"
 msgstr ""
 
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:14
+#: ../packages/desktop/substation.metainfo.xml.in.in:14
 msgid "Simple and intuitive yet powerful interface for editing subtitles"
 msgstr ""
 
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:15
+#: ../packages/desktop/substation.metainfo.xml.in.in:15
 msgid "Support for many formats and character sets"
 msgstr ""
 
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:16
+#: ../packages/desktop/substation.metainfo.xml.in.in:16
 msgid "Powerful video mode"
 msgstr ""
 
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:17
+#: ../packages/desktop/substation.metainfo.xml.in.in:17
 msgid "Visual typesetting tools"
 msgstr ""
 
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:18
+#: ../packages/desktop/substation.metainfo.xml.in.in:18
 msgid "Intuitive and customizable audio timing mode"
 msgstr ""
 
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:19
+#: ../packages/desktop/substation.metainfo.xml.in.in:19
 msgid "Fully scriptable through the Automation module"
 msgstr ""
 
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:43
+#: ../packages/desktop/substation.metainfo.xml.in.in:43
 msgid "Typesetting"
 msgstr ""
 
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:47
+#: ../packages/desktop/substation.metainfo.xml.in.in:47
 msgid "Audio video"
 msgstr ""
 
-#: ../packages/desktop/aegisub.metainfo.xml.in.in:51
+#: ../packages/desktop/substation.metainfo.xml.in.in:51
 msgid "Audio timing"
 msgstr ""
 

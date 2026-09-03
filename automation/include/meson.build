@@ -17,4 +17,4 @@ foreach f: lua_files
     configure_file(input: f, output: '@PLAINNAME@', copy: true)
 endforeach
 
-subdir('aegisub')
+subdir('substation')

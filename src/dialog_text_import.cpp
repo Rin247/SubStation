@@ -9,7 +9,7 @@
 //   * Redistributions in binary form must reproduce the above copyright notice,
 //     this list of conditions and the following disclaimer in the documentation
 //     and/or other materials provided with the distribution.
-//   * Neither the name of the Aegisub Group nor the names of its contributors
+//   * Neither the name of the SubStation Group nor the names of its contributors
 //     may be used to endorse or promote products derived from this software
 //     without specific prior written permission.
 //
@@ -25,7 +25,7 @@
 // ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 //
-// Aegisub Project http://www.aegisub.org/
+// SubStation Project http://www.substation.org/
 
 #include "options.h"
 #include "validators.h"
@@ -38,7 +38,7 @@
 #include <wx/valgen.h>
 
 /// A simple dialog to let the user select the format of a plain text file
-/// being imported into Aegisub
+/// being imported into SubStation
 bool ShowPlainTextImportDialog() {
 	auto seperator = OPT_GET("Tool/Import/Text/Actor Separator")->GetString();
 	auto comment = OPT_GET("Tool/Import/Text/Comment Starter")->GetString();

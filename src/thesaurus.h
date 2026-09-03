@@ -1,4 +1,4 @@
-// Copyright (c) 2012, Thomas Goyne <plorkyeran@aegisub.org>
+// Copyright (c) 2012, Thomas Goyne <plorkyeran@substation.org>
 //
 // Permission to use, copy, modify, and distribute this software for any
 // purpose with or without fee is hereby granted, provided that the above
@@ -12,18 +12,18 @@
 // ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 // OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 //
-// Aegisub Project http://www.aegisub.org/
+// SubStation Project http://www.substation.org/
 
 #include <memory>
 #include <string>
 #include <vector>
 
-#include <libaegisub/signal.h>
+#include <libsubstation/signal.h>
 
 namespace agi { class Thesaurus; }
 
 /// @class Thesaurus
-/// @brief A wrapper around agi::Thesaurus adding wx and Aegisub-specific stuff
+/// @brief A wrapper around agi::Thesaurus adding wx and SubStation-specific stuff
 class Thesaurus {
 	/// The actual thesaurus implementation
 	std::unique_ptr<agi::Thesaurus> impl;
