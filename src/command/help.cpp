@@ -44,21 +44,12 @@ namespace {
 struct help_bugs final : public Command {
 	CMD_NAME("help/bugs")
 	CMD_ICON(bugtracker_button)
-	STR_MENU("&Bug Tracker...")
-	STR_DISP("Bug Tracker")
-	STR_HELP("Visit Aegisub's bug tracker to report bugs and request new features")
+	STR_MENU("&Report an Issue...")
+	STR_DISP("Report an Issue")
+	STR_HELP("Report bugs and request new features on GitHub")
 
-	void operator()(agi::Context *c) override {
-		if (wxGetMouseState().CmdDown()) {
-			if (wxGetMouseState().ShiftDown()) {
-				 wxMessageBox("Now crashing with an access violation...");
-				for (char *foo = (char*)nullptr;;) *foo++ = 42;
-			} else {
-				wxMessageBox("Now crashing with an unhandled exception...");
-				throw c->parent;
-			}
-		}
-		wxLaunchDefaultBrowser("https://github.com/TypesettingTools/Aegisub/issues", wxBROWSER_NEW_WINDOW);
+	void operator()(agi::Context *) override {
+		wxLaunchDefaultBrowser("https://github.com/Rin247/Aegisub/issues", wxBROWSER_NEW_WINDOW);
 	}
 };
 
@@ -74,18 +65,6 @@ struct help_contents final : public Command {
 	}
 };
 
-struct help_irc final : public Command {
-	CMD_NAME("help/irc")
-	CMD_ICON(irc_button)
-	STR_MENU("&IRC Channel")
-	STR_DISP("IRC Channel")
-	STR_HELP("Visit Aegisub's official IRC channel")
-
-	void operator()(agi::Context *) override {
-		wxLaunchDefaultBrowser("irc://irc.rizon.net/aegisub", wxBROWSER_NEW_WINDOW);
-	}
-};
-
 struct help_video final : public Command {
 	CMD_NAME("help/video")
 	CMD_ICON(visual_help)
@@ -97,26 +76,12 @@ struct help_video final : public Command {
 		HelpButton::OpenPage("Visual Typesetting");
 	}
 };
-
-struct help_website final : public Command {
-	CMD_NAME("help/website")
-	CMD_ICON(website_button)
-	STR_MENU("&Website")
-	STR_DISP("Website")
-	STR_HELP("Visit Aegisub's official website")
-
-	void operator()(agi::Context *) override {
-		wxLaunchDefaultBrowser("https://aegisub.org/", wxBROWSER_NEW_WINDOW);
-	}
-};
 }
 
 namespace cmd {
 	void init_help() {
 		reg(std::make_unique<help_bugs>());
 		reg(std::make_unique<help_contents>());
-		reg(std::make_unique<help_irc>());
 		reg(std::make_unique<help_video>());
-		reg(std::make_unique<help_website>());
 	}
 }

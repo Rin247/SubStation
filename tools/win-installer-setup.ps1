@@ -108,7 +108,8 @@ if (!(Test-Path $VSFilterDir)) {
 $RedistDir = Join-Path $DepsDir "VC_redist"
 if (!(Test-Path $RedistDir)) {
 	New-Item -ItemType Directory -Path $RedistDir | Out-Null
-	Invoke-WebRequest https://aka.ms/vs/17/release/VC_redist.x64.exe -OutFile (Join-Path $RedistDir "VC_redist.x64.exe") -UseBasicParsing
+	Invoke-WebRequest https://aka.ms/vc14/vc_redist.x64.exe -OutFile (Join-Path $RedistDir "VC_redist.x64.exe") -UseBasicParsing
+	Invoke-WebRequest https://aka.ms/vc14/vc_redist.arm64.exe -OutFile (Join-Path $RedistDir "VC_redist.arm64.exe") -UseBasicParsing
 }
 
 # Dictionaries

@@ -814,7 +814,7 @@ Preferences::Preferences(wxWindow *parent): wxDialog(parent, -1, _("Preferences"
 	{
 		auto p = new OptionPage(book, this, _("Dark Mode"));
 		auto dark = p->PageSizer(_("Dark Mode"));
-		p->OptionAdd(dark, _("Enable experimental dark mode (restart required)"), "App/Dark Mode");
+		p->OptionAdd(dark, _("Enable dark mode (restart required)"), "App/Dark Mode");
 		p->SetSizerAndFit(p->sizer);
 	}
 	Backup(book, this);

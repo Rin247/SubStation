@@ -54,11 +54,14 @@ jobs:
               $nativeCl = (Get-ChildItem "$env:VS\VC\Tools\MSVC\*\bin\Hostx64\x64\cl.exe" | Select-Object -First 1).FullName
               $nativeLib = (Get-ChildItem "$env:VS\VC\Tools\MSVC\*\bin\Hostx64\x64\lib.exe" | Select-Object -First 1).FullName
               $nativeRc = (Get-ChildItem "$env:WindowsSdkDir\bin\*\x86\rc.exe" | Select-Object -First 1).FullName
+              $nativeStrip = (Get-ChildItem "$env:VS\VC\Tools\LLVM\bin\llvm-strip.exe" -ErrorAction SilentlyContinue | Select-Object -First 1).FullName
               if (-not $nativeCl -or -not $nativeLib -or -not $nativeRc) { throw "Could not locate the x64 native MSVC tools" }
+              if (-not $nativeStrip) { $nativeStrip = 'llvm-strip.exe' }
               $nativeCl = $nativeCl.Replace('\', '/')
               $nativeLib = $nativeLib.Replace('\', '/')
               $nativeRc = $nativeRc.Replace('\', '/')
-              @("[binaries]", "c = '$nativeCl'", "cpp = '$nativeCl'", "ar = '$nativeLib'", "strip = 'llvm-strip.exe'", "windres = '$nativeRc'") |
+              $nativeStrip = $nativeStrip.Replace('\', '/')
+              @("[binaries]", "c = '$nativeCl'", "cpp = '$nativeCl'", "ar = '$nativeLib'", "strip = '$nativeStrip'", "windres = '$nativeRc'") |
                 Set-Content cross/windows-native-msvc.generated.ini -Encoding ascii
             buildtype: release
             args: >-
@@ -86,7 +89,7 @@ jobs:
           - name: Ubuntu Release
             os: ubuntu-22.04
             buildtype: release
-            args: -Db_pch=false -Ddefault_library=static
+            args: -Db_pch=false -Ddefault_library=static --force-fallback-for=fribidi
           - name: macOS arm64 Release
             os: macos-15
             buildtype: release

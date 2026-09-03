@@ -54,7 +54,7 @@
 		"Inactive Lines Display Mode" : 3,
 		"Karaoke" : {
 			"Font Face" : "Verdana",
-			"Font Size" : 9
+			"Font Size" : 14
 		},
 		"Lead" : {
 			"IN" : 100,
@@ -386,7 +386,7 @@
 		"Edit Box" : {
 			"Soft Line Break": false,
 			"Font Face" : "",
-			"Font Size" : 10
+			"Font Size" : 14
 		},
 		"Grid" : {
 			"Column" : [
@@ -394,7 +394,7 @@
 			],
 			"Focus Allow" : true,
 			"Font Face" : "",
-			"Font Size" : 9,
+			"Font Size" : 12,
 			"Hide Overrides" : 1,
 			"Hide Overrides Char" : "☀",
 			"Highlight Subtitles in Frame" : true
