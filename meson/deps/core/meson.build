@@ -1,9 +1,11 @@
 # Core C/C++ deps that are always required.
 #
+# `cxx` and `cc` are defined at the top-level meson.build before any
+# platform/ or deps/ subdir runs (because meson/platform/windows
+# uses `cc.find_library()` for DirectSound).
+#
 # Mutates the `deps` array in the surrounding scope.
 
-cxx = meson.get_compiler('cpp')
-cc = meson.get_compiler('c')
 deps += cc.find_library('m', required: false)
 deps += cc.find_library('dl', required: false)
 
@@ -60,5 +62,5 @@ endif
 
 deps += dependency('zlib')
 
-deps += dependency('icu-uc', version: '1.0.0')
-deps += dependency('icu-i18n', version: '1.0.0')
+deps += dependency('icu-uc', version: '>=4.8.1.1')
+deps += dependency('icu-i18n', version: '>=4.8.1.1')

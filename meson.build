@@ -42,6 +42,13 @@ endif
 conf = configuration_data()
 deps = []
 
+# Compiler handles. Defined here (not in meson/deps/core) because
+# the platform/*.build files reference them: meson/platform/windows
+# uses `cc.find_library()` for DirectSound and `cc.has_header()` for
+# the DWrite 3 probe, both of which fire before deps/core runs.
+cxx = meson.get_compiler('cpp')
+cc = meson.get_compiler('c')
+
 # Per-concern meson/ scripts, in dependency order. Each one
 # assumes the previous ones have run.
 subdir('meson/paths')
