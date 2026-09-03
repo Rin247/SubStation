@@ -45,6 +45,7 @@
 #include <clocale>
 #include <functional>
 #include <string_view>
+#include <wx/app.h>
 #include <wx/intl.h>
 #include <wx/choicdlg.h> // Keep this last so wxUSE_CHOICEDLG is set.
 
