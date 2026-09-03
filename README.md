@@ -8,7 +8,7 @@ The issue tracker can be found at https://github.com/Rin247/SubStation/issues.
 
 ### Windows
 
-SubStation targets 64-bit builds only (Windows x86_64/ARM64 and Linux x86_64/ARM64). 32-bit/x86 builds are no longer supported.
+SubStation targets 64-bit builds only (Windows x86_64/ARM64 and Linux x86_64/ARM64).
 
 Supported platforms (policy update):
 
