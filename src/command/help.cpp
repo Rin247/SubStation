@@ -48,7 +48,7 @@ struct help_bugs final : public Command {
 	STR_DISP("Report an Issue")
 	STR_HELP("Report bugs and request new features on GitHub")
 
-	void operator()(agi::Context *c) override {
+	void operator()(agi::Context *) override {
 		wxLaunchDefaultBrowser("https://github.com/Rin247/Aegisub/issues", wxBROWSER_NEW_WINDOW);
 	}
 };

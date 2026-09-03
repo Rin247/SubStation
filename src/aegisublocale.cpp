@@ -70,12 +70,16 @@ void AegisubLocale::Init(std::string const& language) {
 	translations->AddCatalog(AEGISUB_CATALOG);
 	translations->AddStdCatalog();
 
-	// Flip the global UI layout direction to mirror for RTL scripts so
-	// that dialogs, menus and the subtitle grid flow right-to-left.
+	// Propagate the RTL/LTR direction to every existing top-level window.
+	// wxApp exposes GetLayoutDirection but no public setter, so we walk the
+	// global list of top-level windows and call SetLayoutDirection on each.
 	if (wxTheApp) {
-		wxTheApp->SetLayoutDirection(IsRightToLeft(language)
+		wxLayoutDirection dir = IsRightToLeft(language)
 			? wxLayout_RightToLeft
-			: wxLayout_LeftToRight);
+			: wxLayout_LeftToRight;
+		for (auto it = wxTopLevelWindows.begin(); it != wxTopLevelWindows.end(); ++it) {
+			if (*it) (*it)->SetLayoutDirection(dir);
+		}
 	}
 
 	setlocale(LC_NUMERIC, "C");

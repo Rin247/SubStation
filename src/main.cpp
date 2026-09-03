@@ -220,16 +220,6 @@ bool AegisubApp::OnInit() {
 		}
 	#endif
 
-	{
-		// Bump the global default UI font to something readable on 2026-era
-		// 4K/QHD displays instead of the wxWidgets default of 10pt.
-		wxFont defaultFont = wxSystemSettings::GetFont(wxSYS_DEFAULT_GUI_FONT);
-		if (defaultFont.GetPointSize() <= 12) {
-			defaultFont.SetPointSize(16);
-			wxSystemSettings::SetFont(wxSYS_DEFAULT_GUI_FONT, defaultFont);
-		}
-	}
-
 	// Init commands.
 	cmd::init_builtin_commands();
 

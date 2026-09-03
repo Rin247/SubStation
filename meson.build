@@ -204,6 +204,21 @@ else
         endif
     endforeach
 
+    # The wxWidgets cmake subproject doesn't propagate all of its glib/gtk
+    # transitive dependencies to meson. Add them explicitly on Linux so the
+    # final link line includes the libraries. Without these, symbols like
+    # g_utf8_collate(), gdk_pixbuf_get_rowstride(), etc. remain unresolved
+    # when using the bundled wxWidgets on a stock Ubuntu runner that doesn't
+    # have a system libwxgtk3.0-gtk3-dev satisfying the >=3.3.0 requirement.
+    if host_machine.system() == 'linux'
+        foreach lib : ['glib-2.0', 'gobject-2.0', 'gmodule-2.0', 'gdk-pixbuf-2.0']
+            d = dependency(lib, required: false)
+            if d.found()
+                deps += d
+            endif
+        endforeach
+    endif
+
     # meson doesn't let you get defines from a library that has sources which need to be built,
     # but allows it if you use partial_dependency() to get only includes and compile args.
     wx_defines_dep = wx.dependency('wxmono').partial_dependency(compile_args: true, includes: true)
