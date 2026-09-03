@@ -27,7 +27,7 @@ substation = executable('substation', substation_src, version_h, resrc, substati
                      link_with: [libresrc, libsubstation],
                      link_args: link_args,
                      link_depends: link_depends,
-                     include_directories: [libsubstation_inc, libresrc_inc, version_inc, include_directories('src')],
+                     include_directories: [libsubstation_inc, libresrc_inc, version_inc, include_directories(meson.project_source_root() / 'src')],
                      cpp_pch: substation_cpp_pch,
                      c_pch: substation_c_pch,
                      install: true,

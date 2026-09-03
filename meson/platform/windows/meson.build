@@ -39,7 +39,7 @@ if host_machine.system() == 'windows'
 else
     version_sh = find_program(meson.project_source_root() / 'tools' / 'version.sh')
 endif
-version_inc = include_directories('.')
+version_inc = include_directories(meson.project_source_root())
 version_h = custom_target('git_version.h',
                           command: [version_sh, meson.current_build_dir(), meson.current_source_dir()],
                           build_by_default: true,
