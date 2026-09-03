@@ -169,12 +169,6 @@ jobs:
           ${{ matrix.config.devenv }}
           meson compile win-installer -C build
 
-      - name: Generate Windows portable installer
-        if: startsWith(matrix.config.os, 'windows-')
-        run: |
-          ${{ matrix.config.devenv }}
-          cd build && ninja win-portable
-
       - name: Upload artifacts - win_installer
         uses: actions/upload-artifact@v6
         if: startsWith(matrix.config.os, 'windows-') && matrix.config.arch == 'x64'
@@ -182,13 +176,6 @@ jobs:
           name: ${{ matrix.config.name }} - installer
           path: build/Aegisub-*.exe
           if-no-files-found: error
-
-      - name: Upload artifacts - portable.zip
-        uses: actions/upload-artifact@v6
-        if: startsWith(matrix.config.os, 'windows-')
-        with:
-          name: ${{ matrix.config.name }} - portable
-          path: build/aegisub-v*-portable-*.zip
 
       # macOS artifacts
       - name: Generate macOS installer
