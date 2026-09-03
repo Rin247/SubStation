@@ -31,7 +31,8 @@ if host_machine.system() == 'linux'
     endif
 endif
 
-dep_avail = []
+# dep_avail is initialized in the top-level meson.build. We just
+# append to it here.
 foreach dep: check_deps
     optname = dep[0].split('-')[0]
     if not get_option(optname).disabled()

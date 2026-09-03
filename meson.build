@@ -41,6 +41,11 @@ endif
 # to mutate them.
 conf = configuration_data()
 deps = []
+# dep_avail holds the human labels of optional deps that were found
+# (e.g. 'PulseAudio', 'ALSA'). Initialized here so the platform/
+# files can append to it (DirectSound does this) before deps/audio_video
+# has had a chance to populate it.
+dep_avail = []
 
 # Compiler handles. Defined here (not in meson/deps/core) because
 # the platform/*.build files reference them: meson/platform/windows

@@ -40,12 +40,12 @@ else
     version_sh = find_program(meson.project_source_root() / 'tools' / 'version.sh')
 endif
 version_h = custom_target('git_version.h',
-                          command: [version_sh, meson.current_build_dir(), meson.current_source_dir()],
+                          command: [version_sh, meson.current_build_dir(), meson.project_source_root()],
                           build_by_default: true,
                           build_always_stale: true, # has internal check whether target file will be refreshed
                           output: ['git_version.h'])
 
-meson.add_dist_script(version_sh, meson.current_build_dir(), meson.current_source_dir(), 'dist')
+meson.add_dist_script(version_sh, meson.current_build_dir(), meson.project_source_root(), 'dist')
 
 if host_machine.system() == 'windows' and not get_option('directsound').disabled()
     dsound_dep = cc.find_library('dsound', required: get_option('directsound'))
