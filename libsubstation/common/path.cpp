@@ -148,4 +148,18 @@ void Path::SetToken(std::string_view token_name, fs::path const& token_value) {
 	}
 }
 
+fs::path Path::DetectPortableDataDir(fs::path const& exe_dir) {
+	if (exe_dir.empty()) return {};
+
+	// Primary check: <exe>/data/
+	fs::path candidate = exe_dir / "data";
+	if (fs::DirectoryExists(candidate)) return candidate;
+
+	// Fallback for a `bin/` subdir layout: <exe>/../data/
+	candidate = exe_dir.parent_path() / "data";
+	if (fs::DirectoryExists(candidate)) return candidate;
+
+	return {};
+}
+
 }

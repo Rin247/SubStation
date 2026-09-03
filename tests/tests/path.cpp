@@ -186,3 +186,68 @@ TEST(lagi_path, encode) {
 	EXPECT_EQ("?local/e", p.Encode("/a/b/c/d/e"));
 }
 #endif
+
+// Portable-mode auto-detect. The app should pick up a `data/`
+// directory next to the executable (or one level up) and use it
+// as the user data root. If neither exists, no portable dir is
+// returned.
+TEST(lagi_path, detect_portable_data_dir_next_to_exe) {
+	auto tmp = agi::fs::path(agi::fs::CurrentPath()) / "lagi_path_detect_portable_next_to";
+	agi::fs::CreateDirectory(tmp);
+	auto data = tmp / "data";
+	agi::fs::CreateDirectory(data);
+
+	EXPECT_EQ(data, Path::DetectPortableDataDir(tmp));
+
+	agi::fs::Remove(data);
+	agi::fs::Remove(tmp);
+}
+
+TEST(lagi_path, detect_portable_data_dir_in_sibling) {
+	// Layout: <root>/bin/<exe> and <root>/data/
+	auto root = agi::fs::path(agi::fs::CurrentPath()) / "lagi_path_detect_portable_sibling";
+	auto bin = root / "bin";
+	auto data = root / "data";
+	agi::fs::CreateDirectory(root);
+	agi::fs::CreateDirectory(bin);
+	agi::fs::CreateDirectory(data);
+
+	EXPECT_EQ(data, Path::DetectPortableDataDir(bin));
+
+	agi::fs::Remove(data);
+	agi::fs::Remove(bin);
+	agi::fs::Remove(root);
+}
+
+TEST(lagi_path, detect_portable_data_dir_prefers_sibling_when_both_exist) {
+	// If both <exe>/data and <exe>/../data exist, the closer one
+	// (<exe>/data) wins.
+	auto root = agi::fs::path(agi::fs::CurrentPath()) / "lagi_path_detect_portable_both";
+	auto inner_data = root / "data";        // <exe>/../data
+	auto outer_data = root / "bin" / "data"; // <exe>/data
+	agi::fs::CreateDirectory(root);
+	agi::fs::CreateDirectory(root / "bin");
+	agi::fs::CreateDirectory(inner_data);
+	agi::fs::CreateDirectory(outer_data);
+
+	auto bin = root / "bin";
+	EXPECT_EQ(outer_data, Path::DetectPortableDataDir(bin));
+
+	agi::fs::Remove(outer_data);
+	agi::fs::Remove(inner_data);
+	agi::fs::Remove(root / "bin");
+	agi::fs::Remove(root);
+}
+
+TEST(lagi_path, detect_portable_data_dir_not_found) {
+	auto tmp = agi::fs::path(agi::fs::CurrentPath()) / "lagi_path_detect_portable_none";
+	agi::fs::CreateDirectory(tmp);
+
+	EXPECT_TRUE(Path::DetectPortableDataDir(tmp).empty());
+
+	agi::fs::Remove(tmp);
+}
+
+TEST(lagi_path, detect_portable_data_dir_empty_input) {
+	EXPECT_TRUE(Path::DetectPortableDataDir({}).empty());
+}

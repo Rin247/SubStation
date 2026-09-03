@@ -58,7 +58,7 @@ wxTranslations *SubStationLocale::GetTranslations() {
 	if (!translations) {
 		wxTranslations::Set(translations = new wxTranslations);
 		wxFileTranslationsLoader::AddCatalogLookupPathPrefix(config::path->Decode("?data/locale/").wstring());
-#if !defined(_WIN32) && !defined(__APPLE__) && !defined(APPIMAGE_BUILD)
+#if !defined(_WIN32) && !defined(__APPLE__)
 		wxFileTranslationsLoader::AddCatalogLookupPathPrefix(P_LOCALE);
 #endif
 	}

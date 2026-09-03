@@ -195,10 +195,10 @@ identifier rename is a follow-up that requires a build to verify.
 - **Where**: the `?user` path resolution in
   `libsubstation/unix/path.cpp` (`~/.substation` on Linux) and
   `libsubstation/common/path.cpp` (the token definitions). The
-  pseudo-portable mode added in the rename commit looks for a `Data/`
-  subdirectory next to the executable; if found, it becomes the user
-  data dir. The pseudo-portable mode is the recommended layout for
-  new users.
+  pseudo-portable mode looks for a `data/` subdirectory next to the
+  executable (or one level up, for a `bin/` subdir layout); if found,
+  it becomes the user data dir and the app becomes fully relocatable.
+  The pseudo-portable mode is the recommended layout for new users.
 - **Status**: this is by design, not a bug. Document it in the
   user-facing changelog.
 

@@ -164,33 +164,44 @@ bool SubStationApp::OnInit() {
 	agi::log::log->Subscribe(std::make_unique<agi::log::EmitSTDOUT>());
 #endif
 
-	// Pseudo-portable mode: if a "Data" subdirectory exists next to the
-	// executable, treat it as the install dir (?data) and redirect ?user /
-	// ?local to live inside it. The user can opt in to portability just by
+	// Portable mode: if a "data" subdirectory exists next to the
+	// executable (or one level up, for a bin/ subdir layout), treat
+	// it as the install dir (?data) and redirect ?user / ?local to
+	// live inside it. The user can opt in to portability just by
 	// placing their SubStation build in a folder layout like:
 	//   /some/where/SubStation/SubStation.exe     (Windows)
 	//   /some/where/SubStation/SubStation         (Linux)
 	//   /some/where/SubStation.app/.../SubStation (macOS)
-	//   /some/where/SubStation/Data/              <- the magic dir
-	StartupLog("Check for portable Data dir");
+	//   /some/where/SubStation/data/              <- the magic dir
+	// or:
+	//   /some/where/SubStation/bin/SubStation
+	//   /some/where/SubStation/data/              <- or here
+	// This is auto-detected: if `data/` is present at startup, the
+	// app becomes self-contained. The directory just needs to exist;
+	// no config.json is required (the user may be creating it for
+	// the first time).
+	StartupLog("Check for portable data dir");
 	{
+		agi::fs::path exe_dir;
 #ifdef __WXMSW__
 		wxFileName exe_path(wxStandardPaths::Get().GetExecutablePath());
-		agi::fs::path portable = exe_path.GetPath().ToStdString() / "Data";
+		exe_dir = exe_path.GetPath().ToStdString();
 #else
-		agi::fs::path portable;
 		try {
-			portable = agi::fs::canonical(
-				agi::fs::path(wxStandardPaths::Get().GetExecutablePath().ToStdString())
-					.parent_path() / "Data");
+			exe_dir = agi::fs::path(wxStandardPaths::Get().GetExecutablePath().ToStdString()).parent_path();
 		} catch (...) {
-			portable.clear();
+			exe_dir.clear();
 		}
 #endif
-		if (!portable.empty() && agi::fs::FileExists(portable / "config.json")) {
+		agi::fs::path portable = agi::Path::DetectPortableDataDir(exe_dir);
+		if (!portable.empty()) {
 			config::path->SetToken("?data", portable);
 			config::path->SetToken("?user", portable);
 			config::path->SetToken("?local", portable);
+			// In portable mode, spell-check dictionaries live in
+			// <exe>/data/dictionaries/ next to the rest of the data
+			// tree, not in a system path.
+			config::path->SetToken("?dictionary", portable / "dictionaries");
 		}
 	}
 
