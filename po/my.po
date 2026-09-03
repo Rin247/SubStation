@@ -1,0 +1,39 @@
+# Burmese translation for SubStation.
+msgid ""
+msgstr ""
+"Project-Id-Version: SubStation 3.5.0\n"
+"Language: my\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "Language"
+msgstr "ဘာသာစကား"
+
+msgid "Please choose a language:"
+msgstr "ဘာသာစကားတစ်ခု ရွေးချယ်ပါ:"
+
+msgid "File"
+msgstr "ဖိုင်"
+
+msgid "Edit"
+msgstr "တည်းဖြတ်ရန်"
+
+msgid "View"
+msgstr "ကြည့်ရန်"
+
+msgid "Help"
+msgstr "အကူအညီ"
+
+msgid "Open"
+msgstr "ဖွင့်ရန်"
+
+msgid "Save"
+msgstr "သိမ်းရန်"
+
+msgid "Cancel"
+msgstr "ပယ်ဖျက်ရန်"
+
+msgid "OK"
+msgstr "အိုကေ"

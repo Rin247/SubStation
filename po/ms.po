@@ -1,0 +1,39 @@
+# Malay translation for SubStation.
+msgid ""
+msgstr ""
+"Project-Id-Version: SubStation 3.5.0\n"
+"Language: ms\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "Language"
+msgstr "Bahasa"
+
+msgid "Please choose a language:"
+msgstr "Sila pilih bahasa:"
+
+msgid "File"
+msgstr "Fail"
+
+msgid "Edit"
+msgstr "Sunting"
+
+msgid "View"
+msgstr "Paparan"
+
+msgid "Help"
+msgstr "Bantuan"
+
+msgid "Open"
+msgstr "Buka"
+
+msgid "Save"
+msgstr "Simpan"
+
+msgid "Cancel"
+msgstr "Batal"
+
+msgid "OK"
+msgstr "OK"

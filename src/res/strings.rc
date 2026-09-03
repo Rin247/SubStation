@@ -1,0 +1,36 @@
+// Resource strings for file associations in the Windows shell.
+// Consider this file given to the public domain, or the closest local equivalent.
+
+#include <winresrc.h>
+
+LANGUAGE LANG_ENGLISH, SUBLANG_DEFAULT
+STRINGTABLE 
+BEGIN
+	// Application "friendly name"
+	10000 "SubStation"
+	// Description of application's purpose
+	10001 "Create and edit styled subtitles with SubStation."
+	// Association name for generic subtitle formats
+	10101 "SubStation subtitle file"
+	// Association name for .ass
+	10102 "SubStation Advanced SSA subtitles"
+	// Association name for .ssa
+	10103 "SubStation SubStation Alpha subtitles"
+	// Association name for .srt
+	10104 "SubStation SubRip text subtitles"
+	// Association name for .ttxt
+	10105 "SubStation MPEG-4 timed text"
+	// Association name for .mks
+	10106 "SubStation Matroska subtitles"
+	// Association name for .txt
+	10107 "SubStation raw text file"
+	// Association name for .mp4, .ogg and maybe other media containers (which could have either audio or video)
+	10108 "SubStation media file"
+	// Association name for .mka, .mp3, .aac, .m4a, .wav, other audio formats
+	10109 "SubStation audio file"
+	// Association name for .mkv, .avi, .avs, other video formats
+	10110 "SubStation video file"
+END
+
+#pragma code_page(65001)
+#include "strings_utf8.rc"
