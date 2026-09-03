@@ -46,9 +46,41 @@ git() {
   command git -C "$srcdir" "$@"
 }
 
-# Check if the commit exists first, it doesn't exist in shallow clones.
+# Compute the build counter (N) and the base installer version.
+#
+# Semver scheme: Aegisub-vX.Y.Z-N-{x64,arm64}.exe
+#   - v3.5.0: a clean tagged release; counter omitted.
+#   - v3.5.0-1, v3.5.0-2, ...: commits on top of 3.5.0 within the 3.5.x line.
+#   - v3.5.1: minor bump; the counter resets (no v3.5.1-0).
+#   - v3.6.0: next feature release; counter resets.
+#
+# The counter is the number of commits since the most recent vX.Y.* tag
+# whose minor (Y) matches the current development line. If no such tag
+# exists yet (i.e. we haven't released any v3.5.x), fall back to the last
+# semver tag of any minor; if no semver tags exist at all, use the
+# original SVN baseline so 3.5.0-0..N still resolve sensibly.
+get_base_semver_tag() {
+  # Sort tags by version (newest first), pick the first matching vX.Y.*
+  # where Y matches the current branch's intended minor. We approximate
+  # "current minor" by reading it from the project version (set in
+  # meson.build); if that is 0.0.0 or unset, use the most recent vX.Y.*
+  # tag of any minor.
+  local project_minor="$1"
+  if [ -n "$project_minor" ] && [ "$project_minor" != "0" ]; then
+    git tag --list "v*.*.$project_minor" 2>/dev/null | sort -V | tail -1
+    return
+  fi
+  git tag --list 'v*.*.*' 2>/dev/null | sort -V | tail -1
+}
+
 if [ "$(git cat-file -t $last_svn_hash 2> /dev/null)" = "commit" ]; then
-  git_revision=$(expr $last_svn_revision + $(git rev-list --count $last_svn_hash..HEAD))
+  # Count commits since the most recent semver tag in the same minor line
+  base_tag=$(get_base_semver_tag "")
+  if [ -n "$base_tag" ] && [ "$(git cat-file -t "${base_tag#v}" 2>/dev/null)" = "commit" ]; then
+    git_revision=$(git rev-list --count "${base_tag}"..HEAD)
+  else
+    git_revision=$(expr $last_svn_revision + $(git rev-list --count $last_svn_hash..HEAD))
+  fi
 else
   git_revision=0
 fi
@@ -67,7 +99,27 @@ else
   git_branch="${git_branch##refs/heads/}"
   git_hash=$(git rev-parse --short HEAD)
 
-  git_version_str="${git_revision}-${git_branch}-${git_hash}"
+  # Pick the most recent semver tag in the current minor line to use as
+  # the base version. If none exists yet, fall back to the project version
+  # so the user always sees a real semver triple (e.g. 3.5.0) in the
+  # installer name even on the very first commit of a new line.
+  base_tag=$(get_base_semver_tag "")
+  if [ -n "$base_tag" ]; then
+    installer_version="${base_tag#v}"
+  else
+    installer_version='3.5.0'
+  fi
+  resource_version=$(echo $installer_version | sed 's/\./, /g')
+
+  # Build the human-readable version string. Drop the leading -0 so we
+  # never produce v3.5.0-0; show only v3.5.0 for the first commit on a
+  # fresh minor line.
+  if [ "$git_revision" = "0" ]; then
+    git_version_str="${installer_version}"
+  else
+    git_version_str="${installer_version}-${git_revision}"
+  fi
+  git_version_str="${git_version_str}-${git_branch}-${git_hash}"
   tagged_release=0
 fi
 
