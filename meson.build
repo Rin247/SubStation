@@ -49,6 +49,13 @@ deps = []
 cxx = meson.get_compiler('cpp')
 cc = meson.get_compiler('c')
 
+# Include dir for the project root. Used by the version custom
+# target and the SubStation include path resolution. Declared
+# here (top-level) because include_directories() in a subdir
+# can't reach the project root without an absolute path, which
+# meson rejects for relocatable builds.
+version_inc = include_directories('.')
+
 # Per-concern meson/ scripts, in dependency order. Each one
 # assumes the previous ones have run.
 subdir('meson/paths')
@@ -64,10 +71,9 @@ subdir('meson/deps/update_checker')
 subdir('meson/deps/csri')
 subdir('meson/config_data')
 
-# Subprojects / source trees that produce target/library files
-# referenced by meson/target. Order matters: libsubstation depends
-# on the deps/ conf state; src/ depends on libsubstation's include
-# dirs and libresrc.
+# Subprojects / source trees that produce target/library files.
+# Order matters: libsubstation depends on the deps/ conf state;
+# src/ depends on libsubstation's include dirs and libresrc.
 subdir('automation')
 subdir('libsubstation')
 subdir('packages')
@@ -78,5 +84,33 @@ if get_option('tests')
     subdir('automation/tests')
 endif
 
-# Finally, link the executable.
-subdir('meson/target')
+# Build the SubStation executable. Declared here at the top level
+# (not in a subdir) because the paths it references — 'src/...',
+# 'libsubstation/...' — are project-root-relative. Inside a subdir
+# they'd have to be '..' chains, and include_directories() rejects
+# absolute paths from meson.project_source_root(). Keeping it at
+# the top level avoids both problems.
+substation_cpp_pch = ['src/include/agi_pre.h']
+substation_c_pch = ['src/include/agi_pre_c.h']
+
+link_args = []
+link_depends = []
+if host_machine.system() == 'windows'
+    manifest_file = configure_file(copy: true, input: 'src/res/substation.exe.manifest', output: 'substation.exe.manifest')
+    link_args += ['/MANIFEST:EMBED', '/MANIFESTINPUT:@0@'.format(manifest_file)]
+    link_depends += manifest_file
+endif
+
+substation = executable('substation', substation_src, version_h, resrc, substation_order_dep,
+                        c_args: substation_defines,
+                        cpp_args: substation_defines,
+                        link_with: [libresrc, libsubstation],
+                        link_args: link_args,
+                        link_depends: link_depends,
+                        include_directories: [libsubstation_inc, libresrc_inc, version_inc, include_directories('src')],
+                        cpp_pch: substation_cpp_pch,
+                        c_pch: substation_c_pch,
+                        install: true,
+                        install_dir: bindir,
+                        dependencies: deps,
+                        win_subsystem: 'windows')
