@@ -88,9 +88,9 @@ libsubstation_c_pch = ['include/lagi_pre_c.h']
 
 libsubstation_inc = include_directories('include')
 
-libsubstation = static_library('substation', libsubstation_src, aegisub_order_dep,
-                            c_args: aegisub_defines,
-                            cpp_args: aegisub_defines,
+libsubstation = static_library('substation', libsubstation_src, substation_order_dep,
+                            c_args: substation_defines,
+                            cpp_args: substation_defines,
                             include_directories: libsubstation_inc,
                             cpp_pch: libsubstation_cpp_pch,
                             c_pch: libsubstation_c_pch,
