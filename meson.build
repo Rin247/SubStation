@@ -114,7 +114,7 @@ deps += cc.find_library('dl', required: false)
 
 deps += dependency('iconv', fallback: ['iconv', 'libiconv_dep'])
 
-deps += dependency('libass', version: '1.0.0',
+deps += dependency('libass', version: '>=0.17.5',
                    fallback: ['libass', 'libass_dep'])
 
 boost_static = meson.version().version_compare('>=0.63.0') and get_option('prefer_static')    # boost dependencies do not respect prefer_static https://github.com/mesonbuild/meson/issues/15458
@@ -456,19 +456,19 @@ foreach key : conf.keys()
     endif
 endforeach
 
-aegisub_order_dep = []
-aegisub_defines = []
+substation_order_dep = []
+substation_defines = []
 
 if get_option('b_pch')
     # Write the feature flags into a configure_file to not bloat the compiler args too much
-    aegisub_order_dep += configure_file(output: 'acconf.h', configuration: conf)
+    substation_order_dep += configure_file(output: 'acconf.h', configuration: conf)
 else
     # Manually pass the feature flags as compiler args
-    aegisub_defines += conf_defines
+    substation_defines += conf_defines
 
     if host_machine.system() == 'windows'
         # This is also part of all the PCHs
-        aegisub_defines += '-DWIN32_LEAN_AND_MEAN'
+        substation_defines += '-DWIN32_LEAN_AND_MEAN'
     endif
 endif
 
@@ -482,8 +482,8 @@ if get_option('tests')
     subdir('automation/tests')
 endif
 
-aegisub_cpp_pch = ['src/include/agi_pre.h']
-aegisub_c_pch = ['src/include/agi_pre_c.h']
+substation_cpp_pch = ['src/include/agi_pre.h']
+substation_c_pch = ['src/include/agi_pre_c.h']
 
 link_args = []
 link_depends = []
@@ -493,15 +493,15 @@ if host_machine.system() == 'windows'
     link_depends += manifest_file
 endif
 
-substation = executable('substation', aegisub_src, version_h, resrc, aegisub_order_dep,
-                     c_args: aegisub_defines,
-                     cpp_args: aegisub_defines,
+substation = executable('substation', substation_src, version_h, resrc, substation_order_dep,
+                     c_args: substation_defines,
+                     cpp_args: substation_defines,
                      link_with: [libresrc, libsubstation],
                      link_args: link_args,
                      link_depends: link_depends,
                      include_directories: [libsubstation_inc, libresrc_inc, version_inc, include_directories('src')],
-                     cpp_pch: aegisub_cpp_pch,
-                     c_pch: aegisub_c_pch,
+                     cpp_pch: substation_cpp_pch,
+                     c_pch: substation_c_pch,
                      install: true,
                      install_dir: bindir,
                      dependencies: deps,

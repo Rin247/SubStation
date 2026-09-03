@@ -1,6 +1,6 @@
 subdir('libresrc')
 
-aegisub_src = files(
+substation_src = files(
     'MatroskaParser.c',
     'substationlocale.cpp',
     'ass_attachment.cpp',
@@ -161,18 +161,18 @@ aegisub_src = files(
 )
 
 if host_machine.system() == 'darwin'
-    aegisub_src += files(
+    substation_src += files(
         'font_file_lister_coretext.mm',
         'osx/osx_utils.mm',
         'osx/screenpicker.mm',
     )
 
     if conf.get('WITH_INTERNAL_WXWIDGETS', 0) != 0
-        aegisub_src += files('osx/scintilla_ime.mm')
+        substation_src += files('osx/scintilla_ime.mm')
     endif
 
 elif host_machine.system() == 'windows'
-    aegisub_src += files(
+    substation_src += files(
         'avisynth_wrap.cpp',
         'crash_writer_minidump.cpp',
         'font_file_lister_gdi.cpp',
@@ -204,33 +204,33 @@ elif host_machine.system() == 'windows'
                 wx_windres_args += arg
             endif
         endforeach
-        aegisub_src += windows.compile_resources('res/res.rc',
+        substation_src += windows.compile_resources('res/res.rc',
                                                  args: wx_windres_args,
                                                  depend_files: res_dep_files,
                                                  depends: version_h,
                                                  include_directories: [res_inc, version_inc])
     else # subproject
         wx_inc = wx.include_directories('wxmono')
-        aegisub_src += windows.compile_resources('res/res.rc',
+        substation_src += windows.compile_resources('res/res.rc',
                                                  depend_files: res_dep_files,
                                                  depends: version_h,
                                                  include_directories: [res_inc, version_inc, wx_inc])
     endif
-    aegisub_src += windows.compile_resources('res/strings.rc')
+    substation_src += windows.compile_resources('res/strings.rc')
 endif
 
 if host_machine.system() != 'windows'
-    aegisub_src += files(
+    substation_src += files(
         'crash_writer.cpp'
     )
 endif
 
 if conf.has('WITH_FONTCONFIG')
-    aegisub_src += files('font_file_lister_fontconfig.cpp')
+    substation_src += files('font_file_lister_fontconfig.cpp')
 endif
 
 if conf.has('WITH_CSRI')
-    aegisub_src += files('subtitles_provider_csri.cpp')
+    substation_src += files('subtitles_provider_csri.cpp')
 endif
 
 opt_src = [
@@ -253,6 +253,6 @@ opt_src = [
 
 foreach opt: opt_src
     if dep_avail.contains(opt[0])
-        aegisub_src += files(opt[1])
+        substation_src += files(opt[1])
     endif
 endforeach
