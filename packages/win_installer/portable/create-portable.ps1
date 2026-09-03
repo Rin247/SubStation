@@ -67,8 +67,8 @@ if (Test-Path -LiteralPath $localeSource -PathType Container) {
 }
 
 Write-Step 'Copying dictionaries'
-Copy-ToDirectory $InstallerDepsDir\dictionaries\en_US.aff  $PortableOutputDir\dictionaries
-Copy-ToDirectory $InstallerDepsDir\dictionaries\en_US.dic  $PortableOutputDir\dictionaries
+Copy-ToDirectory $InstallerDepsDir\dictionaries\en_US.aff  $PortableOutputDir\data\dictionaries
+Copy-ToDirectory $InstallerDepsDir\dictionaries\en_US.dic  $PortableOutputDir\data\dictionaries
 
 # Write-Step 'AviSynth'
 # Copy-ToDirectory $InstallerDepsDir\AvisynthPlus64\x64\Output\system\DevIL.dll  $PortableOutputDir
@@ -116,7 +116,10 @@ Write-Step 'Copying DependencyControl'
 Copy-ToDirectory "$InstallerDepsDir\DependencyControl\automation\*"  "$PortableOutputDir\automation\"  -Recurse
 
 Write-Step 'Copying portable config'
-Copy-ToDirectory $SourceRoot\packages\win_installer\portable\config.json  $PortableOutputDir
+# The data/ folder next to the executable is the portable-mode
+# trigger (auto-detected at startup). Seed it with a config.json
+# so first launch reads from the right place.
+Copy-ToDirectory $SourceRoot\packages\win_installer\portable\config.json  $PortableOutputDir\data
 
 Write-Step 'Copying portable icon'
 Copy-ToDirectory $SourceRoot\packages\win_installer\portable\icon.ico  $PortableOutputDir

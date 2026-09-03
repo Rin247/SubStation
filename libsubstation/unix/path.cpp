@@ -40,29 +40,6 @@ std::string home_dir() {
 
 	throw agi::EnvironmentError("Could not get home directory. Make sure HOME is set.");
 }
-
-#ifdef APPIMAGE_BUILD
-std::string exe_dir() {
-	char *exe, *dir;
-	std::string data = "";
-
-#ifdef __FreeBSD__
-	exe = realpath("/proc/self/file", NULL);
-#else
-	exe = realpath("/proc/self/exe", NULL);
-#endif
-
-	if (!exe) return "";
-
-	if ((dir = dirname(exe)) && strlen(dir) > 0) {
-		data = dir;
-	}
-
-	free(exe);
-
-	return data;
-}
-#endif  /* APPIMAGE_BUILD */
 #endif  /* !__APPLE__ */
 }
 
@@ -72,17 +49,8 @@ void Path::FillPlatformSpecificPaths() {
 	agi::fs::path home = home_dir();
 	SetToken("?user", home/".substation");
 	SetToken("?local", home/".substation");
-
-#ifdef APPIMAGE_BUILD
-	agi::fs::path data = exe_dir();
-	if (data == "") data = home/".substation";
-	SetToken("?data", data);
-	SetToken("?dictionary", Decode("?data/dictionaries"));
-#else
 	SetToken("?data", P_DATA);
 	SetToken("?dictionary", "/usr/share/hunspell");
-#endif
-
 #else
 	agi::fs::path app_support = agi::util::GetApplicationSupportDirectory();
 	SetToken("?user", app_support/"SubStation");

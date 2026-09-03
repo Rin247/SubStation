@@ -70,6 +70,21 @@ public:
 	/// @param token_value An absolute path to a directory or file
 	/// @throws InternalError if `token` is not a valid token name
 	void SetToken(std::string_view token_name, fs::path const& token_value);
+
+	/// Look for a "data" directory next to the executable (or one
+	/// level up, for a `bin/` subdir layout). If one exists, return
+	/// the absolute path to it. Otherwise return an empty path.
+	///
+	/// This implements the auto-detect portable-mode trigger: the
+	/// app looks at `<exe>/data/` first, then `<exe>/../data/`. If
+	/// the directory is present, the application becomes fully
+	/// self-contained and writes all user data, config, and cache
+	/// inside it.
+	///
+	/// @param exe_dir The directory containing the running executable
+	/// @return The path to the `data/` directory if found, otherwise
+	///         an empty path
+	static fs::path DetectPortableDataDir(fs::path const& exe_dir);
 };
 
 } // namespace agi

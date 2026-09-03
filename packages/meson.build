@@ -39,7 +39,7 @@ else
     i18n.merge_file(input: desktop_template,
                     output: aegisub_rdns_name + '.desktop',
                     type: 'desktop',
-                    po_dir: '../po',
+                    po_dir: '../localization',
                     install: true,
                     install_dir: datadir / 'applications')
 
@@ -49,7 +49,7 @@ else
 	i18n.merge_file(input: metainfo_template,
                     output: aegisub_rdns_name + '.metainfo.xml',
                     type: 'xml',
-                    po_dir: '../po',
+                    po_dir: '../localization',
                     install: true,
                     install_dir: datadir / 'metainfo')
 
