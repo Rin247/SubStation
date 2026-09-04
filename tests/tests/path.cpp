@@ -13,10 +13,14 @@
 // OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 #include <libsubstation/exception.h>
+#include <libsubstation/format.h>
 #include <libsubstation/fs.h>
 #include <libsubstation/path.h>
 
 #include <main.h>
+
+#include <atomic>
+#include <filesystem>
 
 using agi::Path;
 using namespace std::string_view_literals;
@@ -191,9 +195,12 @@ TEST(lagi_path, encode) {
 // directory next to the executable (or one level up) and use it
 // as the user data root. If neither exists, no portable dir is
 // returned.
+//
+// All four tests use a unique scratch directory under the system
+// temp path so they don't collide with each other (or with any
+// pre-existing `data/` directory) via the sibling-fallback check.
 TEST(lagi_path, detect_portable_data_dir_next_to_exe) {
-	auto tmp = agi::fs::path(agi::fs::CurrentPath()) / "lagi_path_detect_portable_next_to";
-	agi::fs::CreateDirectory(tmp);
+	auto tmp = MakeUniqueScratchDir("lagi_path_detect_portable_next_to");
 	auto data = tmp / "data";
 	agi::fs::CreateDirectory(data);
 
@@ -205,7 +212,7 @@ TEST(lagi_path, detect_portable_data_dir_next_to_exe) {
 
 TEST(lagi_path, detect_portable_data_dir_in_sibling) {
 	// Layout: <root>/bin/<exe> and <root>/data/
-	auto root = agi::fs::path(agi::fs::CurrentPath()) / "lagi_path_detect_portable_sibling";
+	auto root = MakeUniqueScratchDir("lagi_path_detect_portable_sibling");
 	auto bin = root / "bin";
 	auto data = root / "data";
 	agi::fs::CreateDirectory(root);
@@ -222,7 +229,7 @@ TEST(lagi_path, detect_portable_data_dir_in_sibling) {
 TEST(lagi_path, detect_portable_data_dir_prefers_sibling_when_both_exist) {
 	// If both <exe>/data and <exe>/../data exist, the closer one
 	// (<exe>/data) wins.
-	auto root = agi::fs::path(agi::fs::CurrentPath()) / "lagi_path_detect_portable_both";
+	auto root = MakeUniqueScratchDir("lagi_path_detect_portable_both");
 	auto inner_data = root / "data";        // <exe>/../data
 	auto outer_data = root / "bin" / "data"; // <exe>/data
 	agi::fs::CreateDirectory(root);
@@ -240,14 +247,27 @@ TEST(lagi_path, detect_portable_data_dir_prefers_sibling_when_both_exist) {
 }
 
 TEST(lagi_path, detect_portable_data_dir_not_found) {
-	auto tmp = agi::fs::path(agi::fs::CurrentPath()) / "lagi_path_detect_portable_none";
-	agi::fs::CreateDirectory(tmp);
-
+	auto tmp = MakeUniqueScratchDir("lagi_path_detect_portable_none");
 	EXPECT_TRUE(Path::DetectPortableDataDir(tmp).empty());
-
 	agi::fs::Remove(tmp);
 }
 
 TEST(lagi_path, detect_portable_data_dir_empty_input) {
 	EXPECT_TRUE(Path::DetectPortableDataDir({}).empty());
+}
+
+// Create a unique scratch directory under the system temp path
+// and return its absolute path. Each test gets a fresh, isolated
+// directory that no other test can collide with, so the sibling-
+// fallback logic in DetectPortableDataDir sees a clean state.
+//
+// The unique name is just the test name plus a per-process counter
+// (process id is not portable; std::filesystem is).
+static agi::fs::path MakeUniqueScratchDir(std::string const& name) {
+	static std::atomic<int> counter{0};
+	auto base = agi::fs::path(std::filesystem::temp_directory_path()) / "substation-tests";
+	agi::fs::CreateDirectory(base);
+	auto unique = base / agi::format("@0@_@1@", name, counter++);
+	agi::fs::CreateDirectory(unique);
+	return unique;
 }
