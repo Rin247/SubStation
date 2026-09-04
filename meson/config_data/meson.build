@@ -1,14 +1,15 @@
 # Build-time configuration_data.
 #
 # Produces:
-#   conf         - configuration_data with WITH_* feature macros
 #   conf_defines - flattened `-DKEY=value` strings (used when
 #                  b_pch is off, to avoid bloating the PCH)
 #   conf_meson   - configuration_data with DEFAULT_PLAYER_AUDIO
 #                  (consumed by the executable via a generated header)
 #
-# The `conf` and `conf_meson` objects are intentionally kept
-# separate so consumer code can read whichever it needs.
+# `conf` itself is created at the top-level meson.build and
+# populated by the deps/*.build files (opengl sets HAVE_OPENGL_GL_H,
+# audio_video sets WITH_ALSA, etc.). We only append project-wide
+# data here.
 #
 # Note: substation_order_dep and substation_defines are declared
 # in the top-level meson.build, not here, because the
@@ -21,7 +22,6 @@
 # Mutates the surrounding scope's `conf`, `conf_defines`,
 # `conf_meson`.
 
-conf = configuration_data()
 conf.set_quoted('P_DATA', dataroot)
 conf.set_quoted('P_LOCALE', localedir)
 if get_option('credit') != ''
