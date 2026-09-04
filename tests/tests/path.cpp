@@ -191,6 +191,22 @@ TEST(lagi_path, encode) {
 }
 #endif
 
+// Create a unique scratch directory under the system temp path
+// and return its absolute path. Each test gets a fresh, isolated
+// directory that no other test can collide with, so the sibling-
+// fallback logic in DetectPortableDataDir sees a clean state.
+//
+// The unique name is just the test name plus a per-process counter
+// (process id is not portable; std::filesystem is).
+static agi::fs::path MakeUniqueScratchDir(std::string const& name) {
+	static std::atomic<int> counter{0};
+	auto base = agi::fs::path(std::filesystem::temp_directory_path()) / "substation-tests";
+	agi::fs::CreateDirectory(base);
+	auto unique = base / agi::format("@0@_@1@", name, counter++);
+	agi::fs::CreateDirectory(unique);
+	return unique;
+}
+
 // Portable-mode auto-detect. The app should pick up a `data/`
 // directory next to the executable (or one level up) and use it
 // as the user data root. If neither exists, no portable dir is
@@ -254,20 +270,4 @@ TEST(lagi_path, detect_portable_data_dir_not_found) {
 
 TEST(lagi_path, detect_portable_data_dir_empty_input) {
 	EXPECT_TRUE(Path::DetectPortableDataDir({}).empty());
-}
-
-// Create a unique scratch directory under the system temp path
-// and return its absolute path. Each test gets a fresh, isolated
-// directory that no other test can collide with, so the sibling-
-// fallback logic in DetectPortableDataDir sees a clean state.
-//
-// The unique name is just the test name plus a per-process counter
-// (process id is not portable; std::filesystem is).
-static agi::fs::path MakeUniqueScratchDir(std::string const& name) {
-	static std::atomic<int> counter{0};
-	auto base = agi::fs::path(std::filesystem::temp_directory_path()) / "substation-tests";
-	agi::fs::CreateDirectory(base);
-	auto unique = base / agi::format("@0@_@1@", name, counter++);
-	agi::fs::CreateDirectory(unique);
-	return unique;
 }
