@@ -6,15 +6,20 @@
 #                  b_pch is off, to avoid bloating the PCH)
 #   conf_meson   - configuration_data with DEFAULT_PLAYER_AUDIO
 #                  (consumed by the executable via a generated header)
-#   substation_order_dep - configure_file that writes acconf.h
-#                  (used when b_pch is on, to keep PCH small)
-#   substation_defines   - compiler defines for the executable
 #
 # The `conf` and `conf_meson` objects are intentionally kept
 # separate so consumer code can read whichever it needs.
 #
+# Note: substation_order_dep and substation_defines are declared
+# in the top-level meson.build, not here, because the
+# configure_file() call that backs them has to write to the build
+# root (the C++ PCH includes '../acconf.h' relative to
+# libsubstation/include/, which resolves to <build>/acconf.h).
+# In a subdir, configure_file() would write to the subdir's
+# build dir, breaking that include.
+#
 # Mutates the surrounding scope's `conf`, `conf_defines`,
-# `conf_meson`, `substation_order_dep`, `substation_defines`.
+# `conf_meson`.
 
 conf = configuration_data()
 conf.set_quoted('P_DATA', dataroot)
@@ -60,22 +65,6 @@ foreach key : conf.keys()
         conf_defines += '-D@0@=@1@'.format(key, conf.get(key))
     endif
 endforeach
-
-substation_order_dep = []
-substation_defines = []
-
-if get_option('b_pch')
-    # Write the feature flags into a configure_file to not bloat the compiler args too much
-    substation_order_dep += configure_file(output: 'acconf.h', configuration: conf)
-else
-    # Manually pass the feature flags as compiler args
-    substation_defines += conf_defines
-
-    if host_machine.system() == 'windows'
-        # This is also part of all the PCHs
-        substation_defines += '-DWIN32_LEAN_AND_MEAN'
-    endif
-endif
 
 conf_meson = configuration_data()
 conf_meson.set('DEFAULT_PLAYER_AUDIO', def_audio)

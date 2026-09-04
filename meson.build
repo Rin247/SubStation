@@ -76,6 +76,29 @@ subdir('meson/deps/update_checker')
 subdir('meson/deps/csri')
 subdir('meson/config_data')
 
+# Build substation_order_dep / substation_defines from the conf
+# data that meson/config_data just assembled. This has to live at
+# the top level (not in meson/config_data) because configure_file()
+# writes to the current build dir, and the C++ PCH includes
+# '../acconf.h' relative to libsubstation/include/ — that resolves
+# to <build>/acconf.h, which is only true when configure_file runs
+# at the top level.
+substation_order_dep = []
+substation_defines = []
+
+if get_option('b_pch')
+    # Write the feature flags into a configure_file to not bloat the compiler args too much
+    substation_order_dep += configure_file(output: 'acconf.h', configuration: conf)
+else
+    # Manually pass the feature flags as compiler args
+    substation_defines += conf_defines
+
+    if host_machine.system() == 'windows'
+        # This is also part of all the PCHs
+        substation_defines += '-DWIN32_LEAN_AND_MEAN'
+    endif
+endif
+
 # Subprojects / source trees that produce target/library files.
 # Order matters: libsubstation depends on the deps/ conf state;
 # src/ depends on libsubstation's include dirs and libresrc.
